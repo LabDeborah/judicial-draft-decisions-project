@@ -1,0 +1,19 @@
+{
+  "name": "tcc",
+  "version": "1.0.0",
+  "description": "Pipeline inicial para extracao, classificacao e geracao de relatorios do TCC",
+  "type": "module",
+  "scripts": {
+    "build": "python -m compileall app",
+    "dev": "python -m app.cli.main --mode sample --analysis-mode local --limit 10",
+    "start": "python -m app.cli.main",
+    "rodar-tcc": "python -m app.cli.main --mode live --analysis-mode gemini --gemini-model gemini-flash-lite-latest --limit 20 --gemini-requests-per-minute 15 --gemini-requests-per-day 500",
+    "rodar-tcc:custom": "python -m app.cli.main",
+    "reset-quota": "python -m app.cli.reset_quota",
+    "tsc": "python -m compileall app",
+    "lint": "python -m compileall app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
