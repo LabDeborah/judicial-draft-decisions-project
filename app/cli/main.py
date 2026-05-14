@@ -37,6 +37,8 @@ def main() -> None:
     print(f"Analises produzidas: {summary.analyses}")
     print(f"Minutas geradas (.tex): {summary.generated_drafts}")
     print(f"Minutas compiladas (.pdf): {summary.generated_pdfs}")
+    print(f"Grafos semanticos por minuta: {summary.semantic_documents}")
+    print(f"Grafo semantico da execucao: {summary.semantic_execution_graph}")
     print(f"Diretorio CSV de dados: {summary.data_csv_dir}")
 
 

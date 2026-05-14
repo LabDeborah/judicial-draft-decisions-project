@@ -9,6 +9,7 @@ from app.services.analysis import AnalysisOptions, analyze_decisions
 from app.services.collectors import collect_tnu_themes, collect_trf2_decisions
 from app.services.csv import write_csv
 from app.services.documents import generate_decision_drafts
+from app.services.semantic import SemanticRunContext, generate_semantic_artifacts
 from app.utils.fs import ensure_dir, is_dir_writable
 
 
@@ -19,6 +20,8 @@ class PipelineSummary:
     analyses: int
     generated_drafts: int
     generated_pdfs: int
+    semantic_documents: int
+    semantic_execution_graph: str
     data_csv_dir: str
 
 
@@ -81,7 +84,7 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
             }
         )
     write_csv("outputs/reports/comparados_compat.csv", comparados)
-    generated_pdfs = generate_decision_drafts(
+    generated_drafts = generate_decision_drafts(
         docs,
         analyses,
         decisions,
@@ -89,13 +92,29 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
         compile_pdf=config.compile_pdf,
         latex_engine=config.latex_engine,
     )
-
-    generated_drafts = len([doc for doc in docs if doc.action != "SEM_ACAO"])
+    semantic = generate_semantic_artifacts(
+        context=SemanticRunContext(
+            mode=config.mode,
+            analysis_mode=config.analysis_mode,
+            browser_automation=config.browser_automation,
+            compile_pdf=config.compile_pdf,
+            gemini_model=config.gemini_model,
+            gemini_cache_file=config.gemini_cache_file,
+            gemini_quota_state_file=config.gemini_quota_state_file,
+        ),
+        themes=themes,
+        decisions=decisions,
+        analyses=analyses,
+        docs=docs,
+        drafts=generated_drafts,
+    )
     return PipelineSummary(
         themes=len(themes),
         decisions=len(decisions),
         analyses=len(analyses),
-        generated_drafts=generated_drafts,
-        generated_pdfs=generated_pdfs,
+        generated_drafts=len(generated_drafts),
+        generated_pdfs=len([draft for draft in generated_drafts if draft.pdf_path]),
+        semantic_documents=len(semantic.document_graph_paths),
+        semantic_execution_graph=semantic.execution_graph_path,
         data_csv_dir=data_csv_dir,
     )

@@ -5,9 +5,19 @@
 O projeto executa uma pipeline para:
 
 1. Coletar dados da TNU e do TRF2.
-2. Classificar decisoes por tema (local ou Gemini).
+2. Classificar decisoes por tema.
 3. Definir acao recursal.
-4. Gerar relatorios CSV e minutas em LaTeX.
+4. Gerar minutas em LaTeX.
+5. Gerar uma camada semantica em RDF/Turtle com provenance em PROV-O.
+
+## Arquitetura de dupla camada
+
+O pipeline agora separa dois produtos complementares:
+
+- camada de apresentacao: `.tex` e `.pdf`;
+- camada semantica: `.ttl`.
+
+Essa separacao permite manter o documento juridico legivel para humanos, sem abrir mao de rastreabilidade, auditabilidade e reprodutibilidade do processo de geracao.
 
 ## Fluxo de execucao
 
@@ -31,17 +41,15 @@ python -m app.cli.main --mode live --analysis-mode gemini --limit 10
 3) analisa decisoes -------------> [app/services/analysis.py]
    - local: similaridade textual
    - gemini: chama [app/services/gemini.py]
-     com:
-     - quota diaria [app/services/gemini_quota.py]
-     - cache [app/services/gemini_cache.py]
-     - fallback seguro (INVALIDA) em erro/quota
    - saida: AnalysisOutput[]
 4) define acao ------------------> [app/services/actions.py]
    - SOBRESTAR / NEGAR_SEGUIMENTO / DETERMINAR_ADEQUACAO / SEM_ACAO
    - saida: DocumentDecision[]
-5) grava CSVs -------------------> [app/services/csv.py] + [app/utils/fs.py]
-6) gera minutas .tex -----------> [app/services/documents.py]
-   - compilacao automatica para .pdf quando houver `tectonic`/`pdflatex`
+5) grava CSVs -------------------> [app/services/csv.py]
+6) gera minutas .tex/.pdf ------> [app/services/documents.py]
+7) gera grafos RDF/PROV-O ------> [app/services/semantic.py]
+   - grafo consolidado por execucao
+   - grafo individual por minuta
         |
         v
 [Saidas]
@@ -51,12 +59,40 @@ python -m app.cli.main --mode live --analysis-mode gemini --limit 10
 - outputs/reports/acoes_documentais.csv
 - outputs/reports/comparados_compat.csv
 - outputs/documents/*.tex
-- outputs/reports/gemini_quota_state.json
-- outputs/reports/gemini_cache.json
-
-Observacao:
-- quando `data/csv` nao estiver gravavel, a pipeline redireciona automaticamente os CSVs de dados para `outputs/data/csv`.
+- outputs/documents/*.pdf
+- outputs/semantic/run-*.ttl
+- outputs/semantic/*.ttl
 ```
+
+## Modelagem semantica
+
+O RDF gerado segue uma ontologia minima do dominio:
+
+- `tcc:LegalDecision`
+- `tcc:TnuTheme`
+- `tcc:AnalysisResult`
+- `tcc:LegalDraft`
+- `tcc:PipelineRun`
+- `tcc:ClassificationActivity`
+- `tcc:DraftGenerationActivity`
+
+Com PROV-O, a pipeline explicita:
+
+- `prov:Entity` para decisoes, temas, analises e minutas;
+- `prov:Activity` para classificacao e geracao;
+- `prov:Agent` para o classificador local, Gemini e a propria pipeline.
+
+## O que o grafo permite auditar
+
+Os arquivos `.ttl` permitem recuperar:
+
+- qual decisao foi usada na classificacao;
+- qual tema TNU foi associado;
+- qual justificativa foi registrada na analise;
+- qual modo de analise estava ativo;
+- qual modelo Gemini estava configurado;
+- quais arquivos `.tex` e `.pdf` foram produzidos;
+- quais atividades geraram cada resultado.
 
 ## Modos de analise
 
@@ -66,63 +102,34 @@ Observacao:
 
 - `--analysis-mode gemini`
   - Usa a Gemini via API.
-  - Respeita limites operacionais configurados:
-    - `--gemini-requests-per-minute` (default: 15)
-    - `--gemini-requests-per-day` (default: 500)
-    - `--gemini-delay-ms` (default: 1200)
-    - `--gemini-cooldown-ms` (default: 15000)
-    - `--gemini-429-threshold` (default: 2)
-    - `--gemini-max-quota-errors` (default: 2)
+  - Respeita:
+    - `--gemini-requests-per-minute`
+    - `--gemini-requests-per-day`
+    - `--gemini-delay-ms`
+    - `--gemini-cooldown-ms`
+    - `--gemini-429-threshold`
+    - `--gemini-max-quota-errors`
 
-- Browser automation para coleta live:
-  - `--browser-automation true|false` (default: `true`)
-  - se `true`, tenta Playwright como fallback quando parse HTML padrao falhar
+## Modos de coleta e geracao
 
-- Modo de importacao de dataset local:
-  - `--mode import`
-  - `--import-root <pasta>` para usar `tnu/temas-tnu.csv` e `trf2/decisoes.csv`
-  - ou `--tnu-csv-file <arquivo>` e `--trf2-csv-file <arquivo>`
+- `--mode sample`
+  - sem rede; ideal para verificacao rapida;
 
-- Compilacao de minutas:
-  - `--compile-pdf true|false` (default: `true`)
-  - `--latex-engine <engine>` (opcional, ex.: `tectonic` ou `pdflatex`)
+- `--mode live`
+  - coleta em fontes reais;
+  - pode usar `--browser-automation true` como fallback para paginas com JS pesado;
 
-## Cache e quota
+- `--mode import`
+  - usa datasets locais via `--import-root` ou arquivos CSV explicitos.
 
-- Cache de respostas validas:
-  - Arquivo default: `outputs/reports/gemini_cache.json`
-  - Quando existe resposta valida para a mesma decisao + base de temas, o sistema reutiliza.
+- `--compile-pdf true|false`
+  - controla a compilacao automatica de `.tex` para `.pdf`.
 
-- Estado de quota diaria:
-  - Arquivo default: `outputs/reports/gemini_quota_state.json`
-  - Guarda `date` e `requests`.
-  - Reset manual:
-    - `python -m app.cli.reset_quota`
+## Checklist de diagnostico
 
-## Comandos principais
-
-- Rodar com defaults de Gemini:
-  - `python -m app.cli.main --mode live --analysis-mode gemini --gemini-model gemini-flash-lite-latest --limit 20 --gemini-requests-per-minute 15 --gemini-requests-per-day 500`
-
-- Rodar customizado:
-  - `python -m app.cli.main --mode live --analysis-mode gemini --limit 10 --browser-automation true --compile-pdf true`
-
-- Rodar somente local:
-  - `python -m app.cli.main --mode live --analysis-mode local --limit 10`
-
-- Rodar com importacao local:
-  - `python -m app.cli.main --mode import --analysis-mode local --limit 100 --import-root incoming_tcc_pack_20260404/TCC`
-
-- Resetar quota local:
-  - `python -m app.cli.reset_quota`
-
-## Checklist de diagnostico rapido
-
-1. Verificar se `Pipeline concluida` apareceu no terminal.
+1. Confirmar a mensagem `Pipeline concluida`.
 2. Conferir `outputs/reports/analises.csv`.
 3. Conferir `outputs/reports/acoes_documentais.csv`.
-4. Conferir `outputs/reports/gemini_quota_state.json` para consumo diario.
-5. Se houver muitos `HTTP 429`:
-   - reduzir `--limit`
-   - aumentar `--gemini-delay-ms`
-   - rodar com `local` temporariamente
+4. Conferir `outputs/semantic/run-*.ttl`.
+5. Conferir ao menos um `outputs/semantic/<decision>-<action>.ttl`.
+6. Se houver erro Gemini, validar se a saida foi marcada como `INVALIDA` no fallback seguro.

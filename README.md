@@ -4,86 +4,152 @@
 [![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)](#)
 
 Pipeline em Python para:
-- coletar dados TNU e TRF2 (`sample`, `live` ou `import`),
-- classificar decisões por tema,
-- definir ação recursal,
-- gerar relatórios CSV,
-- gerar minutas em `.tex` e, opcionalmente, `.pdf`.
+- coletar dados TNU e TRF2 (`sample`, `live` ou `import`);
+- classificar decisoes por tema;
+- definir acao recursal;
+- gerar minutas em LaTeX e, opcionalmente, PDF;
+- gerar uma camada semantica paralela em RDF/Turtle com provenance em PROV-O.
 
 Arquitetura detalhada: [WORKFLOW.md](./WORKFLOW.md)
-Guia de fluxo operacional: [WORKFLOW.md](./WORKFLOW.md)
+
+## Ideia central implementada
+
+Com base no documento `ideias (2).pdf`, o projeto agora segue a estrategia de "dupla camada":
+
+- LaTeX como camada de apresentacao juridica.
+- RDF/Turtle como camada semantica e auditavel.
+
+Na pratica, a pipeline passa a produzir:
+
+- artefatos humanos: `.tex` e `.pdf`;
+- artefatos semanticos: `.ttl` por execucao e `.ttl` por minuta.
+
+O desenho adotado foi o mais direto e robusto sugerido no PDF:
+
+- RDF paralelo ao LaTeX;
+- PROV-O para modelar atividades, entidades e agentes;
+- o resultado de analise e a geracao da minuta ficam explicitamente rastreaveis.
+
+## O que a camada semantica modela
+
+O grafo RDF minimo cobre:
+
+- `tcc:LegalDecision` para a decisao do TRF2;
+- `tcc:TnuTheme` para o tema da TNU;
+- `tcc:AnalysisResult` para a classificacao produzida;
+- `tcc:LegalDraft` para a minuta gerada;
+- `prov:Activity` para classificacao e geracao da minuta;
+- `prov:Agent` para o classificador local ou modelo Gemini e para a pipeline.
+
+Exemplos de perguntas que os `.ttl` passam a responder:
+
+- qual decisao originou a minuta;
+- qual tema TNU foi associado;
+- qual estrategia de analise foi usada (`local` ou `gemini`);
+- qual modelo Gemini estava configurado;
+- quais arquivos `.tex` e `.pdf` foram produzidos;
+- qual atividade gerou cada artefato.
 
 ## Requisitos
-- Python 3.11+
-- Dependências de `requirements.txt`
-- Opcional (scraping JS pesado): `playwright` + Chromium
-- Opcional (PDF): `tectonic` ou `pdflatex`
 
-## Quickstart (2 minutos)
+- Python 3.11+
+- Dependencias de `requirements.txt`
+- Opcional para scraping JS pesado: `playwright` + Chromium
+- Opcional para PDF: `tectonic` ou `pdflatex`
+
+## Quickstart
+
 ```bash
 python -m pip install -r requirements.txt
 python -m app.cli.main --mode sample --analysis-mode local --limit 10
 ```
 
-## Modos de execução
+## Modos de execucao
 
-Modo `sample` (sem dependência de rede):
+Modo `sample`:
+
 ```bash
 python -m app.cli.main --mode sample --analysis-mode local --limit 10
 ```
 
 Modo `live`:
+
 ```bash
 python -m app.cli.main --mode live --analysis-mode local --limit 20 --browser-automation true
 ```
 
-Modo `import` (compatível com pacote externo):
+Modo `import`:
+
 ```bash
 python -m app.cli.main --mode import --analysis-mode local --limit 100 --import-root incoming_tcc_pack_20260404/TCC
 ```
 
-Com Gemini:
+Modo `gemini`:
+
 ```bash
 python -m app.cli.main --mode live --analysis-mode gemini --limit 20 --gemini-model gemini-flash-lite-latest
 ```
 
-Com compilação de PDF:
+Com compilacao de PDF:
+
 ```bash
 python -m app.cli.main --mode import --analysis-mode local --limit 20 --import-root incoming_tcc_pack_20260404/TCC --compile-pdf true --latex-engine tools/tectonic/tectonic.exe
 ```
 
 No Windows, defina `GEMINI_API_KEY=...` no arquivo `.env` da raiz.
 
-## Scripts úteis
-```bash
-.\rodar-tcc.cmd
-corepack pnpm rodar-tcc
-corepack pnpm rodar-tcc:custom -- --mode sample --analysis-mode local --limit 10
-corepack pnpm reset-quota
-```
+## Saidas
 
-## Saídas
+Dados e relatorios:
+
 - `data/csv/tnu_temas.csv`
 - `data/csv/trf2_decisoes.csv`
 - `outputs/reports/analises.csv`
 - `outputs/reports/acoes_documentais.csv`
 - `outputs/reports/comparados_compat.csv`
-- `outputs/documents/*.tex`
-- `outputs/documents/*.pdf` (quando habilitado)
 
-Se `data/csv` não estiver gravável, os CSVs de dados são redirecionados automaticamente para `outputs/data/csv`.
+Documentos:
+
+- `outputs/documents/*.tex`
+- `outputs/documents/*.pdf`
+
+Camada semantica:
+
+- `outputs/semantic/run-*.ttl`
+- `outputs/semantic/<decisionId>-<action>.ttl`
+
+Se `data/csv` nao estiver gravavel, os CSVs de dados sao redirecionados para `outputs/data/csv`.
+
+## Exemplo de provenance
+
+Trecho simplificado de um grafo gerado:
+
+```ttl
+<https://example.org/tcc/activity/classification-trf2-0002> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-0002>, <https://example.org/tcc/theme/309> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0002> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0002> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0002>, <https://example.org/tcc/decision/trf2-0002>, <https://example.org/tcc/theme/309> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0002-negar-seguimento> .
+```
+
+Esse modelo deixa explicito como um resultado de classificacao vira uma minuta juridica auditavel.
 
 ## Estrutura do projeto
+
 ```text
 app/
   cli/         # entrada e comandos
   core/        # config e pipeline
   domain/      # modelos de dados
-  services/    # coletores, análise, Gemini, documentos
-  utils/       # filesystem, hash, normalização de texto
+  services/    # coletores, analise, Gemini, documentos e semantic web
+  utils/       # filesystem, hash, normalizacao de texto
 ```
 
-## Checklist de validação
+## Validacao
+
 ```bash
 python -m compileall app
 corepack pnpm tsc

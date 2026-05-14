@@ -1,12 +1,23 @@
 from __future__ import annotations
 
 import os
+from dataclasses import dataclass
 from pathlib import Path
 import shutil
 import subprocess
 
 from app.domain.types import AnalysisOutput, DocumentDecision, TnuTheme, Trf2Decision
 from app.utils.fs import ensure_dir, write_text
+
+REPRODUCIBLE_SOURCE_DATE_EPOCH = "1704067200"
+
+
+@dataclass(slots=True)
+class GeneratedDraft:
+    decision_id: str
+    action: str
+    tex_path: str
+    pdf_path: str | None
 
 
 def generate_decision_drafts(
@@ -17,9 +28,9 @@ def generate_decision_drafts(
     *,
     compile_pdf: bool = True,
     latex_engine: str | None = None,
-) -> int:
+) -> list[GeneratedDraft]:
     ensure_dir("outputs/documents")
-    generated_pdfs = 0
+    generated: list[GeneratedDraft] = []
     for doc in docs:
         if doc.action == "SEM_ACAO":
             continue
@@ -30,10 +41,19 @@ def generate_decision_drafts(
             continue
         tex = _create_latex_template(doc, decision, theme, analysis.justificativa)
         output_file = Path("outputs/documents") / f"{doc.decisionId}-{doc.action}.tex"
-        write_text(str(output_file), tex)
-        if compile_pdf and _compile_tex_to_pdf(output_file, latex_engine):
-            generated_pdfs += 1
-    return generated_pdfs
+        written_tex_path = write_text(str(output_file), tex)
+        pdf_path: str | None = None
+        if compile_pdf and _compile_tex_to_pdf(Path(written_tex_path), latex_engine):
+            pdf_path = str(Path(written_tex_path).with_suffix(".pdf"))
+        generated.append(
+            GeneratedDraft(
+                decision_id=doc.decisionId,
+                action=doc.action,
+                tex_path=written_tex_path,
+                pdf_path=pdf_path,
+            )
+        )
+    return generated
 
 
 def _create_latex_template(
@@ -89,6 +109,9 @@ def _compile_tex_to_pdf(tex_file: Path, preferred_engine: str | None) -> bool:
     run_env = os.environ.copy()
     # Keep tectonic cache inside workspace to avoid permission issues on restricted environments.
     run_env["TECTONIC_CACHE_DIR"] = str(Path("outputs/.tectonic-cache"))
+    # Force stable PDF metadata across runs so hashes stay reproducible.
+    run_env.setdefault("SOURCE_DATE_EPOCH", REPRODUCIBLE_SOURCE_DATE_EPOCH)
+    run_env.setdefault("FORCE_SOURCE_DATE", "1")
     ensure_dir(run_env["TECTONIC_CACHE_DIR"])
     try:
         completed = subprocess.run(
