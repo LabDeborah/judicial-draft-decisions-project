@@ -14,7 +14,7 @@ Arquitetura detalhada: [WORKFLOW.md](./WORKFLOW.md)
 
 ## Ideia central implementada
 
-Com base no documento `ideias (2).pdf`, o projeto agora segue a estrategia de "dupla camada":
+Com base na proposta do professor Jean, o projeto agora segue a estrategia de "dupla camada":
 
 - LaTeX como camada de apresentacao juridica.
 - RDF/Turtle como camada semantica e auditavel.
