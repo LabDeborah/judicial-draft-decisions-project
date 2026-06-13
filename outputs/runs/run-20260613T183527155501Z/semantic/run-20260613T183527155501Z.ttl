@@ -1,0 +1,164 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t183527155501z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-13T18:35:35.493645Z"^^xsd:dateTime ;
+  tcc:collectionMode "sample" ;
+  tcc:analysisMode "local" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/catalog/run-20260613t183527155501z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "3"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260613t183527155501z> .
+
+<http://purl.org/nemo/tnu/309> a ors:Theme, prov:Entity ;
+  ors:theme "309" ;
+  ors:themeThesis "O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida." ;
+  dcterms:identifier "309" ;
+  dcterms:description "Auxilio-alimentacao integra base de calculo da licenca-premio convertida em pecunia?" ;
+  tcc:situacaoTema "JULGADO" ;
+  tcc:ramoDireito "ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t183527155501z-themes> .
+
+<http://purl.org/nemo/tnu/344> a ors:Theme, prov:Entity ;
+  ors:theme "344" ;
+  ors:themeThesis "E devido salario-maternidade por 120 dias ao adotante de menor de dezoito anos." ;
+  dcterms:identifier "344" ;
+  dcterms:description "Salario-maternidade e devido em adocao de menor acima de doze anos?" ;
+  tcc:situacaoTema "JULGADO_SEM_TRANSITO" ;
+  tcc:ramoDireito "PREVIDENCIARIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t183527155501z-themes> .
+
+<http://purl.org/nemo/tnu/369> a ors:Theme, prov:Entity ;
+  ors:theme "369" ;
+  ors:themeThesis "" ;
+  dcterms:identifier "369" ;
+  dcterms:description "Exclusao de faixa de salario-minimo no calculo de renda per capita para BPC." ;
+  tcc:situacaoTema "AFETADO_NAO_JULGADO" ;
+  tcc:ramoDireito "ASSISTENCIAL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t183527155501z-themes> .
+
+<http://purl.org/nemo/tres/trf2-0001> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-0001" ;
+  ors:subject "Salario-maternidade em adocao" ;
+  dcterms:identifier "5000001-00.2025.4.02.5001" ;
+  dcterms:type "PEDIDO DE UNIFORMIZACAO" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:competencia "JEF" ;
+  tcc:relatorOriginario "Relator 1" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t183527155501z> .
+
+<https://example.org/tcc/activity/classification-trf2-0001> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-0001>, <https://example.org/tcc/catalog/run-20260613t183527155501z-themes>, <http://purl.org/nemo/tnu/344> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0001> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-0001> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "344" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 344 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-0001> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/344> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0001> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0001> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0001>, <http://purl.org/nemo/tres/trf2-0001>, <http://purl.org/nemo/tnu/344> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0001-sobrestar> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-0001-sobrestar> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "SOBRESTAR" ;
+  tcc:texPath "outputs/runs/run-20260613T183527155501Z/documents/TRF2-0001-SOBRESTAR.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T183527155501Z/documents/TRF2-0001-SOBRESTAR.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/trf2-0001> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-0001> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-0001> .
+
+<http://purl.org/nemo/tres/trf2-0002> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-0002" ;
+  ors:subject "Auxilio-alimentacao em licenca-premio" ;
+  dcterms:identifier "5000002-00.2025.4.02.5001" ;
+  dcterms:type "PEDIDO DE UNIFORMIZACAO" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:competencia "JEF" ;
+  tcc:relatorOriginario "Relator 2" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t183527155501z> .
+
+<https://example.org/tcc/activity/classification-trf2-0002> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-0002>, <https://example.org/tcc/catalog/run-20260613t183527155501z-themes>, <http://purl.org/nemo/tnu/309> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0002> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-0002> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "309" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 309 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-0002> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/309> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0002> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0002> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0002>, <http://purl.org/nemo/tres/trf2-0002>, <http://purl.org/nemo/tnu/309> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0002-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-0002-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T183527155501Z/documents/TRF2-0002-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T183527155501Z/documents/TRF2-0002-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/trf2-0002> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-0002> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-0002> .
+
+<http://purl.org/nemo/tres/trf2-0003> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-0003" ;
+  ors:subject "Beneficio assistencial e renda familiar per capita" ;
+  dcterms:identifier "5000003-00.2025.4.02.5001" ;
+  dcterms:type "PEDIDO DE UNIFORMIZACAO" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:competencia "JEF" ;
+  tcc:relatorOriginario "Relator 3" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t183527155501z> .
+
+<https://example.org/tcc/activity/classification-trf2-0003> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-0003>, <https://example.org/tcc/catalog/run-20260613t183527155501z-themes>, <http://purl.org/nemo/tnu/369> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0003> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-0003> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "369" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 369 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-0003> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/369> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0003> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0003> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0003>, <http://purl.org/nemo/tres/trf2-0003>, <http://purl.org/nemo/tnu/369> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0003-sobrestar> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-0003-sobrestar> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "SOBRESTAR" ;
+  tcc:texPath "outputs/runs/run-20260613T183527155501Z/documents/TRF2-0003-SOBRESTAR.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T183527155501Z/documents/TRF2-0003-SOBRESTAR.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/trf2-0003> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-0003> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-0003> .

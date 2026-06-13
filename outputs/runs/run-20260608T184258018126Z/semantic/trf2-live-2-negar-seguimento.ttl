@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260608t184258018126z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-2> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-2" ;
+  tcc:numeroProcesso "5004809-42.2024.4.02.5002" ;
+  tcc:assuntos "Aposentadoria por Tempo de Contribuição (Art. 55/6), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" .
+
+<https://example.org/tcc/theme/1> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "1" ;
+  tcc:teseFirmada "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." .
+
+<https://example.org/tcc/activity/classification-trf2-live-2> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-2>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-2> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260608t184258018126z> .
+
+<https://example.org/tcc/analysis/trf2-live-2> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-2> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-2> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-2> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-2>, <https://example.org/tcc/decision/trf2-live-2>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-2-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-2> .
+
+<https://example.org/tcc/draft/trf2-live-2-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260608T184258018126Z/documents/TRF2-LIVE-2-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260608T184258018126Z/documents/TRF2-LIVE-2-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-2> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-2> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-2> .

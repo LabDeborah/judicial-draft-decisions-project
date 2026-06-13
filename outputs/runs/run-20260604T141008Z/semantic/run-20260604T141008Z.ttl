@@ -1,0 +1,716 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t141008z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-04T14:13:14.182001Z"^^xsd:dateTime ;
+  tcc:collectionMode "live" ;
+  tcc:analysisMode "gemini" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  tcc:geminiModel "gemini-flash-lite-latest" ;
+  tcc:geminiCacheFile "outputs/reports/gemini_cache.json" ;
+  tcc:geminiQuotaStateFile "outputs/reports/gemini_quota_state.json" ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/gemini-flash-lite-latest> a prov:Agent, tcc:LargeLanguageModel ;
+  dcterms:title "gemini-flash-lite-latest" ;
+  tcc:analysisStrategy "gemini" .
+
+<https://example.org/tcc/catalog/run-20260604t141008z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "20"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/theme/1> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "1" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." ;
+  tcc:teseFirmada "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/2> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "2" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se certidão de casamento extemporânea serve como início de prova material para fins de concessão de aposentadoria por idade rural." ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/3> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "3" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a prova material extemporânea, devidamente corroborada por prova oral idônea, é hábil à concessão do benefício de aposentadoria por idade rural." ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/4> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "4" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário prévio pedido de prorrogação de benefício de auxílio-doença nas hipóteses conhecidas por \"alta programada\"." ;
+  tcc:teseFirmada "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/5> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "5" ;
+  tcc:situacaoTema "Revisado pelo Tema 145" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se para obtenção da aposentadoria por idade de segurado especial é necessário demonstrar atividade rural no período imediatamente anterior ao atingimento da idade mínima ou à apresentação do requerimento administrativo." ;
+  tcc:teseFirmada "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/6> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "6" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o FUSEX é tributo e qual a modalidade de lançamento para fins de contagem do prazo prescricional. VIDE TEMA 356/STJ" ;
+  tcc:teseFirmada "A contribuição ao FUSEX é tributo cujo lançamento se efetua de ofício, sujeita ao prazo prescricional quinquenal, descrito no art. 168, I, do CTN." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/7> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "7" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o filho maior de 21 anos que esteja cursando ensino superior tem direito à prorrogação de pensão por morte até os 24 anos." ;
+  tcc:teseFirmada "É indevida a prorrogação da pensão por morte ao filho maior de 21 anos, ainda que esteja cursando o ensino superior." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/8> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "8" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o termo inicial dos juros de mora em caso de danos morais por responsabilidade civil extracontratual." ;
+  tcc:teseFirmada "Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/9> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "9" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007 reajustaram o valor das diárias dos servidores da FUNASA." ;
+  tcc:teseFirmada "Os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007, não reajustaram o valor das diárias dos servidores da FUNASA, apenas ampliaram o rol dos destinos a serem percorridos. Vide Tema 92 - questão similar." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/10> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "10" ;
+  tcc:situacaoTema "Julgado - TEMA 350/STF" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há necessidade de renovação do requerimento administrativo para concessão de benefício assistencial." ;
+  tcc:teseFirmada "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/11> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "11" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário início de prova material no período de carência em salário-maternidade de segurada especial." ;
+  tcc:teseFirmada "A exigência de início de prova material contemporânea para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 17." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/12> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "12" ;
+  tcc:situacaoTema "Revisado - Tema 216/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se pagamento de remuneração indireta a aluno aprendiz autoriza respectiva contagem de tempo de serviço para fins previdenciários." ;
+  tcc:teseFirmada "Para fins previdenciários, o cômputo do tempo de serviço prestado como aluno-aprendiz exige a comprovação de que, durante o período de aprendizado, houve simultaneamente: (i) retribuição consubstanciada em prestação pecuniária ou em auxílios materiais; (ii) à conta do Orçamento; (iii) a título de contraprestação por labor; (iv) na execução de bens e serviços destinados a terceiros. (Tese firmada no Tema 216/TNU). Vide Súmula 18 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/13> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "13" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o pedido de revisão de benefício de aposentadoria por tempo de contribuição para fins de reconhecimento de tempo especial por categoria profissional depende de prévio requerimento administrativo quando o INSS, apesar de ciente dos elementos necessários, não se pronunciou sobre a especialidade de período anterior à Lei n. 9.032/95." ;
+  tcc:teseFirmada "É dispensável prévio requerimento administrativo de revisão de aposentadoria por tempo de contribuição quando houver omissão da autarquia na análise do tempo especial anterior à Lei n. 9.032/95." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/14> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "14" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se laudo pericial extemporâneo afasta força probatória das condições especiais de trabalho." ;
+  tcc:teseFirmada "Na aposentadoria especial a apresentação de laudo pericial extemporâneo não afasta sua força probante, desde que não modificadas as condições do ambiente. Vide Súmula 68 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/15> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "15" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se pode haver rateio de pensão entre esposa e concubina, no regime de concubinato impuro." ;
+  tcc:teseFirmada "A pensão por morte não deve ser rateada entre a viúva e a concubina, pois a relação extraconjugal paralela ao casamento não configura união estável. Tese no mesmo sentido da firmada no Tema 526/STF." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/16> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "16" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o termo inicial da progressão funcional de policial federal." ;
+  tcc:teseFirmada "A eficácia da progressão funcional deve ser observada segundo a situação individual de cada servidor e seus efeitos retroagem ao momento em que os requisitos legais foram implementados. Vide Tema 82 e PEDILEF n. 500367784.2014.404.7101. Entendimento revisado pelo PEDILEF n. 05207128420124058300 (orientação alinhada ao STJ: RESP 1.649.269/RJ)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/17> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "17" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário início de prova material no período de carência em salário-maternidade de segurada especial." ;
+  tcc:teseFirmada "A exigência de início de prova material para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 11." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/18> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "18" ;
+  tcc:situacaoTema "Julgado (Súmulas 5 e 14 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se documentos em nome de terceiros integrantes do grupo familiar, relativos à propriedade da terra trabalhada, servem como início de prova material da atividade rural." ;
+  tcc:teseFirmada "A certidão do INCRA ou outro documento que comprove propriedade de imóvel em nome de integrantes do grupo familiar do segurado é razoável início de prova material da condição de segurado especial para fins de aposentadoria rural por idade, inclusive dos períodos trabalhados a partir dos 12 anos de idade, antes da publicação da Lei n. 8.213/91. Desnecessidade de comprovação de todo o período de carência." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/19> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "19" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a mera ausência de vínculo na CTPS é prova suficiente do desemprego involuntário e, em caso negativo, se são possíveis outros meios de prova diversos do registro em órgão do Ministério do Trabalho." ;
+  tcc:teseFirmada "É possível comprovar a condição de desemprego involuntário por outros meios de prova diversos do registro no Ministério do Trabalho, não sendo a ausência de vínculo na CTPS suficiente para tanto. Vide Súmula 27 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/theme/20> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "20" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há renúncia tácita da prescrição com o reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço." ;
+  tcc:teseFirmada "O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a quo é a última edição da MP que se deu sob o n. 2.169-43, em 24/08/2001. Vide Tema 76 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260604t141008z-themes> .
+
+<https://example.org/tcc/decision/trf2-live-1> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-1" ;
+  tcc:numeroProcesso "5000632-45.2025.4.02.9999" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO. APELAÇÃO CÍVEL. APOSENTADORIA POR IDADE RURAL. SEGURADO ESPECIAL. RECURSO DESPROVIDO. I. Caso em exame 1. Apelação cível interposta pelo INSS contra sentença que concedeu aposentadoria por idade rural a segurado especial, reconhecendo o exercício de atividade campesina no período de carência anterior ao requerimento administrativo. II. Questão em discussão 2. A questão em discussão consiste em" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-1> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/catalog/run-20260604t141008z-themes>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-1> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "5" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de aposentadoria por idade rural e a necessidade de comprovação de atividade campesina no período de carência, alinhando-se à tese firmada no Tema 5 da TNU (que remete ao Tema 145/TNU), que exige o exercício da atividade rural no período imediatamente anterior ao requerimento ou ao atingimento da idade. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/5> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-1> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-1> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-1>, <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-1-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-1-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-1> .
+
+<https://example.org/tcc/decision/trf2-live-2> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-2" ;
+  tcc:numeroProcesso "5002089-88.2023.4.02.5115" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO. APELAÇÃO CÍVEL. APOSENTADORIA POR IDADE RURAL. REGIME DE ECONOMIA FAMILIAR. INÍCIO DE PROVA MATERIAL CORROBORADO POR PROVA TESTEMUNHAL. EXERCÍCIO DE ATIVIDADE URBANA DE FORMA DESCONTÍNUA. EFEITOS FINANCEIROS. FIXAÇÃO A PARTIR DA CITAÇÃO. RECURSO PARCIALMENTE PROVIDO. I. CASO EM EXAME 1. Apelação cível interposta pelo INSS contra sentença que julgou procedente pedido de concessão de aposentador" ;
+  tcc:competencia "10ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ALFREDO HILARIO DE SOUZA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-2> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-2>, <https://example.org/tcc/catalog/run-20260604t141008z-themes>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-2> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-2> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "5" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão aborda a aposentadoria por idade rural e o regime de economia familiar, alinhando-se ao entendimento consolidado no Tema 5 da TNU (e Tema 145/STJ) sobre a necessidade de comprovação da atividade rural no período imediatamente anterior ao requerimento ou atingimento da idade. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-2> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/5> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-2> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-2> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-2>, <https://example.org/tcc/decision/trf2-live-2>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-2-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-2-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-2-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-2-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-2> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-2> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-2> .
+
+<https://example.org/tcc/decision/trf2-live-3> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-3" ;
+  tcc:numeroProcesso "5077420-21.2023.4.02.5101" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO . APELAÇÃO CÍVEL. RECONHECIMENTO DE LABOR ESPECIAL. AUSÊNCIA DE RESPONSÁVEL TÉCNICO NO PPP. RECURSO NÃO PROVIDO. I. Caso em exame 1. Apelação cível interposta pelo INSS contra sentença que julgou procedente o pedido de reconhecimento de tempo especial, com a consequente concessão de aposentadoria por tempo de contribuição. II. Questão em discussão 2. A questão em discussão consiste em saber se " ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ALFREDO HILARIO DE SOUZA RELATOR PARA ACÓRDÃO MARCELLO FERREIRA DE SOUZA GRANADO" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-3> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-3>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-3> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-3> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "O processo trata de reconhecimento de tempo especial por ausência de responsável técnico no PPP, matéria que não se enquadra nos temas da TNU listados. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-3> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-3> .
+
+<https://example.org/tcc/decision/trf2-live-4> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-4" ;
+  tcc:numeroProcesso "5021400-80.2023.4.02.5110" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO . EMBARGOS DE DECLARAÇÃO. RECONHECIMENTO DE TEMPO ESPECIAL. OMISSÃO E CONTRADIÇÃO. EMBARGOS REJEITADOS. I. CASO EM EXAME: 1. Embargos de declaração opostos pelo INSS contra acórdão que reconheceu e averbou como tempo especial o período de 12/06/2006 a 30/11/2014, com sua conversão em tempo comum, concedendo aposentadoria por tempo de contribuição e determinando o pagamento de parcelas atrasadas" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ALFREDO HILARIO DE SOUZA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-4> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-4>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-4> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-4> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de reconhecimento de tempo especial e concessão de aposentadoria por tempo de contribuição, matéria que não se enquadra nos temas da TNU listados, os quais versam sobre temas específicos como aposentadoria rural, pensão por morte, auxílio-doença, entre outros. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-4> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-4> .
+
+<https://example.org/tcc/decision/trf2-live-5> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-5" ;
+  tcc:numeroProcesso "5005267-78.2023.4.02.5104" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO. APELAÇÃO CÍVEL. REVISÃO DE BENEFÍCIO. AVERBAÇÃO DE TEMPO DE CONTRIBUIÇÃO. EXCLUSÃO DE FATOR PREVIDENCIÁRIO. RECURSO DESPROVIDO. I. CASO EM EXAME: 1. Apelação interposta pelo INSS contra sentença que julgou procedente o pedido de revisão da RMI de aposentadoria, para considerar o período de 05/11/1999 a 21/06/2002 como tempo de contribuição, retificar salários de contribuição e excluir o fator " ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ALFREDO HILARIO DE SOUZA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-5> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-5>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-5> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-5> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "O objeto da decisão trata de revisão de benefício previdenciário com foco na averbação de tempo de contribuição e exclusão de fator previdenciário, matéria que não se enquadra nos temas da TNU listados. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-5> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-5> .
+
+<https://example.org/tcc/decision/trf2-live-6> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-6" ;
+  tcc:numeroProcesso "5043111-76.2020.4.02.5101" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO . APELAÇÃO CÍVEL. REVISÃO DE APOSENTADORIA POR TEMPO DE CONTRIBUIÇÃO. TEMPO ESPECIAL. RUÍDO E AGENTES QUÍMICOS. PROVIMENTO PARCIAL. I. CASO EM EXAME 1. Apelação cível interposta contra sentença que julgou improcedente o pedido de revisão de aposentadoria por tempo de contribuição, visando o reconhecimento de períodos laborados sob condições especiais por exposição a ruído, benzeno e hidrocarbon" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ROBERTO DANTES SCHUMAN DE PAULA RELATOR PARA ACÓRDÃO ALFREDO HILARIO DE SOUZA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-6> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-6>, <https://example.org/tcc/catalog/run-20260604t141008z-themes>, <https://example.org/tcc/theme/14> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-6> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-6> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "14" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de revisão de aposentadoria por tempo de contribuição com foco no reconhecimento de tempo especial por exposição a agentes nocivos (ruído e químicos), alinhando-se ao entendimento da TNU (Tema 14 e Súmula 68) de que laudos extemporâneos possuem força probatória se as condições ambientais não foram alteradas. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-6> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/14> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-6> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-6> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-6>, <https://example.org/tcc/decision/trf2-live-6>, <https://example.org/tcc/theme/14> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-6-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-6-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-6-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-6-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-6> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-6> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-6> .
+
+<https://example.org/tcc/decision/trf2-live-7> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-7" ;
+  tcc:numeroProcesso "5001408-79.2024.4.02.9999" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO. APELAÇÃO. APOSENTADORIA POR IDADE RURAL. SEGURADO ESPECIAL. CONCOMITÂNCIA COM APOSENTADORIA POR INVALIDEZ . POSSIBILIDADE DE CONCESSÃO CONDICIONADA À OPÇÃO PELO BENEFÍCIO MAIS VANTAJOSO. VEDAÇÃO DE CUMULAÇÃO. COMPENSAÇÃO DE VALORES. RECURSO PARCIALMENTE PROVIDO. CASO EM EXAME Apelação interposta pelo INSS contra sentença que julgou procedente o pedido para conceder aposentadoria por idade rura" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "FLAVIO OLIVEIRA LUCAS" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-7> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-7>, <https://example.org/tcc/catalog/run-20260604t141008z-themes>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-7> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-7> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "5" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão aborda a aposentadoria por idade rural e a necessidade de comprovação da atividade campesina, alinhando-se ao entendimento consolidado no Tema 5 da TNU (que remete ao Tema 145/TNU) sobre a indispensabilidade do exercício da atividade rural no período imediatamente anterior ao requerimento ou atingimento da idade. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-7> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/5> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-7> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-7> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-7>, <https://example.org/tcc/decision/trf2-live-7>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-7-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-7-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-7-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-7-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-7> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-7> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-7> .
+
+<https://example.org/tcc/decision/trf2-live-8> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-8" ;
+  tcc:numeroProcesso "5016185-53.2023.4.02.5101" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO E PROCESSUAL CIVIL. APELAÇÃO CÍVEL. APOSENTADORIA POR TEMPO DE CONTRIBUIÇÃO. RECURSO DESPROVIDO. I. Caso em exame Apelação cível interposta em face de sentença que julgou improcedente o pedido de concessão de aposentadoria por tempo de contribuição, fundamentado na regra de transição do pedágio de 100% prevista na Emenda Constitucional nº 103/2019, mediante reconhecimento de tempo especial, aju" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "FLAVIO OLIVEIRA LUCAS" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-8> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-8>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-8> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-8> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "O processo trata de aposentadoria por tempo de contribuição sob a regra de transição do pedágio de 100% da EC 103/2019, matéria não abrangida pelos temas da TNU listados." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-8> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-8> .
+
+<https://example.org/tcc/decision/trf2-live-9> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-9" ;
+  tcc:numeroProcesso "5089031-34.2024.4.02.5101" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO ADMINISTRATIVO E PROCESSUAL CIVIL. SERVIDOR PÚBLICO. CONVERSÃO DE TEMPO ESPECIAL EM COMUM. AUSÊNCIA DE PRÉVIO REQUERIMENTO ADMINISTRATIVO. RESISTÊNCIA DA ADMINISTRAÇÃO PÚBLICA. INTERESSE DE AGIR. PRESENÇA. SENTENÇA ANULADA. RECURSO PROVIDO. I. CASO EM EXAME 1. Trata-se de apelação cível interposta contra sentença que julgou extinto o feito sem resolução do mérito, com base na ausência de interesse de agir, em" ;
+  tcc:competencia "6ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "GUILHERME CALMON NOGUEIRA DA GAMA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-9> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-9>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-9> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-9> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de interesse de agir em processo de servidor público federal (conversão de tempo especial em comum), matéria de competência da Justiça Federal comum e não da TNU, que julga questões previdenciárias do RGPS. Nenhum dos temas da TNU listados aborda especificamente a controvérsia sobre interesse de agir em ações de servidores públicos. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-9> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-9> .
+
+<https://example.org/tcc/decision/trf2-live-10> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-10" ;
+  tcc:numeroProcesso "5001341-70.2026.4.02.0000" ;
+  tcc:classe "Agravo de Instrumento" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "PROCESSUAL CIVIL. TRIBUTÁRIO. AGRAVO DE INSTRUMENTO. EXCEÇÃO DE PRÉ-EXECUTIVIDADE. EXECUÇÃO FISCAL. GRATUIDADE DE JUSTIÇA. PESSOA JURÍDICA. SÚMULA 481 DO STJ. AUSÊNCIA DE COMPROVAÇÃO DA HIPOSSUFICIÊNCIA FINANCEIRA. NOMEAÇÃO BENS MÓVEIS. RECUSA. POSSIBILIDADE. CDA. LEGITIMIDADE DA COBRANÇA DO ENCARGO DE 20% (VINTE POR CENTO) PREVISTO NO DL Nº 1.025/1969. CRÉDITO NÃO TRIBUTÁRIO DIRIGIDO À COBERTURA DAS DESPESAS RELACIO" ;
+  tcc:competencia "3ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-10> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-10>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-10> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-10> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de matéria processual civil e tributária (execução fiscal, gratuidade de justiça para pessoa jurídica e encargos legais), temas que não possuem correspondência com os temas da TNU listados, os quais são predominantemente previdenciários ou administrativos de servidores públicos. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-10> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-10> .
+
+<https://example.org/tcc/decision/trf2-live-11> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-11" ;
+  tcc:numeroProcesso "0192623-29.2017.4.02.5101" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PÚBLICO E CONSELHOS PROFISSIONAIS. EXECUÇÃO FISCAL. PRESCRIÇÃO INTERCORRENTE. RECURSO DE APELAÇÃO DESPROVIDO. I. CASO EM EXAME 1. Apelação cível interposta por autarquia contra sentença que extinguiu execução fiscal pelo reconhecimento da prescrição intercorrente, após o transcurso de mais de seis anos sem a localização de bens penhoráveis. II. QUESTÃO EM DISCUSSÃO 2. A questão em discussão consiste em saber " ;
+  tcc:competencia "6ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "GUILHERME CALMON NOGUEIRA DA GAMA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-11> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-11>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-11> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-11> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "O processo trata de execução fiscal e prescrição intercorrente, matéria de competência da Justiça Federal comum (TRF), não se enquadrando nos temas da TNU, que se restringem a questões previdenciárias e assistenciais de competência dos Juizados Especiais Federais. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-11> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-11> .
+
+<https://example.org/tcc/decision/trf2-live-12> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-12" ;
+  tcc:numeroProcesso "5134101-11.2023.4.02.5101" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO DA PROPRIEDADE INTELECTUAL. PROCESSUAL CIVIL. APELAÇÃO CÍVEL. AÇÃO ANULATÓRIA DE ATOS ADMINISTRATIVOS DO INPI. MARCAS. DIREITO DE PRECEDÊNCIA. ART. 129, CAPUT E § 1º, DA LEI Nº 9.279/1996. PRINCÍPIO DA ESPECIALIDADE. NOME DE DOMÍNIO. AUSÊNCIA DE PROVA DE USO MARCÁRIO ANTERIOR EM PRODUTOS E SERVIÇOS AFINS. ART. 128, § 1º, DA LEI Nº 9.279/1996. ATIVIDADE EFETIVA E LÍCITA DO DEPOSITANTE. ART. 124, XIX E XXIII, D" ;
+  tcc:competencia "1ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-12> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-12>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-12> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-12> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de matéria de Direito da Propriedade Intelectual (marcas e nome de domínio), competência da Justiça Federal comum, não se enquadrando em nenhum dos temas previdenciários ou administrativos da TNU listados." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-12> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-12> .
+
+<https://example.org/tcc/decision/trf2-live-13> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-13" ;
+  tcc:numeroProcesso "5006714-10.2023.4.02.5005" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "PREVIDENCIÁRIO E PROCESSUAL CIVIL. APELAÇÃO CÍVEL. AUXÍLIO POR INCAPACIDADE TEMPORÁRIA. PERÍCIA POR MÉDICO NÃO ESPECIALISTA. CERCEAMENTO DE DEFESA. SENTENÇA ANULADA. I. Caso em exame Apelação cível interposta em face de sentença que julgou improcedente o pedido de restabelecimento de auxílio por incapacidade temporária e indenização por danos morais, após laudo pericial realizado por médico psiquiatra não constatar i" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ROBERTO DANTES SCHUMAN DE PAULA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-13> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-13>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-13> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-13> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de cerceamento de defesa por perícia realizada por médico não especialista em ação de auxílio por incapacidade temporária. Nenhum dos temas da TNU listados aborda a especialidade do perito médico ou cerceamento de defesa em perícia previdenciária." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-13> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-13> .
+
+<https://example.org/tcc/decision/trf2-live-14> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-14" ;
+  tcc:numeroProcesso "5000693-03.2025.4.02.9999" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO. APELAÇÃO CÍVEL. APOSENTADORIA RURAL POR IDADE. SEGURADA ESPECIAL. REGIME DE ECONOMIA FAMILIAR. EXERCÍCIO DE ATIVIDADE URBANA POR CÔNJUGE. DIMENSÃO DA PROPRIEDADE. INÍCIO DE PROVA MATERIAL CORROBORADO POR PROVA TESTEMUNHAL. COISA JULGADA AFASTADA. CONSECTÁRIOS LEGAIS. RECURSO PARCIALMENTE PROVIDO. I. CASO EM EXAME 1. Apelação cível interposta pelo INSS contra sentença que julgou procedente o pe" ;
+  tcc:competencia "1ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "JULIO DE CASTILHOS" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-14> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-14>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-14> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-14> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de aposentadoria rural por idade, abordando temas como regime de economia familiar, atividade urbana do cônjuge e dimensão da propriedade. Embora existam temas na TNU sobre prova material rural (Temas 2, 3 e 18), a decisão foca em aspectos específicos de descaracterização do regime de economia familiar por atividade urbana do cônjuge e dimensão da propriedade, não havendo tese específica na lista fornecida que aborde a controvérsia jurídica central do julgado. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-14> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-14> .
+
+<https://example.org/tcc/decision/trf2-live-15> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-15" ;
+  tcc:numeroProcesso "5000669-43.2023.4.02.9999" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "PREVIDENCIÁRIO. APELAÇÃO DO INSS. APOSENTADORIA POR IDADE RURAL. COMPROVAÇÃO DO LABOR RURAL POR INÍCIO DE PROVA MATERIAL CORROBORADO POR PROVA TESTEMUNHAL PRODUZIDA EM JUÍZO. CONSECTÁRIOS LEGAIS, NA FORMA DO MANUAL DE CÁLCULOS DA JUSTIÇA FEDERAL. HONORÁRIOS ADVOCATÍCIOS. CPC/2015. CUSTAS E TAXA JUDICIÁRIA. RECURSO DO INSS A QUE SE NEGA PROVIMENTO. I. CASO EM EXAME 1. A hipótese dos autos é de recurso contra sentença " ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ALFREDO JARA MOURA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-15> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-15>, <https://example.org/tcc/catalog/run-20260604t141008z-themes>, <https://example.org/tcc/theme/3> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-15> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-15> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "3" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata da comprovação de labor rural por início de prova material corroborado por prova testemunhal, o que está em perfeita consonância com a tese firmada no Tema 3 da TNU, que estabelece a possibilidade de utilização de prova testemunhal para corroborar a prova documental, inclusive dispensando a contemporaneidade estrita. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-15> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/3> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-15> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-15> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-15>, <https://example.org/tcc/decision/trf2-live-15>, <https://example.org/tcc/theme/3> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-15-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-15-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-15-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-15-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-15> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-15> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-15> .
+
+<https://example.org/tcc/decision/trf2-live-16> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-16" ;
+  tcc:numeroProcesso "5000172-24.2026.4.02.9999" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO . APELAÇÃO CÍVEL. APOSENTADORIA POR IDADE RURAL. CERCEAMENTO DE DEFESA. NULIDADE DA SENTENÇA. RECURSO PREJUDICADO. I. CASO EM EXAME: 1. Apelação cível interposta pela autora contra sentença que julgou improcedente o pedido de concessão de aposentadoria por idade rural, sob o fundamento de insuficiência de prova do labor rural no período remoto (1984 a 2013), sem a realização de prova testemunha" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "FLAVIO OLIVEIRA LUCAS RELATOR PARA ACÓRDÃO ALFREDO HILARIO DE SOUZA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-16> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-16>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-16> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-16> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de questão processual (cerceamento de defesa por ausência de prova testemunhal em aposentadoria rural), não se enquadrando nos temas de mérito previdenciário listados, que versam sobre requisitos materiais ou cálculos de benefícios. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-16> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-16> .
+
+<https://example.org/tcc/decision/trf2-live-17> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-17" ;
+  tcc:numeroProcesso "5027466-44.2025.4.02.5001" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO E PROCESSUAL CIVIL. APELAÇÃO CÍVEL EM MANDADO DE SEGURANÇA. CORREÇÃO DE CERTIDÃO DE TEMPO DE CONTRIBUIÇÃO (CTC). AUSÊNCIA DE PRÉVIO REQUERIMENTO ADMINISTRATIVO DE REVISÃO. FALTA DE INTERESSE DE AGIR. RECURSO DESPROVIDO. I. CASO EM EXAME: 1. Apelação cível interposta contra sentença que julgou extinto o processo, sem resolução do mérito, por perda superveniente do interesse de agir. A impetrante" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "ALFREDO HILARIO DE SOUZA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-17> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-17>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-17> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-17> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de interesse de agir por ausência de prévio requerimento administrativo em Mandado de Segurança para correção de CTC. Embora o Tema 350 do STF (RE 631.240) trate da necessidade de prévio requerimento administrativo, não há um tema específico da TNU na lista fornecida que aborde a exigência de requerimento administrativo para a correção de Certidão de Tempo de Contribuição (CTC)." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-17> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-17> .
+
+<https://example.org/tcc/decision/trf2-live-18> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-18" ;
+  tcc:numeroProcesso "5000933-93.2022.4.02.5117" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO ADMINISTRATIVO E CIVIL. APELAÇÃO CÍVEL. RESPONSABILIDADE CIVIL DO ESTADO. MORTE EM OPERAÇÃO DE SEGURANÇA PÚBLICA. NEXO CAUSAL NÃO DEMONSTRADO. APELAÇÃO DESPROVIDA. I. CASO EM EXAME 1.Apelação cível interposta em face de sentença que extinguiu o processo sem resolução de mérito quanto a um dos autores por ilegitimidade ativa e julgou improcedentes os pedidos de indenização por danos morais decorrentes de morte" ;
+  tcc:competencia "6ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "GUILHERME CALMON NOGUEIRA DA GAMA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-18> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-18>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-18> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-18> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de responsabilidade civil do Estado por morte em operação de segurança pública, matéria de Direito Administrativo que não se enquadra nos temas previdenciários ou administrativos específicos listados da TNU." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-18> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-18> .
+
+<https://example.org/tcc/decision/trf2-live-19> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-19" ;
+  tcc:numeroProcesso "5002137-53.2023.4.02.5113" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO E PROCESSUAL CIVIL. APELAÇÃO CÍVEL. APOSENTADORIA POR TEMPO DE CONTRIBUIÇÃO. ATIVIDADE ESPECIAL DE ENGENHEIRO. INSUFICIÊNCIA DE PROVAS. EXTINÇÃO SEM RESOLUÇÃO DE MÉRITO. PROVIMENTO PARCIAL. I. CASO EM EXAME 1. Apelação cível interposta contra sentença que reconheceu parcialmente tempo especial e concedeu aposentadoria por tempo de contribuição, sob o fundamento de que períodos de trabalho autôn" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "FLAVIO OLIVEIRA LUCAS RELATOR PARA ACÓRDÃO ALFREDO HILARIO DE SOUZA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-19> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-19>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-19> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-19> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de insuficiência de provas para reconhecimento de atividade especial de engenheiro, matéria que não se enquadra nos temas da TNU listados, os quais versam sobre temas previdenciários específicos como aposentadoria rural, pensão por morte, auxílio-doença, entre outros." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-19> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-19> .
+
+<https://example.org/tcc/decision/trf2-live-20> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-20" ;
+  tcc:numeroProcesso "5011333-58.2024.4.02.5001" ;
+  tcc:classe "Apelação Cível" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO E PROCESSUAL CIVIL. APELAÇÃO. APOSENTADORIA POR INVALIDEZ . CONSECTÁRIOS LEGAIS. CORREÇÃO MONETÁRIA E JUROS DE MORA. SELIC. EMENDAS CONSTITUCIONAIS Nº 113/2021 E 136/2025. TERMO INICIAL DOS JUROS. MANUAL DE CÁLCULOS DA JUSTIÇA FEDERAL. PROVIMENTO PARCIAL. I. CASO EM EXAME Apelação interposta pelo INSS contra sentença que julgou parcialmente procedente o pedido para conceder aposentadoria por in" ;
+  tcc:competencia "2ª TURMA ESPECIALIZADA" ;
+  tcc:relatorOriginario "FLAVIO OLIVEIRA LUCAS" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-20> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-20>, <https://example.org/tcc/catalog/run-20260604t141008z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-20> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-20> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de matéria processual e previdenciária sobre consectários legais (correção monetária e juros de mora) e concessão de aposentadoria por invalidez, não abordando especificamente as teses fixadas nos temas da TNU listados." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-20> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-20> .

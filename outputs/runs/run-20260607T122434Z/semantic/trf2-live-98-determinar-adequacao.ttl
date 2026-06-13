@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260607t122434z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-98> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-98" ;
+  tcc:numeroProcesso "5000963-20.2024.4.02.5001" ;
+  tcc:assuntos "NAO_INFORMADO" .
+
+<https://example.org/tcc/theme/9> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "9" ;
+  tcc:teseFirmada "Os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007, não reajustaram o valor das diárias dos servidores da FUNASA, apenas ampliaram o rol dos destinos a serem percorridos. Vide Tema 92 - questão similar." .
+
+<https://example.org/tcc/activity/classification-trf2-live-98> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-98>, <https://example.org/tcc/theme/9> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-98> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260607t122434z> .
+
+<https://example.org/tcc/analysis/trf2-live-98> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "9" ;
+  tcc:consonancia "DISSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 9 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-98> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/9> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-98> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-98> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-98>, <https://example.org/tcc/decision/trf2-live-98>, <https://example.org/tcc/theme/9> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-98-determinar-adequacao> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-98> .
+
+<https://example.org/tcc/draft/trf2-live-98-determinar-adequacao> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "DETERMINAR_ADEQUACAO" ;
+  tcc:texPath "outputs/runs/run-20260607T122434Z/documents/TRF2-LIVE-98-DETERMINAR_ADEQUACAO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260607T122434Z/documents/TRF2-LIVE-98-DETERMINAR_ADEQUACAO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-98> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-98> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-98> .

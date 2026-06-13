@@ -10,6 +10,9 @@ from app.services.documents import GeneratedDraft
 from app.utils.fs import ensure_dir, write_text
 
 BASE_IRI = "https://example.org/tcc/"
+ORS_IRI = "http://purl.org/nemo/ontors#"
+TNU_IRI = "http://purl.org/nemo/tnu/"
+TRES_IRI = "http://purl.org/nemo/tres/"
 PROV_IRI = "http://www.w3.org/ns/prov#"
 TERMS_IRI = "http://purl.org/dc/terms/"
 XSD_IRI = "http://www.w3.org/2001/XMLSchema#"
@@ -35,6 +38,8 @@ class SemanticRunContext:
 
 def generate_semantic_artifacts(
     *,
+    run_id: str,
+    output_dir: str = "outputs/semantic",
     context: SemanticRunContext,
     themes: list[TnuTheme],
     decisions: list[Trf2Decision],
@@ -42,10 +47,10 @@ def generate_semantic_artifacts(
     docs: list[DocumentDecision],
     drafts: list[GeneratedDraft],
 ) -> SemanticArtifacts:
-    ensure_dir("outputs/semantic")
-    execution_id = f"run-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
+    ensure_dir(output_dir)
+    execution_id = run_id
     execution_graph_path = write_text(
-        f"outputs/semantic/{execution_id}.ttl",
+        f"{output_dir}/{execution_id}.ttl",
         _build_execution_graph(
             execution_id=execution_id,
             context=context,
@@ -71,7 +76,7 @@ def generate_semantic_artifacts(
             continue
         document_graph_paths.append(
             write_text(
-                f"outputs/semantic/{_slug(draft.decision_id)}-{_slug(draft.action)}.ttl",
+                f"{output_dir}/{_slug(draft.decision_id)}-{_slug(draft.action)}.ttl",
                 _build_document_graph(
                     execution_id=execution_id,
                     context=context,
@@ -105,18 +110,26 @@ def _build_execution_graph(
     run_ref = _res("run", execution_id)
     classifier_ref = _agent_ref(context.analysis_mode, context.gemini_model)
     pipeline_ref = _res("agent", "pipeline")
+    run_lines = [
+        f"{run_ref} a prov:Activity, tcc:PipelineRun ;",
+        f'  dcterms:created "{now}"^^xsd:dateTime ;',
+        f'  tcc:collectionMode {_literal(context.mode)} ;',
+        f'  tcc:analysisMode {_literal(context.analysis_mode)} ;',
+        f"  tcc:browserAutomation {_bool_literal(context.browser_automation)} ;",
+        f"  tcc:compilePdf {_bool_literal(context.compile_pdf)} ;",
+    ]
+    if context.analysis_mode == "gemini":
+        run_lines.extend(
+            [
+                f'  tcc:geminiModel {_literal(context.gemini_model)} ;',
+                f'  tcc:geminiCacheFile {_literal(context.gemini_cache_file)} ;',
+                f'  tcc:geminiQuotaStateFile {_literal(context.gemini_quota_state_file)} ;',
+            ]
+        )
+    run_lines.append(f"  prov:wasAssociatedWith {pipeline_ref}, {classifier_ref} .")
     lines.extend(
-        [
-            f"{run_ref} a prov:Activity, tcc:PipelineRun ;",
-            f'  dcterms:created "{now}"^^xsd:dateTime ;',
-            f'  tcc:collectionMode {_literal(context.mode)} ;',
-            f'  tcc:analysisMode {_literal(context.analysis_mode)} ;',
-            f"  tcc:browserAutomation {_bool_literal(context.browser_automation)} ;",
-            f"  tcc:compilePdf {_bool_literal(context.compile_pdf)} ;",
-            f'  tcc:geminiModel {_literal(context.gemini_model)} ;',
-            f'  tcc:geminiCacheFile {_literal(context.gemini_cache_file)} ;',
-            f'  tcc:geminiQuotaStateFile {_literal(context.gemini_quota_state_file)} ;',
-            f"  prov:wasAssociatedWith {pipeline_ref}, {classifier_ref} .",
+        run_lines
+        + [
             "",
             f"{pipeline_ref} a prov:Agent, tcc:SoftwarePipeline ;",
             '  dcterms:title "TCC Pipeline" .',
@@ -140,12 +153,13 @@ def _build_execution_graph(
         theme_ref = _theme_ref(theme.temaNumero)
         lines.extend(
             [
-                f"{theme_ref} a tcc:TnuTheme, prov:Entity ;",
-                f'  tcc:temaNumero {_literal(theme.temaNumero)} ;',
+                f"{theme_ref} a ors:Theme, prov:Entity ;",
+                f'  ors:theme {_literal(theme.temaNumero)} ;',
+                f'  ors:themeThesis {_literal(theme.teseFirmada)} ;',
+                f'  dcterms:identifier {_literal(theme.temaNumero)} ;',
+                f'  dcterms:description {_literal(theme.questaoSubmetidaJulgamento)} ;',
                 f'  tcc:situacaoTema {_literal(theme.situacaoTema)} ;',
                 f'  tcc:ramoDireito {_literal(theme.ramoDireito)} ;',
-                f'  tcc:questaoSubmetidaJulgamento {_literal(theme.questaoSubmetidaJulgamento)} ;',
-                f'  tcc:teseFirmada {_literal(theme.teseFirmada)} ;',
                 f"  prov:wasDerivedFrom {theme_catalog_ref} .",
                 "",
             ]
@@ -158,12 +172,12 @@ def _build_execution_graph(
         decision_ref = _decision_ref(decision.decisionId)
         lines.extend(
             [
-                f"{decision_ref} a tcc:LegalDecision, prov:Entity ;",
-                f'  tcc:decisionId {_literal(decision.decisionId)} ;',
-                f'  tcc:numeroProcesso {_literal(decision.numeroProcesso)} ;',
-                f'  tcc:classe {_literal(decision.classe)} ;',
+                f"{decision_ref} a ors:Decision, prov:Entity ;",
+                f'  ors:decisionNumber {_literal(decision.decisionId)} ;',
+                f'  ors:subject {_literal(decision.assuntos)} ;',
+                f'  dcterms:identifier {_literal(decision.numeroProcesso)} ;',
+                f'  dcterms:type {_literal(decision.classe)} ;',
                 f'  tcc:tipoJulgamento {_literal(decision.tipoJulgamento)} ;',
-                f'  tcc:assuntos {_literal(decision.assuntos)} ;',
                 f'  tcc:competencia {_literal(decision.competencia)} ;',
                 f'  tcc:relatorOriginario {_literal(decision.relatorOriginario)} ;',
                 f"  prov:wasUsedBy {run_ref} .",
@@ -176,31 +190,49 @@ def _build_execution_graph(
             continue
         analysis_ref = _analysis_ref(decision.decisionId)
         classification_ref = _res("activity", f"classification-{_slug(decision.decisionId)}")
+        theme = by_theme.get(analysis.temaTnu)
+        classification_used_refs = [decision_ref, theme_catalog_ref]
+        if theme:
+            classification_used_refs.append(_theme_ref(theme.temaNumero))
         lines.extend(
             [
                 f"{classification_ref} a prov:Activity, tcc:ClassificationActivity ;",
-                f"  prov:used {decision_ref}, {theme_catalog_ref} ;",
+                f"  prov:used {', '.join(classification_used_refs)} ;",
                 f"  prov:generated {analysis_ref} ;",
                 f"  prov:wasAssociatedWith {classifier_ref} .",
                 "",
                 f"{analysis_ref} a tcc:AnalysisResult, prov:Entity ;",
-                f'  tcc:temaTnu {_literal(analysis.temaTnu)} ;',
+                f'  tcc:selectedThemeCode {_literal(analysis.temaTnu)} ;',
                 f'  tcc:consonancia {_literal(analysis.consonancia)} ;',
                 f'  tcc:validade {_literal(analysis.validade)} ;',
                 f'  tcc:justificativa {_literal(analysis.justificativa)} ;',
                 f"  tcc:aboutDecision {decision_ref} ;",
+                *([f"  tcc:aboutTheme {_theme_ref(theme.temaNumero)} ;"] if theme else []),
                 f"  prov:wasGeneratedBy {classification_ref} .",
                 "",
             ]
         )
 
         doc = by_doc.get(decision.decisionId)
-        theme = by_theme.get(analysis.temaTnu)
         draft = draft_by_decision.get(decision.decisionId)
         if not doc or not theme or not draft:
             continue
         semantic_doc_ref = _draft_ref(decision.decisionId, doc.action)
         generation_ref = _res("activity", f"draft-generation-{_slug(decision.decisionId)}")
+        draft_lines = [
+            f"{semantic_doc_ref} a tcc:LegalDraft, prov:Entity ;",
+            f'  tcc:action {_literal(doc.action)} ;',
+            f'  tcc:texPath {_literal(_rel_path(draft.tex_path))} ;',
+        ]
+        if draft.pdf_path:
+            draft_lines.append(f'  tcc:pdfPath {_literal(_rel_path(draft.pdf_path))} ;')
+        draft_lines.extend(
+            [
+                f"  tcc:generatedFromDecision {decision_ref} ;",
+                f"  tcc:generatedFromAnalysis {analysis_ref} ;",
+                f"  prov:wasGeneratedBy {generation_ref} .",
+            ]
+        )
         lines.extend(
             [
                 f"{generation_ref} a prov:Activity, tcc:DraftGenerationActivity ;",
@@ -208,15 +240,9 @@ def _build_execution_graph(
                 f"  prov:generated {semantic_doc_ref} ;",
                 f"  prov:wasAssociatedWith {pipeline_ref} .",
                 "",
-                f"{semantic_doc_ref} a tcc:LegalDraft, prov:Entity ;",
-                f'  tcc:action {_literal(doc.action)} ;',
-                f'  tcc:texPath {_literal(_rel_path(draft.tex_path))} ;',
-                f'  tcc:pdfPath {_literal(_rel_path(draft.pdf_path) if draft.pdf_path else "")} ;',
-                f"  tcc:generatedFromDecision {decision_ref} ;",
-                f"  tcc:generatedFromAnalysis {analysis_ref} ;",
-                f"  prov:wasGeneratedBy {generation_ref} .",
-                "",
             ]
+            + draft_lines
+            + [""]
         )
 
     return "\n".join(lines).strip() + "\n"
@@ -243,6 +269,20 @@ def _build_document_graph(
     semantic_doc_ref = _draft_ref(decision.decisionId, doc.action)
 
     lines = _prefixes()
+    draft_lines = [
+        f"{semantic_doc_ref} a tcc:LegalDraft, prov:Entity ;",
+        f'  tcc:action {_literal(doc.action)} ;',
+        f'  tcc:texPath {_literal(_rel_path(draft.tex_path))} ;',
+    ]
+    if draft.pdf_path:
+        draft_lines.append(f'  tcc:pdfPath {_literal(_rel_path(draft.pdf_path))} ;')
+    draft_lines.extend(
+        [
+            f"  tcc:generatedFromDecision {decision_ref} ;",
+            f"  tcc:generatedFromAnalysis {analysis_ref} ;",
+            f"  prov:wasGeneratedBy {generation_ref} .",
+        ]
+    )
     lines.extend(
         [
             f"{run_ref} a prov:Activity, tcc:PipelineRun .",
@@ -251,14 +291,15 @@ def _build_document_graph(
             "",
             _agent_block(context.analysis_mode, context.gemini_model),
             "",
-            f"{decision_ref} a tcc:LegalDecision, prov:Entity ;",
-            f'  tcc:decisionId {_literal(decision.decisionId)} ;',
-            f'  tcc:numeroProcesso {_literal(decision.numeroProcesso)} ;',
-            f'  tcc:assuntos {_literal(decision.assuntos)} .',
+            f"{decision_ref} a ors:Decision, prov:Entity ;",
+            f'  ors:decisionNumber {_literal(decision.decisionId)} ;',
+            f'  ors:subject {_literal(decision.assuntos)} ;',
+            f'  dcterms:identifier {_literal(decision.numeroProcesso)} .',
             "",
-            f"{theme_ref} a tcc:TnuTheme, prov:Entity ;",
-            f'  tcc:temaNumero {_literal(theme.temaNumero)} ;',
-            f'  tcc:teseFirmada {_literal(theme.teseFirmada)} .',
+            f"{theme_ref} a ors:Theme, prov:Entity ;",
+            f'  ors:theme {_literal(theme.temaNumero)} ;',
+            f'  ors:themeThesis {_literal(theme.teseFirmada)} ;',
+            f'  dcterms:description {_literal(theme.questaoSubmetidaJulgamento)} .',
             "",
             f"{classification_ref} a prov:Activity, tcc:ClassificationActivity ;",
             f"  prov:used {decision_ref}, {theme_ref} ;",
@@ -267,10 +308,12 @@ def _build_document_graph(
             f"  prov:wasInformedBy {run_ref} .",
             "",
             f"{analysis_ref} a tcc:AnalysisResult, prov:Entity ;",
-            f'  tcc:temaTnu {_literal(analysis.temaTnu)} ;',
+            f'  tcc:selectedThemeCode {_literal(analysis.temaTnu)} ;',
             f'  tcc:consonancia {_literal(analysis.consonancia)} ;',
             f'  tcc:validade {_literal(analysis.validade)} ;',
             f'  tcc:justificativa {_literal(analysis.justificativa)} ;',
+            f"  tcc:aboutDecision {decision_ref} ;",
+            f"  tcc:aboutTheme {theme_ref} ;",
             f"  prov:wasGeneratedBy {classification_ref} .",
             "",
             f"{generation_ref} a prov:Activity, tcc:DraftGenerationActivity ;",
@@ -279,13 +322,7 @@ def _build_document_graph(
             f"  prov:wasAssociatedWith {pipeline_ref} ;",
             f"  prov:wasInformedBy {classification_ref} .",
             "",
-            f"{semantic_doc_ref} a tcc:LegalDraft, prov:Entity ;",
-            f'  tcc:action {_literal(doc.action)} ;',
-            f'  tcc:texPath {_literal(_rel_path(draft.tex_path))} ;',
-            f'  tcc:pdfPath {_literal(_rel_path(draft.pdf_path) if draft.pdf_path else "")} ;',
-            f"  tcc:generatedFromDecision {decision_ref} ;",
-            f"  tcc:generatedFromAnalysis {analysis_ref} ;",
-            f"  prov:wasGeneratedBy {generation_ref} .",
+            *draft_lines,
         ]
     )
     return "\n".join(lines).strip() + "\n"
@@ -296,6 +333,9 @@ def _prefixes() -> list[str]:
         f"@prefix prov: <{PROV_IRI}> .",
         f"@prefix dcterms: <{TERMS_IRI}> .",
         f"@prefix xsd: <{XSD_IRI}> .",
+        f"@prefix ors: <{ORS_IRI}> .",
+        f"@prefix tnu: <{TNU_IRI}> .",
+        f"@prefix tres: <{TRES_IRI}> .",
         f"@prefix tcc: <{TCC_IRI}> .",
         "",
     ]
@@ -327,11 +367,11 @@ def _agent_ref(analysis_mode: str, gemini_model: str) -> str:
 
 
 def _decision_ref(decision_id: str) -> str:
-    return _res("decision", decision_id)
+    return f"<{TRES_IRI}{_slug(decision_id)}>"
 
 
 def _theme_ref(theme_id: str) -> str:
-    return _res("theme", theme_id)
+    return f"<{TNU_IRI}{_slug(theme_id)}>"
 
 
 def _analysis_ref(decision_id: str) -> str:

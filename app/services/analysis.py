@@ -88,7 +88,13 @@ def analyze_decisions(
                 save_quota_state(options.gemini_quota_state_file, quota_state)
                 last_gemini_request_at = time.time()
 
-                output = analyze_decision_with_gemini(decision, themes, options.gemini_api_key, options.gemini_model)
+                candidate_themes = _select_candidate_themes_for_gemini(decision, themes)
+                output = analyze_decision_with_gemini(
+                    decision,
+                    candidate_themes,
+                    options.gemini_api_key,
+                    options.gemini_model,
+                )
                 consecutive_429 = 0
                 cache[cache_key] = output.to_dict()
                 outputs.append(output)
@@ -151,18 +157,38 @@ def analyze_decision_local(decision: Trf2Decision, themes: list[TnuTheme]) -> An
 
 
 def _match_theme(decision: Trf2Decision, themes: list[TnuTheme]) -> TnuTheme | None:
-    decision_tokens = _tokenize(decision.assuntos)
+    decision_tokens = _decision_tokens(decision)
     winner = None
     best_score = 0
     for theme in themes:
-        theme_tokens = _tokenize(
-            f"{theme.questaoSubmetidaJulgamento} {theme.teseFirmada} {theme.ramoDireito}"
-        )
+        theme_tokens = _theme_tokens(theme)
         score = len(decision_tokens.intersection(theme_tokens))
         if score > best_score:
             best_score = score
             winner = theme
     return winner if best_score > 0 else None
+
+
+def _select_candidate_themes_for_gemini(decision: Trf2Decision, themes: list[TnuTheme]) -> list[TnuTheme]:
+    if len(themes) <= 12:
+        return themes
+    decision_tokens = _decision_tokens(decision)
+    ranked = sorted(
+        themes,
+        key=lambda theme: (
+            len(decision_tokens.intersection(_theme_tokens(theme))),
+            1 if normalize_for_matching(theme.ramoDireito) in _decision_theme_text(decision) else 0,
+            len(theme.teseFirmada),
+            len(theme.questaoSubmetidaJulgamento),
+        ),
+        reverse=True,
+    )
+    positive = [
+        theme for theme in ranked if len(decision_tokens.intersection(_theme_tokens(theme))) > 0
+    ]
+    if positive:
+        return positive[:12]
+    return ranked[:12]
 
 
 def _infer_consonancia(decision: Trf2Decision, theme: TnuTheme):
@@ -182,3 +208,19 @@ def _infer_validade(theme: TnuTheme, consonancia: str):
 def _tokenize(text: str) -> set[str]:
     normalized = normalize_for_matching(text)
     return {token for token in re.split(r"[^a-z0-9]+", normalized) if len(token) > 2}
+
+
+def _decision_theme_text(decision: Trf2Decision) -> str:
+    return " ".join(
+        part
+        for part in [decision.assuntos, decision.classe, decision.competencia]
+        if part and part != "NAO_INFORMADO"
+    )
+
+
+def _decision_tokens(decision: Trf2Decision) -> set[str]:
+    return _tokenize(_decision_theme_text(decision))
+
+
+def _theme_tokens(theme: TnuTheme) -> set[str]:
+    return _tokenize(f"{theme.questaoSubmetidaJulgamento} {theme.teseFirmada} {theme.ramoDireito}")

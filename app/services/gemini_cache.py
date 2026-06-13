@@ -13,7 +13,7 @@ def load_gemini_cache(path: str) -> dict[str, dict]:
     if not file.exists():
         return {}
     try:
-        parsed = json.loads(file.read_text(encoding="utf-8"))
+        parsed = json.loads(_read_json_text_with_fallbacks(file))
         return parsed if isinstance(parsed, dict) else {}
     except Exception:
         return {}
@@ -44,3 +44,11 @@ def to_analysis_output(data: dict) -> AnalysisOutput:
         justificativa=str(data.get("justificativa", "Sem justificativa fornecida.")),
     )
 
+
+def _read_json_text_with_fallbacks(path: Path) -> str:
+    for encoding in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            return path.read_text(encoding=encoding)
+        except UnicodeDecodeError:
+            continue
+    return path.read_text(encoding="utf-8", errors="replace")

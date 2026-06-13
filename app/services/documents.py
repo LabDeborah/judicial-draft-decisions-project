@@ -7,6 +7,13 @@ import shutil
 import subprocess
 
 from app.domain.types import AnalysisOutput, DocumentDecision, TnuTheme, Trf2Decision
+from app.services.document_template import (
+    build_template_context,
+    pick_template_scenario,
+    render_template_docx,
+    render_template_latex,
+    template_docx_exists,
+)
 from app.utils.fs import ensure_dir, write_text
 
 REPRODUCIBLE_SOURCE_DATE_EPOCH = "1704067200"
@@ -16,6 +23,7 @@ REPRODUCIBLE_SOURCE_DATE_EPOCH = "1704067200"
 class GeneratedDraft:
     decision_id: str
     action: str
+    docx_path: str | None
     tex_path: str
     pdf_path: str | None
 
@@ -26,10 +34,11 @@ def generate_decision_drafts(
     decisions: list[Trf2Decision],
     themes: list[TnuTheme],
     *,
+    output_dir: str = "outputs/documents",
     compile_pdf: bool = True,
     latex_engine: str | None = None,
 ) -> list[GeneratedDraft]:
-    ensure_dir("outputs/documents")
+    ensure_dir(output_dir)
     generated: list[GeneratedDraft] = []
     for doc in docs:
         if doc.action == "SEM_ACAO":
@@ -39,8 +48,19 @@ def generate_decision_drafts(
         theme = next((item for item in themes if item.temaNumero == doc.temaTnu), None)
         if not analysis or not decision or not theme:
             continue
-        tex = _create_latex_template(doc, decision, theme, analysis.justificativa)
-        output_file = Path("outputs/documents") / f"{doc.decisionId}-{doc.action}.tex"
+        docx_path: str | None = None
+        if template_docx_exists():
+            scenario = pick_template_scenario(doc, theme)
+            context = build_template_context(doc, decision, theme, analysis)
+            docx_path = render_template_docx(
+                scenario,
+                context,
+                output_path=str(Path(output_dir) / f"{doc.decisionId}-{doc.action}.docx"),
+            )
+            tex = render_template_latex(scenario, context)
+        else:
+            tex = _create_legacy_latex_template(doc, decision, theme, analysis.justificativa)
+        output_file = Path(output_dir) / f"{doc.decisionId}-{doc.action}.tex"
         written_tex_path = write_text(str(output_file), tex)
         pdf_path: str | None = None
         if compile_pdf and _compile_tex_to_pdf(Path(written_tex_path), latex_engine):
@@ -49,6 +69,7 @@ def generate_decision_drafts(
             GeneratedDraft(
                 decision_id=doc.decisionId,
                 action=doc.action,
+                docx_path=docx_path,
                 tex_path=written_tex_path,
                 pdf_path=pdf_path,
             )
@@ -56,7 +77,7 @@ def generate_decision_drafts(
     return generated
 
 
-def _create_latex_template(
+def _create_legacy_latex_template(
     doc: DocumentDecision,
     decision: Trf2Decision,
     theme: TnuTheme,

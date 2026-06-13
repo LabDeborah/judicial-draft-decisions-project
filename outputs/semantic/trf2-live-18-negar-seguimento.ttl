@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t135935z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/gemini-flash-lite-latest> a prov:Agent, tcc:LargeLanguageModel ;
+  dcterms:title "gemini-flash-lite-latest" ;
+  tcc:analysisStrategy "gemini" .
+
+<https://example.org/tcc/decision/trf2-live-18> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-18" ;
+  tcc:numeroProcesso "5000669-43.2023.4.02.9999" ;
+  tcc:assuntos "PREVIDENCIÁRIO. APELAÇÃO DO INSS. APOSENTADORIA POR IDADE RURAL. COMPROVAÇÃO DO LABOR RURAL POR INÍCIO DE PROVA MATERIAL CORROBORADO POR PROVA TESTEMUNHAL PRODUZIDA EM JUÍZO. CONSECTÁRIOS LEGAIS, NA FORMA DO MANUAL DE CÁLCULOS DA JUSTIÇA FEDERAL. HONORÁRIOS ADVOCATÍCIOS. CPC/2015. CUSTAS E TAXA JUDICIÁRIA. RECURSO DO INSS A QUE SE NEGA PROVIMENTO. I. CASO EM EXAME 1. A hipótese dos autos é de recurso contra sentença " .
+
+<https://example.org/tcc/theme/3> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "3" ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal." .
+
+<https://example.org/tcc/activity/classification-trf2-live-18> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-18>, <https://example.org/tcc/theme/3> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-18> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260604t135935z> .
+
+<https://example.org/tcc/analysis/trf2-live-18> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "3" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata da comprovação de labor rural por início de prova material corroborado por prova testemunhal, o que está em perfeita consonância com a tese firmada no Tema 3 da TNU, que estabelece a possibilidade de utilização de prova testemunhal para corroborar a prova documental, inclusive dispensando a contemporaneidade estrita." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-18> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/3> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-18> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-18> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-18>, <https://example.org/tcc/decision/trf2-live-18>, <https://example.org/tcc/theme/3> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-18-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-18> .
+
+<https://example.org/tcc/draft/trf2-live-18-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/documents/TRF2-LIVE-18-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-LIVE-18-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-18> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-18> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-18> .

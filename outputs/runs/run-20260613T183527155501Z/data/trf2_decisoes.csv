@@ -1,0 +1,4 @@
+decisionId,classe,tipoJulgamento,assuntos,competencia,relatorOriginario,dataAutuacao,dataJulgamento,numeroProcesso,inteiroTeorPath
+TRF2-0001,PEDIDO DE UNIFORMIZACAO,COLEGIADO,Salario-maternidade em adocao,JEF,Relator 1,2025-01-10,2025-03-30,5000001-00.2025.4.02.5001,outputs\runs\run-20260613T183527155501Z\data\decisions\trf2-0001.pdf
+TRF2-0002,PEDIDO DE UNIFORMIZACAO,COLEGIADO,Auxilio-alimentacao em licenca-premio,JEF,Relator 2,2025-01-12,2025-03-30,5000002-00.2025.4.02.5001,outputs\runs\run-20260613T183527155501Z\data\decisions\trf2-0002.pdf
+TRF2-0003,PEDIDO DE UNIFORMIZACAO,COLEGIADO,Beneficio assistencial e renda familiar per capita,JEF,Relator 3,2025-01-14,2025-03-30,5000003-00.2025.4.02.5001,outputs\runs\run-20260613T183527155501Z\data\decisions\trf2-0003.pdf

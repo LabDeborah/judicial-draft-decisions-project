@@ -1,20 +1,27 @@
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass
+from datetime import datetime, timezone
 
 from app.core.config import CliConfig
+from app.domain.types import TnuTheme, Trf2Decision
 from app.services.actions import derive_document_action
-from app.services.analysis import AnalysisOptions, analyze_decisions
+from app.services.analysis import AnalysisOptions, analyze_decision_local, analyze_decisions
 from app.services.collectors import collect_tnu_themes, collect_trf2_decisions
 from app.services.csv import write_csv
 from app.services.documents import generate_decision_drafts
+from app.services.gemini_quota import load_quota_state
 from app.services.semantic import SemanticRunContext, generate_semantic_artifacts
-from app.utils.fs import ensure_dir, is_dir_writable
+from app.services.source_artifacts import materialize_source_artifacts
+from app.utils.fs import ensure_dir
+from app.utils.text import normalize_for_matching
 
 
 @dataclass(slots=True)
 class PipelineSummary:
+    run_dir: str
     themes: int
     decisions: int
     analyses: int
@@ -26,14 +33,22 @@ class PipelineSummary:
 
 
 def run_pipeline(config: CliConfig) -> PipelineSummary:
-    ensure_dir("outputs/reports")
-    ensure_dir("outputs/documents")
-    data_csv_dir = "data/csv" if is_dir_writable("data/csv") else "outputs/data/csv"
+    run_id = f"run-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')}"
+    run_dir = f"outputs/runs/{run_id}"
+    reports_dir = f"{run_dir}/reports"
+    documents_dir = f"{run_dir}/documents"
+    semantic_dir = f"{run_dir}/semantic"
+    data_csv_dir = f"{run_dir}/data"
+    ensure_dir(run_dir)
+    ensure_dir(reports_dir)
+    ensure_dir(documents_dir)
+    ensure_dir(semantic_dir)
     ensure_dir(data_csv_dir)
 
+    theme_limit = _theme_collection_limit(config)
     themes = collect_tnu_themes(
         config.mode,
-        config.limit,
+        theme_limit,
         config.browser_automation,
         import_csv_file=config.import_tnu_csv_file,
     )
@@ -42,10 +57,19 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
         config.limit,
         config.browser_automation,
         import_csv_file=config.import_trf2_csv_file,
+        themes=themes,
     )
+    materialize_source_artifacts(
+        data_dir=data_csv_dir,
+        themes=themes,
+        decisions=decisions,
+        latex_engine=config.latex_engine,
+        trf2_chrome_profile=config.trf2_chrome_profile,
+    )
+    decisions_for_analysis = _select_decisions_for_analysis(decisions, themes, config)
     gemini_api_key = os.environ.get("GEMINI_API_KEY", "").strip() if config.analysis_mode == "gemini" else None
     analyses = analyze_decisions(
-        decisions,
+        decisions_for_analysis,
         themes,
         AnalysisOptions(
             analysis_mode=config.analysis_mode,
@@ -69,8 +93,8 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
 
     write_csv(f"{data_csv_dir}/tnu_temas.csv", [item.to_dict() for item in themes])
     write_csv(f"{data_csv_dir}/trf2_decisoes.csv", [item.to_dict() for item in decisions])
-    write_csv("outputs/reports/analises.csv", [item.to_dict() for item in analyses])
-    write_csv("outputs/reports/acoes_documentais.csv", [item.to_dict() for item in docs])
+    write_csv(f"{reports_dir}/analises.csv", [item.to_dict() for item in analyses])
+    write_csv(f"{reports_dir}/acoes_documentais.csv", [item.to_dict() for item in docs])
     comparados = []
     by_decision = {item.decisionId: item for item in decisions}
     for analysis in analyses:
@@ -83,16 +107,19 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
                 "CONSONÂNCIA OU DISSONÂNCIA": analysis.consonancia,
             }
         )
-    write_csv("outputs/reports/comparados_compat.csv", comparados)
+    write_csv(f"{reports_dir}/comparados_compat.csv", comparados)
     generated_drafts = generate_decision_drafts(
         docs,
         analyses,
         decisions,
         themes,
+        output_dir=documents_dir,
         compile_pdf=config.compile_pdf,
         latex_engine=config.latex_engine,
     )
     semantic = generate_semantic_artifacts(
+        run_id=run_id,
+        output_dir=semantic_dir,
         context=SemanticRunContext(
             mode=config.mode,
             analysis_mode=config.analysis_mode,
@@ -109,6 +136,7 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
         drafts=generated_drafts,
     )
     return PipelineSummary(
+        run_dir=run_dir,
         themes=len(themes),
         decisions=len(decisions),
         analyses=len(analyses),
@@ -118,3 +146,82 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
         semantic_execution_graph=semantic.execution_graph_path,
         data_csv_dir=data_csv_dir,
     )
+
+
+def _theme_collection_limit(config: CliConfig) -> int:
+    if config.mode != "live":
+        return config.limit
+    return max(config.limit, 100)
+
+
+def _select_decisions_for_analysis(
+    decisions: list[Trf2Decision], themes: list[TnuTheme], config: CliConfig
+) -> list[Trf2Decision]:
+    if not decisions:
+        return []
+    ranked_decisions = sorted(
+        decisions,
+        key=lambda decision: _decision_priority_key(decision, themes, config.analysis_mode),
+        reverse=True,
+    )
+    if config.analysis_limit is not None:
+        return ranked_decisions[: min(config.analysis_limit, len(ranked_decisions))]
+    if config.analysis_mode != "gemini":
+        return ranked_decisions
+    quota_state = load_quota_state(config.gemini_quota_state_file)
+    remaining_quota = max(0, config.gemini_requests_per_day - quota_state.requests)
+    if remaining_quota <= 0:
+        return []
+    return ranked_decisions[: min(len(ranked_decisions), remaining_quota)]
+
+
+def _decision_analysis_richness(decision: Trf2Decision) -> int:
+    score = 0
+    if decision.assuntos and decision.assuntos != "NAO_INFORMADO":
+        score += min(400, len(decision.assuntos))
+    if decision.classe and decision.classe != "NAO_INFORMADO":
+        score += 60
+    if decision.relatorOriginario:
+        score += 20
+    if decision.dataAutuacao:
+        score += 10
+    return score
+
+
+def _decision_priority_key(
+    decision: Trf2Decision,
+    themes: list[TnuTheme],
+    analysis_mode: str,
+) -> tuple[int, int, int, int]:
+    overlap = _decision_theme_overlap_score(decision, themes)
+    richness = _decision_analysis_richness(decision)
+    if analysis_mode != "gemini":
+        return (overlap, richness, 0, 0)
+    local_analysis = analyze_decision_local(decision, themes)
+    local_theme = next((theme for theme in themes if theme.temaNumero == local_analysis.temaTnu), None)
+    local_action = derive_document_action(local_analysis, local_theme).action
+    actionable = 1 if local_action != "SEM_ACAO" else 0
+    matched_theme = 1 if local_analysis.temaTnu != "NENHUM_TEMA" else 0
+    return (actionable, matched_theme, overlap, richness)
+
+
+def _decision_theme_overlap_score(decision: Trf2Decision, themes: list[TnuTheme]) -> int:
+    decision_tokens = _analysis_tokens(
+        f"{decision.classe} {decision.assuntos} {decision.competencia} {decision.relatorOriginario}"
+    )
+    if not decision_tokens:
+        return 0
+    best = 0
+    for theme in themes:
+        theme_tokens = _analysis_tokens(
+            f"{theme.ramoDireito} {theme.questaoSubmetidaJulgamento} {theme.teseFirmada}"
+        )
+        score = len(decision_tokens.intersection(theme_tokens))
+        if score > best:
+            best = score
+    return best
+
+
+def _analysis_tokens(text: str) -> set[str]:
+    normalized = normalize_for_matching(text)
+    return {token for token in re.split(r"[^a-z0-9]+", normalized) if len(token) > 2}

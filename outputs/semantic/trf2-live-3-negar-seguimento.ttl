@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t134756z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/gemini-flash-lite-latest> a prov:Agent, tcc:LargeLanguageModel ;
+  dcterms:title "gemini-flash-lite-latest" ;
+  tcc:analysisStrategy "gemini" .
+
+<https://example.org/tcc/decision/trf2-live-3> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-3" ;
+  tcc:numeroProcesso "5000860-42.2022.4.02.5111" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO. APOSENTADORIA POR IDADE RURAL. RECURSO PROVIDO. I. Caso em exame 1. Apelação interposta contra sentença que julgou improcedente pedido de concessão de aposentadoria por idade rural. A parte autora requereu administrativamente o benefício em 28/09/2015, com base no reconhecimento de tempo rural como pescadora de 01/01/1995 a 28/09/2015, mas o pedido foi indeferido. A ação judicial, ajuizada em " .
+
+<https://example.org/tcc/theme/5> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "5" ;
+  tcc:teseFirmada "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)." .
+
+<https://example.org/tcc/activity/classification-trf2-live-3> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-3>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-3> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260604t134756z> .
+
+<https://example.org/tcc/analysis/trf2-live-3> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "5" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de aposentadoria por idade rural e o Tema 5 da TNU estabelece a necessidade de comprovação da atividade rural no período imediatamente anterior ao requerimento, o que é o cerne da análise de mérito em casos de aposentadoria por idade rural. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-3> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/5> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-3> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-3> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-3>, <https://example.org/tcc/decision/trf2-live-3>, <https://example.org/tcc/theme/5> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-3-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-3> .
+
+<https://example.org/tcc/draft/trf2-live-3-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/documents/TRF2-LIVE-3-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-LIVE-3-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-3> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-3> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-3> .

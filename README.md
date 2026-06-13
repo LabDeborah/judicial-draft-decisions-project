@@ -7,7 +7,7 @@ Pipeline em Python para:
 - coletar dados TNU e TRF2 (`sample`, `live` ou `import`);
 - classificar decisoes por tema;
 - definir acao recursal;
-- gerar minutas em LaTeX e, opcionalmente, PDF;
+- gerar minutas a partir de template documental (`.docx` -> `.tex` -> `.pdf`);
 - gerar uma camada semantica paralela em RDF/Turtle com provenance em PROV-O.
 
 Arquitetura detalhada: [WORKFLOW.md](./WORKFLOW.md)
@@ -56,6 +56,7 @@ Exemplos de perguntas que os `.ttl` passam a responder:
 - Dependencias de `requirements.txt`
 - Opcional para scraping JS pesado: `playwright` + Chromium
 - Opcional para PDF: `tectonic` ou `pdflatex`
+- Opcional para capturar o PDF oficial da pagina publica do acordao no TRF2/JFES: perfil local do Chrome informado em `--trf2-chrome-profile`
 
 ## Quickstart
 
@@ -76,6 +77,12 @@ Modo `live`:
 
 ```bash
 python -m app.cli.main --mode live --analysis-mode local --limit 20 --browser-automation true
+```
+
+Modo `live` com perfil local do Chrome para capturar o PDF oficial da pagina publica da decisao:
+
+```bash
+python -m app.cli.main --mode live --analysis-mode local --limit 20 --browser-automation true --trf2-chrome-profile "Profile 1"
 ```
 
 Modo `import`:
@@ -110,7 +117,9 @@ Dados e relatorios:
 
 Documentos:
 
+- `templates/decision_template_v2.docx`
 - `outputs/documents/*.tex`
+- `outputs/documents/*.docx`
 - `outputs/documents/*.pdf`
 
 Camada semantica:

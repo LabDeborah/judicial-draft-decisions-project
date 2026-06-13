@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t135251z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-9> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-9" ;
+  tcc:numeroProcesso "0000530-19.2011.4.02.5111" ;
+  tcc:assuntos "REMESSA NECESSÁRIA. APELAÇÃO. PROCESSO CIVIL. ADMINISTRATIVO. SERVIÇO MILITAR OBRIGATÓRIO. ESTUDANTES DA ÁREA DE SAÚDE (MFDV). ANTERIOR DISPENSA E CONVOCAÇÃO POSTERIOR À VIGÊNCIA DA LEI Nº 12.336/10. POSSIBILIDADE. ACÓRDÃO PROFERIDO CONTRÁRIO À ORIENTAÇÃO FIRMADA PELO STJ EM JULGAMENTO SUBMETIDO À SISTEMÁTICA DOS RECURSOS REPETITIVOS (TEMA Nº 418). JUÍZO DE RETRATAÇÃO EXERCIDO." .
+
+<https://example.org/tcc/theme/10> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "10" ;
+  tcc:teseFirmada "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350." .
+
+<https://example.org/tcc/activity/classification-trf2-live-9> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-9>, <https://example.org/tcc/theme/10> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-9> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260604t135251z> .
+
+<https://example.org/tcc/analysis/trf2-live-9> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "10" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 10 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-9> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/10> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-9> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-9> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-9>, <https://example.org/tcc/decision/trf2-live-9>, <https://example.org/tcc/theme/10> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-9-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-9> .
+
+<https://example.org/tcc/draft/trf2-live-9-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/documents/TRF2-LIVE-9-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-LIVE-9-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-9> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-9> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-9> .

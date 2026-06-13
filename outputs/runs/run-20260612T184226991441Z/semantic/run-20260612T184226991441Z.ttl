@@ -1,0 +1,58 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260612t184226991441z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-12T18:42:29.707966Z"^^xsd:dateTime ;
+  tcc:collectionMode "sample" ;
+  tcc:analysisMode "local" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/catalog/run-20260612t184226991441z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "1"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260612t184226991441z> .
+
+<http://purl.org/nemo/tnu/309> a ors:Theme, prov:Entity ;
+  ors:theme "309" ;
+  ors:themeThesis "O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida." ;
+  dcterms:identifier "309" ;
+  dcterms:description "Auxilio-alimentacao integra base de calculo da licenca-premio convertida em pecunia?" ;
+  tcc:situacaoTema "JULGADO" ;
+  tcc:ramoDireito "ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260612t184226991441z-themes> .
+
+<http://purl.org/nemo/tres/trf2-0001> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-0001" ;
+  ors:subject "Salario-maternidade em adocao" ;
+  dcterms:identifier "5000001-00.2025.4.02.5001" ;
+  dcterms:type "PEDIDO DE UNIFORMIZACAO" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:competencia "JEF" ;
+  tcc:relatorOriginario "Relator 1" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260612t184226991441z> .
+
+<https://example.org/tcc/activity/classification-trf2-0001> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-0001>, <https://example.org/tcc/catalog/run-20260612t184226991441z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0001> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-0001> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Nenhum tema com palavras-chave em comum." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-0001> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0001> .

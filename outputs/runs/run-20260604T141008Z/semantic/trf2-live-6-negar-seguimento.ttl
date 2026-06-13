@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t141008z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/gemini-flash-lite-latest> a prov:Agent, tcc:LargeLanguageModel ;
+  dcterms:title "gemini-flash-lite-latest" ;
+  tcc:analysisStrategy "gemini" .
+
+<https://example.org/tcc/decision/trf2-live-6> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-6" ;
+  tcc:numeroProcesso "5043111-76.2020.4.02.5101" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO . APELAÇÃO CÍVEL. REVISÃO DE APOSENTADORIA POR TEMPO DE CONTRIBUIÇÃO. TEMPO ESPECIAL. RUÍDO E AGENTES QUÍMICOS. PROVIMENTO PARCIAL. I. CASO EM EXAME 1. Apelação cível interposta contra sentença que julgou improcedente o pedido de revisão de aposentadoria por tempo de contribuição, visando o reconhecimento de períodos laborados sob condições especiais por exposição a ruído, benzeno e hidrocarbon" .
+
+<https://example.org/tcc/theme/14> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "14" ;
+  tcc:teseFirmada "Na aposentadoria especial a apresentação de laudo pericial extemporâneo não afasta sua força probante, desde que não modificadas as condições do ambiente. Vide Súmula 68 da TNU." .
+
+<https://example.org/tcc/activity/classification-trf2-live-6> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-6>, <https://example.org/tcc/theme/14> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-6> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260604t141008z> .
+
+<https://example.org/tcc/analysis/trf2-live-6> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "14" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de revisão de aposentadoria por tempo de contribuição com foco no reconhecimento de tempo especial por exposição a agentes nocivos (ruído e químicos), alinhando-se ao entendimento da TNU (Tema 14 e Súmula 68) de que laudos extemporâneos possuem força probatória se as condições ambientais não foram alteradas. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-6> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/14> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-6> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-6> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-6>, <https://example.org/tcc/decision/trf2-live-6>, <https://example.org/tcc/theme/14> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-6-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-6> .
+
+<https://example.org/tcc/draft/trf2-live-6-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-6-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260604T141008Z/documents/TRF2-LIVE-6-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-6> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-6> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-6> .

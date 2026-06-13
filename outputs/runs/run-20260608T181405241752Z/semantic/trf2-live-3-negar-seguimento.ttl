@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260608t181405241752z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-3> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-3" ;
+  tcc:numeroProcesso "5035475-29.2024.4.02.5001" ;
+  tcc:assuntos "Pensão por Morte (Art. 74/9), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" .
+
+<https://example.org/tcc/theme/81> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "81" ;
+  tcc:teseFirmada "Contra os menores impúberes não corre o prazo do art. 74, II, da Lei n. 8.213/91 (art. 198, I, CC/02), devendo o benefício de pensão por morte ser deferido a partir do óbito do instituidor, observada sua quota parte e também a disposição do artigo 77, §1º da Lei n. 8.213/91." .
+
+<https://example.org/tcc/activity/classification-trf2-live-3> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-3>, <https://example.org/tcc/theme/81> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-3> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260608t181405241752z> .
+
+<https://example.org/tcc/analysis/trf2-live-3> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "81" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 81 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-3> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/81> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-3> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-3> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-3>, <https://example.org/tcc/decision/trf2-live-3>, <https://example.org/tcc/theme/81> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-3-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-3> .
+
+<https://example.org/tcc/draft/trf2-live-3-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260608T181405241752Z/documents/TRF2-LIVE-3-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260608T181405241752Z/documents/TRF2-LIVE-3-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-3> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-3> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-3> .

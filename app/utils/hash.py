@@ -1,8 +1,3 @@
-from __future__ import annotations
+from app.services.utils.hash import sha1
 
-import hashlib
-
-
-def sha1(value: str) -> str:
-    return hashlib.sha1(value.encode("utf-8")).hexdigest()
-
+__all__ = ["sha1"]

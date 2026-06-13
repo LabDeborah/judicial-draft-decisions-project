@@ -18,7 +18,7 @@ def load_quota_state(path: str) -> GeminiQuotaState:
     if not file.exists():
         return GeminiQuotaState(date=today, requests=0)
     try:
-        parsed = json.loads(file.read_text(encoding="utf-8"))
+        parsed = json.loads(_read_json_text_with_fallbacks(file))
         if parsed.get("date") == today and isinstance(parsed.get("requests"), int):
             return GeminiQuotaState(date=today, requests=int(parsed["requests"]))
     except Exception:
@@ -37,3 +37,11 @@ def consume_quota(state: GeminiQuotaState) -> GeminiQuotaState:
 def today_key() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+
+def _read_json_text_with_fallbacks(path: Path) -> str:
+    for encoding in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            return path.read_text(encoding=encoding)
+        except UnicodeDecodeError:
+            continue
+    return path.read_text(encoding="utf-8", errors="replace")

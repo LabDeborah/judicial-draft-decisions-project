@@ -1,0 +1,24 @@
+# Template documental
+
+Arquivos:
+- `decision_template_v2.docx`: template principal derivado do documento de referencia.
+
+Cenarios estruturais:
+- `adequacao_dissonancia`: paragrafos 1-13
+- `sobrestamento_pendente_julgamento`: paragrafos 15-20
+- `sobrestamento_sem_transito`: paragrafos 21-30
+- `nego_seguimento_pos_sobrestamento`: paragrafos 32-43
+- `nego_seguimento_transitado`: paragrafos 45-55
+
+Placeholders principais:
+- `{{theme_number}}`
+- `{{theme_process_number}}`
+- `{{theme_affectation_date}}`
+- `{{theme_judgment_date}}`
+- `{{theme_transit_date}}`
+- `{{theme_question_quote}}`
+- `{{theme_thesis_quote}}`
+- `{{theme_judgment_reference}}`
+- `{{theme_reference_label}}`
+- `{{decision_excerpt_quote}}`
+- `{{theme_alignment_phrase}}`

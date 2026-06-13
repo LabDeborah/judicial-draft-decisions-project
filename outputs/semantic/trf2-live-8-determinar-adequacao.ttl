@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t120840z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-8> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-8" ;
+  tcc:numeroProcesso "5004102-59.2024.4.02.5104" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO. APELAÇÃO CÍVEL. AUXÍLIO-DOENÇA, APOSENTADORIA POR INVALIDEZ E AUXÍLIO-ACIDENTE. IMPROCEDÊNCIA MANTIDA. RECURSO DESPROVIDO. I. Caso em exame Apelação cível interposta contra sentença que julgou improcedentes os pedidos de concessão de benefícios por incapacidade ou auxílio-acidente, em virtude da perda da qualidade de segurado na data do início da incapacidade e da ausência de sequelas redutora" .
+
+<https://example.org/tcc/theme/1> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "1" ;
+  tcc:teseFirmada "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." .
+
+<https://example.org/tcc/activity/classification-trf2-live-8> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-8>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-8> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260604t120840z> .
+
+<https://example.org/tcc/analysis/trf2-live-8> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "1" ;
+  tcc:consonancia "DISSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-8> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-8> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-8> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-8>, <https://example.org/tcc/decision/trf2-live-8>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-8-determinar-adequacao> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-8> .
+
+<https://example.org/tcc/draft/trf2-live-8-determinar-adequacao> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "DETERMINAR_ADEQUACAO" ;
+  tcc:texPath "outputs/documents/TRF2-LIVE-8-DETERMINAR_ADEQUACAO.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-LIVE-8-DETERMINAR_ADEQUACAO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-8> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-8> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-8> .

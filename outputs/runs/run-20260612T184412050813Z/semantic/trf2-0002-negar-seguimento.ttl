@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260612t184412050813z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/trf2-0002> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-0002" ;
+  ors:subject "Auxilio-alimentacao em licenca-premio" ;
+  dcterms:identifier "5000002-00.2025.4.02.5001" .
+
+<http://purl.org/nemo/tnu/309> a ors:Theme, prov:Entity ;
+  ors:theme "309" ;
+  ors:themeThesis "O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida." ;
+  dcterms:description "Auxilio-alimentacao integra base de calculo da licenca-premio convertida em pecunia?" .
+
+<https://example.org/tcc/activity/classification-trf2-0002> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-0002>, <http://purl.org/nemo/tnu/309> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0002> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260612t184412050813z> .
+
+<https://example.org/tcc/analysis/trf2-0002> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "309" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 309 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-0002> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/309> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0002> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0002> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0002>, <http://purl.org/nemo/tres/trf2-0002>, <http://purl.org/nemo/tnu/309> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0002-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-0002> .
+
+<https://example.org/tcc/draft/trf2-0002-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260612T184412050813Z/documents/TRF2-0002-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260612T184412050813Z/documents/TRF2-0002-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/trf2-0002> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-0002> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-0002> .

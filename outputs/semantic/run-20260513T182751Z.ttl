@@ -1,0 +1,114 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260513t182751z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-05-13T18:27:51.388706Z"^^xsd:dateTime ;
+  tcc:collectionMode "sample" ;
+  tcc:analysisMode "local" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  tcc:geminiModel "gemini-flash-lite-latest" ;
+  tcc:geminiCacheFile "outputs/reports/gemini_cache.json" ;
+  tcc:geminiQuotaStateFile "outputs/reports/gemini_quota_state.json" ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/catalog/run-20260513t182751z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "2"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260513t182751z> .
+
+<https://example.org/tcc/theme/309> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "309" ;
+  tcc:situacaoTema "JULGADO" ;
+  tcc:ramoDireito "ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Auxilio-alimentacao integra base de calculo da licenca-premio convertida em pecunia?" ;
+  tcc:teseFirmada "O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260513t182751z-themes> .
+
+<https://example.org/tcc/theme/344> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "344" ;
+  tcc:situacaoTema "JULGADO_SEM_TRANSITO" ;
+  tcc:ramoDireito "PREVIDENCIARIO" ;
+  tcc:questaoSubmetidaJulgamento "Salario-maternidade e devido em adocao de menor acima de doze anos?" ;
+  tcc:teseFirmada "E devido salario-maternidade por 120 dias ao adotante de menor de dezoito anos." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260513t182751z-themes> .
+
+<https://example.org/tcc/decision/trf2-0001> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-0001" ;
+  tcc:numeroProcesso "5000001-00.2025.4.02.5001" ;
+  tcc:classe "PEDIDO DE UNIFORMIZACAO" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "Salario-maternidade em adocao" ;
+  tcc:competencia "JEF" ;
+  tcc:relatorOriginario "Relator 1" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260513t182751z> .
+
+<https://example.org/tcc/activity/classification-trf2-0001> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-0001>, <https://example.org/tcc/catalog/run-20260513t182751z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0001> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-0001> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "344" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 344 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-0001> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0001> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0001> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0001>, <https://example.org/tcc/decision/trf2-0001>, <https://example.org/tcc/theme/344> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0001-sobrestar> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-0001-sobrestar> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "SOBRESTAR" ;
+  tcc:texPath "outputs/documents/TRF2-0001-SOBRESTAR.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-0001-SOBRESTAR.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-0001> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-0001> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-0001> .
+
+<https://example.org/tcc/decision/trf2-0002> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-0002" ;
+  tcc:numeroProcesso "5000002-00.2025.4.02.5001" ;
+  tcc:classe "PEDIDO DE UNIFORMIZACAO" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "Auxilio-alimentacao em licenca-premio" ;
+  tcc:competencia "JEF" ;
+  tcc:relatorOriginario "Relator 2" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260513t182751z> .
+
+<https://example.org/tcc/activity/classification-trf2-0002> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-0002>, <https://example.org/tcc/catalog/run-20260513t182751z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0002> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-0002> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "309" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 309 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-0002> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0002> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0002> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0002>, <https://example.org/tcc/decision/trf2-0002>, <https://example.org/tcc/theme/309> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0002-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-0002-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/documents/TRF2-0002-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-0002-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-0002> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-0002> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-0002> .

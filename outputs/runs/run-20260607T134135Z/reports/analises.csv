@@ -1,0 +1,6 @@
+decisionId,temaTnu,consonancia,validade,justificativa
+TRF2-LIVE-1,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,"O objeto da decisão não foi informado, impossibilitando a classificação em qualquer dos temas da TNU listados."
+TRF2-LIVE-2,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,O inteiro teor do processo não foi fornecido ou não contém informações suficientes sobre o mérito da decisão para permitir a classificação em um dos temas da TNU listados.
+TRF2-LIVE-3,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,O processo informado não possui dados suficientes sobre o objeto da lide ou o teor da decisão para permitir o enquadramento em qualquer dos temas da TNU listados.
+TRF2-LIVE-4,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,O inteiro teor do processo não foi fornecido ou não contém informações suficientes sobre o mérito da decisão para permitir a classificação em um dos temas da TNU listados.
+TRF2-LIVE-5,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,A decisão fornecida não contém o inteiro teor ou os fundamentos jurídicos necessários para realizar o cotejo com os temas da TNU listados.

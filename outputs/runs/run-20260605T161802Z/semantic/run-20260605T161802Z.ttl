@@ -1,0 +1,100 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260605t161802z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-05T16:18:26.392749Z"^^xsd:dateTime ;
+  tcc:collectionMode "live" ;
+  tcc:analysisMode "local" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/catalog/run-20260605t161802z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "5"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260605t161802z> .
+
+<https://example.org/tcc/theme/1> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "1" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." ;
+  tcc:teseFirmada "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260605t161802z-themes> .
+
+<https://example.org/tcc/theme/2> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "2" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se certidão de casamento extemporânea serve como início de prova material para fins de concessão de aposentadoria por idade rural." ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260605t161802z-themes> .
+
+<https://example.org/tcc/theme/3> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "3" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a prova material extemporânea, devidamente corroborada por prova oral idônea, é hábil à concessão do benefício de aposentadoria por idade rural." ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260605t161802z-themes> .
+
+<https://example.org/tcc/theme/4> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "4" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário prévio pedido de prorrogação de benefício de auxílio-doença nas hipóteses conhecidas por \"alta programada\"." ;
+  tcc:teseFirmada "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260605t161802z-themes> .
+
+<https://example.org/tcc/theme/5> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "5" ;
+  tcc:situacaoTema "Revisado pelo Tema 145" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se para obtenção da aposentadoria por idade de segurado especial é necessário demonstrar atividade rural no período imediatamente anterior ao atingimento da idade mínima ou à apresentação do requerimento administrativo." ;
+  tcc:teseFirmada "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260605t161802z-themes> .
+
+<https://example.org/tcc/decision/trf2-live-1> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-1" ;
+  tcc:numeroProcesso "5004809-42.2024.4.02.5002" ;
+  tcc:classe "RECURSO CÍVEL" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "Aposentadoria por Tempo de Contribuição (Art. 55/6), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  tcc:competencia "1ª Turma Recursal do Espírito Santo" ;
+  tcc:relatorOriginario "LEONARDO MARQUES LESSA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260605t161802z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-1> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/catalog/run-20260605t161802z-themes>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-live-1> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-1> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-1> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-1>, <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-1-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-1-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260605T161802Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260605T161802Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-1> .

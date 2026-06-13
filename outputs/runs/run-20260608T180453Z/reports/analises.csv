@@ -1,0 +1,4 @@
+decisionId,temaTnu,consonancia,validade,justificativa
+TRF2-LIVE-2,NENHUM_TEMA,NAO_APLICAVEL,VALIDA,"O processo trata de aposentadoria por idade urbana, enquanto os temas da TNU listados referem-se a temas rurais, auxílio-doença, pensão por morte, responsabilidade civil, diárias de servidores ou benefícios assistenciais, não havendo correlação direta com o objeto da decisão."
+TRF2-LIVE-1,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,"O conteúdo fornecido refere-se apenas a um cabeçalho de consulta processual do sistema eproc, sem apresentar o relatório, fundamentação ou dispositivo da decisão judicial, impossibilitando a análise de mérito ou a vinculação a qualquer tema da TNU."
+TRF2-LIVE-3,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,"A decisao fornecida nao contem informacoes sobre o objeto do julgamento, assuntos ou fundamentacao, impossibilitando a classificacao em qualquer tema da TNU."

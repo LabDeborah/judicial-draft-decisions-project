@@ -1,0 +1,4 @@
+decisionId,temaTnu,consonancia,validade,justificativa
+TRF2-LIVE-1,NENHUM_TEMA,NAO_APLICAVEL,VALIDA,"A decisão trata de aposentadoria por idade urbana, e nenhum dos temas da TNU fornecidos aborda especificamente a concessão ou requisitos deste benefício urbano, focando majoritariamente em benefícios rurais, incapacidade ou questões processuais."
+TRF2-LIVE-2,NENHUM_TEMA,NAO_APLICAVEL,VALIDA,"O processo trata de Aposentadoria por Tempo de Contribuição, mas não aborda nenhuma das questões específicas delimitadas pelos temas da TNU listados, como conversão de tempo especial, termo inicial ou revisão de benefício por omissão específica."
+TRF2-LIVE-3,NENHUM_TEMA,NAO_APLICAVEL,INVALIDA,"O documento fornecido contém apenas metadados da decisão (ID, classe, partes, datas), sem o texto da fundamentação ou o dispositivo, impossibilitando a análise de mérito ou a vinculação a qualquer tema da TNU."

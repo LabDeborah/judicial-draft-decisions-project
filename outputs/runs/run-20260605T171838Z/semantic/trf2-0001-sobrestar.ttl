@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260605t171838z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-0001> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-0001" ;
+  tcc:numeroProcesso "5000001-00.2025.4.02.5001" ;
+  tcc:assuntos "Salario-maternidade em adocao" .
+
+<https://example.org/tcc/theme/344> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "344" ;
+  tcc:teseFirmada "E devido salario-maternidade por 120 dias ao adotante de menor de dezoito anos." .
+
+<https://example.org/tcc/activity/classification-trf2-0001> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-0001>, <https://example.org/tcc/theme/344> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-0001> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260605t171838z> .
+
+<https://example.org/tcc/analysis/trf2-0001> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "344" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 344 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-0001> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/344> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-0001> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-0001> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-0001>, <https://example.org/tcc/decision/trf2-0001>, <https://example.org/tcc/theme/344> ;
+  prov:generated <https://example.org/tcc/draft/trf2-0001-sobrestar> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-0001> .
+
+<https://example.org/tcc/draft/trf2-0001-sobrestar> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "SOBRESTAR" ;
+  tcc:texPath "outputs/runs/run-20260605T171838Z/documents/TRF2-0001-SOBRESTAR.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260605T171838Z/documents/TRF2-0001-SOBRESTAR.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-0001> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-0001> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-0001> .

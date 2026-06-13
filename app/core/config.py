@@ -13,10 +13,12 @@ class CliConfig:
     mode: CollectionMode
     analysis_mode: AnalysisMode
     limit: int
+    analysis_limit: int | None
     import_root: str | None
     import_tnu_csv_file: str | None
     import_trf2_csv_file: str | None
     browser_automation: bool
+    trf2_chrome_profile: str | None
     compile_pdf: bool
     latex_engine: str | None
     gemini_model: str
@@ -42,6 +44,8 @@ def parse_args(argv: Sequence[str]) -> CliConfig:
     analysis_mode: AnalysisMode = "gemini" if analysis_raw == "gemini" else "local"
 
     limit = _to_int(_read_arg_value(argv, "--limit") or "20", "--limit")
+    analysis_limit_raw = (_read_arg_value(argv, "--analysis-limit") or "").strip()
+    analysis_limit = _to_int(analysis_limit_raw, "--analysis-limit") if analysis_limit_raw else None
     import_root = (_read_arg_value(argv, "--import-root") or "").strip() or None
     import_tnu_csv_file = (_read_arg_value(argv, "--tnu-csv-file") or "").strip() or None
     import_trf2_csv_file = (_read_arg_value(argv, "--trf2-csv-file") or "").strip() or None
@@ -49,6 +53,7 @@ def parse_args(argv: Sequence[str]) -> CliConfig:
         _read_arg_value(argv, "--browser-automation") or "true",
         "--browser-automation",
     )
+    trf2_chrome_profile = (_read_arg_value(argv, "--trf2-chrome-profile") or "").strip() or None
     compile_pdf = _to_bool(_read_arg_value(argv, "--compile-pdf") or "true", "--compile-pdf")
     latex_engine = (_read_arg_value(argv, "--latex-engine") or "").strip() or None
     gemini_model = _read_arg_value(argv, "--gemini-model") or "gemini-flash-lite-latest"
@@ -75,6 +80,8 @@ def parse_args(argv: Sequence[str]) -> CliConfig:
 
     if limit <= 0:
         raise ValueError("Parametro --limit invalido. Use um inteiro positivo.")
+    if analysis_limit is not None and analysis_limit <= 0:
+        raise ValueError("Parametro --analysis-limit invalido. Use um inteiro positivo.")
     if gemini_delay_ms < 0:
         raise ValueError("Parametro --gemini-delay-ms invalido. Use inteiro >= 0.")
     if gemini_cooldown_ms < 0:
@@ -117,10 +124,12 @@ def parse_args(argv: Sequence[str]) -> CliConfig:
         mode=mode,
         analysis_mode=analysis_mode,
         limit=limit,
+        analysis_limit=analysis_limit,
         import_root=import_root,
         import_tnu_csv_file=import_tnu_csv_file,
         import_trf2_csv_file=import_trf2_csv_file,
         browser_automation=browser_automation,
+        trf2_chrome_profile=trf2_chrome_profile,
         compile_pdf=compile_pdf,
         latex_engine=latex_engine,
         gemini_model=gemini_model,

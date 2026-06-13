@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t135251z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-10> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-10" ;
+  tcc:numeroProcesso "5016185-53.2023.4.02.5101" ;
+  tcc:assuntos "DIREITO PREVIDENCIÁRIO E PROCESSUAL CIVIL. APELAÇÃO CÍVEL. APOSENTADORIA POR TEMPO DE CONTRIBUIÇÃO. RECURSO DESPROVIDO. I. Caso em exame Apelação cível interposta em face de sentença que julgou improcedente o pedido de concessão de aposentadoria por tempo de contribuição, fundamentado na regra de transição do pedágio de 100% prevista na Emenda Constitucional nº 103/2019, mediante reconhecimento de tempo especial, aju" .
+
+<https://example.org/tcc/theme/2> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "2" ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea." .
+
+<https://example.org/tcc/activity/classification-trf2-live-10> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-10>, <https://example.org/tcc/theme/2> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-10> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260604t135251z> .
+
+<https://example.org/tcc/analysis/trf2-live-10> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "2" ;
+  tcc:consonancia "DISSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 2 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-10> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/2> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-10> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-10> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-10>, <https://example.org/tcc/decision/trf2-live-10>, <https://example.org/tcc/theme/2> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-10-determinar-adequacao> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-10> .
+
+<https://example.org/tcc/draft/trf2-live-10-determinar-adequacao> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "DETERMINAR_ADEQUACAO" ;
+  tcc:texPath "outputs/documents/TRF2-LIVE-10-DETERMINAR_ADEQUACAO.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-LIVE-10-DETERMINAR_ADEQUACAO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-10> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-10> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-10> .

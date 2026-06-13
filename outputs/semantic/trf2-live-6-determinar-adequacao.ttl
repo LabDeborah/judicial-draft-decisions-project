@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260604t135251z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-6> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-6" ;
+  tcc:numeroProcesso "5000933-93.2022.4.02.5117" ;
+  tcc:assuntos "DIREITO ADMINISTRATIVO E CIVIL. APELAÇÃO CÍVEL. RESPONSABILIDADE CIVIL DO ESTADO. MORTE EM OPERAÇÃO DE SEGURANÇA PÚBLICA. NEXO CAUSAL NÃO DEMONSTRADO. APELAÇÃO DESPROVIDA. I. CASO EM EXAME 1.Apelação cível interposta em face de sentença que extinguiu o processo sem resolução de mérito quanto a um dos autores por ilegitimidade ativa e julgou improcedentes os pedidos de indenização por danos morais decorrentes de morte" .
+
+<https://example.org/tcc/theme/8> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "8" ;
+  tcc:teseFirmada "Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso." .
+
+<https://example.org/tcc/activity/classification-trf2-live-6> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-6>, <https://example.org/tcc/theme/8> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-6> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260604t135251z> .
+
+<https://example.org/tcc/analysis/trf2-live-6> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "8" ;
+  tcc:consonancia "DISSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 8 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-6> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/8> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-6> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-6> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-6>, <https://example.org/tcc/decision/trf2-live-6>, <https://example.org/tcc/theme/8> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-6-determinar-adequacao> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-6> .
+
+<https://example.org/tcc/draft/trf2-live-6-determinar-adequacao> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "DETERMINAR_ADEQUACAO" ;
+  tcc:texPath "outputs/documents/TRF2-LIVE-6-DETERMINAR_ADEQUACAO.tex" ;
+  tcc:pdfPath "outputs/documents/TRF2-LIVE-6-DETERMINAR_ADEQUACAO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-6> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-6> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-6> .

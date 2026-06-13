@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260609t151813897098z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/decision/trf2-live-1> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-1" ;
+  tcc:numeroProcesso "5022737-72.2025.4.02.5001" ;
+  tcc:assuntos "Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" .
+
+<https://example.org/tcc/theme/27> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "27" ;
+  tcc:teseFirmada "Aplica-se a tabela progressiva prevista no art. 142 da Lei n. 8.213/91, no caso de aposentadoria por idade urbana, considerando-se como marco temporal para apuração da carência o ano em que o segurado completa a idade mínima, ainda que contadas contribuições posteriores ao ano do cumprimento do requisito etário. Vide Súmula 44 da TNU." .
+
+<https://example.org/tcc/activity/classification-trf2-live-1> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/theme/27> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260609t151813897098z> .
+
+<https://example.org/tcc/analysis/trf2-live-1> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "27" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 27 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/27> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-1> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-1> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-1>, <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/theme/27> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-1-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-trf2-live-1> .
+
+<https://example.org/tcc/draft/trf2-live-1-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260609T151813897098Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260609T151813897098Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-1> .

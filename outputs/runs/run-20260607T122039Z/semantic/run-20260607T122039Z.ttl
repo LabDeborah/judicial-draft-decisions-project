@@ -1,0 +1,897 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260607t122039z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-07T12:24:11.200102Z"^^xsd:dateTime ;
+  tcc:collectionMode "live" ;
+  tcc:analysisMode "local" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/catalog/run-20260607t122039z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "100"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260607t122039z> .
+
+<https://example.org/tcc/theme/1> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "1" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." ;
+  tcc:teseFirmada "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/2> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "2" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se certidão de casamento extemporânea serve como início de prova material para fins de concessão de aposentadoria por idade rural." ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/3> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "3" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a prova material extemporânea, devidamente corroborada por prova oral idônea, é hábil à concessão do benefício de aposentadoria por idade rural." ;
+  tcc:teseFirmada "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/4> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "4" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário prévio pedido de prorrogação de benefício de auxílio-doença nas hipóteses conhecidas por \"alta programada\"." ;
+  tcc:teseFirmada "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/5> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "5" ;
+  tcc:situacaoTema "Revisado pelo Tema 145" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se para obtenção da aposentadoria por idade de segurado especial é necessário demonstrar atividade rural no período imediatamente anterior ao atingimento da idade mínima ou à apresentação do requerimento administrativo." ;
+  tcc:teseFirmada "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/6> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "6" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o FUSEX é tributo e qual a modalidade de lançamento para fins de contagem do prazo prescricional. VIDE TEMA 356/STJ" ;
+  tcc:teseFirmada "A contribuição ao FUSEX é tributo cujo lançamento se efetua de ofício, sujeita ao prazo prescricional quinquenal, descrito no art. 168, I, do CTN." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/7> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "7" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o filho maior de 21 anos que esteja cursando ensino superior tem direito à prorrogação de pensão por morte até os 24 anos." ;
+  tcc:teseFirmada "É indevida a prorrogação da pensão por morte ao filho maior de 21 anos, ainda que esteja cursando o ensino superior." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/8> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "8" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o termo inicial dos juros de mora em caso de danos morais por responsabilidade civil extracontratual." ;
+  tcc:teseFirmada "Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/9> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "9" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007 reajustaram o valor das diárias dos servidores da FUNASA." ;
+  tcc:teseFirmada "Os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007, não reajustaram o valor das diárias dos servidores da FUNASA, apenas ampliaram o rol dos destinos a serem percorridos. Vide Tema 92 - questão similar." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/10> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "10" ;
+  tcc:situacaoTema "Julgado - TEMA 350/STF" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há necessidade de renovação do requerimento administrativo para concessão de benefício assistencial." ;
+  tcc:teseFirmada "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/11> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "11" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário início de prova material no período de carência em salário-maternidade de segurada especial." ;
+  tcc:teseFirmada "A exigência de início de prova material contemporânea para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 17." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/12> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "12" ;
+  tcc:situacaoTema "Revisado - Tema 216/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se pagamento de remuneração indireta a aluno aprendiz autoriza respectiva contagem de tempo de serviço para fins previdenciários." ;
+  tcc:teseFirmada "Para fins previdenciários, o cômputo do tempo de serviço prestado como aluno-aprendiz exige a comprovação de que, durante o período de aprendizado, houve simultaneamente: (i) retribuição consubstanciada em prestação pecuniária ou em auxílios materiais; (ii) à conta do Orçamento; (iii) a título de contraprestação por labor; (iv) na execução de bens e serviços destinados a terceiros. (Tese firmada no Tema 216/TNU). Vide Súmula 18 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/13> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "13" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o pedido de revisão de benefício de aposentadoria por tempo de contribuição para fins de reconhecimento de tempo especial por categoria profissional depende de prévio requerimento administrativo quando o INSS, apesar de ciente dos elementos necessários, não se pronunciou sobre a especialidade de período anterior à Lei n. 9.032/95." ;
+  tcc:teseFirmada "É dispensável prévio requerimento administrativo de revisão de aposentadoria por tempo de contribuição quando houver omissão da autarquia na análise do tempo especial anterior à Lei n. 9.032/95." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/14> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "14" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se laudo pericial extemporâneo afasta força probatória das condições especiais de trabalho." ;
+  tcc:teseFirmada "Na aposentadoria especial a apresentação de laudo pericial extemporâneo não afasta sua força probante, desde que não modificadas as condições do ambiente. Vide Súmula 68 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/15> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "15" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se pode haver rateio de pensão entre esposa e concubina, no regime de concubinato impuro." ;
+  tcc:teseFirmada "A pensão por morte não deve ser rateada entre a viúva e a concubina, pois a relação extraconjugal paralela ao casamento não configura união estável. Tese no mesmo sentido da firmada no Tema 526/STF." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/16> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "16" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o termo inicial da progressão funcional de policial federal." ;
+  tcc:teseFirmada "A eficácia da progressão funcional deve ser observada segundo a situação individual de cada servidor e seus efeitos retroagem ao momento em que os requisitos legais foram implementados. Vide Tema 82 e PEDILEF n. 500367784.2014.404.7101. Entendimento revisado pelo PEDILEF n. 05207128420124058300 (orientação alinhada ao STJ: RESP 1.649.269/RJ)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/17> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "17" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário início de prova material no período de carência em salário-maternidade de segurada especial." ;
+  tcc:teseFirmada "A exigência de início de prova material para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 11." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/18> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "18" ;
+  tcc:situacaoTema "Julgado (Súmulas 5 e 14 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se documentos em nome de terceiros integrantes do grupo familiar, relativos à propriedade da terra trabalhada, servem como início de prova material da atividade rural." ;
+  tcc:teseFirmada "A certidão do INCRA ou outro documento que comprove propriedade de imóvel em nome de integrantes do grupo familiar do segurado é razoável início de prova material da condição de segurado especial para fins de aposentadoria rural por idade, inclusive dos períodos trabalhados a partir dos 12 anos de idade, antes da publicação da Lei n. 8.213/91. Desnecessidade de comprovação de todo o período de carência." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/19> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "19" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a mera ausência de vínculo na CTPS é prova suficiente do desemprego involuntário e, em caso negativo, se são possíveis outros meios de prova diversos do registro em órgão do Ministério do Trabalho." ;
+  tcc:teseFirmada "É possível comprovar a condição de desemprego involuntário por outros meios de prova diversos do registro no Ministério do Trabalho, não sendo a ausência de vínculo na CTPS suficiente para tanto. Vide Súmula 27 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/20> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "20" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há renúncia tácita da prescrição com o reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço." ;
+  tcc:teseFirmada "O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a quo é a última edição da MP que se deu sob o n. 2.169-43, em 24/08/2001. Vide Tema 76 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/21> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "21" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se para obtenção da aposentadoria por idade de segurado especial é necessário demonstrar atividade rural no período imediatamente anterior ao atingimento da idade mínima ou à apresentação do requerimento administrativo." ;
+  tcc:teseFirmada "Para a obtenção de aposentadoria por idade do segurado especial, é indispensável o exercício e a demonstração da atividade rural correspondente à carência no período imediatamente anterior ao implemento da idade mínima ou à data do requerimento administrativo. Vide Tema 145 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/22> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "22" ;
+  tcc:situacaoTema "Revisado pelo Tema 158" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o termo final do reconhecimento da especialidade da atividade de magistério." ;
+  tcc:teseFirmada "Não é possível a conversão de período laborado na atividade de professor em tempo comum após a Emenda Constitucional 18/81 (TESE FIRMADA NO TEMA 158)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/23> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "23" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o trabalho urbano do marido ou se percepção posterior de pensão alimentícia descaracteriza condição de segurada especial em regime de economia familiar." ;
+  tcc:teseFirmada "A condição de segurada especial em regime de economia familiar não é descaracterizada pelo trabalho urbano do marido da autora ou mesmo pela paga, posterior, de pensão alimentícia, em razão de separação." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/24> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "24" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o ajuizamento da ação nos Juizados Especiais Federais implica em automática renúncia para fins de fixação de competência." ;
+  tcc:teseFirmada "Nos Juizados Especiais Federais inexiste renúncia tácita para fins de fixação de competência. Vide Súmula 17 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/25> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "25" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual a tábua de mortalidade elaborada pelo IBGE a ser utilizada no cálculo do fator previdenciário." ;
+  tcc:teseFirmada "Para o cálculo do fator previdenciário deve ser observada a tábua de mortalidade elaborada pelo IBGE vigente na data do requerimento do benefício previdenciário, e não aquela utilizada anteriormente, quando preenchidos os requisitos necessários à concessão da aposentadoria." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/26> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "26" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível regularizar contribuições previdenciárias em atraso, após a morte de segurado contribuinte individual exercente de atividade informal." ;
+  tcc:teseFirmada "Descabida a pretensão de regularização \"post mortem\" do recolhimento das contribuições previdenciárias devidas pelo segurado contribuinte individual exercente de atividade informal, salvo quando devam ser arrecadadas por empresa tomadora de serviços. Vide Súmula 52 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/27> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "27" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível aplicar tabela progressiva prevista no art. 142 da Lei n. 8.213/91, aos casos de aposentadoria por idade urbana." ;
+  tcc:teseFirmada "Aplica-se a tabela progressiva prevista no art. 142 da Lei n. 8.213/91, no caso de aposentadoria por idade urbana, considerando-se como marco temporal para apuração da carência o ano em que o segurado completa a idade mínima, ainda que contadas contribuições posteriores ao ano do cumprimento do requisito etário. Vide Súmula 44 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/28> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "28" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível aplicar orientação firmada pelo STF, no RE 597389/ SP, aos casos onde já há coisa julgada." ;
+  tcc:teseFirmada "Não se aplica orientação firmada no RE 597389/ SP, no cálculo dos benefícios concedidos antes da Lei n. 9.032/95, cujas sentenças transitaram em julgado quando do pronunciamento do STF. Vide Tema 90." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/29> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "29" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o atraso no recolhimento das contribuições previdenciárias a cargo do empregador prejudica a contagem do período de carência e a manutenção da qualidade de segurada empregada doméstica." ;
+  tcc:teseFirmada "O recolhimento tardio de contribuições a cargo do empregador não implica prejuízo de ordem previdenciária à segurada empregada doméstica." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/30> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "30" ;
+  tcc:situacaoTema "Revisado - Tema 123/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber os valores percebidos a título de antecipação dos efeitos da tutela devem ser devolvidos em caso de julgamento de mérito desfavorável." ;
+  tcc:teseFirmada "\"Os valores recebidos de boa-fé por força de antecipação de tutela, em se tratando de decisão de primeiro grau reformada em segundo grau, devem ser devolvidos, nos termos do entendimento firmado pelo Superior Tribunal de Justiça (Tema/Repetitivo 692 e PET 10.996/SC)\". (Tese - Tema 692/STJ: A reforma da decisão que antecipa os efeitos da tutela final obriga o autor da ação a devolver os valores dos benefícios previdenciários ou assistenciais recebidos, o que pode ser feito por meio de desconto em valor que não exceda 30% (trinta por cento) da importância de eventual benefício que ainda lhe estiver sendo pago.)" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/31> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "31" ;
+  tcc:situacaoTema "Revisado - Tema 896/STJ" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o momento em que deve ser aferida a renda do segurado desempregado recolhido à prisão, para fins de percepção do benefício de auxílio-reclusão." ;
+  tcc:teseFirmada "Vide Tema 896/STJ." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/32> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "32" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se certidão de óbito pode servir como início de prova material de benefício de pensão por morte de segurado especial." ;
+  tcc:teseFirmada "Certidão de óbito configura início de prova material para caracterização da atividade rural, para fins de pensão por morte." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/33> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "33" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se se presumem habitualidade e permanência da exposição ao agente nocivo ruído, em caso de segurado contribuinte individual sócio-gerente." ;
+  tcc:teseFirmada "A habitualidade e permanência da exposição ao agente nocivo ruído, devidamente comprovadas por laudo pericial, presumem-se no caso de segurado contribuinte individual empresário." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/34> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "34" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há necessidade de exame das condições pessoais do requerente, para concessão de benefício assistencial, quando houver incapacidade parcial e temporária." ;
+  tcc:teseFirmada "Para a concessão do benefício previsto no art. 203, V, da Constituição Federal, nos casos de incapacidade parcial e temporária, deve-se examinar as condições pessoais do requerente." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/35> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "35" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se em caso de contagem recíproca de tempo de contribuição, nos casos de regimes próprios de previdência dos servidores públicos, deve haver indenização de contribuições previdenciárias em caso de averbação de tempo rural." ;
+  tcc:teseFirmada "A averbação de tempo de trabalho rural nos regimes próprios de previdência dos servidores públicos exige a indenização das respectivas contribuições previdenciárias, para efeitos de contagem recíproca de tempo de contribuição." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/36> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "36" ;
+  tcc:situacaoTema "Julgado (Súmula 77 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário exame das condições pessoais do segurado considerado capaz para o trabalho, nos pedidos de concessão de auxílio-doença." ;
+  tcc:teseFirmada "Na concessão do auxílio-doença é dispensável o exame das condições pessoais do segurado quando não constatada a incapacidade laboral. Vide Súmula 77 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/37> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "37" ;
+  tcc:situacaoTema "Julgado (Súmula 46 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o exercício de atividade urbana intercalada desnatura qualidade de segurado em caso de pedido de concessão de aposentadoria rural por idade." ;
+  tcc:teseFirmada "Não afasta o direito à aposentadoria por idade rural o exercício de atividade urbana intercalada ou breves períodos descontínuos de atividade rural. Vide Súmula 46 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/38> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "38" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se incapacidade laboral, anterior ao retorno do segurado ao RGPS, inviabiliza concessão de benefícios por incapacidade." ;
+  tcc:teseFirmada "A incapacidade laboral preeexistente veda a concessão de auxílio-doença e aposentadoria por invalidez, mesmo nos casos de reingresso no RGPS. Vide Súmula 53 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/39> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "39" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o trabalhador que preencheu requisito de carência do benefício de aposentadoria por idade, e que na data do óbito, não mais detinha qualidade de segurado e tampouco havia implementado idade mínima, pode ser instituidor de benefício de pensão por morte." ;
+  tcc:teseFirmada "Para a concessão de pensão por morte de rurícola é necessário que o instituidor tenha, na data do óbito, a qualidade de segurado ou tenha implementado, antes de falecer, todos os requisitos para a concessão de aposentadoria por idade rural, tanto a carência quanto a idade mínima." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/40> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "40" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se incapacidade laboral, anterior ao retorno do segurado ao RGPS, inviabiliza concessão de benefícios por incapacidade." ;
+  tcc:teseFirmada "A incapacidade laboral preeexistente veda a concessão de auxílio-doença e aposentadoria por invalidez, mesmo nos casos de reingresso no RGPS. Vide Súmula 53 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/41> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "41" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o fator 1,4 (um vírgula quatro) pode ser aplicado aos homens no período anterior ao advento da Lei n. 8.213/91." ;
+  tcc:teseFirmada "Na aposentadoria por tempo de contribuição, o fator de conversão 1,4 (um vírgula quatro), para os homens, é aplicável em qualquer período." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/42> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "42" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o prazo prescricional aplicável às ações nas quais se busca pagamento de juros progressivos e respectiva forma de contagem." ;
+  tcc:teseFirmada "A ação para cobrança de juros progressivos sujeita-se à prescrição trintenal cujo início se dá a cada mês no dia em que era obrigação da CEF creditá-los em conta vinculada. Vide Súmula 56 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/43> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "43" ;
+  tcc:situacaoTema "Revisado - Tema 140/TNU" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se os membros da Advocacia-Geral da União têm direito à ajuda de custo nos casos de remoção a pedido." ;
+  tcc:teseFirmada "Os membros da Advocacia-Geral da União - Advogados da União, Procuradores da Fazenda Nacional e Procuradores Federais - por não terem a garantia da inamovibilidade, não têm direito ao pagamento de ajuda de custo nos casos de remoção a pedido. - Tese firmada no Tema 140/TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/44> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "44" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual a natureza jurídica da Gratificação de Estímulo à Docência no Magistério Superior (GED) após a MP n. 208/2004 - se parcela remuneratória geral ou \"pro labore faciendo\" - para fins de equiparação da pontuação dos servidores ativos aos inativos." ;
+  tcc:teseFirmada "\"A Lei 11.087/05, resultante da conversão da Medida Provisória 208/2004, não modificou a natureza pro labore faciendo da GED, porquanto trouxe apenas alteração nos pontos a serem atribuídos a ativos e inativos, preservando-se a diferenciação estabelecida na Lei 9.784/1998, inclusive quanto aos servidores docentes cedidos.\" (PET 9600/STJ) Obs: O referido entendimento foi aplicado também à PET 9645/STJ, oriunda deste representativo." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/45> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "45" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o ex-cônjuge que não percebe alimentos tem direito à pensão por morte." ;
+  tcc:teseFirmada "É devida pensão por morte ao ex-cônjuge que não percebe alimentos, desde que comprovada dependência econômica superveniente à separação, demonstrada em momento anterior ao óbito." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/46> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "46" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é taxativo o rol de hipóteses de levantamento de valores de FGTS." ;
+  tcc:teseFirmada "O rol de hipóteses de levantamento dos valores de FGTS é meramente exemplificativo, comportando, inclusive, saque para quitação de imóvel não financiado pelo SFH. Vide temas 42, 49 e 55." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/47> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "47" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber se pode haver sucessão processual dos herdeiros em caso de pedido de concessão de benefício por incapacidade." ;
+  tcc:teseFirmada "Os herdeiros detêm legitimidade, por sucessão processual, para prosseguir no feito do autor falecido, nos casos de concessão de benefício por incapacidade." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/48> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "48" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há responsabilidade civil da universidade pública em decorrência da guarda de veículos." ;
+  tcc:teseFirmada "A responsabilidade civil da universidade pública pela guarda de veículos na área de estacionamento é subjetiva e depende da existência de aparato de vigilância para segurança do estacionamento." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/49> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "49" ;
+  tcc:situacaoTema "Julgado (RESP 1349059/ SP)" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o trabalhador avulso tem direito à aplicação da taxa de juros progressivos nas contas do FGTS." ;
+  tcc:teseFirmada "Não se aplica a taxa progressiva de juros às contas vinculadas ao FGTS de trabalhadores qualificados como avulsos." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/50> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "50" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se se aplica imunidade tributária sobre proventos de aposentadoria e pensão aos servidores militares aposentados e seus pensionistas." ;
+  tcc:teseFirmada "A contribuição previdenciária dos militares inativos e pensionistas deve incidir sobre o total das parcelas que compõem os proventos da inatividade, não havendo direito à imunidade conferida aos segurados do RGPS e servidores." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/51> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "51" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual a forma de prescrição incidente sobre as diferenças alusivas à incorporação do percentual de 7/30 de 16,19% (URP de abril/maio de 1988)." ;
+  tcc:teseFirmada "Não há prescrição do fundo de direito do reajuste de 7/30 da URP de abril/maio de 1988, por se tratar de prestação de trato sucessivo." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/52> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "52" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é devido restabelecimento do adicional de inatividade, suprimido dos proventos dos militares da reserva, por força da MP n. 2.131/2000." ;
+  tcc:teseFirmada "A supressão do adicional de inatividade pela MP n. 2.131/2000 não afronta o princípio do direito adquirido, uma vez que não houve decesso remuneratório." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/53> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "53" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a manipulação de óleos e graxas pode, em tese, configurar condição especial de trabalho para fins previdenciários." ;
+  tcc:teseFirmada "A manipulação de óleos e graxas, desde que devidamente comprovado, configura atividade especial. VIDE TEMA 298/TNU" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/54> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "54" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a exigência etária de no mínimo 16 anos prevista no art. 11, VII, alínea “c”, da Lei n. 8.213/91 se aplica ao cônjuge ou companheiro, ou apenas ao filho de produtor rural ou pescador artesanal." ;
+  tcc:teseFirmada "A exigência etária de no mínimo 16 anos, para caracterização da qualidade de segurado especial, só se aplica ao filho do produtor rural ou pescador artesanal, não se estendendo a seu cônjuge ou companheiro que exerçam atividade rural em regime de economia familiar." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/55> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "55" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível cumulação de juros moratórios com juros remuneratórios progressivos e expurgos inflacionários incidentes sobre saldo de conta vinculado ao FGTS, bem como qual a taxa de juros de mora aplicável." ;
+  tcc:teseFirmada "São devidos, além dos juros progressivos sobre os saldos fundiários, juros moratórios, previstos no art. 406 do Código Civil e art. 161, §1º do Código Tributário Nacional, pela taxa SELIC, contados a partir da citação até a data do pagamento. Vide Tema 176 do STJ - Recursos Repetitivos." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/56> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "56" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o tempo de serviço laborado por engenheiro mecânico em período anterior à Lei n. 9.032/95 pode ser considerado especial por enquadramento profissional." ;
+  tcc:teseFirmada "O tempo de serviço laborado pelo segurado na condição de engenheiro mecânico até a edição da Lei n. 9.032/95 deve ser enquadrado como especial, conforme descrito no código 2.1.1 do Anexo II do Decreto n. 83.080/79." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/57> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "57" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há incidência da prescrição do fundo de direito para os casos em que transcorrido o prazo de 5 anos no período compreendido entre o cancelamento administrativo do auxílio-doença e o ajuizamento da ação." ;
+  tcc:teseFirmada "Não ocorre prescrição do fundo de direito quando, entre o cancelamento administrativo do auxílio-doença e o ajuizamento da ação, decorrem mais de 5 anos." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/58> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "58" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber o limite de tolerância ao agente ruído no período de 06 de março de 1997 a 18 de novembro de 2003, na vigência do Decreto n. 2.172/97, bem como se é suficiente o PPP - Perfil Profissiográfico Previdenciário para a demonstração da condição de segurado especial ou se é exigido laudo técnico para tanto." ;
+  tcc:teseFirmada "Entendimento superado, em razão do advento da PET 9059, e do cancelamento da Súmula n. 32, da TNU. Vide PEDILEF 2003.51.51.012024-5. Vide Tema 694/STJ, Tema 174/TNU e PET 10262/STJ." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/59> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "59" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o segurado especial é obrigado a recolher contribuições previdenciárias para fins de percepção de seguro-desemprego." ;
+  tcc:teseFirmada "É indispensável o comprovante de pagamento da contribuição previdenciária, no caso de pescador artesanal, para concessão do seguro-desemprego nos períodos de defeso, nos termos da Lei n. 10.779/03." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/60> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "60" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é devido pagamento de ajuda de custo ao membro do Ministério Público." ;
+  tcc:teseFirmada "É devido ajuda de custo no caso de remoção a pedido em decorrência da garantia da prerrogativa da inamovibilidade e da simetria constitucional entre as carreiras do Ministério Público e da Magistratura. Vide temas 43, 129, 136, 140, 141, 143 e 154." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/61> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "61" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se incide imposto de renda sobre auxílio-creche ou auxílio pré-escolar." ;
+  tcc:teseFirmada "Não incide imposto de renda sobre auxílio-creche, por tratar-se de vantagem com caráter indenizatório." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/62> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "62" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a Resolução n. 467/2005 do CODEFAT está autorizada pela Lei n. 7.998/90 a estipular prazo máximo para requerimento de seguro-desemprego." ;
+  tcc:teseFirmada "É legal a Resolução n. 467/2005 do CODEFAT que fixa do prazo máximo de 120 dias após a data da dispensa para requerer o seguro-desemprego. De acordo com a tese firmada no Tema 1136/STJ." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/63> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "63" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário recolhimento de contribuições previdenciárias para o tempo rural posterior à Lei n. 8.213/91." ;
+  tcc:teseFirmada "O tempo de serviço rural posterior à Lei n. 8.213/91, para efeitos de carência, demanda o recolhimento de contribuições previdenciárias." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/64> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "64" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se incide contribuição previdenciária sobre auxílio-alimentação para cargos em comissão." ;
+  tcc:teseFirmada "Os empregados submetidos ao Regime Geral da Previdência Social (RGPS), aí incluídos os exercentes de cargo em comissão, de livre nomeação e exoneração, em caráter exclusivo, se sujeitam à incidência de contribuição previdenciária sobre as parcelas percebidas a título de Auxílio-Alimentação dada a sua natureza salarial, com base nos termos do art. 40, § 13º, da CF/88 c.c. art. 28, I, da Lei n. 8.212/91, salvo, se tal pagamento for “in natura”, isto é, quando a própria empresa fornece a alimentação. Vide Súmula 67 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/65> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "65" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível deduzir a pensão alimentícia da base de cálculo do imposto de renda." ;
+  tcc:teseFirmada "A pensão alimentícia é dedutível da base de cálculo do Imposto de Renda, seja ela decorrente de decisão judicial ou não, mas desde que devidamente comprovada." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/66> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "66" ;
+  tcc:situacaoTema "Cancelado - Tema 355/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível o reconhecimento da atividade de seminarista como tempo de serviço para fins previdenciários da mesma forma como se dá ao aluno aprendiz." ;
+  tcc:teseFirmada "O tempo de seminarista em congregação religiosa se aproveita para fins previdenciários, desde que atendidos os mesmos pressupostos exigidos do aluno aprendiz de escola pública profissionalizante. Vide Súmula 18/TNU" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/67> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "67" ;
+  tcc:situacaoTema "Revisado - EREsp 1605554/PR" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o princípio da \"actio nata\" se aplica ao prazo decadencial de revisão da pensão por morte." ;
+  tcc:teseFirmada "Tese revisada pelo entendimento exarado no EREsp 1.605.554/PR." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/68> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "68" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível contar como tempo de atividade especial a atividade de motorista equiparada à de tratorista." ;
+  tcc:teseFirmada "É possível a equiparação da atividade de motorista à de tratorista para fins de contagem de tempo de atividade especial, por categoria profissional. VIDE SÚMULA 70/TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/69> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "69" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o fator de divisão para o cálculo da hora extra para o servidor público." ;
+  tcc:teseFirmada "O fator de divisão para o cálculo do serviço extraordinário é de 200 horas mensais, em razão da jornada máxima do servidor público de 40 (quarenta) horas semanais prevista no art. 19 da Lei n. 8.112/90." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/70> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "70" ;
+  tcc:situacaoTema "Julgado (Súmula 78 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é necessário analisar condições socioculturais do portador de HIV assintomático, para fins de condição de benefício assistencial." ;
+  tcc:teseFirmada "Na concessão do benefício de prestação continuada ao portador do vírus HIV assintomático, devem ser observadas, além da incapacidade de prover a própria subsistência, as condições socioculturais estigmatizantes da doença. Vide Súmula 78 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/71> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "71" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há incidência de imposto de renda sobre os benefícios e resgates da aposentadoria complementar sob a égide da Lei n. 7.713/88." ;
+  tcc:teseFirmada "Os benefícios e resgates decorrentes das contribuições recolhidas sob o regime da Lei n. 7.713/88 (janeiro de 1989 a dezembro de 1995), com a incidência do imposto de renda no momento do recolhimento, não serão novamente tributados, sob pena de violação à regra proibitiva do \"bis in idem\". Vide recurso repetitivo do STJ: REsp 1001779/ DF." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/72> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "72" ;
+  tcc:situacaoTema "Revisado - Tema 135/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o prazo decadencial aplicável aos benefícios concedidos entre 23/10/1998 (data da publicação da MP n. 1.663-15/1998) até 19/11/2003 (um dia antes da publicação da MP n. 138/2003)." ;
+  tcc:teseFirmada "É devida a incidência da decadência decenal, prevista na MP n. 1.523/1997, aos benefícios concedidos anteriormente à sua vigência. Tese firmada no Tema 135/TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/73> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "73" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual a composição do grupo familiar para concessão do benefício assistencial, no período anterior à Lei n. 12.453/2011." ;
+  tcc:teseFirmada "O grupo familiar deve ser definido a partir da interpretação restrita do disposto no art. 16 da Lei n. 8.213/91 e no art. 20 da Lei n. 8.742/93, esta última na sua redação original." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/74> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "74" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há incidência de contribuição previdenciária sobre a remuneração paga pela empresa nos primeiros quinze dias de afastamento em razão de doença incapacitante." ;
+  tcc:teseFirmada "A contribuição previdenciária patronal prevista no art. 22, I, da Lei n. 8.212/91 não incide sobre a verba paga pela empresa ao segurado empregado durante os primeiros quinze dias de afastamento por motivo de doença." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/75> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "75" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a Lei n. 11.358/06 reajustou a base de cálculo das pensões por morte concedidas anteriormente à sua vigência, decorrentes do falecimento de servidores integrantes das Carreiras previstas na Lei n. 10.884/04." ;
+  tcc:teseFirmada "Não se aplica a Lei n. 11.358/06 às aposentadorias e pensões concedidas sob a égide da Lei n. 10.884/04." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/76> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "76" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há renúncia tácita da prescrição com o reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço." ;
+  tcc:teseFirmada "O reconhecimento, pela Administração Pública, do direito à correção monetária, volta a fluir na integralidade dos cinco anos. Vide Tema 20 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/77> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "77" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a Lei n. 10.405/2002 revogou o benefício de fornecimento de alimentação, alojamento e moradia e, caso negativo, se é possível a sua conversão em pecúnia." ;
+  tcc:teseFirmada "O direito à prestação \"in natura\" de alimentação, moradia e alojamento aos médicos residentes não foi revogado pela Lei n. 10.405/2002, sendo cabível em caso de descumprimento a indenização substitutiva em pecúnia a ser fixada por arbitramento." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/78> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "78" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se subsiste fundamento hábil a justificar a cobrança de anuidades pelos conselhos de classe após o advento da Lei n. 8.906/94." ;
+  tcc:teseFirmada "A Lei n. 6.994/82 foi expressamente revogada pela Lei n. 8.906/94, de modo que não persiste fundamento para cobrança de anuidade por conselhos de classe com fulcro em tal diploma." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/79> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "79" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se incide Imposto de Renda sobre o adicional de transferência." ;
+  tcc:teseFirmada "Incide Imposto de Renda sobre o adicional de transferência, previsto no art. 469, § 3º, da CLT, em face de sua natureza remuneratória." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/80> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "80" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber a natureza da contribuição ao FUSEX, bem como incidência sobre os valores pagos por anistia." ;
+  tcc:teseFirmada "A contribuição devida ao FUSEX possui natureza tributária, incidindo o art. 9º da Lei n. 10.559/2002, razão pela qual não incide sobre os valores pagos por anistia." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/81> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "81" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o prazo do art. 74, II, da Lei n. 8.213/91, referente ao benefício de pensão por morte, aplica-se aos menores impúberes." ;
+  tcc:teseFirmada "Contra os menores impúberes não corre o prazo do art. 74, II, da Lei n. 8.213/91 (art. 198, I, CC/02), devendo o benefício de pensão por morte ser deferido a partir do óbito do instituidor, observada sua quota parte e também a disposição do artigo 77, §1º da Lei n. 8.213/91." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/82> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "82" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a impugnação referente a ato de progressão/promoção de servidor público se sujeita ao prazo decadencial do art. 1° do Decreto n. 20.910/32." ;
+  tcc:teseFirmada "A progressão/promoção de servidor público constitui ato único de efeito concreto, sendo o prazo decadencial para sua impugnação de 05 (cinco) anos (Decreto n. 20.910/32, art. 1º), contados a partir de sua publicação." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/83> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "83" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o reconhecimento da dívida, em sede administrativa, antes de consumada a prescrição, interrompe o respectivo curso." ;
+  tcc:teseFirmada "O reconhecimento da dívida em sede administrativa antes de consumada a prescrição interrompe o seu curso, ficando o prazo suspenso até que ocorra o pagamento ou até que o devedor pratique ato que configure resistência em quitar a dívida, quando recomeçará a correr, pela metade (Decreto n. 20.910/32, art. 9º)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/84> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "84" ;
+  tcc:situacaoTema "Julgado (Representativo Prejudicado)" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é devido o pagamento de abono de permanência no período anterior à manifestação expressa do servidor de opção pela permanência em serviço, quando reunidos os requisitos necessários à aposentadoria voluntária." ;
+  tcc:teseFirmada "PEDILEF não conhecido por aplicação da Questão de Ordem n. 10 da TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/85> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "85" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível cumulação de auxílio-acidente e de aposentadoria por invalidez." ;
+  tcc:teseFirmada "A cumulação de auxílio-acidente com aposentadoria somente é possível quando a eclosão da lesão incapacitante que ensejou aquele primeiro benefício e o início daquele segundo tenham ocorrido antes da alteração do art. 86 da Lei n. 8.213/91 pela Lei n. 9.528/97." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/86> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "86" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o requerimento tardio prejudica o direito do absolutamente incapaz à percepção integral do benefício." ;
+  tcc:teseFirmada "O requerimento tardio não prejudica o direito do absolutamente incapaz à percepção integral do benefício, a partir da data do óbito, enquanto não sobrevier a habilitação de dependente de outra classe." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/87> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "87" ;
+  tcc:situacaoTema "Julgado (Revisado pelo Tema 128)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível o reconhecimento das condições especiais do labor do vigilante armado após o advento do Decreto n. 2.172/97." ;
+  tcc:teseFirmada "É possível o reconhecimento de tempo especial prestado com exposição ao agente nocivo periculosidade, na atividade de vigilante, em data posterior à vigência do Decreto n. 2.172/92, de 05/03/1997, desde que laudo técnico (ou elemento material equivalente) comprove a permanente exposição à atividade nociva, com o uso de arma de fogo. Vide Tema 128 (em revisão pelo Tema 1031/STJ)." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/88> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "88" ;
+  tcc:situacaoTema "Cancelado - PEDILEF 5007148-71.2014.4.04.7102/RS" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o rol do art. 186 da Lei n. 8.112/1990 é taxativo ou exemplificativo." ;
+  tcc:teseFirmada "Tese anterior revisada pelo Tema 524/STF, o qual firmou a seguinte tese: A concessão de aposentadoria de servidor público por invalidez com proventos integrais exige que a doença incapacitante esteja prevista em rol taxativo da legislação de regência." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/89> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "89" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber qual o prazo prescricional da pretensão de cobrança de honorários periciais contra a Fazenda Pública." ;
+  tcc:teseFirmada "O prazo prescricional da pretensão à cobrança de honorários periciais contra a Fazenda Pública é de cinco anos (Decreto n. 20.910/32, art. 1º), afastando-se a aplicação do prazo prescricional do Código Civil." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/90> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "90" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  tcc:questaoSubmetidaJulgamento "Saber se é possível aplicar orientação firmada pelo STF, no RE 597389/SP, aos casos onde já há coisa julgada." ;
+  tcc:teseFirmada "Não se aplica orientação firmada no RE 597389/SP , no cálculo dos benefícios concedidos antes da n. Lei 9.032/95, cujas sentenças transitaram em julgado quando pronunciamento do STF, ressalvado os casos previstos no art. 475, \"l\", parágrafo 1º, do CPC revogado. Vide Tema 28." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/91> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "91" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a isenção do imposto de renda beneficia os ex-combatentes em gozo de aposentadoria especial." ;
+  tcc:teseFirmada "A isenção do imposto de renda beneficia apenas os ex-combatentes cuja pensão especial seja decorrente de incapacidade ou invalidez, não atingindo a aposentadoria especial concedida nos termos no art. 53, II, do ADCT/88." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/92> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "92" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o fornecimento de hospedagem e alimentação pelo ente público, sem a ocorrência de despesas com deslocamento urbano, afasta o direito ao recebimento das diárias por servidor público." ;
+  tcc:teseFirmada "É devido o pagamento de meia diária ao servidor que, afastado de sua sede de serviço, tiver despesas extraordinárias tais como alimentação, deslocamento e hospedagem, custeadas com recursos públicos." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/93> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "93" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber a partir de quando é devido pagamento do benefício de aposentadoria por tempo de contribuição, quando a natureza especial das atividades reconhecidas somente foi constatada após a juntada de laudo pericial na via judicial." ;
+  tcc:teseFirmada "Inteligência da Súmula 33 da TNU: Quando o segurado houver preenchido os requisitos legais para concessão da aposentadoria por tempo de serviço na data do requerimento administrativo, esta data será o termo inicial da concessão do benefício." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/94> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "94" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o rito da Lei n. 10.259/2001 pode ser aplicado no âmbito dos juizados especiais estaduais para julgamento das ações previdenciárias, em razão da competência delegada (CF/88 art. 109, § 3º)." ;
+  tcc:teseFirmada "É absoluta a incompetência do Juizado Especial Cível Estadual para o processamento e julgamento das causas previdenciárias, por expressa vedação legal à aplicação da Lei n. 10.259/2001 no âmbito do juízo estadual." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/95> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "95" ;
+  tcc:situacaoTema "Julgado (RE 566.621/ RS)" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há aplicação do art. 3º da Lei Complementar n. 118/2005 às ações ajuizadas após 09/06/2005." ;
+  tcc:teseFirmada "Para as ações ajuizadas a partir de 9/6/2005, aplica-se o art. 3º da Lei Complementar n. 118/2005, contando-se o prazo prescricional dos tributos sujeitos a lançamento por homologação em cinco anos a partir do pagamento antecipado de que trata o art. 150, §1º, do CTN. Vide RE 566.621/ RS - repercussão geral." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/96> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "96" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se o aumento do vencimento básico implica consequente majoração do adicional de insalubridade." ;
+  tcc:teseFirmada "Não se aplicam, à parcela do adicional de insalubridade ou de periculosidade transformada em vantagem pessoal nominalmente identificada na forma da Lei nº 8.270/91, os índices de revisão geral de remuneração dos servidores públicos." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/97> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "97" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se a União tem legitimidade passiva nas ações de repetição de indébito de contribuição previdenciária devida por servidor público vinculado à autarquia federal." ;
+  tcc:teseFirmada "A União é parte legítima passiva para responder às ações com pedido de repetição de indébito de contribuição previdenciária de servidor público." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/98> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "98" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se incide contribuição previdenciária sobre férias de trabalhador avulso, verba de natureza indenizatória." ;
+  tcc:teseFirmada "É excepcional a natureza indenizatória das férias de trabalhador avulso, a qual deve ser comprovada pela parte autora. Caso não o faça, se presume as goze anualmente, ocasião em que incide contribuição previdenciária." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/99> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "99" ;
+  tcc:situacaoTema "Julgado (Súmula vinculante 3)" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  tcc:questaoSubmetidaJulgamento "Saber quando se inicia o prazo decadencial para o servidor publico questionar o ato de concessão de aposentadoria." ;
+  tcc:teseFirmada "O prazo decadencial de cinco anos previsto no art. 54 da Lei n. 9.784/99 para alterar ato de aposentadoria de servidor público se inicia a partir do registro do ato no Tribunal de Contas, não do ato de concessão expedido pelo órgão a que estava vinculado." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/theme/100> a tcc:TnuTheme, prov:Entity ;
+  tcc:temaNumero "100" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  tcc:questaoSubmetidaJulgamento "Saber se há necessidade de demonstração de habitualidade e permanência para enquadrar atividades de limpeza e de serviços gerais em ambiente hospitalar." ;
+  tcc:teseFirmada "O código 1.3.2 do quadro anexo ao Decreto n. 53.831/64, além dos profissionais da área da saúde, contempla os trabalhadores que exercem atividades de serviços gerais em limpeza e higienização de ambientes hospitalares (Súmula 82 da TNU). Vide Tema 238/TNU." ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260607t122039z-themes> .
+
+<https://example.org/tcc/decision/trf2-live-1> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-1" ;
+  tcc:numeroProcesso "5005545-26.2025.4.02.5002" ;
+  tcc:classe "RECURSO CÍVEL" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "Rural (art. 42/44), Aposentadoria por Invalidez (Art. 42/7), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  tcc:competencia "1ª Turma Recursal do Espírito Santo" ;
+  tcc:relatorOriginario "PABLO COELHO CHARLES GOMES" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260607t122039z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-1> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/catalog/run-20260607t122039z-themes>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-live-1> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-1> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-1> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-1>, <https://example.org/tcc/decision/trf2-live-1>, <https://example.org/tcc/theme/1> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-1-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-1-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260607T122039Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260607T122039Z/documents/TRF2-LIVE-1-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-1> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-1> .
+
+<https://example.org/tcc/decision/trf2-live-2> a tcc:LegalDecision, prov:Entity ;
+  tcc:decisionId "TRF2-LIVE-2" ;
+  tcc:numeroProcesso "5006229-17.2026.4.02.5001" ;
+  tcc:classe "MANDADO DE SEGURANÇA TR CÍVEL" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:assuntos "NAO_INFORMADO" ;
+  tcc:competencia "1ª Turma Recursal do Espírito Santo" ;
+  tcc:relatorOriginario "LEONARDO MARQUES LESSA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260607t122039z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-2> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <https://example.org/tcc/decision/trf2-live-2>, <https://example.org/tcc/catalog/run-20260607t122039z-themes>, <https://example.org/tcc/theme/9> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-2> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/trf2-live-2> a tcc:AnalysisResult, prov:Entity ;
+  tcc:temaTnu "9" ;
+  tcc:consonancia "DISSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 9 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <https://example.org/tcc/decision/trf2-live-2> ;
+  tcc:aboutTheme <https://example.org/tcc/theme/9> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-2> .
+
+<https://example.org/tcc/activity/draft-generation-trf2-live-2> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/trf2-live-2>, <https://example.org/tcc/decision/trf2-live-2>, <https://example.org/tcc/theme/9> ;
+  prov:generated <https://example.org/tcc/draft/trf2-live-2-determinar-adequacao> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/trf2-live-2-determinar-adequacao> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "DETERMINAR_ADEQUACAO" ;
+  tcc:texPath "outputs/runs/run-20260607T122039Z/documents/TRF2-LIVE-2-DETERMINAR_ADEQUACAO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260607T122039Z/documents/TRF2-LIVE-2-DETERMINAR_ADEQUACAO.pdf" ;
+  tcc:generatedFromDecision <https://example.org/tcc/decision/trf2-live-2> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/trf2-live-2> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-trf2-live-2> .
