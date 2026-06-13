@@ -850,22 +850,22 @@ def _seed_trf2_detail_cache_from_runs(cache: dict[str, dict[str, str]]) -> None:
         return
     for csv_path in run_root.glob("run-*/data/trf2_decisoes.csv"):
         try:
-            with csv_path.open("r", encoding="utf-8-sig", newline="") as handle:
-                for row in csv.DictReader(handle):
-                    process_url = (row.get("inteiroTeorPath") or "").strip()
-                    if not process_url or process_url in cache:
-                        continue
-                    detail = {
-                        "classe": (row.get("classe") or "").strip(),
-                        "assuntos": (row.get("assuntos") or "").strip(),
-                        "colegiado": (row.get("competencia") or "").strip(),
-                        "relator": (row.get("relatorOriginario") or "").strip(),
-                        "dataAutuacao": (row.get("dataAutuacao") or "").strip(),
-                    }
-                    if _trf2_detail_is_cacheworthy(detail):
-                        cache[process_url] = detail
+            rows = _read_csv_rows(str(csv_path))
         except OSError:
             continue
+        for row in rows:
+            process_url = (row.get("inteiroTeorPath") or "").strip()
+            if not process_url or process_url in cache:
+                continue
+            detail = {
+                "classe": (row.get("classe") or "").strip(),
+                "assuntos": (row.get("assuntos") or "").strip(),
+                "colegiado": (row.get("competencia") or "").strip(),
+                "relator": (row.get("relatorOriginario") or "").strip(),
+                "dataAutuacao": (row.get("dataAutuacao") or "").strip(),
+            }
+            if _trf2_detail_is_cacheworthy(detail):
+                cache[process_url] = detail
 
 
 def _is_bad_trf2_subject_text(text: str) -> bool:
