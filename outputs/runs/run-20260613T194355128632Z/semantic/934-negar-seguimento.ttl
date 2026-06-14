@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/934> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "934" ;
+  ors:subject "Híbrida (Art. 48/106), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO, Nulidade - Intimação Sem Observância das Prescrições Legais, Nulidade, Atos Processuais, DIREITO PROCESSUAL CIVIL E DO TRABALHO, Cerceamento de Defesa, Nulidade, Atos Processuais, DIREITO PROCESSUAL CIVIL E DO TRABALHO, Prazo, Atos Processuais, DIREITO PROCESSUAL CIVIL E DO TRABALHO" ;
+  dcterms:identifier "5033308-39.2024.4.02.5001" .
+
+<http://purl.org/nemo/tnu/131> a ors:Theme, prov:Entity ;
+  ors:theme "131" ;
+  ors:themeThesis "Para a concessão da aposentadoria por idade híbrida ou mista, na forma do art. 48, § 3º, da Lei n. 8.213/91, cujo requisito etário é o mesmo exigido para a aposentadoria por idade urbana, é irrelevante a natureza rural ou urbana da atividade exercida pelo segurado no período imediatamente anterior à implementação do requisito etário ou ao requerimento do benefício. Ainda, não há vedação para que o tempo rural anterior à Lei 8.213/91 seja considerado para efeito de carência, mesmo que não verificado o recolhimento das respectivas contribuições." ;
+  dcterms:description "Saber se é necessária a comprovação de exercício de atividade rural no período imediatamente anterior à implementação do requisito etário, para fins de concessão de aposentadoria híbrida." .
+
+<https://example.org/tcc/activity/classification-934> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/934>, <http://purl.org/nemo/tnu/131> ;
+  prov:generated <https://example.org/tcc/analysis/934> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/934> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "131" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 131 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/934> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/131> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-934> .
+
+<https://example.org/tcc/activity/draft-generation-934> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/934>, <http://purl.org/nemo/tres/934>, <http://purl.org/nemo/tnu/131> ;
+  prov:generated <https://example.org/tcc/draft/934-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-934> .
+
+<https://example.org/tcc/draft/934-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/934-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/934-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/934> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/934> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-934> .

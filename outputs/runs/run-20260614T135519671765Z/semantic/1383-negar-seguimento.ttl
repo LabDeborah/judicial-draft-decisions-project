@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1383> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1383" ;
+  ors:subject "Descontos Indevidos, Pedidos Genéricos Relativos aos Benefícios em Espécie, DIREITO PREVIDENCIÁRIO, Contribuição Sindical, Organização Sindical, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Competência, Jurisdição e Competência, DIREITO PROCESSUAL CIVIL E DO TRABALHO" ;
+  dcterms:identifier "5069570-76.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/220> a ors:Theme, prov:Entity ;
+  ors:theme "220" ;
+  ors:themeThesis "1. O rol do inciso II do art. 26 da lei 8.213/91 é exaustivo. 2. A lista de doenças mencionada no inciso II, atualmente regulamentada pelo art. 151 da Lei nº 8.213/91, não é taxativa, admitindo interpretação extensiva, desde que demonstrada a especificidade e gravidade que mereçam tratamento particularizado. 3. A gravidez de alto risco, com recomendação médica de afastamento do trabalho por mais de 15 dias consecutivos, autoriza a dispensa de carência para acesso aos benefícios por incapacidade." ;
+  dcterms:description "Saber se o rol do inciso II do art. 26 c/c art. 151 da Lei nº 8.213/91 é taxativo ou se pode contemplar outras hipóteses de isenção de carência, como a gravidez de alto risco." .
+
+<https://example.org/tcc/activity/classification-1383> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1383>, <http://purl.org/nemo/tnu/220> ;
+  prov:generated <https://example.org/tcc/analysis/1383> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1383> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "220" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 220 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1383> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/220> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1383> .
+
+<https://example.org/tcc/activity/draft-generation-1383> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1383>, <http://purl.org/nemo/tres/1383>, <http://purl.org/nemo/tnu/220> ;
+  prov:generated <https://example.org/tcc/draft/1383-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1383> .
+
+<https://example.org/tcc/draft/1383-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1383-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1383> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1383> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1383> .

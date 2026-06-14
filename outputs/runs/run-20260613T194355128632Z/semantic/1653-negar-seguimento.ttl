@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1653> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1653" ;
+  ors:subject "Cláusulas Abusivas, DIREITO DO CONSUMIDOR, Financiamento de Produto, Contratos de Consumo, DIREITO DO CONSUMIDOR, Bancários, Contratos de Consumo, DIREITO DO CONSUMIDOR, Crédito Direto ao Consumidor - CDC, Bancários, Contratos de Consumo, DIREITO DO CONSUMIDOR, Indenização por Dano Material, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Indenização por Dano Moral, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Interpretação / Revisão de Contrato, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Financiamento Privado do Ensino Superior e/ou Pesquisa, FINANCIAMENTO, DIREITO À EDUCAÇÃO" ;
+  dcterms:identifier "5064293-79.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/243> a ors:Theme, prov:Entity ;
+  ors:theme "243" ;
+  ors:themeThesis "I) a espera em fila de banco por tempo superior ao previsto na legislação local não configura, por si só, dano moral in re ipsa; II) é cabível indenização por danos morais fundada na espera em fila de banco quando a demora for excessivamente longa ou quando estiver associada a outros constrangimentos capazes de abalar a honra do autor ou causar-lhe situação de dor, sofrimento ou humilhação." ;
+  dcterms:description "Saber se a demora excessiva na fila de atendimento em instituição financeira enseja indenização por dano moral" .
+
+<https://example.org/tcc/activity/classification-1653> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1653>, <http://purl.org/nemo/tnu/243> ;
+  prov:generated <https://example.org/tcc/analysis/1653> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/1653> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "243" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 243 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1653> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/243> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1653> .
+
+<https://example.org/tcc/activity/draft-generation-1653> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1653>, <http://purl.org/nemo/tres/1653>, <http://purl.org/nemo/tnu/243> ;
+  prov:generated <https://example.org/tcc/draft/1653-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1653> .
+
+<https://example.org/tcc/draft/1653-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/1653-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/1653-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1653> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1653> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1653> .

@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/936> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "936" ;
+  ors:subject "Gratificações e Adicionais, Sistema Remuneratório e Benefícios, Militar, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5079674-30.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/246> a ors:Theme, prov:Entity ;
+  ors:theme "246" ;
+  ors:themeThesis "I - Quando a decisão judicial adotar a estimativa de prazo de recuperação da capacidade prevista na perícia, o termo inicial é a data da realização do exame, sem prejuízo do disposto no art. 479 do CPC, devendo ser garantido prazo mínimo de 30 dias, desde a implantação, para viabilizar o pedido administrativo de prorrogação. II - quando o ato de concessão (administrativa ou judicial) não indicar o tempo de recuperação da capacidade, o prazo de 120 dias, previsto no § 9º, do art. 60 da Lei 8.213/91, deve ser contado a partir da data da efetiva implantação ou restabelecimento do benefício no sistema de gestão de benefícios da autarquia." ;
+  dcterms:description "A partir da regra constante do art. 60, §9.º, da Lei n.º 8.213/91, saber se, para fins de fixação da DCB do auxílio-doença concedido judicialmente, o prazo de recuperação estimado pelo perito judicial deve ser computado a partir da data de sua efetiva implantação ou da data da perícia judicial." .
+
+<https://example.org/tcc/activity/classification-936> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/936>, <http://purl.org/nemo/tnu/246> ;
+  prov:generated <https://example.org/tcc/analysis/936> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/936> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "246" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 246 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/936> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/246> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-936> .
+
+<https://example.org/tcc/activity/draft-generation-936> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/936>, <http://purl.org/nemo/tres/936>, <http://purl.org/nemo/tnu/246> ;
+  prov:generated <https://example.org/tcc/draft/936-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-936> .
+
+<https://example.org/tcc/draft/936-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/936-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/936> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/936> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-936> .

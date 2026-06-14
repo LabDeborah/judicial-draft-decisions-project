@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160130721377z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/32> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "32" ;
+  ors:subject "Progressão Funcional com Interstício de Doze Meses, Promoção / Ascensão, Regime Estatutário, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5010717-40.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/16> a ors:Theme, prov:Entity ;
+  ors:theme "16" ;
+  ors:themeThesis "A eficácia da progressão funcional deve ser observada segundo a situação individual de cada servidor e seus efeitos retroagem ao momento em que os requisitos legais foram implementados. Vide Tema 82 e PEDILEF n. 500367784.2014.404.7101. Entendimento revisado pelo PEDILEF n. 05207128420124058300 (orientação alinhada ao STJ: RESP 1.649.269/RJ)." ;
+  dcterms:description "Saber qual o termo inicial da progressão funcional de policial federal." .
+
+<https://example.org/tcc/activity/classification-32> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/32>, <http://purl.org/nemo/tnu/16> ;
+  prov:generated <https://example.org/tcc/analysis/32> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160130721377z> .
+
+<https://example.org/tcc/analysis/32> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "16" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 16 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/32> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/16> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-32> .
+
+<https://example.org/tcc/activity/draft-generation-32> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/32>, <http://purl.org/nemo/tres/32>, <http://purl.org/nemo/tnu/16> ;
+  prov:generated <https://example.org/tcc/draft/32-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-32> .
+
+<https://example.org/tcc/draft/32-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160130721377Z/documents/32-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160130721377Z/documents/32-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/32> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/32> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-32> .

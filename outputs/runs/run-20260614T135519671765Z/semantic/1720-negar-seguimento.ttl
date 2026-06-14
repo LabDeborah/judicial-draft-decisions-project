@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1720> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1720" ;
+  ors:subject "FGTS/Fundo de Garantia do Tempo de Serviço, Contribuições Especiais, Contribuições, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5003927-71.2024.4.02.5005" .
+
+<http://purl.org/nemo/tnu/263> a ors:Theme, prov:Entity ;
+  ors:theme "263" ;
+  ors:themeThesis "O termo inicial da contagem do prazo de prescrição da pretensão ao ressarcimento de saque indevido em conta do Fundo de Garantia do Tempo de Serviço – FGTS é a data em que ocorreu o fato lesivo." ;
+  dcterms:description "Definir o termo inicial da prescrição nas hipóteses de saque indevido do FGTS." .
+
+<https://example.org/tcc/activity/classification-1720> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1720>, <http://purl.org/nemo/tnu/263> ;
+  prov:generated <https://example.org/tcc/analysis/1720> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1720> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "263" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 263 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1720> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/263> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1720> .
+
+<https://example.org/tcc/activity/draft-generation-1720> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1720>, <http://purl.org/nemo/tres/1720>, <http://purl.org/nemo/tnu/263> ;
+  prov:generated <https://example.org/tcc/draft/1720-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1720> .
+
+<https://example.org/tcc/draft/1720-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1720-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1720> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1720> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1720> .

@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/44> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "44" ;
+  ors:subject "IPVA - Imposto Sobre Propriedade de Veículos Automotores, Impostos, DIREITO TRIBUTÁRIO, ICMS/ Imposto sobre Circulação de Mercadorias, Impostos, DIREITO TRIBUTÁRIO, IPI/ Imposto sobre Produtos Industrializados, Impostos, DIREITO TRIBUTÁRIO, IOC/IOF Imposto sobre operações de crédito, câmbio e seguro, ou relativas a títulos ou valores mobiliários, Impostos, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5009386-23.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/230> a ors:Theme, prov:Entity ;
+  ors:theme "230" ;
+  ors:themeThesis "Não haverá incidência de IOF complementar sobre o saldo devedor não liquidado de operação de crédito objeto de prorrogação, renovação, novação, composição, consolidação, confissão de dívida e negócios assemelhados, sem substituição de devedor, caso na operação de origem tenha sido aplicado o limite máximo previsto no art. 7º, §1º do Decreto n. 6306/2007 (alíquota vigente aplicada ao valor do principal colocado a disposição do devedor, multiplicada por 365 dias, acrescida da alíquota adicional de 0,038%). Todavia, nos casos em que na operação de origem a alíquota aplicada tenha sido inferior à máxima prevista no Decreto n. 6.306/2007 haverá a incidência da exação, sobre o saldo não liquidado, sem que se cogite bis in idem. Por sua vez, a base de cálculo do IOF nos casos de contratos de crédito prorrogados, renovados ou renegociados é o saldo não liquidado. A entrega ou colocação de novos valores ao mutuário na mesma oportunidade constitui nova base de cálculo que permite a incidência de IOF nos termos do art. 7o § 9o do 6.306 de 14 de dezembro de 2007." ;
+  dcterms:description "Estabelecer qual a base de cálculo do Imposto sobre Operações de Crédito, Câmbio e Seguro ou relativas a Títulos ou Valores Mobiliários (IOF) no caso de contratos de crédito prorrogados, renovados ou renegociados." .
+
+<https://example.org/tcc/activity/classification-44> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/44>, <http://purl.org/nemo/tnu/230> ;
+  prov:generated <https://example.org/tcc/analysis/44> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/44> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "230" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 230 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/44> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/230> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-44> .
+
+<https://example.org/tcc/activity/draft-generation-44> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/44>, <http://purl.org/nemo/tres/44>, <http://purl.org/nemo/tnu/230> ;
+  prov:generated <https://example.org/tcc/draft/44-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-44> .
+
+<https://example.org/tcc/draft/44-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/44-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/44-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/44> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/44> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-44> .

@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1052> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1052" ;
+  ors:subject "Indenização Trabalhista, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5076789-43.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/35> a ors:Theme, prov:Entity ;
+  ors:theme "35" ;
+  ors:themeThesis "A averbação de tempo de trabalho rural nos regimes próprios de previdência dos servidores públicos exige a indenização das respectivas contribuições previdenciárias, para efeitos de contagem recíproca de tempo de contribuição." ;
+  dcterms:description "Saber se em caso de contagem recíproca de tempo de contribuição, nos casos de regimes próprios de previdência dos servidores públicos, deve haver indenização de contribuições previdenciárias em caso de averbação de tempo rural." .
+
+<https://example.org/tcc/activity/classification-1052> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1052>, <http://purl.org/nemo/tnu/35> ;
+  prov:generated <https://example.org/tcc/analysis/1052> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1052> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "35" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 35 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1052> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/35> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1052> .
+
+<https://example.org/tcc/activity/draft-generation-1052> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1052>, <http://purl.org/nemo/tres/1052>, <http://purl.org/nemo/tnu/35> ;
+  prov:generated <https://example.org/tcc/draft/1052-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1052> .
+
+<https://example.org/tcc/draft/1052-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1052-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1052> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1052> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1052> .

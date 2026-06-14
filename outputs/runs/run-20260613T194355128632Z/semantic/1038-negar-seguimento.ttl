@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1038> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1038" ;
+  ors:subject "Condomínio em edifício, Propriedade, Coisas, DIREITO CIVIL" ;
+  dcterms:identifier "5077076-06.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/273> a ors:Theme, prov:Entity ;
+  ors:theme "273" ;
+  ors:themeThesis "(i) no que toca à revisão do art. 29, II, da Lei 8.213/91, não é possível, valendo-se do título judicial formado na ação civil pública nº 0002320-59.2012.4.03.6183, inclusive dos valores em decorrência dele apurados, intentar ação para cumprimento do julgado (execução) com o objetivo de pagamento imediato, sem observância do cronograma estabelecido; (ii) o beneficiário do RGPS pode mover ação individual para revisão e/ou pagamento de parcelas vencidas decorrentes da correta aplicação do art. 29, II, da Lei 8.213/91, sem qualquer vinculação restritiva ao decidido na ação civil pública nº 0002320-59.2012.4.03.6183, inclusive no que toca ao cronograma de pagamento; (iii) intentada a ação individual, a contagem dos prazos de decadência do direito de revisão e da prescrição das parcelas vencidas deve observar o disposto no tema 134 da TNU." ;
+  dcterms:description "Se particular que move ação própria, em decorrência de reconhecimento administrativo, operado em ação coletiva, da qual não fez parte, está jungido aos termos do acordo lá realizado." .
+
+<https://example.org/tcc/activity/classification-1038> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1038>, <http://purl.org/nemo/tnu/273> ;
+  prov:generated <https://example.org/tcc/analysis/1038> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/1038> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "273" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 273 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1038> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/273> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1038> .
+
+<https://example.org/tcc/activity/draft-generation-1038> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1038>, <http://purl.org/nemo/tres/1038>, <http://purl.org/nemo/tnu/273> ;
+  prov:generated <https://example.org/tcc/draft/1038-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1038> .
+
+<https://example.org/tcc/draft/1038-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/1038-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/1038-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1038> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1038> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1038> .

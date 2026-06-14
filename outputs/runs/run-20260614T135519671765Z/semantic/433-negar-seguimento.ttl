@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/433> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "433" ;
+  ors:subject "Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5094162-87.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/92> a ors:Theme, prov:Entity ;
+  ors:theme "92" ;
+  ors:themeThesis "É devido o pagamento de meia diária ao servidor que, afastado de sua sede de serviço, tiver despesas extraordinárias tais como alimentação, deslocamento e hospedagem, custeadas com recursos públicos." ;
+  dcterms:description "Saber se o fornecimento de hospedagem e alimentação pelo ente público, sem a ocorrência de despesas com deslocamento urbano, afasta o direito ao recebimento das diárias por servidor público." .
+
+<https://example.org/tcc/activity/classification-433> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/433>, <http://purl.org/nemo/tnu/92> ;
+  prov:generated <https://example.org/tcc/analysis/433> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/433> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "92" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 92 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/433> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/92> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-433> .
+
+<https://example.org/tcc/activity/draft-generation-433> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/433>, <http://purl.org/nemo/tres/433>, <http://purl.org/nemo/tnu/92> ;
+  prov:generated <https://example.org/tcc/draft/433-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-433> .
+
+<https://example.org/tcc/draft/433-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/433-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/433> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/433> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-433> .

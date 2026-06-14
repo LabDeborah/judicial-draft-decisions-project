@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/194> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "194" ;
+  ors:subject "Progressão Funcional com Interstício de Doze Meses, Promoção / Ascensão, Regime Estatutário, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5014785-50.2023.4.02.5118" .
+
+<http://purl.org/nemo/tnu/271> a ors:Theme, prov:Entity ;
+  ors:theme "271" ;
+  ors:themeThesis "Para a aplicação do interstício de 18 meses, previsto no art. 7.º, §2º, da Lei n.º 10.855/2004, enquanto vigente a redação dada pela Lei n.º 11.501/2007, para a promoção e progressão funcional na carreira do seguro social, havia a necessidade de regulamentação, conforme previsto no art. 8.º da citada Lei." ;
+  dcterms:description "Saber se, para a aplicação do interstício de 18 meses, previsto no art. 7º, § 2º, Lei n. 10.855/2004, para a promoção e progressão funcional na “carreira do seguro social” havia, ou não, a necessidade de regulamentação, conforme previsto no art. 8º da citada lei, com a redação que lhe foi dada pela Lei n. 11.501, de 2007." .
+
+<https://example.org/tcc/activity/classification-194> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/194>, <http://purl.org/nemo/tnu/271> ;
+  prov:generated <https://example.org/tcc/analysis/194> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/194> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "271" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 271 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/194> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/271> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-194> .
+
+<https://example.org/tcc/activity/draft-generation-194> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/194>, <http://purl.org/nemo/tres/194>, <http://purl.org/nemo/tnu/271> ;
+  prov:generated <https://example.org/tcc/draft/194-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-194> .
+
+<https://example.org/tcc/draft/194-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/194-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/194> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/194> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-194> .

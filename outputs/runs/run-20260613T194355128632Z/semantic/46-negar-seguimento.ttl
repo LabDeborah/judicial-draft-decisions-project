@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/46> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "46" ;
+  ors:subject "Devolução de contribuições previdenciárias pagas além do teto, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO, Gratificações de Atividade, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Gratificação de Desempenho da Carreira da Previdência, da Saúde e do Trabalho - GDPST, Gratificações Por Atividades Específicas, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Competência, Jurisdição e Competência, DIREITO PROCESSUAL CIVIL E DO TRABALHO" ;
+  dcterms:identifier "5008420-60.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/257> a ors:Theme, prov:Entity ;
+  ors:theme "257" ;
+  ors:themeThesis "Por ser pro labore faciendo, a gratificação de atividade de segurança - GAS, prevista na Lei 11.416/06, não incorpora aos proventos de aposentadoria do servidor público, de modo a não incidir contribuição previdenciária sobre seu valor no regime próprio." ;
+  dcterms:description "(i) Se a gratificação de atividade de segurança - GAS é incorporável aos proventos de aposentadoria do servidor público que a receba;  e (ii) se o seu pagamento é base de cálculo para incidência da contribuição previdenciária do regime próprio." .
+
+<https://example.org/tcc/activity/classification-46> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/46>, <http://purl.org/nemo/tnu/257> ;
+  prov:generated <https://example.org/tcc/analysis/46> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/46> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "257" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 257 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/46> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/257> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-46> .
+
+<https://example.org/tcc/activity/draft-generation-46> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/46>, <http://purl.org/nemo/tres/46>, <http://purl.org/nemo/tnu/257> ;
+  prov:generated <https://example.org/tcc/draft/46-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-46> .
+
+<https://example.org/tcc/draft/46-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/46-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/46-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/46> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/46> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-46> .

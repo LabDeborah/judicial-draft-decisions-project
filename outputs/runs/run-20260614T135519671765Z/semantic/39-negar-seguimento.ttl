@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/39> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "39" ;
+  ors:subject "Contratos Bancários, Espécies de contratos, Obrigações, DIREITO CIVIL" ;
+  dcterms:identifier "5009793-29.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/8> a ors:Theme, prov:Entity ;
+  ors:theme "8" ;
+  ors:themeThesis "Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso." ;
+  dcterms:description "Saber qual o termo inicial dos juros de mora em caso de danos morais por responsabilidade civil extracontratual." .
+
+<https://example.org/tcc/activity/classification-39> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/39>, <http://purl.org/nemo/tnu/8> ;
+  prov:generated <https://example.org/tcc/analysis/39> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/39> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "8" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 8 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/39> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/8> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-39> .
+
+<https://example.org/tcc/activity/draft-generation-39> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/39>, <http://purl.org/nemo/tres/39>, <http://purl.org/nemo/tnu/8> ;
+  prov:generated <https://example.org/tcc/draft/39-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-39> .
+
+<https://example.org/tcc/draft/39-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/39-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/39> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/39> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-39> .

@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/785> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "785" ;
+  ors:subject "Vícios de Construção, Sistema Financeiro da Habitação SFH, Espécies de contratos, Obrigações, DIREITO CIVIL" ;
+  dcterms:identifier "5006629-33.2024.4.02.5120" .
+
+<http://purl.org/nemo/tnu/314> a ors:Theme, prov:Entity ;
+  ors:theme "314" ;
+  ors:themeThesis "(1) À luz dos parâmetros da boa-fé objetiva e da função social do contrato, os vícios estruturais de construção estão acobertados pelo seguro habitacional, sendo nula cláusula em contrário. (2) Desde que o sinistro tenha ocorrido no período de vigência contratual, a cobertura securitária prolonga-se no tempo, de modo a abranger os vícios descobertos após a extinção do contrato (vícios ocultos)." ;
+  dcterms:description "Saber se é válida a cláusula de seguro habitacional que exclui da cobertura securitária os vícios de construção." .
+
+<https://example.org/tcc/activity/classification-785> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/785>, <http://purl.org/nemo/tnu/314> ;
+  prov:generated <https://example.org/tcc/analysis/785> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/785> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "314" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 314 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/785> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/314> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-785> .
+
+<https://example.org/tcc/activity/draft-generation-785> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/785>, <http://purl.org/nemo/tres/785>, <http://purl.org/nemo/tnu/314> ;
+  prov:generated <https://example.org/tcc/draft/785-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-785> .
+
+<https://example.org/tcc/draft/785-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/785-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/785> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/785> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-785> .

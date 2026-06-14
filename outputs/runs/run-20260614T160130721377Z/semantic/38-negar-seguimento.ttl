@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160130721377z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/38> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "38" ;
+  ors:subject "Tratamento médico-hospitalar, Pública, DIREITO DA SAÚDE" ;
+  dcterms:identifier "5009821-94.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/20> a ors:Theme, prov:Entity ;
+  ors:theme "20" ;
+  ors:themeThesis "O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a quo é a última edição da MP que se deu sob o n. 2.169-43, em 24/08/2001. Vide Tema 76 da TNU." ;
+  dcterms:description "Saber se há renúncia tácita da prescrição com o reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço." .
+
+<https://example.org/tcc/activity/classification-38> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/38>, <http://purl.org/nemo/tnu/20> ;
+  prov:generated <https://example.org/tcc/analysis/38> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160130721377z> .
+
+<https://example.org/tcc/analysis/38> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "20" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 20 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/38> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/20> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-38> .
+
+<https://example.org/tcc/activity/draft-generation-38> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/38>, <http://purl.org/nemo/tres/38>, <http://purl.org/nemo/tnu/20> ;
+  prov:generated <https://example.org/tcc/draft/38-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-38> .
+
+<https://example.org/tcc/draft/38-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160130721377Z/documents/38-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160130721377Z/documents/38-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/38> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/38> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-38> .

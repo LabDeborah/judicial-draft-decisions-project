@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/389> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "389" ;
+  ors:subject "Expedição de Certidão Positiva de Débito com Efeito de Negativa, CND/Certidão Negativa de Débito, Crédito Tributário, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5096024-93.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/109> a ors:Theme, prov:Entity ;
+  ors:theme "109" ;
+  ors:themeThesis "Tese firmada no Tema 810/STF: 1) O art. 1º-F da Lei nº 9.494/97, com a redação dada pela Lei nº 11.960/09, na parte em que disciplina os juros moratórios aplicáveis a condenações da Fazenda Pública, é inconstitucional ao incidir sobre débitos oriundos de relação jurídico-tributária, aos quais devem ser aplicados os mesmos juros de mora pelos quais a Fazenda Pública remunera seu crédito tributário, em respeito ao princípio constitucional da isonomia (CRFB, art. 5º, caput); quanto às condenações oriundas de relação jurídica não-tributária, a fixação dos juros moratórios segundo o índice de remuneração da caderneta de poupança é constitucional, permanecendo hígido, nesta extensão, o disposto no art. 1º-F da Lei nº 9.494/97 com a redação dada pela Lei nº 11.960/09; e 2) O art. 1º-F da Lei nº 9.494/97, com a redação dada pela Lei nº 11.960/09, na parte em que disciplina a atualização monetária das condenações impostas à Fazenda Pública segundo a remuneração oficial da caderneta de poupança, revela-se inconstitucional ao impor restrição desproporcional ao direito de propriedade (CRFB, art. 5º, XXII), uma vez que não se qualifica como medida adequada a capturar a variação de preços da economia, sendo inidônea a promover os fins a que se destina." ;
+  dcterms:description "Saber se é aplicável o art. 1º-F da Lei n. 9.494/97, com redação dada pela Lei n. 11.960/2009, em valores em atraso até a data de expedição do precatório." .
+
+<https://example.org/tcc/activity/classification-389> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/389>, <http://purl.org/nemo/tnu/109> ;
+  prov:generated <https://example.org/tcc/analysis/389> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/389> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "109" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 109 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/389> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/109> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-389> .
+
+<https://example.org/tcc/activity/draft-generation-389> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/389>, <http://purl.org/nemo/tres/389>, <http://purl.org/nemo/tnu/109> ;
+  prov:generated <https://example.org/tcc/draft/389-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-389> .
+
+<https://example.org/tcc/draft/389-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/389-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/389-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/389> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/389> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-389> .

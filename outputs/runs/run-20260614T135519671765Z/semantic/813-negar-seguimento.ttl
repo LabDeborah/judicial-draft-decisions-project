@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/813> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "813" ;
+  ors:subject "Aposentadoria por Invalidez (Art. 42/7), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO, Por Tempo de Contribuição, Pessoa com Deficiência, Aposentadoria Especial (Art. 57/8), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  dcterms:identifier "5082536-71.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/1> a ors:Theme, prov:Entity ;
+  ors:theme "1" ;
+  ors:themeThesis "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  dcterms:description "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." .
+
+<https://example.org/tcc/activity/classification-813> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/813>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/analysis/813> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/813> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/813> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-813> .
+
+<https://example.org/tcc/activity/draft-generation-813> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/813>, <http://purl.org/nemo/tres/813>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/draft/813-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-813> .
+
+<https://example.org/tcc/draft/813-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/813-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/813> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/813> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-813> .

@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1847> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1847" ;
+  ors:subject "Dever de Informação, DIREITO DO CONSUMIDOR, Crédito Direto ao Consumidor - CDC, Bancários, Contratos de Consumo, DIREITO DO CONSUMIDOR" ;
+  dcterms:identifier "5061509-32.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/331> a ors:Theme, prov:Entity ;
+  ors:theme "331" ;
+  ors:themeThesis "1. O uso indevido de cartão de débito ou crédito por terceiro, mediante fraude, constitui, em regra, fortuito interno para os fins da Súmula 479/STJ, salvo se comprovada culpa exclusiva do consumidor ou de terceiro (art. 14, § 3º, inciso II, do Código de Defesa do Consumidor). 2. Em princípio, a realização de operação com o uso de cartão e senha descaracteriza a responsabilidade do banco por configurar quebra do dever contratual de cuidado do cliente. 3. Todavia, não se configura a excludente de responsabilidade se, independentemente de prévia comunicação da ocorrência pelo titular do cartão, (i) as circunstâncias em que as operações foram realizadas e o perfil do consumidor revelarem fortes indícios de fraude detectáveis pelo banco; ou (ii) não restar claramente demonstrado o descumprimento consciente, pelo consumidor, do dever contratual de cuidado no uso do cartão, seja em razão do grau de sofisticação dos meios de engenharia social empregados pelos fraudadores, seja pela condição de hipervulnerabilidade da vítima." ;
+  dcterms:description "Determinar se, no caso de movimentações bancárias fraudulentas realizadas por terceiro, mediante uso de cartão magnético e senha pessoal do correntista, pode caracterizar falha de segurança do banco, apta a afastar a excludente de responsabilidade do art. 14, § 3º, inciso II, do Código de Defesa do Consumidor, a ausência de verificação da autenticidade das referidas movimentações, quando atípicas e/ou suspeitas em relação ao perfil do correntista." .
+
+<https://example.org/tcc/activity/classification-1847> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1847>, <http://purl.org/nemo/tnu/331> ;
+  prov:generated <https://example.org/tcc/analysis/1847> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1847> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "331" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 331 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1847> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/331> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1847> .
+
+<https://example.org/tcc/activity/draft-generation-1847> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1847>, <http://purl.org/nemo/tres/1847>, <http://purl.org/nemo/tnu/331> ;
+  prov:generated <https://example.org/tcc/draft/1847-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1847> .
+
+<https://example.org/tcc/draft/1847-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1847-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1847> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1847> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1847> .

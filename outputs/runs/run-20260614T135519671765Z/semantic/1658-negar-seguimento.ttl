@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1658> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1658" ;
+  ors:subject "Incidência sobre Aposentadoria, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO, Indenização por Dano Moral, Responsabilidade da Administração, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5064270-36.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/329> a ors:Theme, prov:Entity ;
+  ors:theme "329" ;
+  ors:themeThesis "1- A verba paga pelo representado ao representante comercial a título de indenização por força da extinção do contrato de representação comercial por vontade dos dois contratantes (resilição bilateral) tem o objetivo de reparar eventual dano patrimonial acarretado, detendo caráter indenizatório e sobre ela não incide imposto de renda. 2- O art. 27, alínea 'j', da Lei n° 4.886, de 09 de dezembro de 1965, com redação dada pela Lei nº 8.420, de 8.5.1992 aplica-se, pois, a extinção contratual unilateral sem motivo justificado ou a dissolução do contrato pela resilição bilateral." ;
+  dcterms:description "Saber se há ou não incidência de imposto de renda sobre valores recebidos a título de extinção de contrato de representação comercial mediante distrato (resilição bilateral do contrato)." .
+
+<https://example.org/tcc/activity/classification-1658> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1658>, <http://purl.org/nemo/tnu/329> ;
+  prov:generated <https://example.org/tcc/analysis/1658> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1658> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "329" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 329 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1658> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/329> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1658> .
+
+<https://example.org/tcc/activity/draft-generation-1658> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1658>, <http://purl.org/nemo/tres/1658>, <http://purl.org/nemo/tnu/329> ;
+  prov:generated <https://example.org/tcc/draft/1658-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1658> .
+
+<https://example.org/tcc/draft/1658-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1658-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1658> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1658> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1658> .

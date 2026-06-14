@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1959> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1959" ;
+  ors:subject "Auxílio-Doença Previdenciário, Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  dcterms:identifier "5004490-11.2024.4.02.5120" .
+
+<http://purl.org/nemo/tnu/165> a ors:Theme, prov:Entity ;
+  ors:theme "165" ;
+  ors:themeThesis "O período de auxílio-doença de natureza previdenciária, independente de comprovação da relação da moléstia com a atividade profissional do segurado, deve ser considerado como tempo especial quando trabalhador exercia atividade especial antes do afastamento. Tese no mesmo sentido do Tema 998/STJ: O Segurado que exerce atividades em condições especiais, quando em gozo de auxílio-doença, seja acidentário ou previdenciário, faz jus ao cômputo desse mesmo período como tempo de serviço especial. Obs.: com base no § 1º do art. 1.036 do CPC, foi admitido como representativo de controvérsia o recurso extraordinário interposto contra acórdão proferido no julgamento do Recurso Especial n. 1.723.181/RS (Tema Repetitivo n. 998/STJ). OBS: O STF, no julgamento do Tema 1107 (RE 1279819), decidiu que não há repercussão geral acerca da matéria." ;
+  dcterms:description "Saber se o segurado que exerce atividades em condições especiais, quando em gozo do benefício por incapacidade, faz jus ou não ao cômputo de tal intervalo como especial." .
+
+<https://example.org/tcc/activity/classification-1959> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1959>, <http://purl.org/nemo/tnu/165> ;
+  prov:generated <https://example.org/tcc/analysis/1959> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1959> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "165" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 165 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1959> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/165> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1959> .
+
+<https://example.org/tcc/activity/draft-generation-1959> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1959>, <http://purl.org/nemo/tres/1959>, <http://purl.org/nemo/tnu/165> ;
+  prov:generated <https://example.org/tcc/draft/1959-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1959> .
+
+<https://example.org/tcc/draft/1959-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1959-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1959> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1959> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1959> .

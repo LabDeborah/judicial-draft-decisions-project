@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1048> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1048" ;
+  ors:subject "Licença Prêmio, Sistema Remuneratório e Benefícios, Militar, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5076841-39.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/215> a ors:Theme, prov:Entity ;
+  ors:theme "215" ;
+  ors:themeThesis "A omissão do pretenso titular em reclamar prêmio de loteria no prazo nonagesimal previsto no art. 17 do Decreto-Lei 204/67 fulmina o próprio direito material ao prêmio, esvaziando a possibilidade de cobrança judicial no prazo prescricional de 5 anos estabelecido no Código Civil." ;
+  dcterms:description "Saber se a fluência do prazo prescricional de 90 dias previsto no artigo 17 do Decreto-Lei 204/67 fulmina também a possibilidade de cobrança judicial de prêmio de loteria no prazo prescricional geral de 5 anos estabelecido no Código Civil para a cobrança de dívidas líquidas constantes de instrumento público ou particular." .
+
+<https://example.org/tcc/activity/classification-1048> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1048>, <http://purl.org/nemo/tnu/215> ;
+  prov:generated <https://example.org/tcc/analysis/1048> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1048> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "215" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 215 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1048> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/215> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1048> .
+
+<https://example.org/tcc/activity/draft-generation-1048> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1048>, <http://purl.org/nemo/tres/1048>, <http://purl.org/nemo/tnu/215> ;
+  prov:generated <https://example.org/tcc/draft/1048-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1048> .
+
+<https://example.org/tcc/draft/1048-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1048-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1048> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1048> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1048> .

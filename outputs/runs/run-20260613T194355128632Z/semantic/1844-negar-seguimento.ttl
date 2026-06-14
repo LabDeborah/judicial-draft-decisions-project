@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1844> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1844" ;
+  ors:subject "Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  dcterms:identifier "5061561-28.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/27> a ors:Theme, prov:Entity ;
+  ors:theme "27" ;
+  ors:themeThesis "Aplica-se a tabela progressiva prevista no art. 142 da Lei n. 8.213/91, no caso de aposentadoria por idade urbana, considerando-se como marco temporal para apuração da carência o ano em que o segurado completa a idade mínima, ainda que contadas contribuições posteriores ao ano do cumprimento do requisito etário. Vide Súmula 44 da TNU." ;
+  dcterms:description "Saber se é possível aplicar tabela progressiva prevista no art. 142 da Lei n. 8.213/91, aos casos de aposentadoria por idade urbana." .
+
+<https://example.org/tcc/activity/classification-1844> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1844>, <http://purl.org/nemo/tnu/27> ;
+  prov:generated <https://example.org/tcc/analysis/1844> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/1844> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "27" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 27 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1844> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/27> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1844> .
+
+<https://example.org/tcc/activity/draft-generation-1844> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1844>, <http://purl.org/nemo/tres/1844>, <http://purl.org/nemo/tnu/27> ;
+  prov:generated <https://example.org/tcc/draft/1844-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1844> .
+
+<https://example.org/tcc/draft/1844-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/1844-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/1844-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1844> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1844> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1844> .

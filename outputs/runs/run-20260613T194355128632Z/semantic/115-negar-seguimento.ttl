@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/115> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "115" ;
+  ors:subject "Cirurgia, Tratamento médico-hospitalar, Pública, DIREITO DA SAÚDE" ;
+  dcterms:identifier "5001821-08.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/100> a ors:Theme, prov:Entity ;
+  ors:theme "100" ;
+  ors:themeThesis "O código 1.3.2 do quadro anexo ao Decreto n. 53.831/64, além dos profissionais da área da saúde, contempla os trabalhadores que exercem atividades de serviços gerais em limpeza e higienização de ambientes hospitalares (Súmula 82 da TNU). Vide Tema 238/TNU." ;
+  dcterms:description "Saber se há necessidade de demonstração de habitualidade e permanência para enquadrar atividades de limpeza e de serviços gerais em ambiente hospitalar." .
+
+<https://example.org/tcc/activity/classification-115> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/115>, <http://purl.org/nemo/tnu/100> ;
+  prov:generated <https://example.org/tcc/analysis/115> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/115> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "100" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 100 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/115> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/100> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-115> .
+
+<https://example.org/tcc/activity/draft-generation-115> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/115>, <http://purl.org/nemo/tres/115>, <http://purl.org/nemo/tnu/100> ;
+  prov:generated <https://example.org/tcc/draft/115-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-115> .
+
+<https://example.org/tcc/draft/115-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/115-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/115-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/115> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/115> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-115> .

@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1055> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1055" ;
+  ors:subject "Planos de Saúde, Suplementar, DIREITO DA SAÚDE" ;
+  dcterms:identifier "5076683-81.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/44> a ors:Theme, prov:Entity ;
+  ors:theme "44" ;
+  ors:themeThesis "\"A Lei 11.087/05, resultante da conversão da Medida Provisória 208/2004, não modificou a natureza pro labore faciendo da GED, porquanto trouxe apenas alteração nos pontos a serem atribuídos a ativos e inativos, preservando-se a diferenciação estabelecida na Lei 9.784/1998, inclusive quanto aos servidores docentes cedidos.\" (PET 9600/STJ) Obs: O referido entendimento foi aplicado também à PET 9645/STJ, oriunda deste representativo." ;
+  dcterms:description "Saber qual a natureza jurídica da Gratificação de Estímulo à Docência no Magistério Superior (GED) após a MP n. 208/2004 - se parcela remuneratória geral ou \"pro labore faciendo\" - para fins de equiparação da pontuação dos servidores ativos aos inativos." .
+
+<https://example.org/tcc/activity/classification-1055> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1055>, <http://purl.org/nemo/tnu/44> ;
+  prov:generated <https://example.org/tcc/analysis/1055> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/1055> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "44" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 44 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1055> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/44> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1055> .
+
+<https://example.org/tcc/activity/draft-generation-1055> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1055>, <http://purl.org/nemo/tres/1055>, <http://purl.org/nemo/tnu/44> ;
+  prov:generated <https://example.org/tcc/draft/1055-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1055> .
+
+<https://example.org/tcc/draft/1055-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/1055-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/1055-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1055> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1055> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1055> .

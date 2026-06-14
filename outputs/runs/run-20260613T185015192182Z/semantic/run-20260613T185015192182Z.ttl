@@ -1,0 +1,998 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t185015192182z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-13T19:02:39.711827Z"^^xsd:dateTime ;
+  tcc:collectionMode "live" ;
+  tcc:analysisMode "gemini" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  tcc:geminiModel "gemini-flash-lite-latest" ;
+  tcc:geminiCacheFile "outputs/reports/gemini_cache.json" ;
+  tcc:geminiQuotaStateFile "outputs/reports/gemini_quota_state.json" ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/gemini-flash-lite-latest> a prov:Agent, tcc:LargeLanguageModel ;
+  dcterms:title "gemini-flash-lite-latest" ;
+  tcc:analysisStrategy "gemini" .
+
+<https://example.org/tcc/catalog/run-20260613t185015192182z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "100"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260613t185015192182z> .
+
+<http://purl.org/nemo/tnu/1> a ors:Theme, prov:Entity ;
+  ors:theme "1" ;
+  ors:themeThesis "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  dcterms:identifier "1" ;
+  dcterms:description "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/2> a ors:Theme, prov:Entity ;
+  ors:theme "2" ;
+  ors:themeThesis "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea." ;
+  dcterms:identifier "2" ;
+  dcterms:description "Saber se certidão de casamento extemporânea serve como início de prova material para fins de concessão de aposentadoria por idade rural." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/3> a ors:Theme, prov:Entity ;
+  ors:theme "3" ;
+  ors:themeThesis "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal." ;
+  dcterms:identifier "3" ;
+  dcterms:description "Saber se a prova material extemporânea, devidamente corroborada por prova oral idônea, é hábil à concessão do benefício de aposentadoria por idade rural." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/4> a ors:Theme, prov:Entity ;
+  ors:theme "4" ;
+  ors:themeThesis "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU" ;
+  dcterms:identifier "4" ;
+  dcterms:description "Saber se é necessário prévio pedido de prorrogação de benefício de auxílio-doença nas hipóteses conhecidas por \"alta programada\"." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/5> a ors:Theme, prov:Entity ;
+  ors:theme "5" ;
+  ors:themeThesis "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)." ;
+  dcterms:identifier "5" ;
+  dcterms:description "Saber se para obtenção da aposentadoria por idade de segurado especial é necessário demonstrar atividade rural no período imediatamente anterior ao atingimento da idade mínima ou à apresentação do requerimento administrativo." ;
+  tcc:situacaoTema "Revisado pelo Tema 145" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/6> a ors:Theme, prov:Entity ;
+  ors:theme "6" ;
+  ors:themeThesis "A contribuição ao FUSEX é tributo cujo lançamento se efetua de ofício, sujeita ao prazo prescricional quinquenal, descrito no art. 168, I, do CTN." ;
+  dcterms:identifier "6" ;
+  dcterms:description "Saber se o FUSEX é tributo e qual a modalidade de lançamento para fins de contagem do prazo prescricional. VIDE TEMA 356/STJ" ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/7> a ors:Theme, prov:Entity ;
+  ors:theme "7" ;
+  ors:themeThesis "É indevida a prorrogação da pensão por morte ao filho maior de 21 anos, ainda que esteja cursando o ensino superior." ;
+  dcterms:identifier "7" ;
+  dcterms:description "Saber se o filho maior de 21 anos que esteja cursando ensino superior tem direito à prorrogação de pensão por morte até os 24 anos." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/8> a ors:Theme, prov:Entity ;
+  ors:theme "8" ;
+  ors:themeThesis "Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso." ;
+  dcterms:identifier "8" ;
+  dcterms:description "Saber qual o termo inicial dos juros de mora em caso de danos morais por responsabilidade civil extracontratual." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO CIVIL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/9> a ors:Theme, prov:Entity ;
+  ors:theme "9" ;
+  ors:themeThesis "Os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007, não reajustaram o valor das diárias dos servidores da FUNASA, apenas ampliaram o rol dos destinos a serem percorridos. Vide Tema 92 - questão similar." ;
+  dcterms:identifier "9" ;
+  dcterms:description "Saber se os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007 reajustaram o valor das diárias dos servidores da FUNASA." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/10> a ors:Theme, prov:Entity ;
+  ors:theme "10" ;
+  ors:themeThesis "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350." ;
+  dcterms:identifier "10" ;
+  dcterms:description "Saber se há necessidade de renovação do requerimento administrativo para concessão de benefício assistencial." ;
+  tcc:situacaoTema "Julgado - TEMA 350/STF" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/11> a ors:Theme, prov:Entity ;
+  ors:theme "11" ;
+  ors:themeThesis "A exigência de início de prova material contemporânea para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 17." ;
+  dcterms:identifier "11" ;
+  dcterms:description "Saber se é necessário início de prova material no período de carência em salário-maternidade de segurada especial." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/12> a ors:Theme, prov:Entity ;
+  ors:theme "12" ;
+  ors:themeThesis "Para fins previdenciários, o cômputo do tempo de serviço prestado como aluno-aprendiz exige a comprovação de que, durante o período de aprendizado, houve simultaneamente: (i) retribuição consubstanciada em prestação pecuniária ou em auxílios materiais; (ii) à conta do Orçamento; (iii) a título de contraprestação por labor; (iv) na execução de bens e serviços destinados a terceiros. (Tese firmada no Tema 216/TNU). Vide Súmula 18 da TNU." ;
+  dcterms:identifier "12" ;
+  dcterms:description "Saber se pagamento de remuneração indireta a aluno aprendiz autoriza respectiva contagem de tempo de serviço para fins previdenciários." ;
+  tcc:situacaoTema "Revisado - Tema 216/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/13> a ors:Theme, prov:Entity ;
+  ors:theme "13" ;
+  ors:themeThesis "É dispensável prévio requerimento administrativo de revisão de aposentadoria por tempo de contribuição quando houver omissão da autarquia na análise do tempo especial anterior à Lei n. 9.032/95." ;
+  dcterms:identifier "13" ;
+  dcterms:description "Saber se o pedido de revisão de benefício de aposentadoria por tempo de contribuição para fins de reconhecimento de tempo especial por categoria profissional depende de prévio requerimento administrativo quando o INSS, apesar de ciente dos elementos necessários, não se pronunciou sobre a especialidade de período anterior à Lei n. 9.032/95." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/14> a ors:Theme, prov:Entity ;
+  ors:theme "14" ;
+  ors:themeThesis "Na aposentadoria especial a apresentação de laudo pericial extemporâneo não afasta sua força probante, desde que não modificadas as condições do ambiente. Vide Súmula 68 da TNU." ;
+  dcterms:identifier "14" ;
+  dcterms:description "Saber se laudo pericial extemporâneo afasta força probatória das condições especiais de trabalho." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/15> a ors:Theme, prov:Entity ;
+  ors:theme "15" ;
+  ors:themeThesis "A pensão por morte não deve ser rateada entre a viúva e a concubina, pois a relação extraconjugal paralela ao casamento não configura união estável. Tese no mesmo sentido da firmada no Tema 526/STF." ;
+  dcterms:identifier "15" ;
+  dcterms:description "Saber se pode haver rateio de pensão entre esposa e concubina, no regime de concubinato impuro." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/16> a ors:Theme, prov:Entity ;
+  ors:theme "16" ;
+  ors:themeThesis "A eficácia da progressão funcional deve ser observada segundo a situação individual de cada servidor e seus efeitos retroagem ao momento em que os requisitos legais foram implementados. Vide Tema 82 e PEDILEF n. 500367784.2014.404.7101. Entendimento revisado pelo PEDILEF n. 05207128420124058300 (orientação alinhada ao STJ: RESP 1.649.269/RJ)." ;
+  dcterms:identifier "16" ;
+  dcterms:description "Saber qual o termo inicial da progressão funcional de policial federal." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/17> a ors:Theme, prov:Entity ;
+  ors:theme "17" ;
+  ors:themeThesis "A exigência de início de prova material para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 11." ;
+  dcterms:identifier "17" ;
+  dcterms:description "Saber se é necessário início de prova material no período de carência em salário-maternidade de segurada especial." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/18> a ors:Theme, prov:Entity ;
+  ors:theme "18" ;
+  ors:themeThesis "A certidão do INCRA ou outro documento que comprove propriedade de imóvel em nome de integrantes do grupo familiar do segurado é razoável início de prova material da condição de segurado especial para fins de aposentadoria rural por idade, inclusive dos períodos trabalhados a partir dos 12 anos de idade, antes da publicação da Lei n. 8.213/91. Desnecessidade de comprovação de todo o período de carência." ;
+  dcterms:identifier "18" ;
+  dcterms:description "Saber se documentos em nome de terceiros integrantes do grupo familiar, relativos à propriedade da terra trabalhada, servem como início de prova material da atividade rural." ;
+  tcc:situacaoTema "Julgado (Súmulas 5 e 14 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/19> a ors:Theme, prov:Entity ;
+  ors:theme "19" ;
+  ors:themeThesis "É possível comprovar a condição de desemprego involuntário por outros meios de prova diversos do registro no Ministério do Trabalho, não sendo a ausência de vínculo na CTPS suficiente para tanto. Vide Súmula 27 da TNU." ;
+  dcterms:identifier "19" ;
+  dcterms:description "Saber se a mera ausência de vínculo na CTPS é prova suficiente do desemprego involuntário e, em caso negativo, se são possíveis outros meios de prova diversos do registro em órgão do Ministério do Trabalho." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/20> a ors:Theme, prov:Entity ;
+  ors:theme "20" ;
+  ors:themeThesis "O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a quo é a última edição da MP que se deu sob o n. 2.169-43, em 24/08/2001. Vide Tema 76 da TNU." ;
+  dcterms:identifier "20" ;
+  dcterms:description "Saber se há renúncia tácita da prescrição com o reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/21> a ors:Theme, prov:Entity ;
+  ors:theme "21" ;
+  ors:themeThesis "Para a obtenção de aposentadoria por idade do segurado especial, é indispensável o exercício e a demonstração da atividade rural correspondente à carência no período imediatamente anterior ao implemento da idade mínima ou à data do requerimento administrativo. Vide Tema 145 da TNU." ;
+  dcterms:identifier "21" ;
+  dcterms:description "Saber se para obtenção da aposentadoria por idade de segurado especial é necessário demonstrar atividade rural no período imediatamente anterior ao atingimento da idade mínima ou à apresentação do requerimento administrativo." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/22> a ors:Theme, prov:Entity ;
+  ors:theme "22" ;
+  ors:themeThesis "Não é possível a conversão de período laborado na atividade de professor em tempo comum após a Emenda Constitucional 18/81 (TESE FIRMADA NO TEMA 158)." ;
+  dcterms:identifier "22" ;
+  dcterms:description "Saber qual o termo final do reconhecimento da especialidade da atividade de magistério." ;
+  tcc:situacaoTema "Revisado pelo Tema 158" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/23> a ors:Theme, prov:Entity ;
+  ors:theme "23" ;
+  ors:themeThesis "A condição de segurada especial em regime de economia familiar não é descaracterizada pelo trabalho urbano do marido da autora ou mesmo pela paga, posterior, de pensão alimentícia, em razão de separação." ;
+  dcterms:identifier "23" ;
+  dcterms:description "Saber se o trabalho urbano do marido ou se percepção posterior de pensão alimentícia descaracteriza condição de segurada especial em regime de economia familiar." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/24> a ors:Theme, prov:Entity ;
+  ors:theme "24" ;
+  ors:themeThesis "Nos Juizados Especiais Federais inexiste renúncia tácita para fins de fixação de competência. Vide Súmula 17 da TNU." ;
+  dcterms:identifier "24" ;
+  dcterms:description "Saber se o ajuizamento da ação nos Juizados Especiais Federais implica em automática renúncia para fins de fixação de competência." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/25> a ors:Theme, prov:Entity ;
+  ors:theme "25" ;
+  ors:themeThesis "Para o cálculo do fator previdenciário deve ser observada a tábua de mortalidade elaborada pelo IBGE vigente na data do requerimento do benefício previdenciário, e não aquela utilizada anteriormente, quando preenchidos os requisitos necessários à concessão da aposentadoria." ;
+  dcterms:identifier "25" ;
+  dcterms:description "Saber qual a tábua de mortalidade elaborada pelo IBGE a ser utilizada no cálculo do fator previdenciário." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/26> a ors:Theme, prov:Entity ;
+  ors:theme "26" ;
+  ors:themeThesis "Descabida a pretensão de regularização \"post mortem\" do recolhimento das contribuições previdenciárias devidas pelo segurado contribuinte individual exercente de atividade informal, salvo quando devam ser arrecadadas por empresa tomadora de serviços. Vide Súmula 52 da TNU." ;
+  dcterms:identifier "26" ;
+  dcterms:description "Saber se é possível regularizar contribuições previdenciárias em atraso, após a morte de segurado contribuinte individual exercente de atividade informal." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/27> a ors:Theme, prov:Entity ;
+  ors:theme "27" ;
+  ors:themeThesis "Aplica-se a tabela progressiva prevista no art. 142 da Lei n. 8.213/91, no caso de aposentadoria por idade urbana, considerando-se como marco temporal para apuração da carência o ano em que o segurado completa a idade mínima, ainda que contadas contribuições posteriores ao ano do cumprimento do requisito etário. Vide Súmula 44 da TNU." ;
+  dcterms:identifier "27" ;
+  dcterms:description "Saber se é possível aplicar tabela progressiva prevista no art. 142 da Lei n. 8.213/91, aos casos de aposentadoria por idade urbana." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/28> a ors:Theme, prov:Entity ;
+  ors:theme "28" ;
+  ors:themeThesis "Não se aplica orientação firmada no RE 597389/ SP, no cálculo dos benefícios concedidos antes da Lei n. 9.032/95, cujas sentenças transitaram em julgado quando do pronunciamento do STF. Vide Tema 90." ;
+  dcterms:identifier "28" ;
+  dcterms:description "Saber se é possível aplicar orientação firmada pelo STF, no RE 597389/ SP, aos casos onde já há coisa julgada." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/29> a ors:Theme, prov:Entity ;
+  ors:theme "29" ;
+  ors:themeThesis "O recolhimento tardio de contribuições a cargo do empregador não implica prejuízo de ordem previdenciária à segurada empregada doméstica." ;
+  dcterms:identifier "29" ;
+  dcterms:description "Saber se o atraso no recolhimento das contribuições previdenciárias a cargo do empregador prejudica a contagem do período de carência e a manutenção da qualidade de segurada empregada doméstica." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/30> a ors:Theme, prov:Entity ;
+  ors:theme "30" ;
+  ors:themeThesis "\"Os valores recebidos de boa-fé por força de antecipação de tutela, em se tratando de decisão de primeiro grau reformada em segundo grau, devem ser devolvidos, nos termos do entendimento firmado pelo Superior Tribunal de Justiça (Tema/Repetitivo 692 e PET 10.996/SC)\". (Tese - Tema 692/STJ: A reforma da decisão que antecipa os efeitos da tutela final obriga o autor da ação a devolver os valores dos benefícios previdenciários ou assistenciais recebidos, o que pode ser feito por meio de desconto em valor que não exceda 30% (trinta por cento) da importância de eventual benefício que ainda lhe estiver sendo pago.)" ;
+  dcterms:identifier "30" ;
+  dcterms:description "Saber os valores percebidos a título de antecipação dos efeitos da tutela devem ser devolvidos em caso de julgamento de mérito desfavorável." ;
+  tcc:situacaoTema "Revisado - Tema 123/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/31> a ors:Theme, prov:Entity ;
+  ors:theme "31" ;
+  ors:themeThesis "Vide Tema 896/STJ." ;
+  dcterms:identifier "31" ;
+  dcterms:description "Saber qual o momento em que deve ser aferida a renda do segurado desempregado recolhido à prisão, para fins de percepção do benefício de auxílio-reclusão." ;
+  tcc:situacaoTema "Revisado - Tema 896/STJ" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/32> a ors:Theme, prov:Entity ;
+  ors:theme "32" ;
+  ors:themeThesis "Certidão de óbito configura início de prova material para caracterização da atividade rural, para fins de pensão por morte." ;
+  dcterms:identifier "32" ;
+  dcterms:description "Saber se certidão de óbito pode servir como início de prova material de benefício de pensão por morte de segurado especial." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/33> a ors:Theme, prov:Entity ;
+  ors:theme "33" ;
+  ors:themeThesis "A habitualidade e permanência da exposição ao agente nocivo ruído, devidamente comprovadas por laudo pericial, presumem-se no caso de segurado contribuinte individual empresário." ;
+  dcterms:identifier "33" ;
+  dcterms:description "Saber se se presumem habitualidade e permanência da exposição ao agente nocivo ruído, em caso de segurado contribuinte individual sócio-gerente." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/34> a ors:Theme, prov:Entity ;
+  ors:theme "34" ;
+  ors:themeThesis "Para a concessão do benefício previsto no art. 203, V, da Constituição Federal, nos casos de incapacidade parcial e temporária, deve-se examinar as condições pessoais do requerente." ;
+  dcterms:identifier "34" ;
+  dcterms:description "Saber se há necessidade de exame das condições pessoais do requerente, para concessão de benefício assistencial, quando houver incapacidade parcial e temporária." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/35> a ors:Theme, prov:Entity ;
+  ors:theme "35" ;
+  ors:themeThesis "A averbação de tempo de trabalho rural nos regimes próprios de previdência dos servidores públicos exige a indenização das respectivas contribuições previdenciárias, para efeitos de contagem recíproca de tempo de contribuição." ;
+  dcterms:identifier "35" ;
+  dcterms:description "Saber se em caso de contagem recíproca de tempo de contribuição, nos casos de regimes próprios de previdência dos servidores públicos, deve haver indenização de contribuições previdenciárias em caso de averbação de tempo rural." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/36> a ors:Theme, prov:Entity ;
+  ors:theme "36" ;
+  ors:themeThesis "Na concessão do auxílio-doença é dispensável o exame das condições pessoais do segurado quando não constatada a incapacidade laboral. Vide Súmula 77 da TNU." ;
+  dcterms:identifier "36" ;
+  dcterms:description "Saber se é necessário exame das condições pessoais do segurado considerado capaz para o trabalho, nos pedidos de concessão de auxílio-doença." ;
+  tcc:situacaoTema "Julgado (Súmula 77 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/37> a ors:Theme, prov:Entity ;
+  ors:theme "37" ;
+  ors:themeThesis "Não afasta o direito à aposentadoria por idade rural o exercício de atividade urbana intercalada ou breves períodos descontínuos de atividade rural. Vide Súmula 46 da TNU." ;
+  dcterms:identifier "37" ;
+  dcterms:description "Saber se o exercício de atividade urbana intercalada desnatura qualidade de segurado em caso de pedido de concessão de aposentadoria rural por idade." ;
+  tcc:situacaoTema "Julgado (Súmula 46 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/38> a ors:Theme, prov:Entity ;
+  ors:theme "38" ;
+  ors:themeThesis "A incapacidade laboral preeexistente veda a concessão de auxílio-doença e aposentadoria por invalidez, mesmo nos casos de reingresso no RGPS. Vide Súmula 53 da TNU." ;
+  dcterms:identifier "38" ;
+  dcterms:description "Saber se incapacidade laboral, anterior ao retorno do segurado ao RGPS, inviabiliza concessão de benefícios por incapacidade." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/39> a ors:Theme, prov:Entity ;
+  ors:theme "39" ;
+  ors:themeThesis "Para a concessão de pensão por morte de rurícola é necessário que o instituidor tenha, na data do óbito, a qualidade de segurado ou tenha implementado, antes de falecer, todos os requisitos para a concessão de aposentadoria por idade rural, tanto a carência quanto a idade mínima." ;
+  dcterms:identifier "39" ;
+  dcterms:description "Saber se o trabalhador que preencheu requisito de carência do benefício de aposentadoria por idade, e que na data do óbito, não mais detinha qualidade de segurado e tampouco havia implementado idade mínima, pode ser instituidor de benefício de pensão por morte." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/40> a ors:Theme, prov:Entity ;
+  ors:theme "40" ;
+  ors:themeThesis "A incapacidade laboral preeexistente veda a concessão de auxílio-doença e aposentadoria por invalidez, mesmo nos casos de reingresso no RGPS. Vide Súmula 53 da TNU." ;
+  dcterms:identifier "40" ;
+  dcterms:description "Saber se incapacidade laboral, anterior ao retorno do segurado ao RGPS, inviabiliza concessão de benefícios por incapacidade." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/41> a ors:Theme, prov:Entity ;
+  ors:theme "41" ;
+  ors:themeThesis "Na aposentadoria por tempo de contribuição, o fator de conversão 1,4 (um vírgula quatro), para os homens, é aplicável em qualquer período." ;
+  dcterms:identifier "41" ;
+  dcterms:description "Saber se o fator 1,4 (um vírgula quatro) pode ser aplicado aos homens no período anterior ao advento da Lei n. 8.213/91." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/42> a ors:Theme, prov:Entity ;
+  ors:theme "42" ;
+  ors:themeThesis "A ação para cobrança de juros progressivos sujeita-se à prescrição trintenal cujo início se dá a cada mês no dia em que era obrigação da CEF creditá-los em conta vinculada. Vide Súmula 56 da TNU." ;
+  dcterms:identifier "42" ;
+  dcterms:description "Saber qual o prazo prescricional aplicável às ações nas quais se busca pagamento de juros progressivos e respectiva forma de contagem." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO CIVIL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/43> a ors:Theme, prov:Entity ;
+  ors:theme "43" ;
+  ors:themeThesis "Os membros da Advocacia-Geral da União - Advogados da União, Procuradores da Fazenda Nacional e Procuradores Federais - por não terem a garantia da inamovibilidade, não têm direito ao pagamento de ajuda de custo nos casos de remoção a pedido. - Tese firmada no Tema 140/TNU." ;
+  dcterms:identifier "43" ;
+  dcterms:description "Saber se os membros da Advocacia-Geral da União têm direito à ajuda de custo nos casos de remoção a pedido." ;
+  tcc:situacaoTema "Revisado - Tema 140/TNU" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/44> a ors:Theme, prov:Entity ;
+  ors:theme "44" ;
+  ors:themeThesis "\"A Lei 11.087/05, resultante da conversão da Medida Provisória 208/2004, não modificou a natureza pro labore faciendo da GED, porquanto trouxe apenas alteração nos pontos a serem atribuídos a ativos e inativos, preservando-se a diferenciação estabelecida na Lei 9.784/1998, inclusive quanto aos servidores docentes cedidos.\" (PET 9600/STJ) Obs: O referido entendimento foi aplicado também à PET 9645/STJ, oriunda deste representativo." ;
+  dcterms:identifier "44" ;
+  dcterms:description "Saber qual a natureza jurídica da Gratificação de Estímulo à Docência no Magistério Superior (GED) após a MP n. 208/2004 - se parcela remuneratória geral ou \"pro labore faciendo\" - para fins de equiparação da pontuação dos servidores ativos aos inativos." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/45> a ors:Theme, prov:Entity ;
+  ors:theme "45" ;
+  ors:themeThesis "É devida pensão por morte ao ex-cônjuge que não percebe alimentos, desde que comprovada dependência econômica superveniente à separação, demonstrada em momento anterior ao óbito." ;
+  dcterms:identifier "45" ;
+  dcterms:description "Saber se o ex-cônjuge que não percebe alimentos tem direito à pensão por morte." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/46> a ors:Theme, prov:Entity ;
+  ors:theme "46" ;
+  ors:themeThesis "O rol de hipóteses de levantamento dos valores de FGTS é meramente exemplificativo, comportando, inclusive, saque para quitação de imóvel não financiado pelo SFH. Vide temas 42, 49 e 55." ;
+  dcterms:identifier "46" ;
+  dcterms:description "Saber se é taxativo o rol de hipóteses de levantamento de valores de FGTS." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/47> a ors:Theme, prov:Entity ;
+  ors:theme "47" ;
+  ors:themeThesis "Os herdeiros detêm legitimidade, por sucessão processual, para prosseguir no feito do autor falecido, nos casos de concessão de benefício por incapacidade." ;
+  dcterms:identifier "47" ;
+  dcterms:description "Saber se pode haver sucessão processual dos herdeiros em caso de pedido de concessão de benefício por incapacidade." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/48> a ors:Theme, prov:Entity ;
+  ors:theme "48" ;
+  ors:themeThesis "A responsabilidade civil da universidade pública pela guarda de veículos na área de estacionamento é subjetiva e depende da existência de aparato de vigilância para segurança do estacionamento." ;
+  dcterms:identifier "48" ;
+  dcterms:description "Saber se há responsabilidade civil da universidade pública em decorrência da guarda de veículos." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/49> a ors:Theme, prov:Entity ;
+  ors:theme "49" ;
+  ors:themeThesis "Não se aplica a taxa progressiva de juros às contas vinculadas ao FGTS de trabalhadores qualificados como avulsos." ;
+  dcterms:identifier "49" ;
+  dcterms:description "Saber se o trabalhador avulso tem direito à aplicação da taxa de juros progressivos nas contas do FGTS." ;
+  tcc:situacaoTema "Julgado (RESP 1349059/ SP)" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/50> a ors:Theme, prov:Entity ;
+  ors:theme "50" ;
+  ors:themeThesis "A contribuição previdenciária dos militares inativos e pensionistas deve incidir sobre o total das parcelas que compõem os proventos da inatividade, não havendo direito à imunidade conferida aos segurados do RGPS e servidores." ;
+  dcterms:identifier "50" ;
+  dcterms:description "Saber se se aplica imunidade tributária sobre proventos de aposentadoria e pensão aos servidores militares aposentados e seus pensionistas." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/51> a ors:Theme, prov:Entity ;
+  ors:theme "51" ;
+  ors:themeThesis "Não há prescrição do fundo de direito do reajuste de 7/30 da URP de abril/maio de 1988, por se tratar de prestação de trato sucessivo." ;
+  dcterms:identifier "51" ;
+  dcterms:description "Saber qual a forma de prescrição incidente sobre as diferenças alusivas à incorporação do percentual de 7/30 de 16,19% (URP de abril/maio de 1988)." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/52> a ors:Theme, prov:Entity ;
+  ors:theme "52" ;
+  ors:themeThesis "A supressão do adicional de inatividade pela MP n. 2.131/2000 não afronta o princípio do direito adquirido, uma vez que não houve decesso remuneratório." ;
+  dcterms:identifier "52" ;
+  dcterms:description "Saber se é devido restabelecimento do adicional de inatividade, suprimido dos proventos dos militares da reserva, por força da MP n. 2.131/2000." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/53> a ors:Theme, prov:Entity ;
+  ors:theme "53" ;
+  ors:themeThesis "A manipulação de óleos e graxas, desde que devidamente comprovado, configura atividade especial. VIDE TEMA 298/TNU" ;
+  dcterms:identifier "53" ;
+  dcterms:description "Saber se a manipulação de óleos e graxas pode, em tese, configurar condição especial de trabalho para fins previdenciários." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/54> a ors:Theme, prov:Entity ;
+  ors:theme "54" ;
+  ors:themeThesis "A exigência etária de no mínimo 16 anos, para caracterização da qualidade de segurado especial, só se aplica ao filho do produtor rural ou pescador artesanal, não se estendendo a seu cônjuge ou companheiro que exerçam atividade rural em regime de economia familiar." ;
+  dcterms:identifier "54" ;
+  dcterms:description "Saber se a exigência etária de no mínimo 16 anos prevista no art. 11, VII, alínea “c”, da Lei n. 8.213/91 se aplica ao cônjuge ou companheiro, ou apenas ao filho de produtor rural ou pescador artesanal." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/55> a ors:Theme, prov:Entity ;
+  ors:theme "55" ;
+  ors:themeThesis "São devidos, além dos juros progressivos sobre os saldos fundiários, juros moratórios, previstos no art. 406 do Código Civil e art. 161, §1º do Código Tributário Nacional, pela taxa SELIC, contados a partir da citação até a data do pagamento. Vide Tema 176 do STJ - Recursos Repetitivos." ;
+  dcterms:identifier "55" ;
+  dcterms:description "Saber se é possível cumulação de juros moratórios com juros remuneratórios progressivos e expurgos inflacionários incidentes sobre saldo de conta vinculado ao FGTS, bem como qual a taxa de juros de mora aplicável." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO CIVIL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/56> a ors:Theme, prov:Entity ;
+  ors:theme "56" ;
+  ors:themeThesis "O tempo de serviço laborado pelo segurado na condição de engenheiro mecânico até a edição da Lei n. 9.032/95 deve ser enquadrado como especial, conforme descrito no código 2.1.1 do Anexo II do Decreto n. 83.080/79." ;
+  dcterms:identifier "56" ;
+  dcterms:description "Saber se o tempo de serviço laborado por engenheiro mecânico em período anterior à Lei n. 9.032/95 pode ser considerado especial por enquadramento profissional." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/57> a ors:Theme, prov:Entity ;
+  ors:theme "57" ;
+  ors:themeThesis "Não ocorre prescrição do fundo de direito quando, entre o cancelamento administrativo do auxílio-doença e o ajuizamento da ação, decorrem mais de 5 anos." ;
+  dcterms:identifier "57" ;
+  dcterms:description "Saber se há incidência da prescrição do fundo de direito para os casos em que transcorrido o prazo de 5 anos no período compreendido entre o cancelamento administrativo do auxílio-doença e o ajuizamento da ação." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/58> a ors:Theme, prov:Entity ;
+  ors:theme "58" ;
+  ors:themeThesis "Entendimento superado, em razão do advento da PET 9059, e do cancelamento da Súmula n. 32, da TNU. Vide PEDILEF 2003.51.51.012024-5. Vide Tema 694/STJ, Tema 174/TNU e PET 10262/STJ." ;
+  dcterms:identifier "58" ;
+  dcterms:description "Saber o limite de tolerância ao agente ruído no período de 06 de março de 1997 a 18 de novembro de 2003, na vigência do Decreto n. 2.172/97, bem como se é suficiente o PPP - Perfil Profissiográfico Previdenciário para a demonstração da condição de segurado especial ou se é exigido laudo técnico para tanto." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/59> a ors:Theme, prov:Entity ;
+  ors:theme "59" ;
+  ors:themeThesis "É indispensável o comprovante de pagamento da contribuição previdenciária, no caso de pescador artesanal, para concessão do seguro-desemprego nos períodos de defeso, nos termos da Lei n. 10.779/03." ;
+  dcterms:identifier "59" ;
+  dcterms:description "Saber se o segurado especial é obrigado a recolher contribuições previdenciárias para fins de percepção de seguro-desemprego." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/60> a ors:Theme, prov:Entity ;
+  ors:theme "60" ;
+  ors:themeThesis "É devido ajuda de custo no caso de remoção a pedido em decorrência da garantia da prerrogativa da inamovibilidade e da simetria constitucional entre as carreiras do Ministério Público e da Magistratura. Vide temas 43, 129, 136, 140, 141, 143 e 154." ;
+  dcterms:identifier "60" ;
+  dcterms:description "Saber se é devido pagamento de ajuda de custo ao membro do Ministério Público." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/61> a ors:Theme, prov:Entity ;
+  ors:theme "61" ;
+  ors:themeThesis "Não incide imposto de renda sobre auxílio-creche, por tratar-se de vantagem com caráter indenizatório." ;
+  dcterms:identifier "61" ;
+  dcterms:description "Saber se incide imposto de renda sobre auxílio-creche ou auxílio pré-escolar." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/62> a ors:Theme, prov:Entity ;
+  ors:theme "62" ;
+  ors:themeThesis "É legal a Resolução n. 467/2005 do CODEFAT que fixa do prazo máximo de 120 dias após a data da dispensa para requerer o seguro-desemprego. De acordo com a tese firmada no Tema 1136/STJ." ;
+  dcterms:identifier "62" ;
+  dcterms:description "Saber se a Resolução n. 467/2005 do CODEFAT está autorizada pela Lei n. 7.998/90 a estipular prazo máximo para requerimento de seguro-desemprego." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/63> a ors:Theme, prov:Entity ;
+  ors:theme "63" ;
+  ors:themeThesis "O tempo de serviço rural posterior à Lei n. 8.213/91, para efeitos de carência, demanda o recolhimento de contribuições previdenciárias." ;
+  dcterms:identifier "63" ;
+  dcterms:description "Saber se é necessário recolhimento de contribuições previdenciárias para o tempo rural posterior à Lei n. 8.213/91." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/64> a ors:Theme, prov:Entity ;
+  ors:theme "64" ;
+  ors:themeThesis "Os empregados submetidos ao Regime Geral da Previdência Social (RGPS), aí incluídos os exercentes de cargo em comissão, de livre nomeação e exoneração, em caráter exclusivo, se sujeitam à incidência de contribuição previdenciária sobre as parcelas percebidas a título de Auxílio-Alimentação dada a sua natureza salarial, com base nos termos do art. 40, § 13º, da CF/88 c.c. art. 28, I, da Lei n. 8.212/91, salvo, se tal pagamento for “in natura”, isto é, quando a própria empresa fornece a alimentação. Vide Súmula 67 da TNU." ;
+  dcterms:identifier "64" ;
+  dcterms:description "Saber se incide contribuição previdenciária sobre auxílio-alimentação para cargos em comissão." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/65> a ors:Theme, prov:Entity ;
+  ors:theme "65" ;
+  ors:themeThesis "A pensão alimentícia é dedutível da base de cálculo do Imposto de Renda, seja ela decorrente de decisão judicial ou não, mas desde que devidamente comprovada." ;
+  dcterms:identifier "65" ;
+  dcterms:description "Saber se é possível deduzir a pensão alimentícia da base de cálculo do imposto de renda." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/66> a ors:Theme, prov:Entity ;
+  ors:theme "66" ;
+  ors:themeThesis "O tempo de seminarista em congregação religiosa se aproveita para fins previdenciários, desde que atendidos os mesmos pressupostos exigidos do aluno aprendiz de escola pública profissionalizante. Vide Súmula 18/TNU" ;
+  dcterms:identifier "66" ;
+  dcterms:description "Saber se é possível o reconhecimento da atividade de seminarista como tempo de serviço para fins previdenciários da mesma forma como se dá ao aluno aprendiz." ;
+  tcc:situacaoTema "Cancelado - Tema 355/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/67> a ors:Theme, prov:Entity ;
+  ors:theme "67" ;
+  ors:themeThesis "Tese revisada pelo entendimento exarado no EREsp 1.605.554/PR." ;
+  dcterms:identifier "67" ;
+  dcterms:description "Saber se o princípio da \"actio nata\" se aplica ao prazo decadencial de revisão da pensão por morte." ;
+  tcc:situacaoTema "Revisado - EREsp 1605554/PR" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/68> a ors:Theme, prov:Entity ;
+  ors:theme "68" ;
+  ors:themeThesis "É possível a equiparação da atividade de motorista à de tratorista para fins de contagem de tempo de atividade especial, por categoria profissional. VIDE SÚMULA 70/TNU." ;
+  dcterms:identifier "68" ;
+  dcterms:description "Saber se é possível contar como tempo de atividade especial a atividade de motorista equiparada à de tratorista." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/69> a ors:Theme, prov:Entity ;
+  ors:theme "69" ;
+  ors:themeThesis "O fator de divisão para o cálculo do serviço extraordinário é de 200 horas mensais, em razão da jornada máxima do servidor público de 40 (quarenta) horas semanais prevista no art. 19 da Lei n. 8.112/90." ;
+  dcterms:identifier "69" ;
+  dcterms:description "Saber qual o fator de divisão para o cálculo da hora extra para o servidor público." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/70> a ors:Theme, prov:Entity ;
+  ors:theme "70" ;
+  ors:themeThesis "Na concessão do benefício de prestação continuada ao portador do vírus HIV assintomático, devem ser observadas, além da incapacidade de prover a própria subsistência, as condições socioculturais estigmatizantes da doença. Vide Súmula 78 da TNU." ;
+  dcterms:identifier "70" ;
+  dcterms:description "Saber se é necessário analisar condições socioculturais do portador de HIV assintomático, para fins de condição de benefício assistencial." ;
+  tcc:situacaoTema "Julgado (Súmula 78 da TNU)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/71> a ors:Theme, prov:Entity ;
+  ors:theme "71" ;
+  ors:themeThesis "Os benefícios e resgates decorrentes das contribuições recolhidas sob o regime da Lei n. 7.713/88 (janeiro de 1989 a dezembro de 1995), com a incidência do imposto de renda no momento do recolhimento, não serão novamente tributados, sob pena de violação à regra proibitiva do \"bis in idem\". Vide recurso repetitivo do STJ: REsp 1001779/ DF." ;
+  dcterms:identifier "71" ;
+  dcterms:description "Saber se há incidência de imposto de renda sobre os benefícios e resgates da aposentadoria complementar sob a égide da Lei n. 7.713/88." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/72> a ors:Theme, prov:Entity ;
+  ors:theme "72" ;
+  ors:themeThesis "É devida a incidência da decadência decenal, prevista na MP n. 1.523/1997, aos benefícios concedidos anteriormente à sua vigência. Tese firmada no Tema 135/TNU." ;
+  dcterms:identifier "72" ;
+  dcterms:description "Saber qual o prazo decadencial aplicável aos benefícios concedidos entre 23/10/1998 (data da publicação da MP n. 1.663-15/1998) até 19/11/2003 (um dia antes da publicação da MP n. 138/2003)." ;
+  tcc:situacaoTema "Revisado - Tema 135/TNU" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/73> a ors:Theme, prov:Entity ;
+  ors:theme "73" ;
+  ors:themeThesis "O grupo familiar deve ser definido a partir da interpretação restrita do disposto no art. 16 da Lei n. 8.213/91 e no art. 20 da Lei n. 8.742/93, esta última na sua redação original." ;
+  dcterms:identifier "73" ;
+  dcterms:description "Saber qual a composição do grupo familiar para concessão do benefício assistencial, no período anterior à Lei n. 12.453/2011." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/74> a ors:Theme, prov:Entity ;
+  ors:theme "74" ;
+  ors:themeThesis "A contribuição previdenciária patronal prevista no art. 22, I, da Lei n. 8.212/91 não incide sobre a verba paga pela empresa ao segurado empregado durante os primeiros quinze dias de afastamento por motivo de doença." ;
+  dcterms:identifier "74" ;
+  dcterms:description "Saber se há incidência de contribuição previdenciária sobre a remuneração paga pela empresa nos primeiros quinze dias de afastamento em razão de doença incapacitante." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/75> a ors:Theme, prov:Entity ;
+  ors:theme "75" ;
+  ors:themeThesis "Não se aplica a Lei n. 11.358/06 às aposentadorias e pensões concedidas sob a égide da Lei n. 10.884/04." ;
+  dcterms:identifier "75" ;
+  dcterms:description "Saber se a Lei n. 11.358/06 reajustou a base de cálculo das pensões por morte concedidas anteriormente à sua vigência, decorrentes do falecimento de servidores integrantes das Carreiras previstas na Lei n. 10.884/04." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/76> a ors:Theme, prov:Entity ;
+  ors:theme "76" ;
+  ors:themeThesis "O reconhecimento, pela Administração Pública, do direito à correção monetária, volta a fluir na integralidade dos cinco anos. Vide Tema 20 da TNU." ;
+  dcterms:identifier "76" ;
+  dcterms:description "Saber se há renúncia tácita da prescrição com o reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/77> a ors:Theme, prov:Entity ;
+  ors:theme "77" ;
+  ors:themeThesis "O direito à prestação \"in natura\" de alimentação, moradia e alojamento aos médicos residentes não foi revogado pela Lei n. 10.405/2002, sendo cabível em caso de descumprimento a indenização substitutiva em pecúnia a ser fixada por arbitramento." ;
+  dcterms:identifier "77" ;
+  dcterms:description "Saber se a Lei n. 10.405/2002 revogou o benefício de fornecimento de alimentação, alojamento e moradia e, caso negativo, se é possível a sua conversão em pecúnia." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/78> a ors:Theme, prov:Entity ;
+  ors:theme "78" ;
+  ors:themeThesis "A Lei n. 6.994/82 foi expressamente revogada pela Lei n. 8.906/94, de modo que não persiste fundamento para cobrança de anuidade por conselhos de classe com fulcro em tal diploma." ;
+  dcterms:identifier "78" ;
+  dcterms:description "Saber se subsiste fundamento hábil a justificar a cobrança de anuidades pelos conselhos de classe após o advento da Lei n. 8.906/94." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/79> a ors:Theme, prov:Entity ;
+  ors:theme "79" ;
+  ors:themeThesis "Incide Imposto de Renda sobre o adicional de transferência, previsto no art. 469, § 3º, da CLT, em face de sua natureza remuneratória." ;
+  dcterms:identifier "79" ;
+  dcterms:description "Saber se incide Imposto de Renda sobre o adicional de transferência." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/80> a ors:Theme, prov:Entity ;
+  ors:theme "80" ;
+  ors:themeThesis "A contribuição devida ao FUSEX possui natureza tributária, incidindo o art. 9º da Lei n. 10.559/2002, razão pela qual não incide sobre os valores pagos por anistia." ;
+  dcterms:identifier "80" ;
+  dcterms:description "Saber a natureza da contribuição ao FUSEX, bem como incidência sobre os valores pagos por anistia." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/81> a ors:Theme, prov:Entity ;
+  ors:theme "81" ;
+  ors:themeThesis "Contra os menores impúberes não corre o prazo do art. 74, II, da Lei n. 8.213/91 (art. 198, I, CC/02), devendo o benefício de pensão por morte ser deferido a partir do óbito do instituidor, observada sua quota parte e também a disposição do artigo 77, §1º da Lei n. 8.213/91." ;
+  dcterms:identifier "81" ;
+  dcterms:description "Saber se o prazo do art. 74, II, da Lei n. 8.213/91, referente ao benefício de pensão por morte, aplica-se aos menores impúberes." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/82> a ors:Theme, prov:Entity ;
+  ors:theme "82" ;
+  ors:themeThesis "A progressão/promoção de servidor público constitui ato único de efeito concreto, sendo o prazo decadencial para sua impugnação de 05 (cinco) anos (Decreto n. 20.910/32, art. 1º), contados a partir de sua publicação." ;
+  dcterms:identifier "82" ;
+  dcterms:description "Saber se a impugnação referente a ato de progressão/promoção de servidor público se sujeita ao prazo decadencial do art. 1° do Decreto n. 20.910/32." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/83> a ors:Theme, prov:Entity ;
+  ors:theme "83" ;
+  ors:themeThesis "O reconhecimento da dívida em sede administrativa antes de consumada a prescrição interrompe o seu curso, ficando o prazo suspenso até que ocorra o pagamento ou até que o devedor pratique ato que configure resistência em quitar a dívida, quando recomeçará a correr, pela metade (Decreto n. 20.910/32, art. 9º)." ;
+  dcterms:identifier "83" ;
+  dcterms:description "Saber se o reconhecimento da dívida, em sede administrativa, antes de consumada a prescrição, interrompe o respectivo curso." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/84> a ors:Theme, prov:Entity ;
+  ors:theme "84" ;
+  ors:themeThesis "PEDILEF não conhecido por aplicação da Questão de Ordem n. 10 da TNU." ;
+  dcterms:identifier "84" ;
+  dcterms:description "Saber se é devido o pagamento de abono de permanência no período anterior à manifestação expressa do servidor de opção pela permanência em serviço, quando reunidos os requisitos necessários à aposentadoria voluntária." ;
+  tcc:situacaoTema "Julgado (Representativo Prejudicado)" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/85> a ors:Theme, prov:Entity ;
+  ors:theme "85" ;
+  ors:themeThesis "A cumulação de auxílio-acidente com aposentadoria somente é possível quando a eclosão da lesão incapacitante que ensejou aquele primeiro benefício e o início daquele segundo tenham ocorrido antes da alteração do art. 86 da Lei n. 8.213/91 pela Lei n. 9.528/97." ;
+  dcterms:identifier "85" ;
+  dcterms:description "Saber se é possível cumulação de auxílio-acidente e de aposentadoria por invalidez." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/86> a ors:Theme, prov:Entity ;
+  ors:theme "86" ;
+  ors:themeThesis "O requerimento tardio não prejudica o direito do absolutamente incapaz à percepção integral do benefício, a partir da data do óbito, enquanto não sobrevier a habilitação de dependente de outra classe." ;
+  dcterms:identifier "86" ;
+  dcterms:description "Saber se o requerimento tardio prejudica o direito do absolutamente incapaz à percepção integral do benefício." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/87> a ors:Theme, prov:Entity ;
+  ors:theme "87" ;
+  ors:themeThesis "É possível o reconhecimento de tempo especial prestado com exposição ao agente nocivo periculosidade, na atividade de vigilante, em data posterior à vigência do Decreto n. 2.172/92, de 05/03/1997, desde que laudo técnico (ou elemento material equivalente) comprove a permanente exposição à atividade nociva, com o uso de arma de fogo. Vide Tema 128 (em revisão pelo Tema 1031/STJ)." ;
+  dcterms:identifier "87" ;
+  dcterms:description "Saber se é possível o reconhecimento das condições especiais do labor do vigilante armado após o advento do Decreto n. 2.172/97." ;
+  tcc:situacaoTema "Julgado (Revisado pelo Tema 128)" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/88> a ors:Theme, prov:Entity ;
+  ors:theme "88" ;
+  ors:themeThesis "Tese anterior revisada pelo Tema 524/STF, o qual firmou a seguinte tese: A concessão de aposentadoria de servidor público por invalidez com proventos integrais exige que a doença incapacitante esteja prevista em rol taxativo da legislação de regência." ;
+  dcterms:identifier "88" ;
+  dcterms:description "Saber se o rol do art. 186 da Lei n. 8.112/1990 é taxativo ou exemplificativo." ;
+  tcc:situacaoTema "Cancelado - PEDILEF 5007148-71.2014.4.04.7102/RS" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/89> a ors:Theme, prov:Entity ;
+  ors:theme "89" ;
+  ors:themeThesis "O prazo prescricional da pretensão à cobrança de honorários periciais contra a Fazenda Pública é de cinco anos (Decreto n. 20.910/32, art. 1º), afastando-se a aplicação do prazo prescricional do Código Civil." ;
+  dcterms:identifier "89" ;
+  dcterms:description "Saber qual o prazo prescricional da pretensão de cobrança de honorários periciais contra a Fazenda Pública." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/90> a ors:Theme, prov:Entity ;
+  ors:theme "90" ;
+  ors:themeThesis "Não se aplica orientação firmada no RE 597389/SP , no cálculo dos benefícios concedidos antes da n. Lei 9.032/95, cujas sentenças transitaram em julgado quando pronunciamento do STF, ressalvado os casos previstos no art. 475, \"l\", parágrafo 1º, do CPC revogado. Vide Tema 28." ;
+  dcterms:identifier "90" ;
+  dcterms:description "Saber se é possível aplicar orientação firmada pelo STF, no RE 597389/SP, aos casos onde já há coisa julgada." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PROCESSUAL CIVIL" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/91> a ors:Theme, prov:Entity ;
+  ors:theme "91" ;
+  ors:themeThesis "A isenção do imposto de renda beneficia apenas os ex-combatentes cuja pensão especial seja decorrente de incapacidade ou invalidez, não atingindo a aposentadoria especial concedida nos termos no art. 53, II, do ADCT/88." ;
+  dcterms:identifier "91" ;
+  dcterms:description "Saber se a isenção do imposto de renda beneficia os ex-combatentes em gozo de aposentadoria especial." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/92> a ors:Theme, prov:Entity ;
+  ors:theme "92" ;
+  ors:themeThesis "É devido o pagamento de meia diária ao servidor que, afastado de sua sede de serviço, tiver despesas extraordinárias tais como alimentação, deslocamento e hospedagem, custeadas com recursos públicos." ;
+  dcterms:identifier "92" ;
+  dcterms:description "Saber se o fornecimento de hospedagem e alimentação pelo ente público, sem a ocorrência de despesas com deslocamento urbano, afasta o direito ao recebimento das diárias por servidor público." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/93> a ors:Theme, prov:Entity ;
+  ors:theme "93" ;
+  ors:themeThesis "Inteligência da Súmula 33 da TNU: Quando o segurado houver preenchido os requisitos legais para concessão da aposentadoria por tempo de serviço na data do requerimento administrativo, esta data será o termo inicial da concessão do benefício." ;
+  dcterms:identifier "93" ;
+  dcterms:description "Saber a partir de quando é devido pagamento do benefício de aposentadoria por tempo de contribuição, quando a natureza especial das atividades reconhecidas somente foi constatada após a juntada de laudo pericial na via judicial." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/94> a ors:Theme, prov:Entity ;
+  ors:theme "94" ;
+  ors:themeThesis "É absoluta a incompetência do Juizado Especial Cível Estadual para o processamento e julgamento das causas previdenciárias, por expressa vedação legal à aplicação da Lei n. 10.259/2001 no âmbito do juízo estadual." ;
+  dcterms:identifier "94" ;
+  dcterms:description "Saber se o rito da Lei n. 10.259/2001 pode ser aplicado no âmbito dos juizados especiais estaduais para julgamento das ações previdenciárias, em razão da competência delegada (CF/88 art. 109, § 3º)." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/95> a ors:Theme, prov:Entity ;
+  ors:theme "95" ;
+  ors:themeThesis "Para as ações ajuizadas a partir de 9/6/2005, aplica-se o art. 3º da Lei Complementar n. 118/2005, contando-se o prazo prescricional dos tributos sujeitos a lançamento por homologação em cinco anos a partir do pagamento antecipado de que trata o art. 150, §1º, do CTN. Vide RE 566.621/ RS - repercussão geral." ;
+  dcterms:identifier "95" ;
+  dcterms:description "Saber se há aplicação do art. 3º da Lei Complementar n. 118/2005 às ações ajuizadas após 09/06/2005." ;
+  tcc:situacaoTema "Julgado (RE 566.621/ RS)" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/96> a ors:Theme, prov:Entity ;
+  ors:theme "96" ;
+  ors:themeThesis "Não se aplicam, à parcela do adicional de insalubridade ou de periculosidade transformada em vantagem pessoal nominalmente identificada na forma da Lei nº 8.270/91, os índices de revisão geral de remuneração dos servidores públicos." ;
+  dcterms:identifier "96" ;
+  dcterms:description "Saber se o aumento do vencimento básico implica consequente majoração do adicional de insalubridade." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/97> a ors:Theme, prov:Entity ;
+  ors:theme "97" ;
+  ors:themeThesis "A União é parte legítima passiva para responder às ações com pedido de repetição de indébito de contribuição previdenciária de servidor público." ;
+  dcterms:identifier "97" ;
+  dcterms:description "Saber se a União tem legitimidade passiva nas ações de repetição de indébito de contribuição previdenciária devida por servidor público vinculado à autarquia federal." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/98> a ors:Theme, prov:Entity ;
+  ors:theme "98" ;
+  ors:themeThesis "É excepcional a natureza indenizatória das férias de trabalhador avulso, a qual deve ser comprovada pela parte autora. Caso não o faça, se presume as goze anualmente, ocasião em que incide contribuição previdenciária." ;
+  dcterms:identifier "98" ;
+  dcterms:description "Saber se incide contribuição previdenciária sobre férias de trabalhador avulso, verba de natureza indenizatória." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO TRIBUTÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/99> a ors:Theme, prov:Entity ;
+  ors:theme "99" ;
+  ors:themeThesis "O prazo decadencial de cinco anos previsto no art. 54 da Lei n. 9.784/99 para alterar ato de aposentadoria de servidor público se inicia a partir do registro do ato no Tribunal de Contas, não do ato de concessão expedido pelo órgão a que estava vinculado." ;
+  dcterms:identifier "99" ;
+  dcterms:description "Saber quando se inicia o prazo decadencial para o servidor publico questionar o ato de concessão de aposentadoria." ;
+  tcc:situacaoTema "Julgado (Súmula vinculante 3)" ;
+  tcc:ramoDireito "DIREITO ADMINISTRATIVO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tnu/100> a ors:Theme, prov:Entity ;
+  ors:theme "100" ;
+  ors:themeThesis "O código 1.3.2 do quadro anexo ao Decreto n. 53.831/64, além dos profissionais da área da saúde, contempla os trabalhadores que exercem atividades de serviços gerais em limpeza e higienização de ambientes hospitalares (Súmula 82 da TNU). Vide Tema 238/TNU." ;
+  dcterms:identifier "100" ;
+  dcterms:description "Saber se há necessidade de demonstração de habitualidade e permanência para enquadrar atividades de limpeza e de serviços gerais em ambiente hospitalar." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> .
+
+<http://purl.org/nemo/tres/trf2-live-1> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-LIVE-1" ;
+  ors:subject "Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  dcterms:identifier "5022737-72.2025.4.02.5001" ;
+  dcterms:type "RECURSO CÍVEL" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:competencia "1ª Turma Recursal - 2º Juiz Relator (ES)" ;
+  tcc:relatorOriginario "PABLO COELHO CHARLES GOMES" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t185015192182z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-1> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-live-1>, <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-1> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-1> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "O processo trata de aposentadoria por idade urbana, enquanto os temas da TNU fornecidos versam sobre aposentadoria rural, benefícios por incapacidade, pensão por morte ou questões processuais, não havendo tema específico aplicável ao caso concreto. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-live-1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-1> .
+
+<http://purl.org/nemo/tres/trf2-live-2> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-LIVE-2" ;
+  ors:subject "Aposentadoria por Tempo de Contribuição (Art. 55/6), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  dcterms:identifier "5004809-42.2024.4.02.5002" ;
+  dcterms:type "RECURSO CÍVEL" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:competencia "1ª Turma Recursal do Espírito Santo" ;
+  tcc:relatorOriginario "LEONARDO MARQUES LESSA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t185015192182z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-2> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-live-2>, <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-2> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-2> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "A decisão trata de aposentadoria por tempo de contribuição, mas os dados fornecidos não permitem identificar uma controvérsia específica que se enquadre nos temas da TNU listados, tratando-se de um processo genérico sobre benefícios previdenciários. | Resultado reutilizado do cache Gemini." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-live-2> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-2> .
+
+<http://purl.org/nemo/tres/trf2-live-3> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "TRF2-LIVE-3" ;
+  ors:subject "Pensão por Morte (Art. 74/9), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  dcterms:identifier "5035475-29.2024.4.02.5001" ;
+  dcterms:type "RECURSO CÍVEL" ;
+  tcc:tipoJulgamento "COLEGIADO" ;
+  tcc:competencia "1ª Turma Recursal do Espírito Santo" ;
+  tcc:relatorOriginario "PABLO COELHO CHARLES GOMES" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t185015192182z> .
+
+<https://example.org/tcc/activity/classification-trf2-live-3> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/trf2-live-3>, <https://example.org/tcc/catalog/run-20260613t185015192182z-themes> ;
+  prov:generated <https://example.org/tcc/analysis/trf2-live-3> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/gemini-flash-lite-latest> .
+
+<https://example.org/tcc/analysis/trf2-live-3> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "NENHUM_TEMA" ;
+  tcc:consonancia "NAO_APLICAVEL" ;
+  tcc:validade "INVALIDA" ;
+  tcc:justificativa "O resumo da decisão fornecido não contém informações suficientes sobre o objeto do litígio ou a fundamentação jurídica para permitir o enquadramento em qualquer um dos temas da TNU listados." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/trf2-live-3> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-trf2-live-3> .

@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/732> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "732" ;
+  ors:subject "Deficiente, Benefício Assistencial (Art. 203,V CF/88), DIREITO ASSISTENCIAL" ;
+  dcterms:identifier "5085598-22.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/10> a ors:Theme, prov:Entity ;
+  ors:theme "10" ;
+  ors:themeThesis "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350." ;
+  dcterms:description "Saber se há necessidade de renovação do requerimento administrativo para concessão de benefício assistencial." .
+
+<https://example.org/tcc/activity/classification-732> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/732>, <http://purl.org/nemo/tnu/10> ;
+  prov:generated <https://example.org/tcc/analysis/732> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/732> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "10" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 10 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/732> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/10> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-732> .
+
+<https://example.org/tcc/activity/draft-generation-732> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/732>, <http://purl.org/nemo/tres/732>, <http://purl.org/nemo/tnu/10> ;
+  prov:generated <https://example.org/tcc/draft/732-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-732> .
+
+<https://example.org/tcc/draft/732-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/732-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/732-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/732> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/732> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-732> .

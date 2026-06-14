@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/687> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "687" ;
+  ors:subject "Reajustes de Remuneração, Proventos ou Pensão, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5086386-36.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/254> a ors:Theme, prov:Entity ;
+  ors:theme "254" ;
+  ors:themeThesis "A partir do segundo ano de exercício, o servidor público federal poderá gozar férias ao longo do período aquisitivo correspondente, ainda que implique gozo de dois períodos no mesmo ano, não se aplicando mais a limitação temporal de 12 meses imposta pelo § 1º do art. 77 da Lei 8.112/90, ressalvados os casos de necessidade do serviço, na forma da legislação de regência e por determinação fundamentada da autoridade administrativa competente." ;
+  dcterms:description "Saber se ao servidor público é vedado, a partir do segundo período aquisitivo, gozar férias antes do decurso de 12 meses e no mesmo ano civil em que já tenha sido gozado período anterior, total ou parcialmente." .
+
+<https://example.org/tcc/activity/classification-687> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/687>, <http://purl.org/nemo/tnu/254> ;
+  prov:generated <https://example.org/tcc/analysis/687> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/687> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "254" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 254 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/687> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/254> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-687> .
+
+<https://example.org/tcc/activity/draft-generation-687> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/687>, <http://purl.org/nemo/tres/687>, <http://purl.org/nemo/tnu/254> ;
+  prov:generated <https://example.org/tcc/draft/687-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-687> .
+
+<https://example.org/tcc/draft/687-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/687-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/687> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/687> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-687> .

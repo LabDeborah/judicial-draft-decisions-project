@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1601> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1601" ;
+  ors:subject "Indenização por Dano Moral, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Indenização por Dano Material, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR" ;
+  dcterms:identifier "5003669-31.2024.4.02.5112" .
+
+<http://purl.org/nemo/tnu/182> a ors:Theme, prov:Entity ;
+  ors:theme "182" ;
+  ors:themeThesis "O cancelamento ou a suspensão indevida do pagamento das parcelas alusivas ao seguro-desemprego não gera, “ipso facto”, o direito à indenização por danos morais." ;
+  dcterms:description "Saber se a suspensão/cancelamento indevidos do pagamento de seguro-desemprego gera dano moral in re ipsa." .
+
+<https://example.org/tcc/activity/classification-1601> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1601>, <http://purl.org/nemo/tnu/182> ;
+  prov:generated <https://example.org/tcc/analysis/1601> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/1601> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "182" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 182 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1601> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/182> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1601> .
+
+<https://example.org/tcc/activity/draft-generation-1601> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1601>, <http://purl.org/nemo/tres/1601>, <http://purl.org/nemo/tnu/182> ;
+  prov:generated <https://example.org/tcc/draft/1601-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1601> .
+
+<https://example.org/tcc/draft/1601-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/1601-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/1601-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1601> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1601> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1601> .

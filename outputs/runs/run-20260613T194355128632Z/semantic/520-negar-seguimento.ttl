@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/520> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "520" ;
+  ors:subject "Convalidação de Estudos e Reconhecimento de Diploma, ACESSO, DIREITO À EDUCAÇÃO" ;
+  dcterms:identifier "5091844-34.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/205> a ors:Theme, prov:Entity ;
+  ors:theme "205" ;
+  ors:themeThesis "a) para reconhecimento da natureza especial de tempo laborado em exposição a agentes biológicos não é necessário o desenvolvimento de uma das atividades arroladas nos Decretos de regência, sendo referido rol meramente exemplificativo; b) entretanto, é necessária a comprovação em concreto do risco de exposição a microorganismos ou parasitas infectocontagiosos, ou ainda suas toxinas, em medida denotativa de que o risco de contaminação em seu ambiente de trabalho era superior ao risco em geral, devendo, ainda, ser avaliado, de acordo com a profissiografia, se tal exposição tem um caráter indissociável da produção do bem ou da prestação do serviço, independentemente de tempo mínimo de exposição durante a jornada (Tema 211/TNU)." ;
+  dcterms:description "Saber se é possível o enquadramento de atividade como especial por exposição a agentes biológicos, quando os serviços prestados não são aqueles descritos no Anexo IV do Decreto 3.048/99." .
+
+<https://example.org/tcc/activity/classification-520> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/520>, <http://purl.org/nemo/tnu/205> ;
+  prov:generated <https://example.org/tcc/analysis/520> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/520> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "205" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 205 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/520> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/205> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-520> .
+
+<https://example.org/tcc/activity/draft-generation-520> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/520>, <http://purl.org/nemo/tres/520>, <http://purl.org/nemo/tnu/205> ;
+  prov:generated <https://example.org/tcc/draft/520-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-520> .
+
+<https://example.org/tcc/draft/520-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/520-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/520-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/520> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/520> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-520> .

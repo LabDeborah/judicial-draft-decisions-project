@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1984> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1984" ;
+  ors:subject "CPF/Cadastro de Pessoas Físicas, Obrigação Tributária, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5059623-95.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/127> a ors:Theme, prov:Entity ;
+  ors:theme "127" ;
+  ors:themeThesis "São ilegais a Portaria n. MF 156/99 e a Instrução Normativa n. SRF 096/1999, no que fixam o limite de isenção para importações realizadas por via postal em US$ 50.00 - cinquenta dólares americanos -, bem como no que condicionam que o destinatário e o remetente para fazerem jus à isenção sejam pessoas físicas." ;
+  dcterms:description "Saber sobre a legalidade da Portaria n. MF 156/99 e a Instrução Normativa n. SRF 096/1999, no que tange à fixação do limite de isenção para importações realizadas por via postal em US$ 50.00 - cinquenta dólares americanos -, bem como no que condicionam que o destinatário e o remetente para fazerem jus à isenção sejam pessoas físicas." .
+
+<https://example.org/tcc/activity/classification-1984> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1984>, <http://purl.org/nemo/tnu/127> ;
+  prov:generated <https://example.org/tcc/analysis/1984> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1984> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "127" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 127 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1984> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/127> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1984> .
+
+<https://example.org/tcc/activity/draft-generation-1984> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1984>, <http://purl.org/nemo/tres/1984>, <http://purl.org/nemo/tnu/127> ;
+  prov:generated <https://example.org/tcc/draft/1984-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1984> .
+
+<https://example.org/tcc/draft/1984-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1984-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1984> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1984> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1984> .

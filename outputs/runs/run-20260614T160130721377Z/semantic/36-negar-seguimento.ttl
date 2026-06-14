@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160130721377z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/36> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "36" ;
+  ors:subject "Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO, Repetição de Indébito, Crédito Tributário, DIREITO TRIBUTÁRIO, Competência Tributária, Limitações ao Poder de Tributar, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5010315-56.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/26> a ors:Theme, prov:Entity ;
+  ors:theme "26" ;
+  ors:themeThesis "Descabida a pretensão de regularização \"post mortem\" do recolhimento das contribuições previdenciárias devidas pelo segurado contribuinte individual exercente de atividade informal, salvo quando devam ser arrecadadas por empresa tomadora de serviços. Vide Súmula 52 da TNU." ;
+  dcterms:description "Saber se é possível regularizar contribuições previdenciárias em atraso, após a morte de segurado contribuinte individual exercente de atividade informal." .
+
+<https://example.org/tcc/activity/classification-36> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/36>, <http://purl.org/nemo/tnu/26> ;
+  prov:generated <https://example.org/tcc/analysis/36> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160130721377z> .
+
+<https://example.org/tcc/analysis/36> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "26" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 26 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/36> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/26> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-36> .
+
+<https://example.org/tcc/activity/draft-generation-36> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/36>, <http://purl.org/nemo/tres/36>, <http://purl.org/nemo/tnu/26> ;
+  prov:generated <https://example.org/tcc/draft/36-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-36> .
+
+<https://example.org/tcc/draft/36-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160130721377Z/documents/36-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160130721377Z/documents/36-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/36> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/36> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-36> .

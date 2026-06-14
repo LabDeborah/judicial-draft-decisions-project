@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/978> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "978" ;
+  ors:subject "Descontos indevidos, Sistema Remuneratório e Benefícios, Militar, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5010463-98.2024.4.02.5102" .
+
+<http://purl.org/nemo/tnu/94> a ors:Theme, prov:Entity ;
+  ors:theme "94" ;
+  ors:themeThesis "É absoluta a incompetência do Juizado Especial Cível Estadual para o processamento e julgamento das causas previdenciárias, por expressa vedação legal à aplicação da Lei n. 10.259/2001 no âmbito do juízo estadual." ;
+  dcterms:description "Saber se o rito da Lei n. 10.259/2001 pode ser aplicado no âmbito dos juizados especiais estaduais para julgamento das ações previdenciárias, em razão da competência delegada (CF/88 art. 109, § 3º)." .
+
+<https://example.org/tcc/activity/classification-978> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/978>, <http://purl.org/nemo/tnu/94> ;
+  prov:generated <https://example.org/tcc/analysis/978> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/978> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "94" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 94 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/978> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/94> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-978> .
+
+<https://example.org/tcc/activity/draft-generation-978> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/978>, <http://purl.org/nemo/tres/978>, <http://purl.org/nemo/tnu/94> ;
+  prov:generated <https://example.org/tcc/draft/978-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-978> .
+
+<https://example.org/tcc/draft/978-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/978-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/978> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/978> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-978> .

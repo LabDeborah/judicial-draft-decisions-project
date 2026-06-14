@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/170> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "170" ;
+  ors:subject "Fornecimento de insumos, Pública, DIREITO DA SAÚDE" ;
+  dcterms:identifier "5109547-75.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/335> a ors:Theme, prov:Entity ;
+  ors:theme "335" ;
+  ors:themeThesis "Enquadra-se como salário-maternidade a remuneração paga às trabalhadoras gestantes afastadas por força da Lei 14.151/21, quando comprovada a incompatibilidade com o trabalho à distância e for inviável a alteração de suas funções." ;
+  dcterms:description "Saber se é devido o pagamento de salário maternidade à segurada gestante cujo serviço desempenhado é incompatível com a prestação de atividades à distância, tendo em vista o disposto na Lei nº 14.151/2021, que prevê o afastamento das atividades presenciais da segurada gestante durante a emergência de saúde pública decorrente do novo Coronavírus." .
+
+<https://example.org/tcc/activity/classification-170> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/170>, <http://purl.org/nemo/tnu/335> ;
+  prov:generated <https://example.org/tcc/analysis/170> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/170> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "335" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 335 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/170> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/335> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-170> .
+
+<https://example.org/tcc/activity/draft-generation-170> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/170>, <http://purl.org/nemo/tres/170>, <http://purl.org/nemo/tnu/335> ;
+  prov:generated <https://example.org/tcc/draft/170-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-170> .
+
+<https://example.org/tcc/draft/170-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/170-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/170-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/170> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/170> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-170> .

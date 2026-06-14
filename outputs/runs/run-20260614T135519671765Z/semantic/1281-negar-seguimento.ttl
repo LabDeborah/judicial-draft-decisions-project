@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1281> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1281" ;
+  ors:subject "Empréstimo consignado, Bancários, Contratos de Consumo, DIREITO DO CONSUMIDOR" ;
+  dcterms:identifier "5006247-91.2024.4.02.5006" .
+
+<http://purl.org/nemo/tnu/183> a ors:Theme, prov:Entity ;
+  ors:theme "183" ;
+  ors:themeThesis "I - O INSS não tem responsabilidade civil pelos danos patrimoniais ou extrapatrimoniais decorrentes de “empréstimo consignado”, concedido mediante fraude, se a instituição financeira credora é a mesma responsável pelo pagamento do benefício previdenciário, nos termos do art. 6º, da Lei n. 10.820/03; II – O INSS pode ser civilmente responsabilizado por danos patrimoniais ou extrapatrimoniais, se demonstrada negligência, por omissão injustificada no desempenho do dever de fiscalização, se os “empréstimos consignados” forem concedidos, de forma fraudulenta, por instituições financeiras distintas daquelas responsáveis pelo pagamento dos benefícios previdenciários. A responsabilidade do INSS, nessa hipótese, é subsidiária em relação à responsabilidade civil da instituição financeira." ;
+  dcterms:description "Decidir se INSS tem responsabilidade civil pelos danos patrimoniais ou morais decorrentes de empréstimo consignado não autorizado." .
+
+<https://example.org/tcc/activity/classification-1281> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1281>, <http://purl.org/nemo/tnu/183> ;
+  prov:generated <https://example.org/tcc/analysis/1281> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/1281> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "183" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 183 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1281> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/183> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1281> .
+
+<https://example.org/tcc/activity/draft-generation-1281> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1281>, <http://purl.org/nemo/tres/1281>, <http://purl.org/nemo/tnu/183> ;
+  prov:generated <https://example.org/tcc/draft/1281-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1281> .
+
+<https://example.org/tcc/draft/1281-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/1281-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1281> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1281> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1281> .

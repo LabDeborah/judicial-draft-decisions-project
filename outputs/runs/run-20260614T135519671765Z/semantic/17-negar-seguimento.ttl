@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/17> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "17" ;
+  ors:subject "Indenização por Dano Moral, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Indenização por Dano Material, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR" ;
+  dcterms:identifier "5037189-92.2022.4.02.5001" .
+
+<http://purl.org/nemo/tnu/164> a ors:Theme, prov:Entity ;
+  ors:theme "164" ;
+  ors:themeThesis "Por não vislumbrar ilegalidade na fixação de data estimada para a cessação do auxílio-doença, ou mesmo na convocação do segurado para nova avaliação da persistência das condições que levaram à concessão do benefício na via judicial, a Turma Nacional de Uniformização, por unanimidade, firmou as seguintes teses: a) os benefícios de auxílio-doença concedidos judicial ou administrativamente, sem Data de Cessação de Benefício (DCB), ainda que anteriormente à edição da MP nº 739/2016, podem ser objeto de revisão administrativa, na forma e prazos previstos em lei e demais normas que regulamentam a matéria, por meio de prévia convocação dos segurados pelo INSS, para avaliar se persistem os motivos de concessão do benefício; b) os benefícios concedidos, reativados ou prorrogados posteriormente à publicação da MP nº 767/2017, convertida na Lei n.º 13.457/17, devem, nos termos da lei, ter a sua DCB fixada, sendo desnecessária, nesses casos, a realização de nova perícia para a cessação do benefício; c) em qualquer caso, o segurado poderá pedir a prorrogação do benefício, com garantia de pagamento até a realização da perícia médica.\"" ;
+  dcterms:description "Saber quais são os reflexos das novas regras constantes na MP nº 739/2016 (§§ 8º e 9º do art. 60 da Lei 8.213/1991) na fixação da data de cessação do benefício auxílio-doença e da exigência, quando for o caso, do pedido de prorrogação, bem como se são aplicáveis aos benefícios concedidos e às demandas ajuizadas em momento anterior à sua vigência." .
+
+<https://example.org/tcc/activity/classification-17> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/17>, <http://purl.org/nemo/tnu/164> ;
+  prov:generated <https://example.org/tcc/analysis/17> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/17> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "164" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 164 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/17> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/164> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-17> .
+
+<https://example.org/tcc/activity/draft-generation-17> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/17>, <http://purl.org/nemo/tres/17>, <http://purl.org/nemo/tnu/164> ;
+  prov:generated <https://example.org/tcc/draft/17-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-17> .
+
+<https://example.org/tcc/draft/17-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/17-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/17> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/17> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-17> .

@@ -1,0 +1,53 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t135519671765z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/2000> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "2000" ;
+  ors:subject "Teto Salarial, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5059513-96.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/229> a ors:Theme, prov:Entity ;
+  ors:theme "229" ;
+  ors:themeThesis "Na vigência da Medida Provisória nº 765, de 29/12/2016 - convertida na Lei n. 13.464/2017, o servidor público federal exercente do cargo de Analista Tributário da Receita Federal tem direito à percepção de adicional noturno, incidindo a regulamentação da Norma de Execução (NE) Cogep nº 2/18 apenas após a sua vigência, a partir de 16 de fevereiro de 2018." ;
+  dcterms:description "Determinar o alcance da Lei nº 13.464/17, especialmente quanto à possibilidade de percepção de adicional noturno em relação ao exercente do cargo de Analista Tributário da Receita Federal." .
+
+<https://example.org/tcc/activity/classification-2000> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/2000>, <http://purl.org/nemo/tnu/229> ;
+  prov:generated <https://example.org/tcc/analysis/2000> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t135519671765z> .
+
+<https://example.org/tcc/analysis/2000> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "229" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 229 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/2000> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/229> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-2000> .
+
+<https://example.org/tcc/activity/draft-generation-2000> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/2000>, <http://purl.org/nemo/tres/2000>, <http://purl.org/nemo/tnu/229> ;
+  prov:generated <https://example.org/tcc/draft/2000-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-2000> .
+
+<https://example.org/tcc/draft/2000-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T135519671765Z/documents/2000-NEGAR_SEGUIMENTO.tex" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/2000> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/2000> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-2000> .

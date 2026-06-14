@@ -1,0 +1,256 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t193921027193z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-13T19:39:38.992877Z"^^xsd:dateTime ;
+  tcc:collectionMode "sample" ;
+  tcc:analysisMode "local" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/catalog/run-20260613t193921027193z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "5"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260613t193921027193z> .
+
+<http://purl.org/nemo/tnu/1> a ors:Theme, prov:Entity ;
+  ors:theme "1" ;
+  ors:themeThesis "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  dcterms:identifier "1" ;
+  dcterms:description "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t193921027193z-themes> .
+
+<http://purl.org/nemo/tnu/2> a ors:Theme, prov:Entity ;
+  ors:theme "2" ;
+  ors:themeThesis "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea." ;
+  dcterms:identifier "2" ;
+  dcterms:description "Saber se certidão de casamento extemporânea serve como início de prova material para fins de concessão de aposentadoria por idade rural." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t193921027193z-themes> .
+
+<http://purl.org/nemo/tnu/3> a ors:Theme, prov:Entity ;
+  ors:theme "3" ;
+  ors:themeThesis "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal." ;
+  dcterms:identifier "3" ;
+  dcterms:description "Saber se a prova material extemporânea, devidamente corroborada por prova oral idônea, é hábil à concessão do benefício de aposentadoria por idade rural." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t193921027193z-themes> .
+
+<http://purl.org/nemo/tnu/4> a ors:Theme, prov:Entity ;
+  ors:theme "4" ;
+  ors:themeThesis "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU" ;
+  dcterms:identifier "4" ;
+  dcterms:description "Saber se é necessário prévio pedido de prorrogação de benefício de auxílio-doença nas hipóteses conhecidas por \"alta programada\"." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t193921027193z-themes> .
+
+<http://purl.org/nemo/tnu/5> a ors:Theme, prov:Entity ;
+  ors:theme "5" ;
+  ors:themeThesis "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)." ;
+  dcterms:identifier "5" ;
+  dcterms:description "Saber se para obtenção da aposentadoria por idade de segurado especial é necessário demonstrar atividade rural no período imediatamente anterior ao atingimento da idade mínima ou à apresentação do requerimento administrativo." ;
+  tcc:situacaoTema "Revisado pelo Tema 145" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260613t193921027193z-themes> .
+
+<http://purl.org/nemo/tres/1> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1" ;
+  ors:subject "Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL" ;
+  dcterms:identifier "5021277-41.2025.4.02.5101" ;
+  dcterms:type "MANDADO DE SEGURANÇA TR CÍVEL" ;
+  tcc:tipoJulgamento "Julgamento Principal" ;
+  tcc:competencia "JEF Recurso Cível" ;
+  tcc:relatorOriginario "ALESSANDRA BELFORT BUENO" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t193921027193z> .
+
+<https://example.org/tcc/activity/classification-1> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1>, <https://example.org/tcc/catalog/run-20260613t193921027193z-themes>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/analysis/1> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/1> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1> .
+
+<https://example.org/tcc/activity/draft-generation-1> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1>, <http://purl.org/nemo/tres/1>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/draft/1-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/1-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T193921027193Z/documents/1-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T193921027193Z/documents/1-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1> .
+
+<http://purl.org/nemo/tres/2> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "2" ;
+  ors:subject "IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO, Isenção, Limitações ao Poder de Tributar, DIREITO TRIBUTÁRIO, Incidência sobre Aposentadoria, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5020184-43.2025.4.02.5101" ;
+  dcterms:type "RECURSO DE MEDIDA CAUTELAR CÍVEL" ;
+  tcc:tipoJulgamento "Julgamento Principal" ;
+  tcc:competencia "JEF Recurso Tributário" ;
+  tcc:relatorOriginario "DANIELLA ROCHA SANTOS FERREIRA DE SOUZA MOTTA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t193921027193z> .
+
+<https://example.org/tcc/activity/classification-2> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/2>, <https://example.org/tcc/catalog/run-20260613t193921027193z-themes>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/analysis/2> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/2> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/2> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-2> .
+
+<https://example.org/tcc/activity/draft-generation-2> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/2>, <http://purl.org/nemo/tres/2>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/draft/2-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/2-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T193921027193Z/documents/2-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T193921027193Z/documents/2-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/2> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/2> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-2> .
+
+<http://purl.org/nemo/tres/3> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "3" ;
+  ors:subject "Servidores Inativos, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5019643-10.2025.4.02.5101" ;
+  dcterms:type "RECURSO DE MEDIDA CAUTELAR CÍVEL" ;
+  tcc:tipoJulgamento "Julgamento Principal" ;
+  tcc:competencia "JEF Recurso Tributário" ;
+  tcc:relatorOriginario "CYNTIA LEITE MARQUES" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t193921027193z> .
+
+<https://example.org/tcc/activity/classification-3> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/3>, <https://example.org/tcc/catalog/run-20260613t193921027193z-themes>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/analysis/3> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/3> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/3> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-3> .
+
+<https://example.org/tcc/activity/draft-generation-3> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/3>, <http://purl.org/nemo/tres/3>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/draft/3-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/3-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T193921027193Z/documents/3-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T193921027193Z/documents/3-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/3> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/3> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-3> .
+
+<http://purl.org/nemo/tres/4> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "4" ;
+  ors:subject "CND/Certidão Negativa de Débito, Crédito Tributário, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5019552-17.2025.4.02.5101" ;
+  dcterms:type "RECURSO DE MEDIDA CAUTELAR CÍVEL" ;
+  tcc:tipoJulgamento "Julgamento Principal" ;
+  tcc:competencia "JEF Recurso Tributário" ;
+  tcc:relatorOriginario "CYNTIA LEITE MARQUES" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t193921027193z> .
+
+<https://example.org/tcc/activity/classification-4> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/4>, <https://example.org/tcc/catalog/run-20260613t193921027193z-themes>, <http://purl.org/nemo/tnu/2> ;
+  prov:generated <https://example.org/tcc/analysis/4> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/4> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "2" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 2 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/4> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/2> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-4> .
+
+<https://example.org/tcc/activity/draft-generation-4> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/4>, <http://purl.org/nemo/tres/4>, <http://purl.org/nemo/tnu/2> ;
+  prov:generated <https://example.org/tcc/draft/4-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/4-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T193921027193Z/documents/4-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T193921027193Z/documents/4-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/4> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/4> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-4> .
+
+<http://purl.org/nemo/tres/5> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "5" ;
+  ors:subject "Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5018960-70.2025.4.02.5101" ;
+  dcterms:type "RECURSO CÍVEL" ;
+  tcc:tipoJulgamento "Julgamento Principal" ;
+  tcc:competencia "JEF Recurso Cível" ;
+  tcc:relatorOriginario "DANIELLA ROCHA SANTOS FERREIRA DE SOUZA MOTTA" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260613t193921027193z> .
+
+<https://example.org/tcc/activity/classification-5> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/5>, <https://example.org/tcc/catalog/run-20260613t193921027193z-themes>, <http://purl.org/nemo/tnu/4> ;
+  prov:generated <https://example.org/tcc/analysis/5> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/5> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "4" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 4 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/5> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/4> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-5> .
+
+<https://example.org/tcc/activity/draft-generation-5> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/5>, <http://purl.org/nemo/tres/5>, <http://purl.org/nemo/tnu/4> ;
+  prov:generated <https://example.org/tcc/draft/5-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/5-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T193921027193Z/documents/5-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T193921027193Z/documents/5-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/5> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/5> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-5> .

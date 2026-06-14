@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260613t194355128632z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/431> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "431" ;
+  ors:subject "Auxílio-Alimentação, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5094242-51.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/64> a ors:Theme, prov:Entity ;
+  ors:theme "64" ;
+  ors:themeThesis "Os empregados submetidos ao Regime Geral da Previdência Social (RGPS), aí incluídos os exercentes de cargo em comissão, de livre nomeação e exoneração, em caráter exclusivo, se sujeitam à incidência de contribuição previdenciária sobre as parcelas percebidas a título de Auxílio-Alimentação dada a sua natureza salarial, com base nos termos do art. 40, § 13º, da CF/88 c.c. art. 28, I, da Lei n. 8.212/91, salvo, se tal pagamento for “in natura”, isto é, quando a própria empresa fornece a alimentação. Vide Súmula 67 da TNU." ;
+  dcterms:description "Saber se incide contribuição previdenciária sobre auxílio-alimentação para cargos em comissão." .
+
+<https://example.org/tcc/activity/classification-431> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/431>, <http://purl.org/nemo/tnu/64> ;
+  prov:generated <https://example.org/tcc/analysis/431> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260613t194355128632z> .
+
+<https://example.org/tcc/analysis/431> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "64" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 64 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/431> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/64> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-431> .
+
+<https://example.org/tcc/activity/draft-generation-431> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/431>, <http://purl.org/nemo/tres/431>, <http://purl.org/nemo/tnu/64> ;
+  prov:generated <https://example.org/tcc/draft/431-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-431> .
+
+<https://example.org/tcc/draft/431-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260613T194355128632Z/documents/431-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260613T194355128632Z/documents/431-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/431> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/431> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-431> .
