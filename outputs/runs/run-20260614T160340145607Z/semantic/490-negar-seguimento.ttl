@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/490> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "490" ;
+  ors:subject "Financiamento Privado do Ensino Superior e/ou Pesquisa, FINANCIAMENTO, DIREITO À EDUCAÇÃO, Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL, Nulidade, Atos Processuais, DIREITO PROCESSUAL CIVIL E DO TRABALHO" ;
+  dcterms:identifier "5092664-53.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/243> a ors:Theme, prov:Entity ;
+  ors:theme "243" ;
+  ors:themeThesis "I) a espera em fila de banco por tempo superior ao previsto na legislação local não configura, por si só, dano moral in re ipsa; II) é cabível indenização por danos morais fundada na espera em fila de banco quando a demora for excessivamente longa ou quando estiver associada a outros constrangimentos capazes de abalar a honra do autor ou causar-lhe situação de dor, sofrimento ou humilhação." ;
+  dcterms:description "Saber se a demora excessiva na fila de atendimento em instituição financeira enseja indenização por dano moral" .
+
+<https://example.org/tcc/activity/classification-490> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/490>, <http://purl.org/nemo/tnu/243> ;
+  prov:generated <https://example.org/tcc/analysis/490> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/490> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "243" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 243 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/490> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/243> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-490> .
+
+<https://example.org/tcc/activity/draft-generation-490> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/490>, <http://purl.org/nemo/tres/490>, <http://purl.org/nemo/tnu/243> ;
+  prov:generated <https://example.org/tcc/draft/490-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-490> .
+
+<https://example.org/tcc/draft/490-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/490-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/490-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/490> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/490> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-490> .

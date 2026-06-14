@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1694> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1694" ;
+  ors:subject "Financiamento de Produto, Contratos de Consumo, DIREITO DO CONSUMIDOR" ;
+  dcterms:identifier "5063708-27.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/341> a ors:Theme, prov:Entity ;
+  ors:theme "341" ;
+  ors:themeThesis "Na contagem do prazo de um ano de docência, para fins de aquisição do direito ao abatimento mensal de 1% do saldo devedor consolidado nos contratos de financiamento estudantil, previsto no art. 6º-B, inciso I, da Lei nº 10.260/2001, devem ser levados em consideração os meses laborados, inclusive, no ano em curso da solicitação de abatimento, e não apenas os meses trabalhados no ano anterior ao pedido. É ilegal a restrição contida na Portaria Normativa MEC/FIES nº 07, de 26/04/2013 que estabelece como base o período de janeiro a dezembro do ano anterior." ;
+  dcterms:description "Saber se a contagem do prazo mínimo de doze meses de exercício da docência, um dos requisitos para aquisição do direito ao abatimento mensal de 1% do saldo devedor consolidado nos contratos de Financiamento Estudantil, previsto no art. 6º-B, inciso I, da Lei nº 10.260/2001, deve ter como base de cálculo o período de janeiro a dezembro do ano anterior, conforme previsto no § 1º, art. 4º, da Portaria nº 07 de abril de 2013 ou deve ser computado desde o início do efetivo exercício até o implemento de 12 meses ininterruptos." .
+
+<https://example.org/tcc/activity/classification-1694> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1694>, <http://purl.org/nemo/tnu/341> ;
+  prov:generated <https://example.org/tcc/analysis/1694> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/1694> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "341" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 341 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1694> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/341> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1694> .
+
+<https://example.org/tcc/activity/draft-generation-1694> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1694>, <http://purl.org/nemo/tres/1694>, <http://purl.org/nemo/tnu/341> ;
+  prov:generated <https://example.org/tcc/draft/1694-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1694> .
+
+<https://example.org/tcc/draft/1694-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/1694-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/1694-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1694> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1694> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1694> .

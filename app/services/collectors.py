@@ -45,6 +45,9 @@ TRF2_DETAIL_REQUEST_DELAY_S = 0.35
 TRF2_DETAIL_MIN_HTML_LEN = 2500
 TRF2_MAX_SEARCH_QUERIES = 24
 TRF2_DETAIL_CACHE_FILE = "outputs/reports/trf2_detail_cache.json"
+SAMPLE_IMPORT_ROOT = Path("incoming_tcc_pack_20260404/TCC")
+SAMPLE_TNU_ZIP = SAMPLE_IMPORT_ROOT / "tnu-20260327T210944Z-3-001.zip"
+SAMPLE_TRF2_ZIP = SAMPLE_IMPORT_ROOT / "trf2-20260327T210759Z-3-001.zip"
 TRF2_BAD_DETAIL_MARKERS = (
     "consulta processual - busca de processo",
     ":: eproc - consulta processual",
@@ -1133,6 +1136,9 @@ def _cell_link(cells: list[Tag], idx: int) -> str | None:
 
 
 def _sample_themes() -> list[TnuTheme]:
+    imported = _load_sample_themes_from_package()
+    if imported:
+        return imported
     return [
         TnuTheme(
             temaNumero="309",
@@ -1180,6 +1186,9 @@ def _sample_themes() -> list[TnuTheme]:
 
 
 def _sample_decisions() -> list[Trf2Decision]:
+    imported = _load_sample_decisions_from_package()
+    if imported:
+        return imported
     return [
         Trf2Decision(
             decisionId="TRF2-0001",
@@ -1253,9 +1262,35 @@ def _resolve_relative_file(csv_path: str, raw_path: str) -> str:
         return ""
     if clean.startswith(("http://", "https://")):
         return clean
+    if csv_path.startswith("zip::"):
+        parts = csv_path.split("::", 2)
+        if len(parts) == 3:
+            zip_path = parts[1]
+            entry = parts[2]
+            entry_dir = Path(entry).parent
+            normalized_entry = str((entry_dir / clean).as_posix()).replace("\\", "/")
+            return f"zip::{zip_path}::{normalized_entry}"
     base_dir = Path(csv_path).parent
     joined = (base_dir / clean).resolve()
     return str(joined) if joined.exists() else clean
+
+
+def _load_sample_themes_from_package() -> list[TnuTheme]:
+    if not SAMPLE_TNU_ZIP.exists():
+        return []
+    return _collect_tnu_themes_import(
+        f"zip::{SAMPLE_TNU_ZIP.as_posix()}::tnu/temas-tnu.csv",
+        10_000,
+    )
+
+
+def _load_sample_decisions_from_package() -> list[Trf2Decision]:
+    if not SAMPLE_TRF2_ZIP.exists():
+        return []
+    return _collect_trf2_decisions_import(
+        f"zip::{SAMPLE_TRF2_ZIP.as_posix()}::trf2/decisoes.csv",
+        10_000,
+    )
 
 
 def _read_csv_rows_from_zip_spec(spec: str) -> list[dict[str, str]]:

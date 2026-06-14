@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1417> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1417" ;
+  ors:subject "Servidores Ativos, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO, Contribuição sobre a folha de salários, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5012193-89.2020.4.02.5101" .
+
+<http://purl.org/nemo/tnu/320> a ors:Theme, prov:Entity ;
+  ors:theme "320" ;
+  ors:themeThesis "A inscrição do produtor rural no cadastro CNPJ, como sócio de pessoa jurídica no ramo agropecuário, em concomitância à sua inscrição como pessoa física, é suficiente para sujeitá-lo ao pagamento da contribuição salário-educação sobre a folha de salários vinculada à sua inscrição como pessoa física, independentemente de prévio procedimento fiscal tendente a demonstrar eventual planejamento fiscal abusivo." ;
+  dcterms:description "Definir se, para se reconhecer o dever de recolher a contribuição salário-educação pelo produtor rural pessoa física que, simultaneamente, é sócio de pessoa jurídica do ramo agropecuário, é necessário prévio procedimento fiscal, a fim de se comprovar o planejamento fiscal abusivo." .
+
+<https://example.org/tcc/activity/classification-1417> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1417>, <http://purl.org/nemo/tnu/320> ;
+  prov:generated <https://example.org/tcc/analysis/1417> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/1417> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "320" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 320 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1417> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/320> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1417> .
+
+<https://example.org/tcc/activity/draft-generation-1417> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1417>, <http://purl.org/nemo/tres/1417>, <http://purl.org/nemo/tnu/320> ;
+  prov:generated <https://example.org/tcc/draft/1417-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1417> .
+
+<https://example.org/tcc/draft/1417-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/1417-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/1417-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1417> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1417> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1417> .

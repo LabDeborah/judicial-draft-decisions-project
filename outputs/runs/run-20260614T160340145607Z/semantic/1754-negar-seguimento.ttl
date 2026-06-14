@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1754> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1754" ;
+  ors:subject "Gratificação Natalina/13º Salário, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO" ;
+  dcterms:identifier "5006497-27.2024.4.02.5103" .
+
+<http://purl.org/nemo/tnu/71> a ors:Theme, prov:Entity ;
+  ors:theme "71" ;
+  ors:themeThesis "Os benefícios e resgates decorrentes das contribuições recolhidas sob o regime da Lei n. 7.713/88 (janeiro de 1989 a dezembro de 1995), com a incidência do imposto de renda no momento do recolhimento, não serão novamente tributados, sob pena de violação à regra proibitiva do \"bis in idem\". Vide recurso repetitivo do STJ: REsp 1001779/ DF." ;
+  dcterms:description "Saber se há incidência de imposto de renda sobre os benefícios e resgates da aposentadoria complementar sob a égide da Lei n. 7.713/88." .
+
+<https://example.org/tcc/activity/classification-1754> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1754>, <http://purl.org/nemo/tnu/71> ;
+  prov:generated <https://example.org/tcc/analysis/1754> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/1754> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "71" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 71 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1754> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/71> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1754> .
+
+<https://example.org/tcc/activity/draft-generation-1754> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1754>, <http://purl.org/nemo/tres/1754>, <http://purl.org/nemo/tnu/71> ;
+  prov:generated <https://example.org/tcc/draft/1754-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1754> .
+
+<https://example.org/tcc/draft/1754-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/1754-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/1754-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1754> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1754> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1754> .

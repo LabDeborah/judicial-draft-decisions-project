@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1973> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1973" ;
+  ors:subject "Aposentadoria por Invalidez (Art. 42/7), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO" ;
+  dcterms:identifier "5026365-06.2024.4.02.5001" .
+
+<http://purl.org/nemo/tnu/120> a ors:Theme, prov:Entity ;
+  ors:theme "120" ;
+  ors:themeThesis "A revisão do benefício de aposentadoria por invalidez decorrente da conversão do auxílio- doença, nos termos do art. 29, II, da Lei n. 8.213/91, sujeita-se ao prazo decadencial previsto no art. 103 da Lei n. 8.213/91, cujo marco inicial é a data da concessão do benefício originário. O prazo decadencial para revisão pelo art. 29, II, da Lei 8.213/91 se inicia a contar de 15/04/2010, em razão do reconhecimento administrativo do direito, perpetrada pelo Memorando-Circular Conjunto 21/DIRBENS/PFEINSS. Em razão do Memorando 21/DIRBEN/PFEINSS, de 15-4-2010, que reconhece o direito do segurado à revisão pelo art. 29, II, da Lei n. 8.213/91, os prazos prescricionais em curso voltaram a correr integralmente a partir de sua publicação. Vide Tema 134." ;
+  dcterms:description "Saber quais os reflexos do Memorando-Circular Conjunto 21/DIRBEN/PFEINSS, de 15-4-2010, na análise da prescrição e decadência dos pedidos de revisão de benefícios." .
+
+<https://example.org/tcc/activity/classification-1973> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1973>, <http://purl.org/nemo/tnu/120> ;
+  prov:generated <https://example.org/tcc/analysis/1973> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/1973> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "120" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 120 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1973> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/120> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1973> .
+
+<https://example.org/tcc/activity/draft-generation-1973> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1973>, <http://purl.org/nemo/tres/1973>, <http://purl.org/nemo/tnu/120> ;
+  prov:generated <https://example.org/tcc/draft/1973-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1973> .
+
+<https://example.org/tcc/draft/1973-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/1973-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/1973-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1973> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1973> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1973> .

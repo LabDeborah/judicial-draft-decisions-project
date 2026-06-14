@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/227> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "227" ;
+  ors:subject "Classificação e/ou Preterição, Concurso Público / Edital, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5104485-54.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/224> a ors:Theme, prov:Entity ;
+  ors:theme "224" ;
+  ors:themeThesis "O empregado celetista, cujo contrato com a administração pública tenha sido declarado nulo, em razão da ausência de concurso público não tem direito ao benefício do seguro-desemprego." ;
+  dcterms:description "Saber se o empregado celetista, irregularmente contratado por empresa pública sem concurso, tem, ou não, direito ao benefício do seguro-desemprego." .
+
+<https://example.org/tcc/activity/classification-227> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/227>, <http://purl.org/nemo/tnu/224> ;
+  prov:generated <https://example.org/tcc/analysis/227> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/227> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "224" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 224 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/227> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/224> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-227> .
+
+<https://example.org/tcc/activity/draft-generation-227> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/227>, <http://purl.org/nemo/tres/227>, <http://purl.org/nemo/tnu/224> ;
+  prov:generated <https://example.org/tcc/draft/227-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-227> .
+
+<https://example.org/tcc/draft/227-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/227-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/227-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/227> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/227> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-227> .

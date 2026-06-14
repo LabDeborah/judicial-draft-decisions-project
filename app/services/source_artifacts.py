@@ -6,6 +6,7 @@ import re
 import shutil
 import subprocess
 import sys
+import zipfile
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -60,7 +61,10 @@ def materialize_source_artifacts(
 def _materialize_theme_pdf(theme: TnuTheme, output_dir: Path, latex_engine: str | None) -> str | None:
     filename = f"tema-{_safe_slug(theme.temaNumero or theme.numeroProcesso or 'sem-id')}.pdf"
     target = output_dir / filename
-    downloaded = _download_tnu_theme_pdf(theme, target) or _download_or_copy_pdf(theme.pdfPath or "", target)
+    direct_source = theme.pdfPath or ""
+    downloaded = _download_or_copy_pdf(direct_source, target)
+    if not downloaded:
+        downloaded = _download_tnu_theme_pdf(theme, target)
     if downloaded:
         return downloaded
     context = {
@@ -84,16 +88,16 @@ def _materialize_decision_pdf(
 ) -> str | None:
     filename = f"{_safe_slug(decision.decisionId or decision.numeroProcesso or 'sem-id')}.pdf"
     target = output_dir / filename
-    downloaded = _download_trf2_decision_pdf(
-        decision,
-        target,
-        latex_engine,
-        trf2_chrome_profile=trf2_chrome_profile,
-        document_url_cache=document_url_cache,
-    ) or _download_or_copy_pdf(
-        decision.inteiroTeorPath or "",
-        target,
-    )
+    direct_source = decision.inteiroTeorPath or ""
+    downloaded = _download_or_copy_pdf(direct_source, target)
+    if not downloaded:
+        downloaded = _download_trf2_decision_pdf(
+            decision,
+            target,
+            latex_engine,
+            trf2_chrome_profile=trf2_chrome_profile,
+            document_url_cache=document_url_cache,
+        )
     if downloaded:
         return downloaded
     context = {
@@ -111,6 +115,8 @@ def _materialize_decision_pdf(
 def _download_or_copy_pdf(source: str, target: Path) -> str | None:
     if not source:
         return None
+    if source.startswith("zip::"):
+        return _copy_pdf_from_zip_spec(source, target)
     parsed = urlparse(source)
     if parsed.scheme in ("http", "https"):
         try:
@@ -131,6 +137,21 @@ def _download_or_copy_pdf(source: str, target: Path) -> str | None:
         shutil.copyfile(local_path, target)
         return str(target)
     return None
+
+
+def _copy_pdf_from_zip_spec(source: str, target: Path) -> str | None:
+    parts = source.split("::", 2)
+    if len(parts) != 3:
+        return None
+    zip_path, entry = parts[1], parts[2]
+    if not entry.lower().endswith(".pdf"):
+        return None
+    try:
+        with zipfile.ZipFile(zip_path) as archive:
+            target.write_bytes(archive.read(entry))
+    except Exception:
+        return None
+    return str(target)
 
 
 def _download_tnu_theme_pdf(theme: TnuTheme, target: Path) -> str | None:
@@ -626,6 +647,8 @@ def _render_trf2_document_page_pdf_via_profile_script(
             cwd=str(Path.cwd()),
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=420,
             check=False,
         )
@@ -652,6 +675,8 @@ def _resolve_trf2_public_document_url_via_profile_script(
             cwd=str(Path.cwd()),
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=420,
             check=False,
         )

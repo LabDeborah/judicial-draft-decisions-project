@@ -328,46 +328,32 @@
     "relator": "Relator 2",
     "dataAutuacao": "2025-01-12"
   },
-  "outputs\\runs\\run-20260613T183154426423Z\\data\\decisions\\trf2-0001.pdf": {
-    "classe": "PEDIDO DE UNIFORMIZACAO",
-    "assuntos": "Salario-maternidade em adocao",
-    "colegiado": "JEF",
-    "relator": "Relator 1",
-    "dataAutuacao": "2025-01-10"
+  "outputs\\runs\\run-20260613T185015192182Z\\data\\decisions\\trf2-live-1.pdf": {
+    "classe": "RECURSO CÍVEL",
+    "assuntos": "Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO",
+    "colegiado": "1ª Turma Recursal - 2º Juiz Relator (ES)",
+    "relator": "PABLO COELHO CHARLES GOMES",
+    "dataAutuacao": "04/08/2025 11:07:27"
   },
-  "outputs\\runs\\run-20260613T183154426423Z\\data\\decisions\\trf2-0002.pdf": {
-    "classe": "PEDIDO DE UNIFORMIZACAO",
-    "assuntos": "Auxilio-alimentacao em licenca-premio",
-    "colegiado": "JEF",
-    "relator": "Relator 2",
-    "dataAutuacao": "2025-01-12"
+  "outputs\\runs\\run-20260613T185015192182Z\\data\\decisions\\trf2-live-2.pdf": {
+    "classe": "RECURSO CÍVEL",
+    "assuntos": "Aposentadoria por Tempo de Contribuição (Art. 55/6), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO",
+    "colegiado": "1ª Turma Recursal do Espírito Santo",
+    "relator": "LEONARDO MARQUES LESSA",
+    "dataAutuacao": "10/06/2024 15:33:55"
   },
-  "outputs\\runs\\run-20260613T183154426423Z\\data\\decisions\\trf2-0003.pdf": {
-    "classe": "PEDIDO DE UNIFORMIZACAO",
-    "assuntos": "Beneficio assistencial e renda familiar per capita",
-    "colegiado": "JEF",
-    "relator": "Relator 3",
-    "dataAutuacao": "2025-01-14"
+  "outputs\\runs\\run-20260613T185015192182Z\\data\\decisions\\trf2-live-3.pdf": {
+    "classe": "RECURSO CÍVEL",
+    "assuntos": "Pensão por Morte (Art. 74/9), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO",
+    "colegiado": "1ª Turma Recursal do Espírito Santo",
+    "relator": "PABLO COELHO CHARLES GOMES",
+    "dataAutuacao": "25/10/2024 14:30:33"
   },
-  "outputs\\runs\\run-20260613T183527155501Z\\data\\decisions\\trf2-0001.pdf": {
-    "classe": "PEDIDO DE UNIFORMIZACAO",
-    "assuntos": "Salario-maternidade em adocao",
-    "colegiado": "JEF",
-    "relator": "Relator 1",
-    "dataAutuacao": "2025-01-10"
-  },
-  "outputs\\runs\\run-20260613T183527155501Z\\data\\decisions\\trf2-0002.pdf": {
-    "classe": "PEDIDO DE UNIFORMIZACAO",
-    "assuntos": "Auxilio-alimentacao em licenca-premio",
-    "colegiado": "JEF",
-    "relator": "Relator 2",
-    "dataAutuacao": "2025-01-12"
-  },
-  "outputs\\runs\\run-20260613T183527155501Z\\data\\decisions\\trf2-0003.pdf": {
-    "classe": "PEDIDO DE UNIFORMIZACAO",
-    "assuntos": "Beneficio assistencial e renda familiar per capita",
-    "colegiado": "JEF",
-    "relator": "Relator 3",
-    "dataAutuacao": "2025-01-14"
+  "outputs\\runs\\run-20260613T190049690107Z\\data\\decisions\\trf2-live-1.pdf": {
+    "classe": "RECURSO CÍVEL",
+    "assuntos": "Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO",
+    "colegiado": "1ª Turma Recursal - 2º Juiz Relator (ES)",
+    "relator": "PABLO COELHO CHARLES GOMES",
+    "dataAutuacao": "04/08/2025 11:07:27"
   }
 }

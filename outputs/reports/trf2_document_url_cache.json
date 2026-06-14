@@ -1,1 +1,3 @@
-{}
+{
+  "https://eproc.jfes.jus.br/eproc/externo_controlador.php?acao=processo_seleciona_publica&acao_origem=processo_consulta_publica&acao_retorno=processo_consulta_publica&num_processo=50227377220254025001": "https://eproc.jfes.jus.br/eproc/controlador.php?acao=acessar_documento_publico&doc=501778688745446793190552401567&evento=501778688745446793190552408998&key=53f120fefec8cf411bf3be08ba9398ea1c2f5586096b31c131200eed110b645e&hash=5050ff95a0fddb5081ee2006cf78c4c3"
+}

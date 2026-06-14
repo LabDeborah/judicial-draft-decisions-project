@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/1795> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1795" ;
+  ors:subject "Assistência Médico-Hospitalar, Sistema Remuneratório e Benefícios, Militar, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5062063-64.2024.4.02.5101" .
+
+<http://purl.org/nemo/tnu/340> a ors:Theme, prov:Entity ;
+  ors:theme "340" ;
+  ors:themeThesis "A mãe de militar que se tornou viúva antes da vigência da Lei nº 13.954/2019 tem direito adquirido à assistência médico-hospitalar desde que comprovados os requisitos previstos na redação original da Lei nº 6.880/80 - condição de viúva e não receber remuneração - independentemente da data em que ocorrer sua inscrição nos assentamentos funcionais do militar." ;
+  dcterms:description "Saber quais os efeitos das alterações decorrentes da Lei nº 13.954/2019 ao Estatuto dos Militares (Lei nº 6.880/80), no que tange ao reconhecimento da qualidade de dependente de militar, na condição de genitora viúva, para fins de direito à assistência médico-hospitalar." .
+
+<https://example.org/tcc/activity/classification-1795> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1795>, <http://purl.org/nemo/tnu/340> ;
+  prov:generated <https://example.org/tcc/analysis/1795> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/1795> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "340" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 340 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1795> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/340> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1795> .
+
+<https://example.org/tcc/activity/draft-generation-1795> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1795>, <http://purl.org/nemo/tres/1795>, <http://purl.org/nemo/tnu/340> ;
+  prov:generated <https://example.org/tcc/draft/1795-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-1795> .
+
+<https://example.org/tcc/draft/1795-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/1795-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/1795-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1795> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1795> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1795> .

@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import shutil
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
 
 from app.domain.types import AnalysisOutput, DocumentDecision, TnuTheme, Trf2Decision
 from app.services.document_template import (
@@ -71,10 +72,27 @@ def generate_decision_drafts(
                 action=doc.action,
                 docx_path=docx_path,
                 tex_path=written_tex_path,
-                pdf_path=pdf_path,
+                pdf_path=None,
             )
         )
+    if compile_pdf and generated:
+        _compile_drafts_in_parallel(generated, latex_engine)
     return generated
+
+
+def _compile_drafts_in_parallel(drafts: list[GeneratedDraft], latex_engine: str | None) -> None:
+    max_workers = min(4, max(1, os.cpu_count() or 1))
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        pdf_paths = list(executor.map(lambda draft: _compile_single_draft(draft, latex_engine), drafts))
+    for draft, pdf_path in zip(drafts, pdf_paths):
+        draft.pdf_path = pdf_path
+
+
+def _compile_single_draft(draft: GeneratedDraft, latex_engine: str | None) -> str | None:
+    tex_file = Path(draft.tex_path)
+    if _compile_tex_to_pdf(tex_file, latex_engine):
+        return str(tex_file.with_suffix(".pdf"))
+    return None
 
 
 def _create_legacy_latex_template(
@@ -139,6 +157,8 @@ def _compile_tex_to_pdf(tex_file: Path, preferred_engine: str | None) -> bool:
             cmd,
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=120,
             env=run_env,
             check=False,

@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/24> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "24" ;
+  ors:subject "Pensão, Militar, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Antecipação de Tutela / Tutela Específica, Processo e Procedimento, DIREITO PROCESSUAL CIVIL E DO TRABALHO" ;
+  dcterms:identifier "5011406-84.2025.4.02.5101" .
+
+<http://purl.org/nemo/tnu/150> a ors:Theme, prov:Entity ;
+  ors:theme "150" ;
+  ors:themeThesis "Para concessão do auxílio-transporte, é suficiente a declaração do servidor que ateste a realização das despesas com transporte, nos termos dos arts. 1º e 6º da Medida Provisória n. 2.165/2001, independentemente de o transporte utilizado para o deslocamento entre a residência e o trabalho e vice-versa ser próprio ou coletivo, não havendo necessidade de prévia comprovação das despesas efetivamente realizadas com o deslocamento." ;
+  dcterms:description "Saber se é devido o pagamento de auxílio-transporte instituído pelo art. 1º da MP n. 2.165-36/01, ao servidor que utiliza veículo próprio para deslocamento nos trajetos residência/trabalho e trabalho/residência." .
+
+<https://example.org/tcc/activity/classification-24> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/24>, <http://purl.org/nemo/tnu/150> ;
+  prov:generated <https://example.org/tcc/analysis/24> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/24> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "150" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 150 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/24> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/150> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-24> .
+
+<https://example.org/tcc/activity/draft-generation-24> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/24>, <http://purl.org/nemo/tres/24>, <http://purl.org/nemo/tnu/150> ;
+  prov:generated <https://example.org/tcc/draft/24-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-24> .
+
+<https://example.org/tcc/draft/24-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/24-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/24-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/24> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/24> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-24> .

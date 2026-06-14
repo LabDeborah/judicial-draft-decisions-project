@@ -1,0 +1,54 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260614t160340145607z> a prov:Activity, tcc:PipelineRun .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<http://purl.org/nemo/tres/423> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "423" ;
+  ors:subject "Adicional de Insalubridade, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO" ;
+  dcterms:identifier "5002808-66.2024.4.02.5105" .
+
+<http://purl.org/nemo/tnu/334> a ors:Theme, prov:Entity ;
+  ors:theme "334" ;
+  ors:themeThesis "Não há direito à continuidade do pagamento do adicional de insalubridade quando o servidor público está em trabalho exclusivamente remoto e afastado das causas que o motivaram, por motivo de força maior, em decorrência da Pandemia da Covid-19." ;
+  dcterms:description "Saber se é devida a manutenção do pagamento de adicional de insalubridade ao servidor público durante o exercício de trabalho remoto por motivo de força maior (pandemia de Covid-19)." .
+
+<https://example.org/tcc/activity/classification-423> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/423>, <http://purl.org/nemo/tnu/334> ;
+  prov:generated <https://example.org/tcc/analysis/423> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> ;
+  prov:wasInformedBy <https://example.org/tcc/run/run-20260614t160340145607z> .
+
+<https://example.org/tcc/analysis/423> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "334" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 334 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/423> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/334> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-423> .
+
+<https://example.org/tcc/activity/draft-generation-423> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/423>, <http://purl.org/nemo/tres/423>, <http://purl.org/nemo/tnu/334> ;
+  prov:generated <https://example.org/tcc/draft/423-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> ;
+  prov:wasInformedBy <https://example.org/tcc/activity/classification-423> .
+
+<https://example.org/tcc/draft/423-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260614T160340145607Z/documents/423-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260614T160340145607Z/documents/423-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/423> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/423> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-423> .
