@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/status-in%20development-orange)](#)
 
-Python pipeline for collecting TNU themes and TRF2 decisions, comparing both sources, recommending a procedural action, generating legal draft documents from a formal template, and emitting a semantic RDF/Turtle layer with provenance.
+Python pipeline for collecting TNU themes and TRF2 decisions, comparing both sources, recommending a procedural action, generating legal draft documents from a formal template provided by experts, and emitting a semantic RDF/Turtle layer with provenance.
 
 Detailed architecture: [WORKFLOW.md](./WORKFLOW.md)
 
