@@ -5,7 +5,7 @@
 This project runs an end-to-end legal-document pipeline that:
 
 1. collects TNU themes;
-2. collects TRF2 decisions from 1ª TRES and 2ªTRES;
+2. collects TRF2 decisions from 1ª TRES and 2ªTRES (both appelate panels in Espirito Santo-Brazil - Seção Judiciária do ES);
 3. compares decisions against themes;
 4. classifies the legal relationship between both texts;
 5. derives the procedural action to be taken;
