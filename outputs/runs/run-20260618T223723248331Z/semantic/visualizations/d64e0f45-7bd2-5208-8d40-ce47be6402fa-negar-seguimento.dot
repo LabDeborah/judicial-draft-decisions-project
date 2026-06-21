@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3942516848187982206 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n3029868929793491010 [label="jdd:classification-e613d5b2-6d9b-5261-8800-161fa2c597c5", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-e613d5b2-6d9b-5261-8800-161fa2c597c5"];
+    n3878682370543064056 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1889014188545814947 [label="jdd:pipeline-run-ad21b76b-7830-585a-8262-9db528bd4062", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-ad21b76b-7830-585a-8262-9db528bd4062"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4195598085246963113 [label="tres:5004809-42.2024.4.02.5002", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5004809-42.2024.4.02.5002\n\nsubject: Aposentadoria por Tempo de Contribuição (Art. 55/6), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5353763184064446827 [label="Tema 1 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 1 - Julgado"];
+    n2085777047810057186 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 1 Thesis\n\ndescription: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3473403884145659352 [label="jdd:admissibility-c719d3c5-b2c3-5449-9c95-d938de0877ec", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-c719d3c5-b2c3-5449-9c95-d938de0877ec"];
+  }
+  n3029868929793491010 -> n5353763184064446827 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n3029868929793491010 -> n4195598085246963113 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n3029868929793491010 -> n3942516848187982206 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n2085777047810057186 -> n5353763184064446827 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n4195598085246963113 -> n2085777047810057186 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

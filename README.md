@@ -1,4 +1,4 @@
-# TCC Pipeline
+# JDD Pipeline
 
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/status-in%20development-orange)](#)
@@ -183,7 +183,7 @@ This structure makes the transformation from legal analysis into an auditable dr
 - `pyrightconfig.json`: static type-checking configuration.
 - `.gitignore`: repository ignore rules.
 - `.env`: local environment variables such as API keys.
-- `rodar-tcc.cmd`: Windows convenience script to run the project.
+- `rodar-tcc.cmd`: Windows convenience script to run the project with a `live` profile tuned for complete generation of up to 20 decisions per batch using local analysis and PDF compilation.
 - `tmp_tnu.html`: local temporary HTML artifact used during debugging or inspection.
 
 ### `app/`

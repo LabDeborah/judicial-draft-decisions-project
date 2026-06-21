@@ -1,0 +1,82 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n910805056122224448 [label="jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c"];
+    n2573280013425682575 [label="jdd:draft-generation-ccdd1bbf-4fe7-521a-87b1-64e782a57132", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:draft-generation-ccdd1bbf-4fe7-521a-87b1-64e782a57132"];
+    n3825733287126043629 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n7454612985443761604 [label="jdd:pipeline-run-499885f2-d72e-5b20-864c-d3997cf9e654", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-499885f2-d72e-5b20-864c-d3997cf9e654"];
+    n1652801431787815995 [label="Local analysis agent", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Local analysis agent"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7445780454521962554 [label="tres:261f3545-cf32-508f-9fc6-043a3bc53ad5", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:261f3545-cf32-508f-9fc6-043a3bc53ad5\n\ndescription: tipo_julgamento=Julgamento Principal; competencia=JEF Recurso Cível; relator=ALESSANDRA BELFORT BUENO\nsubject: Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL"];
+  }
+  subgraph "cluster_petition" {
+    label="Petition";
+    color="#fca5a5";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5515622323597764412 [label="rs:261f3545-cf32-508f-9fc6-043a3bc53ad5", shape="box", style="rounded,filled", fillcolor="#fee2e2", color="#b91c1c", fontsize="12", tooltip="rs:261f3545-cf32-508f-9fc6-043a3bc53ad5"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4196928889779075807 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 1 Thesis\n\nthemeThesis: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio..."];
+    n8974495269323390769 [label="tnu:1", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="tnu:1\n\nthemeThesis: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio...\ndescription: Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99."];
+  }
+  subgraph "cluster_analysis" {
+    label="Analysis / Generated Resources";
+    color="#c4b5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6225263262450224525 [label="Generated decision NEGAR_SEGUIMENTO for process 5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#ede9fe", color="#6d28d9", fontsize="12", tooltip="Generated decision NEGAR_SEGUIMENTO for process 5021277-41.2025.4.02.5101\n\natLocation: outputs/runs/run-20260616T021758335922Z/documents/261f3545-cf32-508f-9fc6-043a3bc53ad5-NEGAR_SEGUIMENTO.tex"];
+    n5209887391075964151 [label="jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb", shape="box", style="rounded,filled", fillcolor="#ede9fe", color="#6d28d9", fontsize="12", tooltip="jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb"];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2291414611263611539 [label="Admissibility decision for process 5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="Admissibility decision for process 5021277-41.2025.4.02.5101"];
+  }
+  n2291414611263611539 -> n6225263262450224525 [label="ruledIn", color="#334155", style="solid", penwidth="1.6"];
+  n2291414611263611539 -> n5209887391075964151 [label="wasDerivedFrom", color="#334155", style="solid", penwidth="1.6"];
+  n2291414611263611539 -> n5515622323597764412 [label="wasDerivedFrom", color="#334155", style="solid", penwidth="1.6"];
+  n2291414611263611539 -> n2573280013425682575 [label="wasGeneratedBy", color="#334155", style="solid", penwidth="1.6"];
+  n5209887391075964151 -> n8974495269323390769 [label="wasDerivedFrom", color="#334155", style="solid", penwidth="1.6"];
+  n5209887391075964151 -> n7445780454521962554 [label="wasDerivedFrom", color="#334155", style="solid", penwidth="1.6"];
+  n5209887391075964151 -> n910805056122224448 [label="wasGeneratedBy", color="#334155", style="solid", penwidth="1.6"];
+  n910805056122224448 -> n5209887391075964151 [label="generated", color="#334155", style="solid", penwidth="1.6"];
+  n910805056122224448 -> n4196928889779075807 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n910805056122224448 -> n8974495269323390769 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n910805056122224448 -> n7445780454521962554 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n910805056122224448 -> n1652801431787815995 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n910805056122224448 -> n7454612985443761604 [label="wasInformedBy", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n2291414611263611539 [label="generated", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n6225263262450224525 [label="generated", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n5209887391075964151 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n4196928889779075807 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n8974495269323390769 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n7445780454521962554 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n3825733287126043629 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n2573280013425682575 -> n910805056122224448 [label="wasInformedBy", color="#334155", style="solid", penwidth="1.6"];
+  n6225263262450224525 -> n4196928889779075807 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+  n6225263262450224525 -> n5209887391075964151 [label="wasDerivedFrom", color="#334155", style="solid", penwidth="1.6"];
+  n6225263262450224525 -> n7445780454521962554 [label="wasDerivedFrom", color="#334155", style="solid", penwidth="1.6"];
+  n6225263262450224525 -> n2573280013425682575 [label="wasGeneratedBy", color="#334155", style="solid", penwidth="1.6"];
+  n5515622323597764412 -> n7445780454521962554 [label="isFiledAgainst", color="#334155", style="solid", penwidth="1.6"];
+  n4196928889779075807 -> n8974495269323390769 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n7445780454521962554 -> n4196928889779075807 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

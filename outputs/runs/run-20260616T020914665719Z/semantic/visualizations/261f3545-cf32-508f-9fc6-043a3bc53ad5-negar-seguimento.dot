@@ -1,0 +1,168 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.25", nodesep="0.45", ranksep="1.1", splines=true, overlap=false];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n526385990358184413 [label="jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12"];
+    n4776957539535751939 [label="jdd:draft-generation-ccdd1bbf-4fe7-521a-87b1-64e782a57132", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12"];
+    n4709308255431506949 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12"];
+    n9030489074076816757 [label="jdd:pipeline-run-fc7d13c4-3cab-5363-87f1-b996a758efb6", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12"];
+    n514456336323724718 [label="Local analysis agent", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n715077677229447151 [label="tres:261f3545-cf32-508f-9fc6-043a3bc53ad5", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12"];
+  }
+  subgraph "cluster_petition" {
+    label="Petition";
+    color="#fca5a5";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3117500180394027491 [label="rs:261f3545-cf32-508f-9fc6-043a3bc53ad5", shape="box", style="rounded,filled", fillcolor="#fee2e2", color="#b91c1c", fontsize="12"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2524473697849234599 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12"];
+    n1230517408812875846 [label="tnu:1", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12"];
+  }
+  subgraph "cluster_analysis" {
+    label="Analysis / Generated Resources";
+    color="#c4b5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7980845635361140282 [label="Generated decision NEGAR_SEGUIMENTO for process 5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#ede9fe", color="#6d28d9", fontsize="12"];
+    n2245708972378175506 [label="jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb", shape="box", style="rounded,filled", fillcolor="#ede9fe", color="#6d28d9", fontsize="12"];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6295726759226238127 [label="Admissibility decision for process 5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12"];
+  }
+  subgraph "cluster_literal" {
+    label="Literal Values";
+    color="#fdba74";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4736330651335195825 [label="1", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n2681590908559584429 [label="261f3545-cf32-508f-9fc6-043a3bc53ad5", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n3434586723174173181 [label="5021277-41.2025.4.02.5101", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n4320733149617541455 [label="Admissibility decision for process 5021277-41.2025.4.02.5101", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n1380784343648270328 [label="ccdd1bbf-4fe7-521a-87b1-64e782a57132", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n9069340783128188086 [label="classification", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n7922272652647965977 [label="CONSONANCIA", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n986246895726335569 [label="DIREITO PREVIDENCIÁRIO", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n2989762268218133482 [label="draft-generation", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n8818589837925971239 [label="Generated decision NEGAR_SEGUIMENTO for process 5021277-41.2025.4.02.5101", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n8965208162566849941 [label="Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n123991772486562276 [label="local", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n3593811557051379761 [label="Local analysis agent", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n1573640401424448648 [label="local-text-similarity", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n2820496579837729723 [label="NEGAR_SEGUIMENTO", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n8429688374100202884 [label="O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes...", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n5658216036950787227 [label="outputs/runs/run-20260616T020914665719Z/documents/261f3545-cf32-508f-9fc6-043a3bc53ad5-...", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n3474705892522299972 [label="Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensõ...", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n4503517828765971106 [label="Tema 1 selecionado por semelhança de assunto.", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n3512813978198854761 [label="Theme 1 Thesis", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n5795328554199086132 [label="tipo_julgamento=Julgamento Principal; competencia=JEF Recurso Cível; relator=ALESSANDRA...", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+    n6822900668783774978 [label="VALIDA", shape="note", style="rounded,filled", fillcolor="#fff7ed", color="#c2410c", fontsize="11"];
+  }
+  subgraph "cluster_meta" {
+    label="Ontology / Metadata";
+    color="#cbd5e1";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6702666864353420047 [label="ors:AdmissibilityDecision", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+    n2348481610570861774 [label="ors:AppellateDecisionOnSFCA", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+    n3516893544530508156 [label="ors:Petition", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+    n1172966659353934683 [label="ors:Theme", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+    n7712081280613927415 [label="ors:Thesis", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+    n7249775432197554104 [label="prov:Activity", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+    n5760553956549309401 [label="prov:Entity", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+    n9211120374958255107 [label="prov:SoftwareAgent", shape="tab", style="rounded,filled", fillcolor="#e2e8f0", color="#475569", fontsize="12"];
+  }
+  n6295726759226238127 -> n1380784343648270328 [label="identifier", color="#94a3b8", style="solid"];
+  n6295726759226238127 -> n7980845635361140282 [label="ruledIn", color="#475569", style="solid"];
+  n6295726759226238127 -> n6702666864353420047 [label="type", color="#94a3b8", style="dashed"];
+  n6295726759226238127 -> n5760553956549309401 [label="type", color="#94a3b8", style="dashed"];
+  n6295726759226238127 -> n4320733149617541455 [label="label", color="#94a3b8", style="dashed"];
+  n6295726759226238127 -> n2245708972378175506 [label="wasDerivedFrom", color="#475569", style="solid"];
+  n6295726759226238127 -> n3117500180394027491 [label="wasDerivedFrom", color="#475569", style="solid"];
+  n6295726759226238127 -> n4776957539535751939 [label="wasGeneratedBy", color="#475569", style="solid"];
+  n2245708972378175506 -> n4503517828765971106 [label="description", color="#475569", style="solid"];
+  n2245708972378175506 -> n4736330651335195825 [label="identifier", color="#94a3b8", style="solid"];
+  n2245708972378175506 -> n6822900668783774978 [label="type", color="#94a3b8", style="dashed"];
+  n2245708972378175506 -> n5760553956549309401 [label="type", color="#94a3b8", style="dashed"];
+  n2245708972378175506 -> n7922272652647965977 [label="value", color="#475569", style="solid"];
+  n2245708972378175506 -> n1230517408812875846 [label="wasDerivedFrom", color="#475569", style="solid"];
+  n2245708972378175506 -> n715077677229447151 [label="wasDerivedFrom", color="#475569", style="solid"];
+  n2245708972378175506 -> n526385990358184413 [label="wasGeneratedBy", color="#475569", style="solid"];
+  n526385990358184413 -> n9069340783128188086 [label="type", color="#94a3b8", style="dashed"];
+  n526385990358184413 -> n7249775432197554104 [label="type", color="#94a3b8", style="dashed"];
+  n526385990358184413 -> n2245708972378175506 [label="generated", color="#475569", style="solid"];
+  n526385990358184413 -> n2524473697849234599 [label="used", color="#475569", style="solid"];
+  n526385990358184413 -> n1230517408812875846 [label="used", color="#475569", style="solid"];
+  n526385990358184413 -> n715077677229447151 [label="used", color="#475569", style="solid"];
+  n526385990358184413 -> n514456336323724718 [label="wasAssociatedWith", color="#475569", style="solid"];
+  n526385990358184413 -> n9030489074076816757 [label="wasInformedBy", color="#475569", style="solid"];
+  n4776957539535751939 -> n2989762268218133482 [label="type", color="#94a3b8", style="dashed"];
+  n4776957539535751939 -> n7249775432197554104 [label="type", color="#94a3b8", style="dashed"];
+  n4776957539535751939 -> n6295726759226238127 [label="generated", color="#475569", style="solid"];
+  n4776957539535751939 -> n7980845635361140282 [label="generated", color="#475569", style="solid"];
+  n4776957539535751939 -> n2245708972378175506 [label="used", color="#475569", style="solid"];
+  n4776957539535751939 -> n2524473697849234599 [label="used", color="#475569", style="solid"];
+  n4776957539535751939 -> n1230517408812875846 [label="used", color="#475569", style="solid"];
+  n4776957539535751939 -> n715077677229447151 [label="used", color="#475569", style="solid"];
+  n4776957539535751939 -> n4709308255431506949 [label="wasAssociatedWith", color="#475569", style="solid"];
+  n4776957539535751939 -> n526385990358184413 [label="wasInformedBy", color="#475569", style="solid"];
+  n7980845635361140282 -> n1380784343648270328 [label="identifier", color="#94a3b8", style="solid"];
+  n7980845635361140282 -> n2820496579837729723 [label="type", color="#94a3b8", style="dashed"];
+  n7980845635361140282 -> n2524473697849234599 [label="adoptsThesis", color="#475569", style="solid"];
+  n7980845635361140282 -> n1380784343648270328 [label="decisionNumber", color="#475569", style="solid"];
+  n7980845635361140282 -> n5760553956549309401 [label="type", color="#94a3b8", style="dashed"];
+  n7980845635361140282 -> n8818589837925971239 [label="label", color="#94a3b8", style="dashed"];
+  n7980845635361140282 -> n5658216036950787227 [label="atLocation", color="#475569", style="solid"];
+  n7980845635361140282 -> n2245708972378175506 [label="wasDerivedFrom", color="#475569", style="solid"];
+  n7980845635361140282 -> n715077677229447151 [label="wasDerivedFrom", color="#475569", style="solid"];
+  n7980845635361140282 -> n4776957539535751939 [label="wasGeneratedBy", color="#475569", style="solid"];
+  n514456336323724718 -> n1573640401424448648 [label="title", color="#475569", style="solid"];
+  n514456336323724718 -> n123991772486562276 [label="type", color="#94a3b8", style="dashed"];
+  n514456336323724718 -> n9211120374958255107 [label="type", color="#94a3b8", style="dashed"];
+  n514456336323724718 -> n3593811557051379761 [label="label", color="#94a3b8", style="dashed"];
+  n4709308255431506949 -> n9211120374958255107 [label="type", color="#94a3b8", style="dashed"];
+  n9030489074076816757 -> n7249775432197554104 [label="type", color="#94a3b8", style="dashed"];
+  n3117500180394027491 -> n3434586723174173181 [label="identifier", color="#94a3b8", style="solid"];
+  n3117500180394027491 -> n715077677229447151 [label="isFiledAgainst", color="#475569", style="solid"];
+  n3117500180394027491 -> n3516893544530508156 [label="type", color="#94a3b8", style="dashed"];
+  n3117500180394027491 -> n5760553956549309401 [label="type", color="#94a3b8", style="dashed"];
+  n2524473697849234599 -> n1230517408812875846 [label="hasTheme", color="#475569", style="solid"];
+  n2524473697849234599 -> n8429688374100202884 [label="themeThesis", color="#475569", style="solid"];
+  n2524473697849234599 -> n7712081280613927415 [label="type", color="#94a3b8", style="dashed"];
+  n2524473697849234599 -> n5760553956549309401 [label="type", color="#94a3b8", style="dashed"];
+  n2524473697849234599 -> n3512813978198854761 [label="label", color="#94a3b8", style="dashed"];
+  n1230517408812875846 -> n3474705892522299972 [label="description", color="#475569", style="solid"];
+  n1230517408812875846 -> n986246895726335569 [label="type", color="#94a3b8", style="dashed"];
+  n1230517408812875846 -> n4736330651335195825 [label="themeNumber", color="#475569", style="solid"];
+  n1230517408812875846 -> n8429688374100202884 [label="themeThesis", color="#475569", style="solid"];
+  n1230517408812875846 -> n1172966659353934683 [label="type", color="#94a3b8", style="dashed"];
+  n1230517408812875846 -> n5760553956549309401 [label="type", color="#94a3b8", style="dashed"];
+  n715077677229447151 -> n5795328554199086132 [label="description", color="#475569", style="solid"];
+  n715077677229447151 -> n3434586723174173181 [label="identifier", color="#94a3b8", style="solid"];
+  n715077677229447151 -> n2524473697849234599 [label="adoptsThesis", color="#475569", style="solid"];
+  n715077677229447151 -> n2681590908559584429 [label="decisionNumber", color="#475569", style="solid"];
+  n715077677229447151 -> n8965208162566849941 [label="subject", color="#475569", style="solid"];
+  n715077677229447151 -> n2348481610570861774 [label="type", color="#94a3b8", style="dashed"];
+  n715077677229447151 -> n5760553956549309401 [label="type", color="#94a3b8", style="dashed"];
+}

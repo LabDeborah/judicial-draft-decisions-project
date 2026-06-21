@@ -1,0 +1,51 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1077149865704781316 [label="Classification for process 5000002-00.2025.4.02.5001 and theme 309 (CONSONANCIA; VALIDA)", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Classification for process 5000002-00.2025.4.02.5001 and theme 309 (CONSONANCIA; VALIDA)"];
+    n1603130101356727604 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n7559678201909955212 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n5794750680823991785 [label="jdd:pipeline-run-e4b1177f-854e-5bbb-8ff6-591963d89b5e", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-e4b1177f-854e-5bbb-8ff6-591963d89b5e"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2661647757093091724 [label="tres:5000002-00.2025.4.02.5001", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5000002-00.2025.4.02.5001"];
+  }
+  subgraph "cluster_petition" {
+    label="Petition";
+    color="#fca5a5";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6075778525341062124 [label="rs:5000002-00.2025.4.02.5001", shape="box", style="rounded,filled", fillcolor="#fee2e2", color="#b91c1c", fontsize="12", tooltip="rs:5000002-00.2025.4.02.5001"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5583803666780967053 [label="Tema 309 - JULGADO", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 309 - JULGADO"];
+    n8419545760677221354 [label="Theme 309 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 309 Thesis\n\ndescription: O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n148379421864284783 [label="jdd:admissibility-e3b7a254-cbe3-5b23-bc71-127cc40fe4a4", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-e3b7a254-cbe3-5b23-bc71-127cc40fe4a4"];
+  }
+  n6075778525341062124 -> n2661647757093091724 [label="isFiledAgainst", color="#334155", style="solid", penwidth="1.6"];
+  n1077149865704781316 -> n5583803666780967053 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n1077149865704781316 -> n2661647757093091724 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n1077149865704781316 -> n1603130101356727604 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n8419545760677221354 -> n5583803666780967053 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n2661647757093091724 -> n8419545760677221354 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

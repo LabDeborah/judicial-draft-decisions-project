@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5099611868209198514 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n6204169844487935091 [label="jdd:classification-ad2fd4ed-8378-5f58-a79d-1636d4de4084", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-ad2fd4ed-8378-5f58-a79d-1636d4de4084"];
+    n4308472333406374237 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1812625129787256500 [label="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2181830776673561191 [label="tres:5019643-10.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5019643-10.2025.4.02.5101\n\nsubject: Servidores Inativos, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5866988104830812069 [label="Tema 1 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 1 - Julgado"];
+    n8456755776320055909 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 1 Thesis\n\ndescription: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4753656628229250380 [label="jdd:admissibility-7257103d-facf-582b-a1cd-c9d805ce51a1", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-7257103d-facf-582b-a1cd-c9d805ce51a1"];
+  }
+  n6204169844487935091 -> n5866988104830812069 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6204169844487935091 -> n2181830776673561191 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6204169844487935091 -> n5099611868209198514 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n8456755776320055909 -> n5866988104830812069 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n2181830776673561191 -> n8456755776320055909 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 from io import StringIO
 
+from app.utils.text import normalize_text
 from app.utils.fs import write_text
 
 
@@ -28,5 +29,4 @@ def _collect_headers(records: list[dict]) -> list[str]:
 def _to_cell(value) -> str:
     if value is None:
         return ""
-    return str(value)
-
+    return normalize_text(str(value))

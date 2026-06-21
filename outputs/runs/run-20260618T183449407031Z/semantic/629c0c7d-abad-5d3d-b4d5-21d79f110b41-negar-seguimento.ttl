@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98 a prov:Activity .
+
+tema:16
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "16" ;
+    rdfs:label "Tema 16 - Julgado"@pt-BR .
+
+tese:16
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 16 Thesis"@pt-BR ;
+    ors:description "A eficácia da progressão funcional deve ser observada segundo a situação individual de cada servidor e seus efeitos retroagem ao momento em que os requisitos legais foram implementados. Vide Tema 82 e PEDILEF n. 500367784.2014.404.7101. Entendimento revisado pelo PEDILEF n. 05207128420124058300 (orientação alinhada ao STJ: RESP 1.649.269/RJ)."@pt-BR ;
+    ors:hasTheme tema:16 .
+
+tres:5017817-46.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017817-46.2025.4.02.5101" ;
+    ors:subject "Gratificação de incentivo, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    ors:adoptsThesis tese:16 .
+
+jdd:ars-dc2b021a-f64e-575d-8b86-dd8966eb00ae
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017817-46.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:16 .
+
+jdd:admissibility-dc2b021a-f64e-575d-8b86-dd8966eb00ae
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-dc2b021a-f64e-575d-8b86-dd8966eb00ae .
+
+jdd:classification-1a3d057c-5044-5264-ae13-a2e5633085b4
+    a prov:Activity ;
+    prov:used tres:5017817-46.2025.4.02.5101 ;
+    prov:used tema:16 ;
+    prov:generated jdd:ars-dc2b021a-f64e-575d-8b86-dd8966eb00ae ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

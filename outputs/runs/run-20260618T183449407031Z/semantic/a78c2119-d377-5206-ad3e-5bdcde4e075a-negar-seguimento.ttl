@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98 a prov:Activity .
+
+tema:6
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "6" ;
+    rdfs:label "Tema 6 - Julgado"@pt-BR .
+
+tese:6
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 6 Thesis"@pt-BR ;
+    ors:description "A contribuição ao FUSEX é tributo cujo lançamento se efetua de ofício, sujeita ao prazo prescricional quinquenal, descrito no art. 168, I, do CTN."@pt-BR ;
+    ors:hasTheme tema:6 .
+
+tres:5017048-38.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017048-38.2025.4.02.5101" ;
+    ors:subject "IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"@pt-BR ;
+    ors:adoptsThesis tese:6 .
+
+jdd:ars-899e4117-4e5c-52fd-8c51-ab1e760d54d7
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017048-38.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:6 .
+
+jdd:admissibility-899e4117-4e5c-52fd-8c51-ab1e760d54d7
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-899e4117-4e5c-52fd-8c51-ab1e760d54d7 .
+
+jdd:classification-4b6ebcce-d856-5f65-9bf1-08206e89cef8
+    a prov:Activity ;
+    prov:used tres:5017048-38.2025.4.02.5101 ;
+    prov:used tema:6 ;
+    prov:generated jdd:ars-899e4117-4e5c-52fd-8c51-ab1e760d54d7 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

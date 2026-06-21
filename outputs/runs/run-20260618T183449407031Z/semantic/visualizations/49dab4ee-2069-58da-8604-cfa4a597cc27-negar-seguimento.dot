@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1813255899460198435 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n6982628986296521136 [label="jdd:classification-634710ab-a863-500c-94cf-a77b93105593", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-634710ab-a863-500c-94cf-a77b93105593"];
+    n3060526251864380153 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n3369513106044763655 [label="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5018353947487801308 [label="tres:5014186-94.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5014186-94.2025.4.02.5101\n\nsubject: Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6475361717612963229 [label="Tema 4 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 4 - Julgado"];
+    n9163958119308062642 [label="Theme 4 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 4 Thesis\n\ndescription: É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU"];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3925277561259173838 [label="jdd:admissibility-939b237a-3f3b-5ceb-af59-d1f5be9229bc", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-939b237a-3f3b-5ceb-af59-d1f5be9229bc"];
+  }
+  n6982628986296521136 -> n6475361717612963229 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6982628986296521136 -> n5018353947487801308 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6982628986296521136 -> n1813255899460198435 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n9163958119308062642 -> n6475361717612963229 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n5018353947487801308 -> n9163958119308062642 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

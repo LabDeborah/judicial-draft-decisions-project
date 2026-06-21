@@ -1,0 +1,55 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-309b4714-3039-5369-9ea5-316072357a8d a prov:Activity ;
+  rdfs:label "Pipeline run run-20260617T163640992904Z"@pt-BR ;
+  prov:wasAssociatedWith jdd:pipeline, gemini:3-1-flash-lite .
+
+jdd:theme-catalog-90316ada-ca03-512d-888d-11feee7a0d7f a prov:Collection ;
+  rdfs:label "Collected TNU themes"@pt-BR .
+
+tema:172
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "172" ;
+    rdfs:label "Tema 172 - Sobrestado - Tema 999/STJ (RE 1276977 e RE 1276976 admitidos, no STJ, como representativos da controvérsia)"@pt-BR .
+
+tese:172
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 172 Thesis"@pt-BR ;
+    ors:description "Tese firmada no Tema 999/STJ: Aplica-se a regra definitiva prevista no art. 29, I e II da Lei 8.213/1991, na apuração do salário de benefício, quando mais favorável do que a regra de transição contida no art. 3o. da Lei 9.876/1999, aos Segurado que ingressaram no Regime Geral da Previdência Social até o dia anterior à publicação da Lei 9.876/1999."@pt-BR ;
+    ors:hasTheme tema:172 .
+
+jdd:theme-catalog-90316ada-ca03-512d-888d-11feee7a0d7f prov:hadMember tema:172 .
+
+tres:5056703-85.2023.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5056703-85.2023.4.02.5101" ;
+    ors:subject "Art. 29, § 5º, da Lei 8.213/1991, RMI - Renda Mensal Inicial, RMI - Renda Mensal Inicial, Reajustes e Revisões Específicas, DIREITO PREVIDENCIÁRIO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-309b4714-3039-5369-9ea5-316072357a8d ;
+    ors:adoptsThesis tese:172 .
+
+jdd:ars-d5b56985-a3b2-5084-9171-1bb6b1eecdd4
+    a ors:SuspendedRS, prov:Entity ;
+    rdfs:label "Sobrestar draft for process 5056703-85.2023.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:172 .
+
+jdd:admissibility-d5b56985-a3b2-5084-9171-1bb6b1eecdd4
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-d5b56985-a3b2-5084-9171-1bb6b1eecdd4 .
+
+jdd:classification-3268aa68-a122-5e84-9524-3372d2425e12
+    a prov:Activity ;
+    prov:used tres:5056703-85.2023.4.02.5101 ;
+    prov:used tema:172 ;
+    prov:generated jdd:ars-d5b56985-a3b2-5084-9171-1bb6b1eecdd4 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

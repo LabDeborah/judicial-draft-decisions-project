@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n765928198806235377 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n4404774730380978036 [label="jdd:classification-20a75290-a23f-545c-b8fb-f8530dccd30b", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-20a75290-a23f-545c-b8fb-f8530dccd30b"];
+    n5160603979843524236 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n6490557857318123026 [label="jdd:pipeline-run-2bb7ee31-991b-5735-882f-e961840a950b", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-2bb7ee31-991b-5735-882f-e961840a950b"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1672376456485231518 [label="tres:5020184-43.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5020184-43.2025.4.02.5101\n\nsubject: IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO, Isenção, Limitações ao Poder de Tributar, DIREITO TRIBUTÁRIO, Incidência sobre Aposentadoria, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIR..."];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5465126106309836788 [label="Tema 1 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 1 - Julgado"];
+    n554565789652977284 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 1 Thesis\n\ndescription: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5802611024250886752 [label="jdd:admissibility-e47473b4-3f05-549c-9b4d-0119d1af65e0", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-e47473b4-3f05-549c-9b4d-0119d1af65e0"];
+  }
+  n4404774730380978036 -> n5465126106309836788 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n4404774730380978036 -> n1672376456485231518 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n4404774730380978036 -> n765928198806235377 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n554565789652977284 -> n5465126106309836788 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n1672376456485231518 -> n554565789652977284 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

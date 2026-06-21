@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c a prov:Activity .
+
+tema:10
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "10" ;
+    rdfs:label "Tema 10 - Julgado - TEMA 350/STF"@pt-BR .
+
+tese:10
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 10 Thesis"@pt-BR ;
+    ors:description "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350."@pt-BR ;
+    ors:hasTheme tema:10 .
+
+tres:5018130-07.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5018130-07.2025.4.02.5101" ;
+    ors:subject "Assistência Social, Garantias Constitucionais, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Bolsa Família (Lei 14.601/2023), DIREITO ASSISTENCIAL"@pt-BR ;
+    ors:adoptsThesis tese:10 .
+
+jdd:ars-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5018130-07.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:10 .
+
+jdd:admissibility-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e .
+
+jdd:classification-41edc8ce-3391-56ff-9594-47cf11228ff0
+    a prov:Activity ;
+    prov:used tres:5018130-07.2025.4.02.5101 ;
+    prov:used tema:10 ;
+    prov:generated jdd:ars-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

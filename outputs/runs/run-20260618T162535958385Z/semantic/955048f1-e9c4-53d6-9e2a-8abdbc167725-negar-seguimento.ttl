@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c a prov:Activity .
+
+tema:4
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "4" ;
+    rdfs:label "Tema 4 - Julgado"@pt-BR .
+
+tese:4
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 4 Thesis"@pt-BR ;
+    ors:description "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU"@pt-BR ;
+    ors:hasTheme tema:4 .
+
+tres:5015837-64.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5015837-64.2025.4.02.5101" ;
+    ors:subject "Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    ors:adoptsThesis tese:4 .
+
+jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5015837-64.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:4 .
+
+jdd:admissibility-62d7af5d-31e5-5edf-9e78-04dc1a98adcd
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd .
+
+jdd:classification-2c40628f-21eb-5ce9-ba55-a486e5b9206b
+    a prov:Activity ;
+    prov:used tres:5015837-64.2025.4.02.5101 ;
+    prov:used tema:4 ;
+    prov:generated jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

@@ -1,0 +1,45 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n8648471610385959519 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n2339124587235141192 [label="jdd:classification-b510122f-031a-5975-943b-384444137b3a", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-b510122f-031a-5975-943b-384444137b3a"];
+    n5555439170195845010 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n5557275761733677847 [label="Pipeline run run-20260617T141042978728Z", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Pipeline run run-20260617T141042978728Z"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n9152219529342493904 [label="tres:5003714-34.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5003714-34.2025.4.02.5101\n\nsubject: Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4636528659980747755 [label="Tema 309 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 309 - Julgado"];
+    n8621773048279054804 [label="Theme 309 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 309 Thesis\n\ndescription: O auxílio-alimentação pago aos servidores públicos federais (Lei n. 8.460/92) integra a base de cálculo da licença-prêmio não usufruída e convertida em pecúnia."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n8851486981942639278 [label="jdd:admissibility-f07fe326-5908-57f7-8950-f32567b964e3", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-f07fe326-5908-57f7-8950-f32567b964e3"];
+  }
+  n2339124587235141192 -> n4636528659980747755 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2339124587235141192 -> n9152219529342493904 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2339124587235141192 -> n8648471610385959519 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n5557275761733677847 -> n8648471610385959519 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n5557275761733677847 -> n5555439170195845010 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n8621773048279054804 -> n4636528659980747755 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n9152219529342493904 -> n8621773048279054804 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

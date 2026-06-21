@@ -1,0 +1,43 @@
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix thesis: <http://purl.org/nemo/thesis/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix rs: <http://purl.org/nemo/rs/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <http://purl.org/nemo/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-2f438556-2ea9-511e-be9a-bfeb1586a424 a prov:Activity ;
+  rdfs:label "Pipeline run run-20260616T155613431566Z" ;
+  prov:wasAssociatedWith jdd:pipeline, gemini:3-1-flash-lite .
+
+jdd:theme-catalog-eb2f7391-0738-5159-b50f-9c7bebbb058f a prov:Collection ;
+  rdfs:label "Collected TNU themes" .
+
+tnu:item
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "" ;
+    rdfs:label "Tema " .
+
+thesis:item
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme  Thesis" ;
+    ors:description "No thesis text available" ;
+    ors:hasTheme tnu:item .
+
+jdd:theme-catalog-eb2f7391-0738-5159-b50f-9c7bebbb058f prov:hadMember tnu:item .
+
+tres:d02e0768-6425-5984-bf4b-b5413acca09c
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "d02e0768-6425-5984-bf4b-b5413acca09c" ;
+    ors:subject "Auxilio-alimentacao em licenca-premio" ;
+    prov:wasUsedBy jdd:pipeline-run-2f438556-2ea9-511e-be9a-bfeb1586a424 .
+
+rs:d02e0768-6425-5984-bf4b-b5413acca09c
+    a ors:Petition ;
+    ors:isFiledAgainst tres:d02e0768-6425-5984-bf4b-b5413acca09c .

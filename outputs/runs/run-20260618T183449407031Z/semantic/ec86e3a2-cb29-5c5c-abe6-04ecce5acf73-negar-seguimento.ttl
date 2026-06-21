@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98 a prov:Activity .
+
+tema:20
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "20" ;
+    rdfs:label "Tema 20 - Julgado"@pt-BR .
+
+tese:20
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 20 Thesis"@pt-BR ;
+    ors:description "O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a quo é a última edição da MP que se deu sob o n. 2.169-43, em 24/08/2001. Vide Tema 76 da TNU."@pt-BR ;
+    ors:hasTheme tema:20 .
+
+tres:5017163-59.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017163-59.2025.4.02.5101" ;
+    ors:subject "Fornecimento de medicamentos, Pública, DIREITO DA SAÚDE"@pt-BR ;
+    ors:adoptsThesis tese:20 .
+
+jdd:ars-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017163-59.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:20 .
+
+jdd:admissibility-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae .
+
+jdd:classification-dd89e38c-2012-5d03-bdfb-a744e6f798c5
+    a prov:Activity ;
+    prov:used tres:5017163-59.2025.4.02.5101 ;
+    prov:used tema:20 ;
+    prov:generated jdd:ars-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

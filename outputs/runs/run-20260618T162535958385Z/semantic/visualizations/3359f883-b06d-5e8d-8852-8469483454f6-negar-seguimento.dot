@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5099611868209198514 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n8775923794928510556 [label="jdd:classification-7cd6d175-79cc-5347-8866-0f1223046c75", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-7cd6d175-79cc-5347-8866-0f1223046c75"];
+    n4308472333406374237 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1812625129787256500 [label="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1562389574363343287 [label="tres:5015036-51.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5015036-51.2025.4.02.5101\n\nsubject: Cirurgia, Tratamento médico-hospitalar, Pública, DIREITO DA SAÚDE, Liminar, Medida Cautelar, DIREITO PROCESSUAL CIVIL E DO TRABALHO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n9030280936881772778 [label="Tema 8 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 8 - Julgado"];
+    n5513324519889109957 [label="Theme 8 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 8 Thesis\n\ndescription: Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n873773786738906478 [label="jdd:admissibility-115b0831-a71d-51c4-9372-6a1b94d0dc5b", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-115b0831-a71d-51c4-9372-6a1b94d0dc5b"];
+  }
+  n8775923794928510556 -> n9030280936881772778 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n8775923794928510556 -> n1562389574363343287 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n8775923794928510556 -> n5099611868209198514 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n5513324519889109957 -> n9030280936881772778 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n1562389574363343287 -> n5513324519889109957 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

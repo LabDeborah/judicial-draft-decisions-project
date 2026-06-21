@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ad21b76b-7830-585a-8262-9db528bd4062 a prov:Activity .
+
+tema:1
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "1" ;
+    rdfs:label "Tema 1 - Julgado"@pt-BR .
+
+tese:1
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 1 Thesis"@pt-BR ;
+    ors:description "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo."@pt-BR ;
+    ors:hasTheme tema:1 .
+
+tres:5004809-42.2024.4.02.5002
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5004809-42.2024.4.02.5002" ;
+    ors:subject "Aposentadoria por Tempo de Contribuição (Art. 55/6), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO"@pt-BR ;
+    ors:adoptsThesis tese:1 .
+
+jdd:ars-c719d3c5-b2c3-5449-9c95-d938de0877ec
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5004809-42.2024.4.02.5002"@pt-BR ;
+    ors:adoptsThesis tese:1 .
+
+jdd:admissibility-c719d3c5-b2c3-5449-9c95-d938de0877ec
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-c719d3c5-b2c3-5449-9c95-d938de0877ec .
+
+jdd:classification-e613d5b2-6d9b-5261-8800-161fa2c597c5
+    a prov:Activity ;
+    prov:used tres:5004809-42.2024.4.02.5002 ;
+    prov:used tema:1 ;
+    prov:generated jdd:ars-c719d3c5-b2c3-5449-9c95-d938de0877ec ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

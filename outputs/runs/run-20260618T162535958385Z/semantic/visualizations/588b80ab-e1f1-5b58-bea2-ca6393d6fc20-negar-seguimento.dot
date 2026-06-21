@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5099611868209198514 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n6032322038495856113 [label="jdd:classification-a6e756d7-7b14-5e6a-aca5-896f57266dae", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-a6e756d7-7b14-5e6a-aca5-896f57266dae"];
+    n4308472333406374237 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1812625129787256500 [label="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n325869424849477818 [label="tres:5015810-81.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5015810-81.2025.4.02.5101\n\nsubject: Indenização por Dano Material, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Indenização por Dano Moral, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4985406703804793780 [label="Tema 2 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 2 - Julgado"];
+    n3076704626938070760 [label="Theme 2 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 2 Thesis\n\ndescription: No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2796312849166574127 [label="jdd:admissibility-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b"];
+  }
+  n6032322038495856113 -> n4985406703804793780 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6032322038495856113 -> n325869424849477818 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6032322038495856113 -> n5099611868209198514 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n3076704626938070760 -> n4985406703804793780 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n325869424849477818 -> n3076704626938070760 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

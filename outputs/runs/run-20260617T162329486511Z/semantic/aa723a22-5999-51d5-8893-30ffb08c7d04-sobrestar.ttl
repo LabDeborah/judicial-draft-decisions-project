@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-9b0f306e-fea2-5e8a-820e-511493ecd33a a prov:Activity .
+
+tema:345
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "345" ;
+    rdfs:label "Tema 345 - Em Julgamento"@pt-BR .
+
+tese:345
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 345 Thesis"@pt-BR ;
+    ors:description "No thesis text available"@pt-BR ;
+    ors:hasTheme tema:345 .
+
+tres:5076365-98.2024.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5076365-98.2024.4.02.5101" ;
+    ors:subject "Reintegração ou Readmissão, Regime Estatutário, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Ato Normativo, Atos Administrativos, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    ors:adoptsThesis tese:345 .
+
+jdd:ars-8ecabe0f-041e-52d9-b811-cf6b12935782
+    a ors:SuspendedRS, prov:Entity ;
+    rdfs:label "Sobrestar draft for process 5076365-98.2024.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:345 .
+
+jdd:admissibility-8ecabe0f-041e-52d9-b811-cf6b12935782
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-8ecabe0f-041e-52d9-b811-cf6b12935782 .
+
+jdd:classification-85df76fd-9eca-5aa9-8150-63d96e68d28f
+    a prov:Activity ;
+    prov:used tres:5076365-98.2024.4.02.5101 ;
+    prov:used tema:345 ;
+    prov:generated jdd:ars-8ecabe0f-041e-52d9-b811-cf6b12935782 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

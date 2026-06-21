@@ -1,0 +1,4 @@
+decisionId,temaTnu,consonancia,validade,justificativa
+TRF2-LIVE-1,27,CONSONANCIA,INVALIDA,Tema 27 selecionado por semelhança de assunto. | Fallback local informativo por erro Gemini (Gemini HTTP 403: Your API key was reported as leaked. Please use another API key.); classificação marcada como INVÁLIDA para evitar decisão automática.
+TRF2-LIVE-2,1,CONSONANCIA,INVALIDA,Tema 1 selecionado por semelhança de assunto. | Fallback local informativo por erro Gemini (Gemini HTTP 403: Your API key was reported as leaked. Please use another API key.); classificação marcada como INVÁLIDA para evitar decisão automática.
+TRF2-LIVE-3,7,CONSONANCIA,INVALIDA,Tema 7 selecionado por semelhança de assunto. | Fallback local informativo por erro Gemini (Gemini HTTP 403: Your API key was reported as leaked. Please use another API key.); classificação marcada como INVÁLIDA para evitar decisão automática.

@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98 a prov:Activity .
+
+tema:2
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "2" ;
+    rdfs:label "Tema 2 - Julgado"@pt-BR .
+
+tese:2
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 2 Thesis"@pt-BR ;
+    ors:description "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea."@pt-BR ;
+    ors:hasTheme tema:2 .
+
+tres:5015810-81.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5015810-81.2025.4.02.5101" ;
+    ors:subject "Indenização por Dano Material, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Indenização por Dano Moral, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR"@pt-BR ;
+    ors:adoptsThesis tese:2 .
+
+jdd:ars-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5015810-81.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:2 .
+
+jdd:admissibility-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b .
+
+jdd:classification-a6e756d7-7b14-5e6a-aca5-896f57266dae
+    a prov:Activity ;
+    prov:used tres:5015810-81.2025.4.02.5101 ;
+    prov:used tema:2 ;
+    prov:generated jdd:ars-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

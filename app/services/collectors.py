@@ -7,6 +7,7 @@ import re
 import sys
 import time
 import zipfile
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -213,6 +214,10 @@ def _collect_tnu_themes_live(limit: int, *, browser_automation: bool) -> list[Tn
     seen: set[str] = set()
     while len(results) < limit:
         page_url = f"{TNU_URL}?b_size:int={batch_size}&b_start:int={start}"
+        _log_collect(
+            "collect.tnu",
+            f"fetching page start={start} batch={batch_size} collected={len(results)}/{limit}",
+        )
         html = _fetch_html(page_url)
         page_items = _parse_tnu_themes_from_html(html, limit)
         if not page_items and browser_automation:
@@ -233,6 +238,7 @@ def _collect_tnu_themes_live(limit: int, *, browser_automation: bool) -> list[Tn
         if added == 0:
             break
         start += batch_size
+    _log_collect("collect.tnu", f"completed collected={len(results[:limit])}")
     return results[:limit]
 
 
@@ -295,6 +301,10 @@ def _collect_trf2_decisions_live(limit: int, *, themes: list[TnuTheme] | None = 
     page_size = min(TRF2_MAX_RESULTS_PER_PAGE, max(10, limit))
     max_pages_per_query = _estimate_trf2_pages_per_query(limit)
     detail_cache = _load_trf2_detail_cache()
+    _log_collect(
+        "collect.trf2",
+        f"starting queries={len(search_queries)} target={limit} page_size={page_size}",
+    )
     for _attempt in range(1, 4):
         try:
             with requests.Session() as session:
@@ -303,7 +313,12 @@ def _collect_trf2_decisions_live(limit: int, *, themes: list[TnuTheme] | None = 
                     continue
                 buckets: list[list[tuple[int, Trf2Decision]]] = []
                 seen: set[str] = set()
-                for query in search_queries:
+                for query_index, query in enumerate(search_queries, start=1):
+                    query_label = query or "<empty>"
+                    _log_collect(
+                        "collect.trf2",
+                        f"query {query_index}/{len(search_queries)} text={query_label!r}",
+                    )
                     payload = {
                         "selOrigem[]": "3",
                         "selTipoDocumento[]": "1",
@@ -330,6 +345,10 @@ def _collect_trf2_decisions_live(limit: int, *, themes: list[TnuTheme] | None = 
                     page_payloads = [(response.text, 1)]
                     total_pages = _extract_trf2_total_pages(response.text)
                     last_page = min(total_pages or 1, max_pages_per_query)
+                    _log_collect(
+                        "collect.trf2",
+                        f"query {query_index}/{len(search_queries)} pages={last_page}",
+                    )
                     for page_number in range(2, last_page + 1):
                         paginated_html = _fetch_trf2_results_page(
                             session,
@@ -343,6 +362,13 @@ def _collect_trf2_decisions_live(limit: int, *, themes: list[TnuTheme] | None = 
                     bucket: list[tuple[int, Trf2Decision]] = []
                     query_seen: set[str] = set()
                     for page_html, _page_number in page_payloads:
+                        _log_collect(
+                            "collect.trf2",
+                            (
+                                f"parsing query {query_index}/{len(search_queries)} "
+                                f"page={_page_number} collected_global={len(seen)}"
+                            ),
+                        )
                         parsed = _parse_trf2_decisions_from_results_html(
                             page_html,
                             max(page_size, limit),
@@ -360,6 +386,13 @@ def _collect_trf2_decisions_live(limit: int, *, themes: list[TnuTheme] | None = 
                             query_seen.add(dedupe_key)
                             seen.add(dedupe_key)
                             bucket.append((score, decision))
+                    _log_collect(
+                        "collect.trf2",
+                        (
+                            f"query {query_index}/{len(search_queries)} "
+                            f"unique_candidates={len(bucket)} total_unique={len(seen)}"
+                        ),
+                    )
                     if not bucket:
                         continue
                     bucket.sort(
@@ -389,12 +422,19 @@ def _collect_trf2_decisions_live(limit: int, *, themes: list[TnuTheme] | None = 
                     for index, decision in enumerate(diversified, start=1):
                         decision.decisionId = f"TRF2-LIVE-{index}"
                         final_decisions.append(decision)
+                    _log_collect("collect.trf2", f"completed selected={len(final_decisions)}")
                     _save_trf2_detail_cache(detail_cache)
                     return final_decisions
         except requests.RequestException:
             continue
     _save_trf2_detail_cache(detail_cache)
+    _log_collect("collect.trf2", "completed selected=0")
     return []
+
+
+def _log_collect(stage: str, message: str) -> None:
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    print(f"[{timestamp}] [{stage}] {message}", file=sys.stderr)
 
 
 def _estimate_trf2_pages_per_query(limit: int) -> int:
@@ -1248,7 +1288,7 @@ def _normalize_header(value: str) -> str:
 
 
 def _get_field(row: dict[str, str], *candidates: str) -> str:
-    indexed = {_normalize_header(key): (val or "").strip() for key, val in row.items() if key}
+    indexed = {_normalize_header(key): normalize_text(val or "") for key, val in row.items() if key}
     for candidate in candidates:
         found = indexed.get(_normalize_header(candidate))
         if found:

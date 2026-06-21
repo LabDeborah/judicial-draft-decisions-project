@@ -1,0 +1,62 @@
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix thesis: <http://purl.org/nemo/thesis/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix rs: <http://purl.org/nemo/rs/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <http://purl.org/nemo/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-be96040e-6360-55aa-ab9a-fb8f2012bc43 a prov:Activity ;
+  rdfs:label "Pipeline run run-20260616T160533600514Z" ;
+  prov:wasAssociatedWith jdd:pipeline, gemini:3-1-flash-lite .
+
+jdd:theme-catalog-4f310a6e-5ca0-55ea-b90e-ac29231407b0 a prov:Collection ;
+  rdfs:label "Collected TNU themes" .
+
+tnu:309
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "309" ;
+    rdfs:label "Tema 309 - JULGADO" .
+
+thesis:309
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 309 Thesis" ;
+    ors:description "O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida." ;
+    ors:hasTheme tnu:309 .
+
+jdd:theme-catalog-4f310a6e-5ca0-55ea-b90e-ac29231407b0 prov:hadMember tnu:309 .
+
+tres:5000002-00.2025.4.02.5001
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5000002-00.2025.4.02.5001" ;
+    ors:subject "Auxilio-alimentacao em licenca-premio" ;
+    prov:wasUsedBy jdd:pipeline-run-be96040e-6360-55aa-ab9a-fb8f2012bc43 ;
+    ors:adoptsThesis thesis:309 .
+
+rs:5000002-00.2025.4.02.5001
+    a ors:Petition ;
+    ors:isFiledAgainst tres:5000002-00.2025.4.02.5001 .
+
+jdd:ars-e3b7a254-cbe3-5b23-bc71-127cc40fe4a4
+    a ors:NotEntertainedRS ;
+    rdfs:label "Negar Seguimento draft for process 5000002-00.2025.4.02.5001" ;
+    prov:atLocation "outputs/runs/run-20260616T160533600514Z/documents/d249e736-eed8-5091-86f5-13f1102eefd0-NEGAR_SEGUIMENTO.tex" ;
+    ors:adoptsThesis thesis:309 .
+
+jdd:admissibility-e3b7a254-cbe3-5b23-bc71-127cc40fe4a4
+    a ors:AdmissibilityDecision ;
+    ors:ruledIn jdd:ars-e3b7a254-cbe3-5b23-bc71-127cc40fe4a4 .
+
+jdd:classification-2891c776-b24a-5f7d-94bd-3e917786d2dd
+    a prov:Activity ;
+    rdfs:label "Classification for process 5000002-00.2025.4.02.5001 and theme 309 (CONSONANCIA; VALIDA)" ;
+    prov:used tres:5000002-00.2025.4.02.5001 ;
+    prov:used tnu:309 ;
+    prov:generated jdd:ars-e3b7a254-cbe3-5b23-bc71-127cc40fe4a4 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

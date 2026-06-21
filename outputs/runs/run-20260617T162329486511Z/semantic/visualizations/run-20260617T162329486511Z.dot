@@ -1,0 +1,45 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6908495118183319542 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n4143376756070219853 [label="jdd:classification-85df76fd-9eca-5aa9-8150-63d96e68d28f", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-85df76fd-9eca-5aa9-8150-63d96e68d28f"];
+    n4677637114992303294 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1641533167735935170 [label="Pipeline run run-20260617T162329486511Z", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Pipeline run run-20260617T162329486511Z"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3278468915403160462 [label="tres:5076365-98.2024.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5076365-98.2024.4.02.5101\n\nsubject: Reintegração ou Readmissão, Regime Estatutário, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Ato Normativo, Atos Administrativos, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIR..."];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4129835080961075203 [label="Tema 345 - Em Julgamento", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 345 - Em Julgamento"];
+    n2719043369902706979 [label="Theme 345 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 345 Thesis"];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7694918721256391704 [label="jdd:admissibility-8ecabe0f-041e-52d9-b811-cf6b12935782", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-8ecabe0f-041e-52d9-b811-cf6b12935782"];
+  }
+  n4143376756070219853 -> n4129835080961075203 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n4143376756070219853 -> n3278468915403160462 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n4143376756070219853 -> n6908495118183319542 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n1641533167735935170 -> n6908495118183319542 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n1641533167735935170 -> n4677637114992303294 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n2719043369902706979 -> n4129835080961075203 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n3278468915403160462 -> n2719043369902706979 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5365701602983008385 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n416683853362840927 [label="jdd:classification-fba78895-982e-50a0-ba28-548876bf7cca", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-fba78895-982e-50a0-ba28-548876bf7cca"];
+    n6240078696460906364 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n4191764718777993571 [label="jdd:pipeline-run-ecefdf5c-b6d6-578e-af08-ddf6eb029406", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-ecefdf5c-b6d6-578e-af08-ddf6eb029406"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2069111730538847524 [label="tres:5022737-72.2025.4.02.5001", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5022737-72.2025.4.02.5001\n\nsubject: Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4490766699686510753 [label="Tema 27 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 27 - Julgado"];
+    n6743174987694396490 [label="Theme 27 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 27 Thesis\n\ndescription: Aplica-se a tabela progressiva prevista no art. 142 da Lei n. 8.213/91, no caso de aposentadoria por idade urbana, considerando-se como marco temporal para apuração da carência o ano em que o segurado completa a idade..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n113649927894922050 [label="jdd:admissibility-406cbd6d-334c-5fed-8b73-8f05a0631625", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-406cbd6d-334c-5fed-8b73-8f05a0631625"];
+  }
+  n416683853362840927 -> n4490766699686510753 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n416683853362840927 -> n2069111730538847524 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n416683853362840927 -> n5365701602983008385 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n6743174987694396490 -> n4490766699686510753 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n2069111730538847524 -> n6743174987694396490 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

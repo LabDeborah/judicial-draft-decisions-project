@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1813255899460198435 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n785831278817001322 [label="jdd:classification-b591c1d9-83bc-5920-bfd6-607eda6900d0", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-b591c1d9-83bc-5920-bfd6-607eda6900d0"];
+    n3060526251864380153 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n3369513106044763655 [label="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5651228605819868581 [label="tres:5002855-07.2024.4.02.5116", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5002855-07.2024.4.02.5116\n\nsubject: Incidência sobre Licença-Prêmio/Abono/Indenização, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n8676625575090315379 [label="Tema 13 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 13 - Julgado"];
+    n7095837664624734992 [label="Theme 13 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 13 Thesis\n\ndescription: É dispensável prévio requerimento administrativo de revisão de aposentadoria por tempo de contribuição quando houver omissão da autarquia na análise do tempo especial anterior à Lei n. 9.032/95."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7410409384064004425 [label="jdd:admissibility-87bb3f8e-261e-507b-b7fd-cffe0fcd439f", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-87bb3f8e-261e-507b-b7fd-cffe0fcd439f"];
+  }
+  n785831278817001322 -> n8676625575090315379 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n785831278817001322 -> n5651228605819868581 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n785831278817001322 -> n1813255899460198435 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n7095837664624734992 -> n8676625575090315379 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n5651228605819868581 -> n7095837664624734992 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

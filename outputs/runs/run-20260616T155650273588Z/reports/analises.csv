@@ -1,0 +1,2 @@
+decisionId,temaTnu,consonancia,validade,justificativa
+TRF2-0002,309,CONSONANCIA,INVALIDA,Tema 309 selecionado por semelhança de assunto. | Fallback local informativo por erro Gemini (Gemini HTTP 403: Your API key was reported as leaked. Please use another API key.); classificação marcada como INVÁLIDA para evitar decisão automática.

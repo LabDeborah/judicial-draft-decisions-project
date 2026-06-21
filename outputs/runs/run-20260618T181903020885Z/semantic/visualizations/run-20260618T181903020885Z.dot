@@ -1,0 +1,55 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n475651202585533633 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n2675561076769419085 [label="jdd:classification-20a75290-a23f-545c-b8fb-f8530dccd30b", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-20a75290-a23f-545c-b8fb-f8530dccd30b"];
+    n5079252827106927692 [label="jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c"];
+    n5283323910481436732 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1973294339923014596 [label="Pipeline run run-20260618T181903020885Z", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Pipeline run run-20260618T181903020885Z"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2277278099387001176 [label="tres:5020184-43.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5020184-43.2025.4.02.5101\n\nsubject: IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO, Isenção, Limitações ao Poder de Tributar, DIREITO TRIBUTÁRIO, Incidência sobre Aposentadoria, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIR..."];
+    n4667656340506137700 [label="tres:5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5021277-41.2025.4.02.5101\n\nsubject: Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n9110833537213892207 [label="Tema 1 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 1 - Julgado"];
+    n5117411033423376328 [label="Tema 2 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 2 - Julgado"];
+    n28306730384850269 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 1 Thesis\n\ndescription: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio..."];
+    n5251149429577906048 [label="Theme 2 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 2 Thesis\n\ndescription: No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n8634367637379217018 [label="jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132"];
+    n1586047000432578503 [label="jdd:admissibility-e47473b4-3f05-549c-9b4d-0119d1af65e0", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-e47473b4-3f05-549c-9b4d-0119d1af65e0"];
+  }
+  n2675561076769419085 -> n9110833537213892207 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2675561076769419085 -> n2277278099387001176 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2675561076769419085 -> n475651202585533633 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n5079252827106927692 -> n9110833537213892207 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n5079252827106927692 -> n4667656340506137700 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n5079252827106927692 -> n475651202585533633 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n1973294339923014596 -> n475651202585533633 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n1973294339923014596 -> n5283323910481436732 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n28306730384850269 -> n9110833537213892207 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n5251149429577906048 -> n5117411033423376328 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n2277278099387001176 -> n28306730384850269 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+  n4667656340506137700 -> n28306730384850269 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

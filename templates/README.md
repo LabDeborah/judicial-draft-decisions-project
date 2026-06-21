@@ -11,6 +11,7 @@ Cenarios estruturais:
 - `nego_seguimento_transitado`: paragrafos 45-55
 
 Placeholders principais:
+- `{{decision_process_number}}`
 - `{{theme_number}}`
 - `{{theme_process_number}}`
 - `{{theme_affectation_date}}`
@@ -22,3 +23,6 @@ Placeholders principais:
 - `{{theme_reference_label}}`
 - `{{decision_excerpt_quote}}`
 - `{{theme_alignment_phrase}}`
+
+Comportamento adicional:
+- os documentos gerados passam a incluir automaticamente, no topo, a linha `Processo n°: <numero do processo da decisao>`, usando `Trf2Decision.numeroProcesso`.

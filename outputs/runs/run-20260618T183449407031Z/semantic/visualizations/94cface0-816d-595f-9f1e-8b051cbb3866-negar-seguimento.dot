@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1813255899460198435 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n4180424897325428997 [label="jdd:classification-38b7379e-7062-54e0-8d58-b6bc5e561285", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-38b7379e-7062-54e0-8d58-b6bc5e561285"];
+    n3060526251864380153 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n3369513106044763655 [label="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n448402679353063617 [label="tres:5019552-17.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5019552-17.2025.4.02.5101\n\nsubject: CND/Certidão Negativa de Débito, Crédito Tributário, DIREITO TRIBUTÁRIO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3984855686509404397 [label="Tema 2 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 2 - Julgado"];
+    n8575965694937584019 [label="Theme 2 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 2 Thesis\n\ndescription: No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n8552707144162675239 [label="jdd:admissibility-d4a6efd2-b56e-5780-92ff-2d3468137c8d", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-d4a6efd2-b56e-5780-92ff-2d3468137c8d"];
+  }
+  n4180424897325428997 -> n3984855686509404397 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n4180424897325428997 -> n448402679353063617 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n4180424897325428997 -> n1813255899460198435 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n8575965694937584019 -> n3984855686509404397 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n448402679353063617 -> n8575965694937584019 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98 a prov:Activity .
+
+tema:7
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "7" ;
+    rdfs:label "Tema 7 - Julgado"@pt-BR .
+
+tese:7
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 7 Thesis"@pt-BR ;
+    ors:description "É indevida a prorrogação da pensão por morte ao filho maior de 21 anos, ainda que esteja cursando o ensino superior."@pt-BR ;
+    ors:hasTheme tema:7 .
+
+tres:5017606-10.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017606-10.2025.4.02.5101" ;
+    ors:subject "Graduação (Bacharelado, Licenciatura, Profissional Tecnológica), EDUCAÇÃO SUPERIOR, DIREITO À EDUCAÇÃO"@pt-BR ;
+    ors:adoptsThesis tese:7 .
+
+jdd:ars-f26f54c1-e775-5add-b312-dec03052d098
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017606-10.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:7 .
+
+jdd:admissibility-f26f54c1-e775-5add-b312-dec03052d098
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-f26f54c1-e775-5add-b312-dec03052d098 .
+
+jdd:classification-e5a5dc55-9c93-5585-b806-c5e7ea38caba
+    a prov:Activity ;
+    prov:used tres:5017606-10.2025.4.02.5101 ;
+    prov:used tema:7 ;
+    prov:generated jdd:ars-f26f54c1-e775-5add-b312-dec03052d098 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

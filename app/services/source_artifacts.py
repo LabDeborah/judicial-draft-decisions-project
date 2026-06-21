@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 import zipfile
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -17,6 +18,7 @@ from bs4.element import Tag
 from app.domain.types import TnuTheme, Trf2Decision
 from app.services.documents import _compile_tex_to_pdf
 from app.utils.fs import ensure_dir, write_text
+from app.utils.text import normalize_text
 
 TNU_VIRTUS_SEARCH_URL = "https://www.cjf.jus.br/phpdoc/virtus/pesqinteiroteor.php"
 TNU_VIRTUS_BASE_URL = "https://www.cjf.jus.br/phpdoc/virtus/"
@@ -40,19 +42,54 @@ def materialize_source_artifacts(
     ensure_dir(str(decisions_dir))
 
     document_url_cache = _load_trf2_document_url_cache()
-    for theme in themes:
-        local_pdf = _materialize_theme_pdf(theme, themes_dir, latex_engine)
+    total_themes = len(themes)
+    total_decisions = len(decisions)
+    for index, theme in enumerate(themes, start=1):
+        if total_themes:
+            _log_artifacts(
+                "artifacts",
+                f"theme PDF {index}/{total_themes} tema={theme.temaNumero or 'NAO_INFORMADO'}",
+            )
+        try:
+            local_pdf = _materialize_theme_pdf(theme, themes_dir, latex_engine)
+        except Exception as exc:  # noqa: BLE001
+            _log_artifacts(
+                "artifacts.error",
+                (
+                    f"theme materialization failed tema={theme.temaNumero or 'NAO_INFORMADO'} "
+                    f"error={exc!r}; using fallback PDF"
+                ),
+            )
+            local_pdf = _render_theme_fallback_pdf(theme, themes_dir, latex_engine)
         if local_pdf:
             theme.pdfPath = local_pdf
 
-    for decision in decisions:
-        local_pdf = _materialize_decision_pdf(
-            decision,
-            decisions_dir,
-            latex_engine,
-            trf2_chrome_profile,
-            document_url_cache,
-        )
+    for index, decision in enumerate(decisions, start=1):
+        if total_decisions:
+            _log_artifacts(
+                "artifacts",
+                (
+                    f"decision PDF {index}/{total_decisions} "
+                    f"decision={decision.decisionId or 'NAO_INFORMADO'}"
+                ),
+            )
+        try:
+            local_pdf = _materialize_decision_pdf(
+                decision,
+                decisions_dir,
+                latex_engine,
+                trf2_chrome_profile,
+                document_url_cache,
+            )
+        except Exception as exc:  # noqa: BLE001
+            _log_artifacts(
+                "artifacts.error",
+                (
+                    f"decision materialization failed decision={decision.decisionId or 'NAO_INFORMADO'} "
+                    f"error={exc!r}; using fallback PDF"
+                ),
+            )
+            local_pdf = _render_decision_fallback_pdf(decision, decisions_dir, latex_engine)
         if local_pdf:
             decision.inteiroTeorPath = local_pdf
     _save_trf2_document_url_cache(document_url_cache)
@@ -67,6 +104,12 @@ def _materialize_theme_pdf(theme: TnuTheme, output_dir: Path, latex_engine: str 
         downloaded = _download_tnu_theme_pdf(theme, target)
     if downloaded:
         return downloaded
+    return _render_theme_fallback_pdf(theme, output_dir, latex_engine)
+
+
+def _render_theme_fallback_pdf(theme: TnuTheme, output_dir: Path, latex_engine: str | None) -> str | None:
+    filename = f"tema-{_safe_slug(theme.temaNumero or theme.numeroProcesso or 'sem-id')}.pdf"
+    target = output_dir / filename
     context = {
         "titulo": f"Tema {theme.temaNumero}",
         "linha_1": f"Processo: {theme.numeroProcesso or 'NAO_INFORMADO'}",
@@ -100,6 +143,16 @@ def _materialize_decision_pdf(
         )
     if downloaded:
         return downloaded
+    return _render_decision_fallback_pdf(decision, output_dir, latex_engine)
+
+
+def _render_decision_fallback_pdf(
+    decision: Trf2Decision,
+    output_dir: Path,
+    latex_engine: str | None,
+) -> str | None:
+    filename = f"{_safe_slug(decision.decisionId or decision.numeroProcesso or 'sem-id')}.pdf"
+    target = output_dir / filename
     context = {
         "titulo": f"Decisao {decision.decisionId}",
         "linha_1": f"Processo: {decision.numeroProcesso or 'NAO_INFORMADO'}",
@@ -646,9 +699,6 @@ def _render_trf2_document_page_pdf_via_profile_script(
             [sys.executable, str(script_path), document_url, profile_name],
             cwd=str(Path.cwd()),
             capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
             timeout=420,
             check=False,
         )
@@ -674,15 +724,13 @@ def _resolve_trf2_public_document_url_via_profile_script(
             [sys.executable, str(script_path), process_url, profile_name],
             cwd=str(Path.cwd()),
             capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
             timeout=420,
             check=False,
         )
     except Exception:
         return ""
-    for line in completed.stdout.splitlines():
+    stdout_text = _decode_subprocess_output(completed.stdout)
+    for line in stdout_text.splitlines():
         if line.startswith("document_url:"):
             return line.split(":", 1)[1].strip()
     return ""
@@ -746,7 +794,7 @@ def _safe_slug(value: str) -> str:
 
 
 def _normalize_line(value: str) -> str:
-    return re.sub(r"\s+", " ", value).strip()
+    return normalize_text(value)
 
 
 def _escape_latex(text: str) -> str:
@@ -762,3 +810,19 @@ def _escape_latex(text: str) -> str:
         .replace("~", "\\textasciitilde{}")
         .replace("^", "\\textasciicircum{}")
     )
+
+
+def _log_artifacts(stage: str, message: str) -> None:
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    print(f"[{timestamp}] [{stage}] {message}", file=sys.stderr)
+
+
+def _decode_subprocess_output(raw: bytes | str) -> str:
+    if isinstance(raw, str):
+        return raw
+    for encoding in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            return raw.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    return raw.decode("utf-8", errors="replace")

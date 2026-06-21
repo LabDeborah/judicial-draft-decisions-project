@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-725b78ed-24f3-590b-b597-14f416024a06 a prov:Activity .
+
+tema:1
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "1" ;
+    rdfs:label "Tema 1 - Julgado"@pt-BR .
+
+tese:1
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 1 Thesis"@pt-BR ;
+    ors:description "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo."@pt-BR ;
+    ors:hasTheme tema:1 .
+
+tres:5020184-43.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5020184-43.2025.4.02.5101" ;
+    ors:subject "IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO, Isenção, Limitações ao Poder de Tributar, DIREITO TRIBUTÁRIO, Incidência sobre Aposentadoria, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"@pt-BR ;
+    ors:adoptsThesis tese:1 .
+
+jdd:ars-e47473b4-3f05-549c-9b4d-0119d1af65e0
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5020184-43.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:1 .
+
+jdd:admissibility-e47473b4-3f05-549c-9b4d-0119d1af65e0
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-e47473b4-3f05-549c-9b4d-0119d1af65e0 .
+
+jdd:classification-20a75290-a23f-545c-b8fb-f8530dccd30b
+    a prov:Activity ;
+    prov:used tres:5020184-43.2025.4.02.5101 ;
+    prov:used tema:1 ;
+    prov:generated jdd:ars-e47473b4-3f05-549c-9b4d-0119d1af65e0 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

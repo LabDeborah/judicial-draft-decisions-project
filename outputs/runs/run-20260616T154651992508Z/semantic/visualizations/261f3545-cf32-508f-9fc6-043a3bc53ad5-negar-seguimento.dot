@@ -1,0 +1,51 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5164460944816977944 [label="Classification for process 5021277-41.2025.4.02.5101 and theme 1 (CONSONANCIA; VALIDA)", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Classification for process 5021277-41.2025.4.02.5101 and theme 1 (CONSONANCIA; VALIDA)"];
+    n2312200763340586388 [label="jdd:local-text-similarity", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:local-text-similarity"];
+    n4704491999548087461 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n953833579363760545 [label="jdd:pipeline-run-f3493a26-243f-5d7c-95e0-70aa44e8c205", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-f3493a26-243f-5d7c-95e0-70aa44e8c205"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7960505680842585836 [label="tres:5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5021277-41.2025.4.02.5101\n\nsubject: Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL"];
+  }
+  subgraph "cluster_petition" {
+    label="Petition";
+    color="#fca5a5";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n762171164639616040 [label="rs:5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#fee2e2", color="#b91c1c", fontsize="12", tooltip="rs:5021277-41.2025.4.02.5101"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1629341228939895688 [label="Tema 1 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 1 - Julgado"];
+    n2524649465634999106 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 1 Thesis\n\ndescription: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1781904818367433936 [label="jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132"];
+  }
+  n5164460944816977944 -> n1629341228939895688 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n5164460944816977944 -> n7960505680842585836 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n5164460944816977944 -> n2312200763340586388 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n762171164639616040 -> n7960505680842585836 [label="isFiledAgainst", color="#334155", style="solid", penwidth="1.6"];
+  n2524649465634999106 -> n1629341228939895688 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n7960505680842585836 -> n2524649465634999106 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

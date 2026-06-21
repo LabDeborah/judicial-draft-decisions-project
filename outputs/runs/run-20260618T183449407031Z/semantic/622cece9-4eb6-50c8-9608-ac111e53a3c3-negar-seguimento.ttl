@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98 a prov:Activity .
+
+tema:13
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "13" ;
+    rdfs:label "Tema 13 - Julgado"@pt-BR .
+
+tese:13
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 13 Thesis"@pt-BR ;
+    ors:description "É dispensável prévio requerimento administrativo de revisão de aposentadoria por tempo de contribuição quando houver omissão da autarquia na análise do tempo especial anterior à Lei n. 9.032/95."@pt-BR ;
+    ors:hasTheme tema:13 .
+
+tres:5002855-07.2024.4.02.5116
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5002855-07.2024.4.02.5116" ;
+    ors:subject "Incidência sobre Licença-Prêmio/Abono/Indenização, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"@pt-BR ;
+    ors:adoptsThesis tese:13 .
+
+jdd:ars-87bb3f8e-261e-507b-b7fd-cffe0fcd439f
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5002855-07.2024.4.02.5116"@pt-BR ;
+    ors:adoptsThesis tese:13 .
+
+jdd:admissibility-87bb3f8e-261e-507b-b7fd-cffe0fcd439f
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-87bb3f8e-261e-507b-b7fd-cffe0fcd439f .
+
+jdd:classification-b591c1d9-83bc-5920-bfd6-607eda6900d0
+    a prov:Activity ;
+    prov:used tres:5002855-07.2024.4.02.5116 ;
+    prov:used tema:13 ;
+    prov:generated jdd:ars-87bb3f8e-261e-507b-b7fd-cffe0fcd439f ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

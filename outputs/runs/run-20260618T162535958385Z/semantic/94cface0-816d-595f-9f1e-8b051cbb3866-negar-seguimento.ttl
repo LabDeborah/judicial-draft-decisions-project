@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c a prov:Activity .
+
+tema:2
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "2" ;
+    rdfs:label "Tema 2 - Julgado"@pt-BR .
+
+tese:2
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 2 Thesis"@pt-BR ;
+    ors:description "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea."@pt-BR ;
+    ors:hasTheme tema:2 .
+
+tres:5019552-17.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5019552-17.2025.4.02.5101" ;
+    ors:subject "CND/Certidão Negativa de Débito, Crédito Tributário, DIREITO TRIBUTÁRIO"@pt-BR ;
+    ors:adoptsThesis tese:2 .
+
+jdd:ars-d4a6efd2-b56e-5780-92ff-2d3468137c8d
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5019552-17.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:2 .
+
+jdd:admissibility-d4a6efd2-b56e-5780-92ff-2d3468137c8d
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-d4a6efd2-b56e-5780-92ff-2d3468137c8d .
+
+jdd:classification-38b7379e-7062-54e0-8d58-b6bc5e561285
+    a prov:Activity ;
+    prov:used tres:5019552-17.2025.4.02.5101 ;
+    prov:used tema:2 ;
+    prov:generated jdd:ars-d4a6efd2-b56e-5780-92ff-2d3468137c8d ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

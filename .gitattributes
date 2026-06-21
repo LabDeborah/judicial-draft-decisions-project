@@ -1,0 +1,3 @@
+incoming_tcc_pack_20260404/**/*.zip filter=lfs diff=lfs merge=lfs -text
+incoming_tcc_pack_20260404/**/*.xlsx filter=lfs diff=lfs merge=lfs -text
+incoming_tcc_pack_20260404/**/*.docx filter=lfs diff=lfs merge=lfs -text

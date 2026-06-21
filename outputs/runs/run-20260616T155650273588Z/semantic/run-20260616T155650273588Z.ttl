@@ -1,0 +1,44 @@
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix thesis: <http://purl.org/nemo/thesis/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix rs: <http://purl.org/nemo/rs/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <http://purl.org/nemo/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-29f618e3-a621-51c3-92ac-947fe3291199 a prov:Activity ;
+  rdfs:label "Pipeline run run-20260616T155650273588Z" ;
+  prov:wasAssociatedWith jdd:pipeline, gemini:3-1-flash-lite .
+
+jdd:theme-catalog-453b3a61-10c8-5786-8105-b0101117d87a a prov:Collection ;
+  rdfs:label "Collected TNU themes" .
+
+tnu:309
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "309" ;
+    rdfs:label "Tema 309 - JULGADO" .
+
+thesis:309
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 309 Thesis" ;
+    ors:description "O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida." ;
+    ors:hasTheme tnu:309 .
+
+jdd:theme-catalog-453b3a61-10c8-5786-8105-b0101117d87a prov:hadMember tnu:309 .
+
+tres:5000002-00.2025.4.02.5001
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5000002-00.2025.4.02.5001" ;
+    ors:subject "Auxilio-alimentacao em licenca-premio" ;
+    prov:wasUsedBy jdd:pipeline-run-29f618e3-a621-51c3-92ac-947fe3291199 ;
+    ors:adoptsThesis thesis:309 .
+
+rs:5000002-00.2025.4.02.5001
+    a ors:Petition ;
+    ors:isFiledAgainst tres:5000002-00.2025.4.02.5001 .

@@ -1,0 +1,55 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-573dc3e6-df38-5145-b705-0eb7d8557dd9 a prov:Activity ;
+  rdfs:label "Pipeline run run-20260617T133454070927Z"@pt-BR ;
+  prov:wasAssociatedWith jdd:pipeline, gemini:3-1-flash-lite .
+
+jdd:theme-catalog-5fe5129c-ad3a-5a7d-9c2d-3e9c2ad24964 a prov:Collection ;
+  rdfs:label "Collected TNU themes"@pt-BR .
+
+tema:309
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "309" ;
+    rdfs:label "Tema 309 - Julgado"@pt-BR .
+
+tese:309
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 309 Thesis"@pt-BR ;
+    ors:description "O auxílio-alimentação pago aos servidores públicos federais (Lei n. 8.460/92) integra a base de cálculo da licença-prêmio não usufruída e convertida em pecúnia."@pt-BR ;
+    ors:hasTheme tema:309 .
+
+jdd:theme-catalog-5fe5129c-ad3a-5a7d-9c2d-3e9c2ad24964 prov:hadMember tema:309 .
+
+tres:5003714-34.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5003714-34.2025.4.02.5101" ;
+    ors:subject "Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-573dc3e6-df38-5145-b705-0eb7d8557dd9 ;
+    ors:adoptsThesis tese:309 .
+
+jdd:ars-f07fe326-5908-57f7-8950-f32567b964e3
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5003714-34.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:309 .
+
+jdd:admissibility-f07fe326-5908-57f7-8950-f32567b964e3
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-f07fe326-5908-57f7-8950-f32567b964e3 .
+
+jdd:classification-b510122f-031a-5975-943b-384444137b3a
+    a prov:Activity ;
+    prov:used tres:5003714-34.2025.4.02.5101 ;
+    prov:used tema:309 ;
+    prov:generated jdd:ars-f07fe326-5908-57f7-8950-f32567b964e3 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

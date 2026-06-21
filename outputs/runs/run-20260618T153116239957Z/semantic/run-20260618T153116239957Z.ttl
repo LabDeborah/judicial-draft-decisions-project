@@ -1,0 +1,1342 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-f0d1be73-f35a-58be-bd9d-ad1fcd81237b a prov:Activity ;
+  rdfs:label "Pipeline run run-20260618T153116239957Z"@pt-BR ;
+  prov:wasAssociatedWith jdd:pipeline, gemini:3-1-flash-lite .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 a prov:Collection ;
+  rdfs:label "Collected TNU themes"@pt-BR .
+
+tema:1
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "1" ;
+    rdfs:label "Tema 1 - Julgado"@pt-BR .
+
+tese:1
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 1 Thesis"@pt-BR ;
+    ors:description "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo."@pt-BR ;
+    ors:hasTheme tema:1 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:1 .
+
+tema:2
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "2" ;
+    rdfs:label "Tema 2 - Julgado"@pt-BR .
+
+tese:2
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 2 Thesis"@pt-BR ;
+    ors:description "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea."@pt-BR ;
+    ors:hasTheme tema:2 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:2 .
+
+tema:3
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "3" ;
+    rdfs:label "Tema 3 - Julgado"@pt-BR .
+
+tese:3
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 3 Thesis"@pt-BR ;
+    ors:description "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal."@pt-BR ;
+    ors:hasTheme tema:3 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:3 .
+
+tema:4
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "4" ;
+    rdfs:label "Tema 4 - Julgado"@pt-BR .
+
+tese:4
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 4 Thesis"@pt-BR ;
+    ors:description "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU"@pt-BR ;
+    ors:hasTheme tema:4 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:4 .
+
+tema:5
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "5" ;
+    rdfs:label "Tema 5 - Revisado pelo Tema 145"@pt-BR .
+
+tese:5
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 5 Thesis"@pt-BR ;
+    ors:description "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)."@pt-BR ;
+    ors:hasTheme tema:5 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:5 .
+
+tema:6
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "6" ;
+    rdfs:label "Tema 6 - Julgado"@pt-BR .
+
+tese:6
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 6 Thesis"@pt-BR ;
+    ors:description "A contribuição ao FUSEX é tributo cujo lançamento se efetua de ofício, sujeita ao prazo prescricional quinquenal, descrito no art. 168, I, do CTN."@pt-BR ;
+    ors:hasTheme tema:6 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:6 .
+
+tema:7
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "7" ;
+    rdfs:label "Tema 7 - Julgado"@pt-BR .
+
+tese:7
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 7 Thesis"@pt-BR ;
+    ors:description "É indevida a prorrogação da pensão por morte ao filho maior de 21 anos, ainda que esteja cursando o ensino superior."@pt-BR ;
+    ors:hasTheme tema:7 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:7 .
+
+tema:8
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "8" ;
+    rdfs:label "Tema 8 - Julgado"@pt-BR .
+
+tese:8
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 8 Thesis"@pt-BR ;
+    ors:description "Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso."@pt-BR ;
+    ors:hasTheme tema:8 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:8 .
+
+tema:9
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "9" ;
+    rdfs:label "Tema 9 - Julgado"@pt-BR .
+
+tese:9
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 9 Thesis"@pt-BR ;
+    ors:description "Os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007, não reajustaram o valor das diárias dos servidores da FUNASA, apenas ampliaram o rol dos destinos a serem percorridos. Vide Tema 92 - questão similar."@pt-BR ;
+    ors:hasTheme tema:9 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:9 .
+
+tema:10
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "10" ;
+    rdfs:label "Tema 10 - Julgado - TEMA 350/STF"@pt-BR .
+
+tese:10
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 10 Thesis"@pt-BR ;
+    ors:description "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350."@pt-BR ;
+    ors:hasTheme tema:10 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:10 .
+
+tema:11
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "11" ;
+    rdfs:label "Tema 11 - Julgado"@pt-BR .
+
+tese:11
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 11 Thesis"@pt-BR ;
+    ors:description "A exigência de início de prova material contemporânea para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 17."@pt-BR ;
+    ors:hasTheme tema:11 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:11 .
+
+tema:12
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "12" ;
+    rdfs:label "Tema 12 - Revisado - Tema 216/TNU"@pt-BR .
+
+tese:12
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 12 Thesis"@pt-BR ;
+    ors:description "Para fins previdenciários, o cômputo do tempo de serviço prestado como aluno-aprendiz exige a comprovação de que, durante o período de aprendizado, houve simultaneamente: (i) retribuição consubstanciada em prestação pecuniária ou em auxílios materiais; (ii) à conta do Orçamento; (iii) a título de contraprestação por labor; (iv) na execução de bens e serviços destinados a terceiros. (Tese firmada no Tema 216/TNU). Vide Súmula 18 da TNU."@pt-BR ;
+    ors:hasTheme tema:12 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:12 .
+
+tema:13
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "13" ;
+    rdfs:label "Tema 13 - Julgado"@pt-BR .
+
+tese:13
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 13 Thesis"@pt-BR ;
+    ors:description "É dispensável prévio requerimento administrativo de revisão de aposentadoria por tempo de contribuição quando houver omissão da autarquia na análise do tempo especial anterior à Lei n. 9.032/95."@pt-BR ;
+    ors:hasTheme tema:13 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:13 .
+
+tema:14
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "14" ;
+    rdfs:label "Tema 14 - Julgado"@pt-BR .
+
+tese:14
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 14 Thesis"@pt-BR ;
+    ors:description "Na aposentadoria especial a apresentação de laudo pericial extemporâneo não afasta sua força probante, desde que não modificadas as condições do ambiente. Vide Súmula 68 da TNU."@pt-BR ;
+    ors:hasTheme tema:14 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:14 .
+
+tema:15
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "15" ;
+    rdfs:label "Tema 15 - Julgado"@pt-BR .
+
+tese:15
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 15 Thesis"@pt-BR ;
+    ors:description "A pensão por morte não deve ser rateada entre a viúva e a concubina, pois a relação extraconjugal paralela ao casamento não configura união estável. Tese no mesmo sentido da firmada no Tema 526/STF."@pt-BR ;
+    ors:hasTheme tema:15 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:15 .
+
+tema:16
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "16" ;
+    rdfs:label "Tema 16 - Julgado"@pt-BR .
+
+tese:16
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 16 Thesis"@pt-BR ;
+    ors:description "A eficácia da progressão funcional deve ser observada segundo a situação individual de cada servidor e seus efeitos retroagem ao momento em que os requisitos legais foram implementados. Vide Tema 82 e PEDILEF n. 500367784.2014.404.7101. Entendimento revisado pelo PEDILEF n. 05207128420124058300 (orientação alinhada ao STJ: RESP 1.649.269/RJ)."@pt-BR ;
+    ors:hasTheme tema:16 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:16 .
+
+tema:17
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "17" ;
+    rdfs:label "Tema 17 - Julgado"@pt-BR .
+
+tese:17
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 17 Thesis"@pt-BR ;
+    ors:description "A exigência de início de prova material para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 11."@pt-BR ;
+    ors:hasTheme tema:17 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:17 .
+
+tema:18
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "18" ;
+    rdfs:label "Tema 18 - Julgado (Súmulas 5 e 14 da TNU)"@pt-BR .
+
+tese:18
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 18 Thesis"@pt-BR ;
+    ors:description "A certidão do INCRA ou outro documento que comprove propriedade de imóvel em nome de integrantes do grupo familiar do segurado é razoável início de prova material da condição de segurado especial para fins de aposentadoria rural por idade, inclusive dos períodos trabalhados a partir dos 12 anos de idade, antes da publicação da Lei n. 8.213/91. Desnecessidade de comprovação de todo o período de carência."@pt-BR ;
+    ors:hasTheme tema:18 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:18 .
+
+tema:19
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "19" ;
+    rdfs:label "Tema 19 - Julgado"@pt-BR .
+
+tese:19
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 19 Thesis"@pt-BR ;
+    ors:description "É possível comprovar a condição de desemprego involuntário por outros meios de prova diversos do registro no Ministério do Trabalho, não sendo a ausência de vínculo na CTPS suficiente para tanto. Vide Súmula 27 da TNU."@pt-BR ;
+    ors:hasTheme tema:19 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:19 .
+
+tema:20
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "20" ;
+    rdfs:label "Tema 20 - Julgado"@pt-BR .
+
+tese:20
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 20 Thesis"@pt-BR ;
+    ors:description "O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a quo é a última edição da MP que se deu sob o n. 2.169-43, em 24/08/2001. Vide Tema 76 da TNU."@pt-BR ;
+    ors:hasTheme tema:20 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:20 .
+
+tema:21
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "21" ;
+    rdfs:label "Tema 21 - Julgado"@pt-BR .
+
+tese:21
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 21 Thesis"@pt-BR ;
+    ors:description "Para a obtenção de aposentadoria por idade do segurado especial, é indispensável o exercício e a demonstração da atividade rural correspondente à carência no período imediatamente anterior ao implemento da idade mínima ou à data do requerimento administrativo. Vide Tema 145 da TNU."@pt-BR ;
+    ors:hasTheme tema:21 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:21 .
+
+tema:22
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "22" ;
+    rdfs:label "Tema 22 - Revisado pelo Tema 158"@pt-BR .
+
+tese:22
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 22 Thesis"@pt-BR ;
+    ors:description "Não é possível a conversão de período laborado na atividade de professor em tempo comum após a Emenda Constitucional 18/81 (TESE FIRMADA NO TEMA 158)."@pt-BR ;
+    ors:hasTheme tema:22 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:22 .
+
+tema:23
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "23" ;
+    rdfs:label "Tema 23 - Julgado"@pt-BR .
+
+tese:23
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 23 Thesis"@pt-BR ;
+    ors:description "A condição de segurada especial em regime de economia familiar não é descaracterizada pelo trabalho urbano do marido da autora ou mesmo pela paga, posterior, de pensão alimentícia, em razão de separação."@pt-BR ;
+    ors:hasTheme tema:23 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:23 .
+
+tema:24
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "24" ;
+    rdfs:label "Tema 24 - Julgado"@pt-BR .
+
+tese:24
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 24 Thesis"@pt-BR ;
+    ors:description "Nos Juizados Especiais Federais inexiste renúncia tácita para fins de fixação de competência. Vide Súmula 17 da TNU."@pt-BR ;
+    ors:hasTheme tema:24 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:24 .
+
+tema:25
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "25" ;
+    rdfs:label "Tema 25 - Julgado"@pt-BR .
+
+tese:25
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 25 Thesis"@pt-BR ;
+    ors:description "Para o cálculo do fator previdenciário deve ser observada a tábua de mortalidade elaborada pelo IBGE vigente na data do requerimento do benefício previdenciário, e não aquela utilizada anteriormente, quando preenchidos os requisitos necessários à concessão da aposentadoria."@pt-BR ;
+    ors:hasTheme tema:25 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:25 .
+
+tema:26
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "26" ;
+    rdfs:label "Tema 26 - Julgado"@pt-BR .
+
+tese:26
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 26 Thesis"@pt-BR ;
+    ors:description "Descabida a pretensão de regularização \"post mortem\" do recolhimento das contribuições previdenciárias devidas pelo segurado contribuinte individual exercente de atividade informal, salvo quando devam ser arrecadadas por empresa tomadora de serviços. Vide Súmula 52 da TNU."@pt-BR ;
+    ors:hasTheme tema:26 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:26 .
+
+tema:27
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "27" ;
+    rdfs:label "Tema 27 - Julgado"@pt-BR .
+
+tese:27
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 27 Thesis"@pt-BR ;
+    ors:description "Aplica-se a tabela progressiva prevista no art. 142 da Lei n. 8.213/91, no caso de aposentadoria por idade urbana, considerando-se como marco temporal para apuração da carência o ano em que o segurado completa a idade mínima, ainda que contadas contribuições posteriores ao ano do cumprimento do requisito etário. Vide Súmula 44 da TNU."@pt-BR ;
+    ors:hasTheme tema:27 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:27 .
+
+tema:28
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "28" ;
+    rdfs:label "Tema 28 - Julgado"@pt-BR .
+
+tese:28
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 28 Thesis"@pt-BR ;
+    ors:description "Não se aplica orientação firmada no RE 597389/ SP, no cálculo dos benefícios concedidos antes da Lei n. 9.032/95, cujas sentenças transitaram em julgado quando do pronunciamento do STF. Vide Tema 90."@pt-BR ;
+    ors:hasTheme tema:28 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:28 .
+
+tema:29
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "29" ;
+    rdfs:label "Tema 29 - Julgado"@pt-BR .
+
+tese:29
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 29 Thesis"@pt-BR ;
+    ors:description "O recolhimento tardio de contribuições a cargo do empregador não implica prejuízo de ordem previdenciária à segurada empregada doméstica."@pt-BR ;
+    ors:hasTheme tema:29 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:29 .
+
+tema:30
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "30" ;
+    rdfs:label "Tema 30 - Revisado - Tema 123/TNU"@pt-BR .
+
+tese:30
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 30 Thesis"@pt-BR ;
+    ors:description "\"Os valores recebidos de boa-fé por força de antecipação de tutela, em se tratando de decisão de primeiro grau reformada em segundo grau, devem ser devolvidos, nos termos do entendimento firmado pelo Superior Tribunal de Justiça (Tema/Repetitivo 692 e PET 10.996/SC)\". (Tese - Tema 692/STJ: A reforma da decisão que antecipa os efeitos da tutela final obriga o autor da ação a devolver os valores dos benefícios previdenciários ou assistenciais recebidos, o que pode ser feito por meio de desconto em valor que não exceda 30% (trinta por cento) da importância de eventual benefício que ainda lhe estiver sendo pago.)"@pt-BR ;
+    ors:hasTheme tema:30 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:30 .
+
+tema:31
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "31" ;
+    rdfs:label "Tema 31 - Revisado - Tema 896/STJ"@pt-BR .
+
+tese:31
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 31 Thesis"@pt-BR ;
+    ors:description "Vide Tema 896/STJ."@pt-BR ;
+    ors:hasTheme tema:31 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:31 .
+
+tema:32
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "32" ;
+    rdfs:label "Tema 32 - Julgado"@pt-BR .
+
+tese:32
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 32 Thesis"@pt-BR ;
+    ors:description "Certidão de óbito configura início de prova material para caracterização da atividade rural, para fins de pensão por morte."@pt-BR ;
+    ors:hasTheme tema:32 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:32 .
+
+tema:33
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "33" ;
+    rdfs:label "Tema 33 - Julgado"@pt-BR .
+
+tese:33
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 33 Thesis"@pt-BR ;
+    ors:description "A habitualidade e permanência da exposição ao agente nocivo ruído, devidamente comprovadas por laudo pericial, presumem-se no caso de segurado contribuinte individual empresário."@pt-BR ;
+    ors:hasTheme tema:33 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:33 .
+
+tema:34
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "34" ;
+    rdfs:label "Tema 34 - Julgado"@pt-BR .
+
+tese:34
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 34 Thesis"@pt-BR ;
+    ors:description "Para a concessão do benefício previsto no art. 203, V, da Constituição Federal, nos casos de incapacidade parcial e temporária, deve-se examinar as condições pessoais do requerente."@pt-BR ;
+    ors:hasTheme tema:34 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:34 .
+
+tema:35
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "35" ;
+    rdfs:label "Tema 35 - Julgado"@pt-BR .
+
+tese:35
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 35 Thesis"@pt-BR ;
+    ors:description "A averbação de tempo de trabalho rural nos regimes próprios de previdência dos servidores públicos exige a indenização das respectivas contribuições previdenciárias, para efeitos de contagem recíproca de tempo de contribuição."@pt-BR ;
+    ors:hasTheme tema:35 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:35 .
+
+tema:36
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "36" ;
+    rdfs:label "Tema 36 - Julgado (Súmula 77 da TNU)"@pt-BR .
+
+tese:36
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 36 Thesis"@pt-BR ;
+    ors:description "Na concessão do auxílio-doença é dispensável o exame das condições pessoais do segurado quando não constatada a incapacidade laboral. Vide Súmula 77 da TNU."@pt-BR ;
+    ors:hasTheme tema:36 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:36 .
+
+tema:37
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "37" ;
+    rdfs:label "Tema 37 - Julgado (Súmula 46 da TNU)"@pt-BR .
+
+tese:37
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 37 Thesis"@pt-BR ;
+    ors:description "Não afasta o direito à aposentadoria por idade rural o exercício de atividade urbana intercalada ou breves períodos descontínuos de atividade rural. Vide Súmula 46 da TNU."@pt-BR ;
+    ors:hasTheme tema:37 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:37 .
+
+tema:38
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "38" ;
+    rdfs:label "Tema 38 - Julgado"@pt-BR .
+
+tese:38
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 38 Thesis"@pt-BR ;
+    ors:description "A incapacidade laboral preeexistente veda a concessão de auxílio-doença e aposentadoria por invalidez, mesmo nos casos de reingresso no RGPS. Vide Súmula 53 da TNU."@pt-BR ;
+    ors:hasTheme tema:38 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:38 .
+
+tema:39
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "39" ;
+    rdfs:label "Tema 39 - Julgado"@pt-BR .
+
+tese:39
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 39 Thesis"@pt-BR ;
+    ors:description "Para a concessão de pensão por morte de rurícola é necessário que o instituidor tenha, na data do óbito, a qualidade de segurado ou tenha implementado, antes de falecer, todos os requisitos para a concessão de aposentadoria por idade rural, tanto a carência quanto a idade mínima."@pt-BR ;
+    ors:hasTheme tema:39 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:39 .
+
+tema:40
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "40" ;
+    rdfs:label "Tema 40 - Julgado"@pt-BR .
+
+tese:40
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 40 Thesis"@pt-BR ;
+    ors:description "A incapacidade laboral preeexistente veda a concessão de auxílio-doença e aposentadoria por invalidez, mesmo nos casos de reingresso no RGPS. Vide Súmula 53 da TNU."@pt-BR ;
+    ors:hasTheme tema:40 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:40 .
+
+tema:41
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "41" ;
+    rdfs:label "Tema 41 - Julgado"@pt-BR .
+
+tese:41
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 41 Thesis"@pt-BR ;
+    ors:description "Na aposentadoria por tempo de contribuição, o fator de conversão 1,4 (um vírgula quatro), para os homens, é aplicável em qualquer período."@pt-BR ;
+    ors:hasTheme tema:41 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:41 .
+
+tema:42
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "42" ;
+    rdfs:label "Tema 42 - Julgado"@pt-BR .
+
+tese:42
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 42 Thesis"@pt-BR ;
+    ors:description "A ação para cobrança de juros progressivos sujeita-se à prescrição trintenal cujo início se dá a cada mês no dia em que era obrigação da CEF creditá-los em conta vinculada. Vide Súmula 56 da TNU."@pt-BR ;
+    ors:hasTheme tema:42 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:42 .
+
+tema:43
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "43" ;
+    rdfs:label "Tema 43 - Revisado - Tema 140/TNU"@pt-BR .
+
+tese:43
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 43 Thesis"@pt-BR ;
+    ors:description "Os membros da Advocacia-Geral da União - Advogados da União, Procuradores da Fazenda Nacional e Procuradores Federais - por não terem a garantia da inamovibilidade, não têm direito ao pagamento de ajuda de custo nos casos de remoção a pedido. - Tese firmada no Tema 140/TNU."@pt-BR ;
+    ors:hasTheme tema:43 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:43 .
+
+tema:44
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "44" ;
+    rdfs:label "Tema 44 - Julgado"@pt-BR .
+
+tese:44
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 44 Thesis"@pt-BR ;
+    ors:description "\"A Lei 11.087/05, resultante da conversão da Medida Provisória 208/2004, não modificou a natureza pro labore faciendo da GED, porquanto trouxe apenas alteração nos pontos a serem atribuídos a ativos e inativos, preservando-se a diferenciação estabelecida na Lei 9.784/1998, inclusive quanto aos servidores docentes cedidos.\" (PET 9600/STJ) Obs: O referido entendimento foi aplicado também à PET 9645/STJ, oriunda deste representativo."@pt-BR ;
+    ors:hasTheme tema:44 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:44 .
+
+tema:45
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "45" ;
+    rdfs:label "Tema 45 - Julgado"@pt-BR .
+
+tese:45
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 45 Thesis"@pt-BR ;
+    ors:description "É devida pensão por morte ao ex-cônjuge que não percebe alimentos, desde que comprovada dependência econômica superveniente à separação, demonstrada em momento anterior ao óbito."@pt-BR ;
+    ors:hasTheme tema:45 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:45 .
+
+tema:46
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "46" ;
+    rdfs:label "Tema 46 - Julgado"@pt-BR .
+
+tese:46
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 46 Thesis"@pt-BR ;
+    ors:description "O rol de hipóteses de levantamento dos valores de FGTS é meramente exemplificativo, comportando, inclusive, saque para quitação de imóvel não financiado pelo SFH. Vide temas 42, 49 e 55."@pt-BR ;
+    ors:hasTheme tema:46 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:46 .
+
+tema:47
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "47" ;
+    rdfs:label "Tema 47 - Julgado"@pt-BR .
+
+tese:47
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 47 Thesis"@pt-BR ;
+    ors:description "Os herdeiros detêm legitimidade, por sucessão processual, para prosseguir no feito do autor falecido, nos casos de concessão de benefício por incapacidade."@pt-BR ;
+    ors:hasTheme tema:47 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:47 .
+
+tema:48
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "48" ;
+    rdfs:label "Tema 48 - Julgado"@pt-BR .
+
+tese:48
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 48 Thesis"@pt-BR ;
+    ors:description "A responsabilidade civil da universidade pública pela guarda de veículos na área de estacionamento é subjetiva e depende da existência de aparato de vigilância para segurança do estacionamento."@pt-BR ;
+    ors:hasTheme tema:48 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:48 .
+
+tema:49
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "49" ;
+    rdfs:label "Tema 49 - Julgado (RESP 1349059/ SP)"@pt-BR .
+
+tese:49
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 49 Thesis"@pt-BR ;
+    ors:description "Não se aplica a taxa progressiva de juros às contas vinculadas ao FGTS de trabalhadores qualificados como avulsos."@pt-BR ;
+    ors:hasTheme tema:49 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:49 .
+
+tema:50
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "50" ;
+    rdfs:label "Tema 50 - Julgado"@pt-BR .
+
+tese:50
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 50 Thesis"@pt-BR ;
+    ors:description "A contribuição previdenciária dos militares inativos e pensionistas deve incidir sobre o total das parcelas que compõem os proventos da inatividade, não havendo direito à imunidade conferida aos segurados do RGPS e servidores."@pt-BR ;
+    ors:hasTheme tema:50 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:50 .
+
+tema:51
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "51" ;
+    rdfs:label "Tema 51 - Julgado"@pt-BR .
+
+tese:51
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 51 Thesis"@pt-BR ;
+    ors:description "Não há prescrição do fundo de direito do reajuste de 7/30 da URP de abril/maio de 1988, por se tratar de prestação de trato sucessivo."@pt-BR ;
+    ors:hasTheme tema:51 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:51 .
+
+tema:52
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "52" ;
+    rdfs:label "Tema 52 - Julgado"@pt-BR .
+
+tese:52
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 52 Thesis"@pt-BR ;
+    ors:description "A supressão do adicional de inatividade pela MP n. 2.131/2000 não afronta o princípio do direito adquirido, uma vez que não houve decesso remuneratório."@pt-BR ;
+    ors:hasTheme tema:52 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:52 .
+
+tema:53
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "53" ;
+    rdfs:label "Tema 53 - Julgado"@pt-BR .
+
+tese:53
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 53 Thesis"@pt-BR ;
+    ors:description "A manipulação de óleos e graxas, desde que devidamente comprovado, configura atividade especial. VIDE TEMA 298/TNU"@pt-BR ;
+    ors:hasTheme tema:53 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:53 .
+
+tema:54
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "54" ;
+    rdfs:label "Tema 54 - Julgado"@pt-BR .
+
+tese:54
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 54 Thesis"@pt-BR ;
+    ors:description "A exigência etária de no mínimo 16 anos, para caracterização da qualidade de segurado especial, só se aplica ao filho do produtor rural ou pescador artesanal, não se estendendo a seu cônjuge ou companheiro que exerçam atividade rural em regime de economia familiar."@pt-BR ;
+    ors:hasTheme tema:54 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:54 .
+
+tema:55
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "55" ;
+    rdfs:label "Tema 55 - Julgado"@pt-BR .
+
+tese:55
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 55 Thesis"@pt-BR ;
+    ors:description "São devidos, além dos juros progressivos sobre os saldos fundiários, juros moratórios, previstos no art. 406 do Código Civil e art. 161, §1º do Código Tributário Nacional, pela taxa SELIC, contados a partir da citação até a data do pagamento. Vide Tema 176 do STJ - Recursos Repetitivos."@pt-BR ;
+    ors:hasTheme tema:55 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:55 .
+
+tema:56
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "56" ;
+    rdfs:label "Tema 56 - Julgado"@pt-BR .
+
+tese:56
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 56 Thesis"@pt-BR ;
+    ors:description "O tempo de serviço laborado pelo segurado na condição de engenheiro mecânico até a edição da Lei n. 9.032/95 deve ser enquadrado como especial, conforme descrito no código 2.1.1 do Anexo II do Decreto n. 83.080/79."@pt-BR ;
+    ors:hasTheme tema:56 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:56 .
+
+tema:57
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "57" ;
+    rdfs:label "Tema 57 - Julgado"@pt-BR .
+
+tese:57
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 57 Thesis"@pt-BR ;
+    ors:description "Não ocorre prescrição do fundo de direito quando, entre o cancelamento administrativo do auxílio-doença e o ajuizamento da ação, decorrem mais de 5 anos."@pt-BR ;
+    ors:hasTheme tema:57 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:57 .
+
+tema:58
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "58" ;
+    rdfs:label "Tema 58 - Julgado"@pt-BR .
+
+tese:58
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 58 Thesis"@pt-BR ;
+    ors:description "Entendimento superado, em razão do advento da PET 9059, e do cancelamento da Súmula n. 32, da TNU. Vide PEDILEF 2003.51.51.012024-5. Vide Tema 694/STJ, Tema 174/TNU e PET 10262/STJ."@pt-BR ;
+    ors:hasTheme tema:58 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:58 .
+
+tema:59
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "59" ;
+    rdfs:label "Tema 59 - Julgado"@pt-BR .
+
+tese:59
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 59 Thesis"@pt-BR ;
+    ors:description "É indispensável o comprovante de pagamento da contribuição previdenciária, no caso de pescador artesanal, para concessão do seguro-desemprego nos períodos de defeso, nos termos da Lei n. 10.779/03."@pt-BR ;
+    ors:hasTheme tema:59 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:59 .
+
+tema:60
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "60" ;
+    rdfs:label "Tema 60 - Julgado"@pt-BR .
+
+tese:60
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 60 Thesis"@pt-BR ;
+    ors:description "É devido ajuda de custo no caso de remoção a pedido em decorrência da garantia da prerrogativa da inamovibilidade e da simetria constitucional entre as carreiras do Ministério Público e da Magistratura. Vide temas 43, 129, 136, 140, 141, 143 e 154."@pt-BR ;
+    ors:hasTheme tema:60 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:60 .
+
+tema:61
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "61" ;
+    rdfs:label "Tema 61 - Julgado"@pt-BR .
+
+tese:61
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 61 Thesis"@pt-BR ;
+    ors:description "Não incide imposto de renda sobre auxílio-creche, por tratar-se de vantagem com caráter indenizatório."@pt-BR ;
+    ors:hasTheme tema:61 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:61 .
+
+tema:62
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "62" ;
+    rdfs:label "Tema 62 - Julgado"@pt-BR .
+
+tese:62
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 62 Thesis"@pt-BR ;
+    ors:description "É legal a Resolução n. 467/2005 do CODEFAT que fixa do prazo máximo de 120 dias após a data da dispensa para requerer o seguro-desemprego. De acordo com a tese firmada no Tema 1136/STJ."@pt-BR ;
+    ors:hasTheme tema:62 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:62 .
+
+tema:63
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "63" ;
+    rdfs:label "Tema 63 - Julgado"@pt-BR .
+
+tese:63
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 63 Thesis"@pt-BR ;
+    ors:description "O tempo de serviço rural posterior à Lei n. 8.213/91, para efeitos de carência, demanda o recolhimento de contribuições previdenciárias."@pt-BR ;
+    ors:hasTheme tema:63 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:63 .
+
+tema:64
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "64" ;
+    rdfs:label "Tema 64 - Julgado"@pt-BR .
+
+tese:64
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 64 Thesis"@pt-BR ;
+    ors:description "Os empregados submetidos ao Regime Geral da Previdência Social (RGPS), aí incluídos os exercentes de cargo em comissão, de livre nomeação e exoneração, em caráter exclusivo, se sujeitam à incidência de contribuição previdenciária sobre as parcelas percebidas a título de Auxílio-Alimentação dada a sua natureza salarial, com base nos termos do art. 40, § 13º, da CF/88 c.c. art. 28, I, da Lei n. 8.212/91, salvo, se tal pagamento for “in natura”, isto é, quando a própria empresa fornece a alimentação. Vide Súmula 67 da TNU."@pt-BR ;
+    ors:hasTheme tema:64 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:64 .
+
+tema:65
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "65" ;
+    rdfs:label "Tema 65 - Julgado"@pt-BR .
+
+tese:65
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 65 Thesis"@pt-BR ;
+    ors:description "A pensão alimentícia é dedutível da base de cálculo do Imposto de Renda, seja ela decorrente de decisão judicial ou não, mas desde que devidamente comprovada."@pt-BR ;
+    ors:hasTheme tema:65 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:65 .
+
+tema:66
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "66" ;
+    rdfs:label "Tema 66 - Cancelado - Tema 355/TNU"@pt-BR .
+
+tese:66
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 66 Thesis"@pt-BR ;
+    ors:description "O tempo de seminarista em congregação religiosa se aproveita para fins previdenciários, desde que atendidos os mesmos pressupostos exigidos do aluno aprendiz de escola pública profissionalizante. Vide Súmula 18/TNU"@pt-BR ;
+    ors:hasTheme tema:66 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:66 .
+
+tema:67
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "67" ;
+    rdfs:label "Tema 67 - Revisado - EREsp 1605554/PR"@pt-BR .
+
+tese:67
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 67 Thesis"@pt-BR ;
+    ors:description "Tese revisada pelo entendimento exarado no EREsp 1.605.554/PR."@pt-BR ;
+    ors:hasTheme tema:67 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:67 .
+
+tema:68
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "68" ;
+    rdfs:label "Tema 68 - Julgado"@pt-BR .
+
+tese:68
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 68 Thesis"@pt-BR ;
+    ors:description "É possível a equiparação da atividade de motorista à de tratorista para fins de contagem de tempo de atividade especial, por categoria profissional. VIDE SÚMULA 70/TNU."@pt-BR ;
+    ors:hasTheme tema:68 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:68 .
+
+tema:69
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "69" ;
+    rdfs:label "Tema 69 - Julgado"@pt-BR .
+
+tese:69
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 69 Thesis"@pt-BR ;
+    ors:description "O fator de divisão para o cálculo do serviço extraordinário é de 200 horas mensais, em razão da jornada máxima do servidor público de 40 (quarenta) horas semanais prevista no art. 19 da Lei n. 8.112/90."@pt-BR ;
+    ors:hasTheme tema:69 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:69 .
+
+tema:70
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "70" ;
+    rdfs:label "Tema 70 - Julgado (Súmula 78 da TNU)"@pt-BR .
+
+tese:70
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 70 Thesis"@pt-BR ;
+    ors:description "Na concessão do benefício de prestação continuada ao portador do vírus HIV assintomático, devem ser observadas, além da incapacidade de prover a própria subsistência, as condições socioculturais estigmatizantes da doença. Vide Súmula 78 da TNU."@pt-BR ;
+    ors:hasTheme tema:70 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:70 .
+
+tema:71
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "71" ;
+    rdfs:label "Tema 71 - Julgado"@pt-BR .
+
+tese:71
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 71 Thesis"@pt-BR ;
+    ors:description "Os benefícios e resgates decorrentes das contribuições recolhidas sob o regime da Lei n. 7.713/88 (janeiro de 1989 a dezembro de 1995), com a incidência do imposto de renda no momento do recolhimento, não serão novamente tributados, sob pena de violação à regra proibitiva do \"bis in idem\". Vide recurso repetitivo do STJ: REsp 1001779/ DF."@pt-BR ;
+    ors:hasTheme tema:71 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:71 .
+
+tema:72
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "72" ;
+    rdfs:label "Tema 72 - Revisado - Tema 135/TNU"@pt-BR .
+
+tese:72
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 72 Thesis"@pt-BR ;
+    ors:description "É devida a incidência da decadência decenal, prevista na MP n. 1.523/1997, aos benefícios concedidos anteriormente à sua vigência. Tese firmada no Tema 135/TNU."@pt-BR ;
+    ors:hasTheme tema:72 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:72 .
+
+tema:73
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "73" ;
+    rdfs:label "Tema 73 - Julgado"@pt-BR .
+
+tese:73
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 73 Thesis"@pt-BR ;
+    ors:description "O grupo familiar deve ser definido a partir da interpretação restrita do disposto no art. 16 da Lei n. 8.213/91 e no art. 20 da Lei n. 8.742/93, esta última na sua redação original."@pt-BR ;
+    ors:hasTheme tema:73 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:73 .
+
+tema:74
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "74" ;
+    rdfs:label "Tema 74 - Julgado"@pt-BR .
+
+tese:74
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 74 Thesis"@pt-BR ;
+    ors:description "A contribuição previdenciária patronal prevista no art. 22, I, da Lei n. 8.212/91 não incide sobre a verba paga pela empresa ao segurado empregado durante os primeiros quinze dias de afastamento por motivo de doença."@pt-BR ;
+    ors:hasTheme tema:74 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:74 .
+
+tema:75
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "75" ;
+    rdfs:label "Tema 75 - Julgado"@pt-BR .
+
+tese:75
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 75 Thesis"@pt-BR ;
+    ors:description "Não se aplica a Lei n. 11.358/06 às aposentadorias e pensões concedidas sob a égide da Lei n. 10.884/04."@pt-BR ;
+    ors:hasTheme tema:75 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:75 .
+
+tema:76
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "76" ;
+    rdfs:label "Tema 76 - Julgado"@pt-BR .
+
+tese:76
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 76 Thesis"@pt-BR ;
+    ors:description "O reconhecimento, pela Administração Pública, do direito à correção monetária, volta a fluir na integralidade dos cinco anos. Vide Tema 20 da TNU."@pt-BR ;
+    ors:hasTheme tema:76 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:76 .
+
+tema:77
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "77" ;
+    rdfs:label "Tema 77 - Julgado"@pt-BR .
+
+tese:77
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 77 Thesis"@pt-BR ;
+    ors:description "O direito à prestação \"in natura\" de alimentação, moradia e alojamento aos médicos residentes não foi revogado pela Lei n. 10.405/2002, sendo cabível em caso de descumprimento a indenização substitutiva em pecúnia a ser fixada por arbitramento."@pt-BR ;
+    ors:hasTheme tema:77 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:77 .
+
+tema:78
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "78" ;
+    rdfs:label "Tema 78 - Julgado"@pt-BR .
+
+tese:78
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 78 Thesis"@pt-BR ;
+    ors:description "A Lei n. 6.994/82 foi expressamente revogada pela Lei n. 8.906/94, de modo que não persiste fundamento para cobrança de anuidade por conselhos de classe com fulcro em tal diploma."@pt-BR ;
+    ors:hasTheme tema:78 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:78 .
+
+tema:79
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "79" ;
+    rdfs:label "Tema 79 - Julgado"@pt-BR .
+
+tese:79
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 79 Thesis"@pt-BR ;
+    ors:description "Incide Imposto de Renda sobre o adicional de transferência, previsto no art. 469, § 3º, da CLT, em face de sua natureza remuneratória."@pt-BR ;
+    ors:hasTheme tema:79 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:79 .
+
+tema:80
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "80" ;
+    rdfs:label "Tema 80 - Julgado"@pt-BR .
+
+tese:80
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 80 Thesis"@pt-BR ;
+    ors:description "A contribuição devida ao FUSEX possui natureza tributária, incidindo o art. 9º da Lei n. 10.559/2002, razão pela qual não incide sobre os valores pagos por anistia."@pt-BR ;
+    ors:hasTheme tema:80 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:80 .
+
+tema:81
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "81" ;
+    rdfs:label "Tema 81 - Julgado"@pt-BR .
+
+tese:81
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 81 Thesis"@pt-BR ;
+    ors:description "Contra os menores impúberes não corre o prazo do art. 74, II, da Lei n. 8.213/91 (art. 198, I, CC/02), devendo o benefício de pensão por morte ser deferido a partir do óbito do instituidor, observada sua quota parte e também a disposição do artigo 77, §1º da Lei n. 8.213/91."@pt-BR ;
+    ors:hasTheme tema:81 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:81 .
+
+tema:82
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "82" ;
+    rdfs:label "Tema 82 - Julgado"@pt-BR .
+
+tese:82
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 82 Thesis"@pt-BR ;
+    ors:description "A progressão/promoção de servidor público constitui ato único de efeito concreto, sendo o prazo decadencial para sua impugnação de 05 (cinco) anos (Decreto n. 20.910/32, art. 1º), contados a partir de sua publicação."@pt-BR ;
+    ors:hasTheme tema:82 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:82 .
+
+tema:83
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "83" ;
+    rdfs:label "Tema 83 - Julgado"@pt-BR .
+
+tese:83
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 83 Thesis"@pt-BR ;
+    ors:description "O reconhecimento da dívida em sede administrativa antes de consumada a prescrição interrompe o seu curso, ficando o prazo suspenso até que ocorra o pagamento ou até que o devedor pratique ato que configure resistência em quitar a dívida, quando recomeçará a correr, pela metade (Decreto n. 20.910/32, art. 9º)."@pt-BR ;
+    ors:hasTheme tema:83 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:83 .
+
+tema:84
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "84" ;
+    rdfs:label "Tema 84 - Julgado (Representativo Prejudicado)"@pt-BR .
+
+tese:84
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 84 Thesis"@pt-BR ;
+    ors:description "PEDILEF não conhecido por aplicação da Questão de Ordem n. 10 da TNU."@pt-BR ;
+    ors:hasTheme tema:84 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:84 .
+
+tema:85
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "85" ;
+    rdfs:label "Tema 85 - Julgado"@pt-BR .
+
+tese:85
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 85 Thesis"@pt-BR ;
+    ors:description "A cumulação de auxílio-acidente com aposentadoria somente é possível quando a eclosão da lesão incapacitante que ensejou aquele primeiro benefício e o início daquele segundo tenham ocorrido antes da alteração do art. 86 da Lei n. 8.213/91 pela Lei n. 9.528/97."@pt-BR ;
+    ors:hasTheme tema:85 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:85 .
+
+tema:86
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "86" ;
+    rdfs:label "Tema 86 - Julgado"@pt-BR .
+
+tese:86
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 86 Thesis"@pt-BR ;
+    ors:description "O requerimento tardio não prejudica o direito do absolutamente incapaz à percepção integral do benefício, a partir da data do óbito, enquanto não sobrevier a habilitação de dependente de outra classe."@pt-BR ;
+    ors:hasTheme tema:86 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:86 .
+
+tema:87
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "87" ;
+    rdfs:label "Tema 87 - Julgado (Revisado pelo Tema 128)"@pt-BR .
+
+tese:87
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 87 Thesis"@pt-BR ;
+    ors:description "É possível o reconhecimento de tempo especial prestado com exposição ao agente nocivo periculosidade, na atividade de vigilante, em data posterior à vigência do Decreto n. 2.172/92, de 05/03/1997, desde que laudo técnico (ou elemento material equivalente) comprove a permanente exposição à atividade nociva, com o uso de arma de fogo. Vide Tema 128 (em revisão pelo Tema 1031/STJ)."@pt-BR ;
+    ors:hasTheme tema:87 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:87 .
+
+tema:88
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "88" ;
+    rdfs:label "Tema 88 - Cancelado - PEDILEF 5007148-71.2014.4.04.7102/RS"@pt-BR .
+
+tese:88
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 88 Thesis"@pt-BR ;
+    ors:description "Tese anterior revisada pelo Tema 524/STF, o qual firmou a seguinte tese: A concessão de aposentadoria de servidor público por invalidez com proventos integrais exige que a doença incapacitante esteja prevista em rol taxativo da legislação de regência."@pt-BR ;
+    ors:hasTheme tema:88 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:88 .
+
+tema:89
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "89" ;
+    rdfs:label "Tema 89 - Julgado"@pt-BR .
+
+tese:89
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 89 Thesis"@pt-BR ;
+    ors:description "O prazo prescricional da pretensão à cobrança de honorários periciais contra a Fazenda Pública é de cinco anos (Decreto n. 20.910/32, art. 1º), afastando-se a aplicação do prazo prescricional do Código Civil."@pt-BR ;
+    ors:hasTheme tema:89 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:89 .
+
+tema:90
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "90" ;
+    rdfs:label "Tema 90 - Julgado"@pt-BR .
+
+tese:90
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 90 Thesis"@pt-BR ;
+    ors:description "Não se aplica orientação firmada no RE 597389/SP , no cálculo dos benefícios concedidos antes da n. Lei 9.032/95, cujas sentenças transitaram em julgado quando pronunciamento do STF, ressalvado os casos previstos no art. 475, \"l\", parágrafo 1º, do CPC revogado. Vide Tema 28."@pt-BR ;
+    ors:hasTheme tema:90 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:90 .
+
+tema:91
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "91" ;
+    rdfs:label "Tema 91 - Julgado"@pt-BR .
+
+tese:91
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 91 Thesis"@pt-BR ;
+    ors:description "A isenção do imposto de renda beneficia apenas os ex-combatentes cuja pensão especial seja decorrente de incapacidade ou invalidez, não atingindo a aposentadoria especial concedida nos termos no art. 53, II, do ADCT/88."@pt-BR ;
+    ors:hasTheme tema:91 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:91 .
+
+tema:92
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "92" ;
+    rdfs:label "Tema 92 - Julgado"@pt-BR .
+
+tese:92
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 92 Thesis"@pt-BR ;
+    ors:description "É devido o pagamento de meia diária ao servidor que, afastado de sua sede de serviço, tiver despesas extraordinárias tais como alimentação, deslocamento e hospedagem, custeadas com recursos públicos."@pt-BR ;
+    ors:hasTheme tema:92 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:92 .
+
+tema:93
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "93" ;
+    rdfs:label "Tema 93 - Julgado"@pt-BR .
+
+tese:93
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 93 Thesis"@pt-BR ;
+    ors:description "Inteligência da Súmula 33 da TNU: Quando o segurado houver preenchido os requisitos legais para concessão da aposentadoria por tempo de serviço na data do requerimento administrativo, esta data será o termo inicial da concessão do benefício."@pt-BR ;
+    ors:hasTheme tema:93 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:93 .
+
+tema:94
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "94" ;
+    rdfs:label "Tema 94 - Julgado"@pt-BR .
+
+tese:94
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 94 Thesis"@pt-BR ;
+    ors:description "É absoluta a incompetência do Juizado Especial Cível Estadual para o processamento e julgamento das causas previdenciárias, por expressa vedação legal à aplicação da Lei n. 10.259/2001 no âmbito do juízo estadual."@pt-BR ;
+    ors:hasTheme tema:94 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:94 .
+
+tema:95
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "95" ;
+    rdfs:label "Tema 95 - Julgado (RE 566.621/ RS)"@pt-BR .
+
+tese:95
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 95 Thesis"@pt-BR ;
+    ors:description "Para as ações ajuizadas a partir de 9/6/2005, aplica-se o art. 3º da Lei Complementar n. 118/2005, contando-se o prazo prescricional dos tributos sujeitos a lançamento por homologação em cinco anos a partir do pagamento antecipado de que trata o art. 150, §1º, do CTN. Vide RE 566.621/ RS - repercussão geral."@pt-BR ;
+    ors:hasTheme tema:95 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:95 .
+
+tema:96
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "96" ;
+    rdfs:label "Tema 96 - Julgado"@pt-BR .
+
+tese:96
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 96 Thesis"@pt-BR ;
+    ors:description "Não se aplicam, à parcela do adicional de insalubridade ou de periculosidade transformada em vantagem pessoal nominalmente identificada na forma da Lei nº 8.270/91, os índices de revisão geral de remuneração dos servidores públicos."@pt-BR ;
+    ors:hasTheme tema:96 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:96 .
+
+tema:97
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "97" ;
+    rdfs:label "Tema 97 - Julgado"@pt-BR .
+
+tese:97
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 97 Thesis"@pt-BR ;
+    ors:description "A União é parte legítima passiva para responder às ações com pedido de repetição de indébito de contribuição previdenciária de servidor público."@pt-BR ;
+    ors:hasTheme tema:97 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:97 .
+
+tema:98
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "98" ;
+    rdfs:label "Tema 98 - Julgado"@pt-BR .
+
+tese:98
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 98 Thesis"@pt-BR ;
+    ors:description "É excepcional a natureza indenizatória das férias de trabalhador avulso, a qual deve ser comprovada pela parte autora. Caso não o faça, se presume as goze anualmente, ocasião em que incide contribuição previdenciária."@pt-BR ;
+    ors:hasTheme tema:98 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:98 .
+
+tema:99
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "99" ;
+    rdfs:label "Tema 99 - Julgado (Súmula vinculante 3)"@pt-BR .
+
+tese:99
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 99 Thesis"@pt-BR ;
+    ors:description "O prazo decadencial de cinco anos previsto no art. 54 da Lei n. 9.784/99 para alterar ato de aposentadoria de servidor público se inicia a partir do registro do ato no Tribunal de Contas, não do ato de concessão expedido pelo órgão a que estava vinculado."@pt-BR ;
+    ors:hasTheme tema:99 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:99 .
+
+tema:100
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "100" ;
+    rdfs:label "Tema 100 - Julgado"@pt-BR .
+
+tese:100
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 100 Thesis"@pt-BR ;
+    ors:description "O código 1.3.2 do quadro anexo ao Decreto n. 53.831/64, além dos profissionais da área da saúde, contempla os trabalhadores que exercem atividades de serviços gerais em limpeza e higienização de ambientes hospitalares (Súmula 82 da TNU). Vide Tema 238/TNU."@pt-BR ;
+    ors:hasTheme tema:100 .
+
+jdd:theme-catalog-58c76f13-ef88-5da6-be84-cecda0507215 prov:hadMember tema:100 .
+
+tres:5022737-72.2025.4.02.5001
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5022737-72.2025.4.02.5001" ;
+    ors:subject "Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-f0d1be73-f35a-58be-bd9d-ad1fcd81237b ;
+    ors:adoptsThesis tese:27 .
+
+jdd:ars-406cbd6d-334c-5fed-8b73-8f05a0631625
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5022737-72.2025.4.02.5001"@pt-BR ;
+    ors:adoptsThesis tese:27 .
+
+jdd:admissibility-406cbd6d-334c-5fed-8b73-8f05a0631625
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-406cbd6d-334c-5fed-8b73-8f05a0631625 .
+
+jdd:classification-fba78895-982e-50a0-ba28-548876bf7cca
+    a prov:Activity ;
+    prov:used tres:5022737-72.2025.4.02.5001 ;
+    prov:used tema:27 ;
+    prov:generated jdd:ars-406cbd6d-334c-5fed-8b73-8f05a0631625 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

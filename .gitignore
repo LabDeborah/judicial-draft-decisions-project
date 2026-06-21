@@ -7,7 +7,6 @@ __pycache__/
 *.pyo
 *.pyd
 .env
-incoming_tcc_pack_20260404/
 data/incoming/
 tools/tectonic/tectonic.zip
 tmp_tnu.html

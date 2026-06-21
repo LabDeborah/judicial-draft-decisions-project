@@ -1,0 +1,41 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3662887878794275009 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n6264046683549071593 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n3110600130561636736 [label="Pipeline run run-20260616T155613431566Z", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Pipeline run run-20260616T155613431566Z"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1822830164233914127 [label="tres:d02e0768-6425-5984-bf4b-b5413acca09c", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:d02e0768-6425-5984-bf4b-b5413acca09c"];
+  }
+  subgraph "cluster_petition" {
+    label="Petition";
+    color="#fca5a5";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n526140107599231629 [label="rs:d02e0768-6425-5984-bf4b-b5413acca09c", shape="box", style="rounded,filled", fillcolor="#fee2e2", color="#b91c1c", fontsize="12", tooltip="rs:d02e0768-6425-5984-bf4b-b5413acca09c"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n3765645689053659761 [label="Tema", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema"];
+    n8981691430180067879 [label="Theme Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme Thesis"];
+  }
+  n3110600130561636736 -> n6264046683549071593 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n3110600130561636736 -> n3662887878794275009 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n526140107599231629 -> n1822830164233914127 [label="isFiledAgainst", color="#334155", style="solid", penwidth="1.6"];
+  n8981691430180067879 -> n3765645689053659761 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+}

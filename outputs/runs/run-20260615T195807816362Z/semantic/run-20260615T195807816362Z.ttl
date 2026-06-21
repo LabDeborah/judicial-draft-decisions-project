@@ -1,0 +1,72 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix tcc: <https://example.org/tcc/ontology#> .
+
+<https://example.org/tcc/run/run-20260615t195807816362z> a prov:Activity, tcc:PipelineRun ;
+  dcterms:created "2026-06-15T19:58:14.631018Z"^^xsd:dateTime ;
+  tcc:collectionMode "sample" ;
+  tcc:analysisMode "local" ;
+  tcc:browserAutomation "true"^^xsd:boolean ;
+  tcc:compilePdf "true"^^xsd:boolean ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline>, <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/agent/pipeline> a prov:Agent, tcc:SoftwarePipeline ;
+  dcterms:title "TCC Pipeline" .
+
+<https://example.org/tcc/agent/local-text-similarity> a prov:Agent, tcc:LocalClassifier ;
+  dcterms:title "local-text-similarity" ;
+  tcc:analysisStrategy "local" .
+
+<https://example.org/tcc/catalog/run-20260615t195807816362z-themes> a prov:Entity, tcc:ThemeCatalog ;
+  tcc:themeCount "1"^^xsd:integer ;
+  prov:wasGeneratedBy <https://example.org/tcc/run/run-20260615t195807816362z> .
+
+<http://purl.org/nemo/tnu/1> a ors:Theme, prov:Entity ;
+  ors:theme "1" ;
+  ors:themeThesis "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  dcterms:identifier "1" ;
+  dcterms:description "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." ;
+  tcc:situacaoTema "Julgado" ;
+  tcc:ramoDireito "DIREITO PREVIDENCIÁRIO" ;
+  prov:wasDerivedFrom <https://example.org/tcc/catalog/run-20260615t195807816362z-themes> .
+
+<http://purl.org/nemo/tres/1> a ors:Decision, prov:Entity ;
+  ors:decisionNumber "1" ;
+  ors:subject "Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL" ;
+  dcterms:identifier "5021277-41.2025.4.02.5101" ;
+  dcterms:type "MANDADO DE SEGURANÇA TR CÍVEL" ;
+  tcc:tipoJulgamento "Julgamento Principal" ;
+  tcc:competencia "JEF Recurso Cível" ;
+  tcc:relatorOriginario "ALESSANDRA BELFORT BUENO" ;
+  prov:wasUsedBy <https://example.org/tcc/run/run-20260615t195807816362z> .
+
+<https://example.org/tcc/activity/classification-1> a prov:Activity, tcc:ClassificationActivity ;
+  prov:used <http://purl.org/nemo/tres/1>, <https://example.org/tcc/catalog/run-20260615t195807816362z-themes>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/analysis/1> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/local-text-similarity> .
+
+<https://example.org/tcc/analysis/1> a tcc:AnalysisResult, prov:Entity ;
+  tcc:selectedThemeCode "1" ;
+  tcc:consonancia "CONSONANCIA" ;
+  tcc:validade "VALIDA" ;
+  tcc:justificativa "Tema 1 selecionado por semelhanca de assunto." ;
+  tcc:aboutDecision <http://purl.org/nemo/tres/1> ;
+  tcc:aboutTheme <http://purl.org/nemo/tnu/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/classification-1> .
+
+<https://example.org/tcc/activity/draft-generation-1> a prov:Activity, tcc:DraftGenerationActivity ;
+  prov:used <https://example.org/tcc/analysis/1>, <http://purl.org/nemo/tres/1>, <http://purl.org/nemo/tnu/1> ;
+  prov:generated <https://example.org/tcc/draft/1-negar-seguimento> ;
+  prov:wasAssociatedWith <https://example.org/tcc/agent/pipeline> .
+
+<https://example.org/tcc/draft/1-negar-seguimento> a tcc:LegalDraft, prov:Entity ;
+  tcc:action "NEGAR_SEGUIMENTO" ;
+  tcc:texPath "outputs/runs/run-20260615T195807816362Z/documents/1-NEGAR_SEGUIMENTO.tex" ;
+  tcc:pdfPath "outputs/runs/run-20260615T195807816362Z/documents/1-NEGAR_SEGUIMENTO.pdf" ;
+  tcc:generatedFromDecision <http://purl.org/nemo/tres/1> ;
+  tcc:generatedFromAnalysis <https://example.org/tcc/analysis/1> ;
+  prov:wasGeneratedBy <https://example.org/tcc/activity/draft-generation-1> .

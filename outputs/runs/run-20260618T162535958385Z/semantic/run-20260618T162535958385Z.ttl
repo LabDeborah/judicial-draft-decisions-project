@@ -1,0 +1,739 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c a prov:Activity ;
+  rdfs:label "Pipeline run run-20260618T162535958385Z"@pt-BR ;
+  prov:wasAssociatedWith jdd:pipeline, gemini:3-1-flash-lite .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 a prov:Collection ;
+  rdfs:label "Collected TNU themes"@pt-BR .
+
+tema:1
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "1" ;
+    rdfs:label "Tema 1 - Julgado"@pt-BR .
+
+tese:1
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 1 Thesis"@pt-BR ;
+    ors:description "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo."@pt-BR ;
+    ors:hasTheme tema:1 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:1 .
+
+tema:2
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "2" ;
+    rdfs:label "Tema 2 - Julgado"@pt-BR .
+
+tese:2
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 2 Thesis"@pt-BR ;
+    ors:description "No caso de aposentadoria por idade rural, a certidão de casamento vale como início de prova material, ainda que extemporânea."@pt-BR ;
+    ors:hasTheme tema:2 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:2 .
+
+tema:3
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "3" ;
+    rdfs:label "Tema 3 - Julgado"@pt-BR .
+
+tese:3
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 3 Thesis"@pt-BR ;
+    ors:description "No caso de aposentadoria por idade rural, é dispensável a existência de prova documental contemporânea, podendo ser estendida a outros períodos através de robusta prova testemunhal."@pt-BR ;
+    ors:hasTheme tema:3 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:3 .
+
+tema:4
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "4" ;
+    rdfs:label "Tema 4 - Julgado"@pt-BR .
+
+tese:4
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 4 Thesis"@pt-BR ;
+    ors:description "É devido o restabelecimento do auxílio-doença nas hipóteses conhecidas por “alta programada”, independentemente de prévio pedido administrativo de prorrogação. VIDE TEMA 164/TNU"@pt-BR ;
+    ors:hasTheme tema:4 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:4 .
+
+tema:5
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "5" ;
+    rdfs:label "Tema 5 - Revisado pelo Tema 145"@pt-BR .
+
+tese:5
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 5 Thesis"@pt-BR ;
+    ors:description "Para a obtenção de aposentadoria por idade rural, é indispensável o exercício e a demonstração da atividade campesina correspondente à carência no período imediatamente anterior ao atingimento da idade mínima ou ao requerimento administrativo (TESE FIRMADA NO TEMA 145)."@pt-BR ;
+    ors:hasTheme tema:5 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:5 .
+
+tema:6
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "6" ;
+    rdfs:label "Tema 6 - Julgado"@pt-BR .
+
+tese:6
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 6 Thesis"@pt-BR ;
+    ors:description "A contribuição ao FUSEX é tributo cujo lançamento se efetua de ofício, sujeita ao prazo prescricional quinquenal, descrito no art. 168, I, do CTN."@pt-BR ;
+    ors:hasTheme tema:6 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:6 .
+
+tema:7
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "7" ;
+    rdfs:label "Tema 7 - Julgado"@pt-BR .
+
+tese:7
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 7 Thesis"@pt-BR ;
+    ors:description "É indevida a prorrogação da pensão por morte ao filho maior de 21 anos, ainda que esteja cursando o ensino superior."@pt-BR ;
+    ors:hasTheme tema:7 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:7 .
+
+tema:8
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "8" ;
+    rdfs:label "Tema 8 - Julgado"@pt-BR .
+
+tese:8
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 8 Thesis"@pt-BR ;
+    ors:description "Os juros de mora, no caso de responsabilidade extracontratual, fluem a partir do evento danoso."@pt-BR ;
+    ors:hasTheme tema:8 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:8 .
+
+tema:9
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "9" ;
+    rdfs:label "Tema 9 - Julgado"@pt-BR .
+
+tese:9
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 9 Thesis"@pt-BR ;
+    ors:description "Os Decretos n. 5.554/2005, 5.992/2006 e 6.258/2007, não reajustaram o valor das diárias dos servidores da FUNASA, apenas ampliaram o rol dos destinos a serem percorridos. Vide Tema 92 - questão similar."@pt-BR ;
+    ors:hasTheme tema:9 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:9 .
+
+tema:10
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "10" ;
+    rdfs:label "Tema 10 - Julgado - TEMA 350/STF"@pt-BR .
+
+tese:10
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 10 Thesis"@pt-BR ;
+    ors:description "O ajuizamento de ações visando o recebimento do benefício previsto no art. 203, V, da Constituição Federal não exige a renovação bienal do requerimento administrativo, afastada a indevida analogia ao art. 21, da Lei n. 8.742/93. RE 914797 - DECISÃO STF: determino a devolução dos autos ao Juízo de origem para que seja observada a decisão do Supremo no precedente RE 631.240 - TEMA 350."@pt-BR ;
+    ors:hasTheme tema:10 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:10 .
+
+tema:11
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "11" ;
+    rdfs:label "Tema 11 - Julgado"@pt-BR .
+
+tese:11
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 11 Thesis"@pt-BR ;
+    ors:description "A exigência de início de prova material contemporânea para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 17."@pt-BR ;
+    ors:hasTheme tema:11 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:11 .
+
+tema:12
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "12" ;
+    rdfs:label "Tema 12 - Revisado - Tema 216/TNU"@pt-BR .
+
+tese:12
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 12 Thesis"@pt-BR ;
+    ors:description "Para fins previdenciários, o cômputo do tempo de serviço prestado como aluno-aprendiz exige a comprovação de que, durante o período de aprendizado, houve simultaneamente: (i) retribuição consubstanciada em prestação pecuniária ou em auxílios materiais; (ii) à conta do Orçamento; (iii) a título de contraprestação por labor; (iv) na execução de bens e serviços destinados a terceiros. (Tese firmada no Tema 216/TNU). Vide Súmula 18 da TNU."@pt-BR ;
+    ors:hasTheme tema:12 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:12 .
+
+tema:13
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "13" ;
+    rdfs:label "Tema 13 - Julgado"@pt-BR .
+
+tese:13
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 13 Thesis"@pt-BR ;
+    ors:description "É dispensável prévio requerimento administrativo de revisão de aposentadoria por tempo de contribuição quando houver omissão da autarquia na análise do tempo especial anterior à Lei n. 9.032/95."@pt-BR ;
+    ors:hasTheme tema:13 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:13 .
+
+tema:14
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "14" ;
+    rdfs:label "Tema 14 - Julgado"@pt-BR .
+
+tese:14
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 14 Thesis"@pt-BR ;
+    ors:description "Na aposentadoria especial a apresentação de laudo pericial extemporâneo não afasta sua força probante, desde que não modificadas as condições do ambiente. Vide Súmula 68 da TNU."@pt-BR ;
+    ors:hasTheme tema:14 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:14 .
+
+tema:15
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "15" ;
+    rdfs:label "Tema 15 - Julgado"@pt-BR .
+
+tese:15
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 15 Thesis"@pt-BR ;
+    ors:description "A pensão por morte não deve ser rateada entre a viúva e a concubina, pois a relação extraconjugal paralela ao casamento não configura união estável. Tese no mesmo sentido da firmada no Tema 526/STF."@pt-BR ;
+    ors:hasTheme tema:15 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:15 .
+
+tema:16
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "16" ;
+    rdfs:label "Tema 16 - Julgado"@pt-BR .
+
+tese:16
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 16 Thesis"@pt-BR ;
+    ors:description "A eficácia da progressão funcional deve ser observada segundo a situação individual de cada servidor e seus efeitos retroagem ao momento em que os requisitos legais foram implementados. Vide Tema 82 e PEDILEF n. 500367784.2014.404.7101. Entendimento revisado pelo PEDILEF n. 05207128420124058300 (orientação alinhada ao STJ: RESP 1.649.269/RJ)."@pt-BR ;
+    ors:hasTheme tema:16 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:16 .
+
+tema:17
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "17" ;
+    rdfs:label "Tema 17 - Julgado"@pt-BR .
+
+tese:17
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 17 Thesis"@pt-BR ;
+    ors:description "A exigência de início de prova material para concessão do salário-maternidade à segurada especial pode ser flexibilizada. Vide Tema 11."@pt-BR ;
+    ors:hasTheme tema:17 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:17 .
+
+tema:18
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "18" ;
+    rdfs:label "Tema 18 - Julgado (Súmulas 5 e 14 da TNU)"@pt-BR .
+
+tese:18
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 18 Thesis"@pt-BR ;
+    ors:description "A certidão do INCRA ou outro documento que comprove propriedade de imóvel em nome de integrantes do grupo familiar do segurado é razoável início de prova material da condição de segurado especial para fins de aposentadoria rural por idade, inclusive dos períodos trabalhados a partir dos 12 anos de idade, antes da publicação da Lei n. 8.213/91. Desnecessidade de comprovação de todo o período de carência."@pt-BR ;
+    ors:hasTheme tema:18 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:18 .
+
+tema:19
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "19" ;
+    rdfs:label "Tema 19 - Julgado (PET 7115/ SP no STJ)"@pt-BR .
+
+tese:19
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 19 Thesis"@pt-BR ;
+    ors:description "É possível comprovar a condição de desemprego involuntário por outros meios de prova diversos do registro no Ministério do Trabalho, não sendo a ausência de vínculo na CTPS suficiente para tanto. Vide Súmula 27 da TNU."@pt-BR ;
+    ors:hasTheme tema:19 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:19 .
+
+tema:20
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "20" ;
+    rdfs:label "Tema 20 - Julgado"@pt-BR .
+
+tese:20
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 20 Thesis"@pt-BR ;
+    ors:description "O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a quo é a última edição da MP que se deu sob o n. 2.169-43, em 24/08/2001. Vide Tema 76 da TNU."@pt-BR ;
+    ors:hasTheme tema:20 .
+
+jdd:theme-catalog-da342ba1-92d4-5997-be92-69fb0a9fc8a7 prov:hadMember tema:20 .
+
+tres:5021277-41.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5021277-41.2025.4.02.5101" ;
+    ors:subject "Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:8 .
+
+jdd:ars-ccdd1bbf-4fe7-521a-87b1-64e782a57132
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5021277-41.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:8 .
+
+jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-ccdd1bbf-4fe7-521a-87b1-64e782a57132 .
+
+jdd:classification-9c9094d2-11be-5d8c-becb-3f6dde329ff3
+    a prov:Activity ;
+    prov:used tres:5021277-41.2025.4.02.5101 ;
+    prov:used tema:8 ;
+    prov:generated jdd:ars-ccdd1bbf-4fe7-521a-87b1-64e782a57132 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5020184-43.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5020184-43.2025.4.02.5101" ;
+    ors:subject "IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO, Isenção, Limitações ao Poder de Tributar, DIREITO TRIBUTÁRIO, Incidência sobre Aposentadoria, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:13 .
+
+jdd:ars-e47473b4-3f05-549c-9b4d-0119d1af65e0
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5020184-43.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:13 .
+
+jdd:admissibility-e47473b4-3f05-549c-9b4d-0119d1af65e0
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-e47473b4-3f05-549c-9b4d-0119d1af65e0 .
+
+jdd:classification-ba897fe7-15fb-5d55-848c-d247e9229d88
+    a prov:Activity ;
+    prov:used tres:5020184-43.2025.4.02.5101 ;
+    prov:used tema:13 ;
+    prov:generated jdd:ars-e47473b4-3f05-549c-9b4d-0119d1af65e0 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5019643-10.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5019643-10.2025.4.02.5101" ;
+    ors:subject "Servidores Inativos, Contribuições Previdenciárias, Contribuições, DIREITO TRIBUTÁRIO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:1 .
+
+jdd:ars-7257103d-facf-582b-a1cd-c9d805ce51a1
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5019643-10.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:1 .
+
+jdd:admissibility-7257103d-facf-582b-a1cd-c9d805ce51a1
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-7257103d-facf-582b-a1cd-c9d805ce51a1 .
+
+jdd:classification-ad2fd4ed-8378-5f58-a79d-1636d4de4084
+    a prov:Activity ;
+    prov:used tres:5019643-10.2025.4.02.5101 ;
+    prov:used tema:1 ;
+    prov:generated jdd:ars-7257103d-facf-582b-a1cd-c9d805ce51a1 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5019552-17.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5019552-17.2025.4.02.5101" ;
+    ors:subject "CND/Certidão Negativa de Débito, Crédito Tributário, DIREITO TRIBUTÁRIO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:2 .
+
+jdd:ars-d4a6efd2-b56e-5780-92ff-2d3468137c8d
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5019552-17.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:2 .
+
+jdd:admissibility-d4a6efd2-b56e-5780-92ff-2d3468137c8d
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-d4a6efd2-b56e-5780-92ff-2d3468137c8d .
+
+jdd:classification-38b7379e-7062-54e0-8d58-b6bc5e561285
+    a prov:Activity ;
+    prov:used tres:5019552-17.2025.4.02.5101 ;
+    prov:used tema:2 ;
+    prov:generated jdd:ars-d4a6efd2-b56e-5780-92ff-2d3468137c8d ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5018960-70.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5018960-70.2025.4.02.5101" ;
+    ors:subject "Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:16 .
+
+jdd:ars-a0a0f8ae-8642-5a9e-81ad-6d51242ebb8a
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5018960-70.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:16 .
+
+jdd:admissibility-a0a0f8ae-8642-5a9e-81ad-6d51242ebb8a
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-a0a0f8ae-8642-5a9e-81ad-6d51242ebb8a .
+
+jdd:classification-08e1649e-c731-57f8-a12b-21bf7a427d4f
+    a prov:Activity ;
+    prov:used tres:5018960-70.2025.4.02.5101 ;
+    prov:used tema:16 ;
+    prov:generated jdd:ars-a0a0f8ae-8642-5a9e-81ad-6d51242ebb8a ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5018130-07.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5018130-07.2025.4.02.5101" ;
+    ors:subject "Assistência Social, Garantias Constitucionais, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO, Bolsa Família (Lei 14.601/2023), DIREITO ASSISTENCIAL"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:10 .
+
+jdd:ars-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5018130-07.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:10 .
+
+jdd:admissibility-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e .
+
+jdd:classification-41edc8ce-3391-56ff-9594-47cf11228ff0
+    a prov:Activity ;
+    prov:used tres:5018130-07.2025.4.02.5101 ;
+    prov:used tema:10 ;
+    prov:generated jdd:ars-2f35b8aa-0efa-5b1f-b569-8fb1f4c6f97e ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5017817-46.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017817-46.2025.4.02.5101" ;
+    ors:subject "Gratificação de incentivo, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:16 .
+
+jdd:ars-dc2b021a-f64e-575d-8b86-dd8966eb00ae
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017817-46.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:16 .
+
+jdd:admissibility-dc2b021a-f64e-575d-8b86-dd8966eb00ae
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-dc2b021a-f64e-575d-8b86-dd8966eb00ae .
+
+jdd:classification-1a3d057c-5044-5264-ae13-a2e5633085b4
+    a prov:Activity ;
+    prov:used tres:5017817-46.2025.4.02.5101 ;
+    prov:used tema:16 ;
+    prov:generated jdd:ars-dc2b021a-f64e-575d-8b86-dd8966eb00ae ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5017606-10.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017606-10.2025.4.02.5101" ;
+    ors:subject "Graduação (Bacharelado, Licenciatura, Profissional Tecnológica), EDUCAÇÃO SUPERIOR, DIREITO À EDUCAÇÃO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:7 .
+
+jdd:ars-f26f54c1-e775-5add-b312-dec03052d098
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017606-10.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:7 .
+
+jdd:admissibility-f26f54c1-e775-5add-b312-dec03052d098
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-f26f54c1-e775-5add-b312-dec03052d098 .
+
+jdd:classification-e5a5dc55-9c93-5585-b806-c5e7ea38caba
+    a prov:Activity ;
+    prov:used tres:5017606-10.2025.4.02.5101 ;
+    prov:used tema:7 ;
+    prov:generated jdd:ars-f26f54c1-e775-5add-b312-dec03052d098 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5017163-59.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017163-59.2025.4.02.5101" ;
+    ors:subject "Fornecimento de medicamentos, Pública, DIREITO DA SAÚDE"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:20 .
+
+jdd:ars-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017163-59.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:20 .
+
+jdd:admissibility-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae .
+
+jdd:classification-dd89e38c-2012-5d03-bdfb-a744e6f798c5
+    a prov:Activity ;
+    prov:used tres:5017163-59.2025.4.02.5101 ;
+    prov:used tema:20 ;
+    prov:generated jdd:ars-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5017131-54.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017131-54.2025.4.02.5101" ;
+    ors:subject "Descontos Indevidos, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:16 .
+
+jdd:ars-6b3ba933-b7df-5355-981f-85a9810746b5
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017131-54.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:16 .
+
+jdd:admissibility-6b3ba933-b7df-5355-981f-85a9810746b5
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-6b3ba933-b7df-5355-981f-85a9810746b5 .
+
+jdd:classification-11ec3eed-5226-57a9-abd2-1cf26111e3b9
+    a prov:Activity ;
+    prov:used tres:5017131-54.2025.4.02.5101 ;
+    prov:used tema:16 ;
+    prov:generated jdd:ars-6b3ba933-b7df-5355-981f-85a9810746b5 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5017048-38.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5017048-38.2025.4.02.5101" ;
+    ors:subject "IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:6 .
+
+jdd:ars-899e4117-4e5c-52fd-8c51-ab1e760d54d7
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5017048-38.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:6 .
+
+jdd:admissibility-899e4117-4e5c-52fd-8c51-ab1e760d54d7
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-899e4117-4e5c-52fd-8c51-ab1e760d54d7 .
+
+jdd:classification-4b6ebcce-d856-5f65-9bf1-08206e89cef8
+    a prov:Activity ;
+    prov:used tres:5017048-38.2025.4.02.5101 ;
+    prov:used tema:6 ;
+    prov:generated jdd:ars-899e4117-4e5c-52fd-8c51-ab1e760d54d7 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5016649-09.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5016649-09.2025.4.02.5101" ;
+    ors:subject "Cirurgia, Tratamento médico-hospitalar, Pública, DIREITO DA SAÚDE"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:20 .
+
+jdd:ars-18f28ad3-8c8f-5736-97e9-ae47bb1b470f
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5016649-09.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:20 .
+
+jdd:admissibility-18f28ad3-8c8f-5736-97e9-ae47bb1b470f
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-18f28ad3-8c8f-5736-97e9-ae47bb1b470f .
+
+jdd:classification-e4d56651-73ea-562e-909c-735d61687ccb
+    a prov:Activity ;
+    prov:used tres:5016649-09.2025.4.02.5101 ;
+    prov:used tema:20 ;
+    prov:generated jdd:ars-18f28ad3-8c8f-5736-97e9-ae47bb1b470f ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5015837-64.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5015837-64.2025.4.02.5101" ;
+    ors:subject "Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:4 .
+
+jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5015837-64.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:4 .
+
+jdd:admissibility-62d7af5d-31e5-5edf-9e78-04dc1a98adcd
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd .
+
+jdd:classification-2c40628f-21eb-5ce9-ba55-a486e5b9206b
+    a prov:Activity ;
+    prov:used tres:5015837-64.2025.4.02.5101 ;
+    prov:used tema:4 ;
+    prov:generated jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5015837-64.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5015837-64.2025.4.02.5101" ;
+    ors:subject "Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:4 .
+
+jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5015837-64.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:4 .
+
+jdd:admissibility-62d7af5d-31e5-5edf-9e78-04dc1a98adcd
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd .
+
+jdd:classification-2c40628f-21eb-5ce9-ba55-a486e5b9206b
+    a prov:Activity ;
+    prov:used tres:5015837-64.2025.4.02.5101 ;
+    prov:used tema:4 ;
+    prov:generated jdd:ars-62d7af5d-31e5-5edf-9e78-04dc1a98adcd ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5015810-81.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5015810-81.2025.4.02.5101" ;
+    ors:subject "Indenização por Dano Material, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Indenização por Dano Moral, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:2 .
+
+jdd:ars-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5015810-81.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:2 .
+
+jdd:admissibility-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b .
+
+jdd:classification-a6e756d7-7b14-5e6a-aca5-896f57266dae
+    a prov:Activity ;
+    prov:used tres:5015810-81.2025.4.02.5101 ;
+    prov:used tema:2 ;
+    prov:generated jdd:ars-ce2bf0d9-8c0e-5702-b9cb-3cd34180d63b ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5002855-07.2024.4.02.5116
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5002855-07.2024.4.02.5116" ;
+    ors:subject "Incidência sobre Licença-Prêmio/Abono/Indenização, IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:13 .
+
+jdd:ars-87bb3f8e-261e-507b-b7fd-cffe0fcd439f
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5002855-07.2024.4.02.5116"@pt-BR ;
+    ors:adoptsThesis tese:13 .
+
+jdd:admissibility-87bb3f8e-261e-507b-b7fd-cffe0fcd439f
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-87bb3f8e-261e-507b-b7fd-cffe0fcd439f .
+
+jdd:classification-b591c1d9-83bc-5920-bfd6-607eda6900d0
+    a prov:Activity ;
+    prov:used tres:5002855-07.2024.4.02.5116 ;
+    prov:used tema:13 ;
+    prov:generated jdd:ars-87bb3f8e-261e-507b-b7fd-cffe0fcd439f ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5037189-92.2022.4.02.5001
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5037189-92.2022.4.02.5001" ;
+    ors:subject "Indenização por Dano Moral, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR, Indenização por Dano Material, Responsabilidade do Fornecedor, DIREITO DO CONSUMIDOR"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:13 .
+
+jdd:ars-f9962c72-ca13-5ffa-ac05-6a3290ecb73c
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5037189-92.2022.4.02.5001"@pt-BR ;
+    ors:adoptsThesis tese:13 .
+
+jdd:admissibility-f9962c72-ca13-5ffa-ac05-6a3290ecb73c
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-f9962c72-ca13-5ffa-ac05-6a3290ecb73c .
+
+jdd:classification-eb2a36da-7dc8-51e7-b658-8c9e55fc0c7e
+    a prov:Activity ;
+    prov:used tres:5037189-92.2022.4.02.5001 ;
+    prov:used tema:13 ;
+    prov:generated jdd:ars-f9962c72-ca13-5ffa-ac05-6a3290ecb73c ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5015036-51.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5015036-51.2025.4.02.5101" ;
+    ors:subject "Cirurgia, Tratamento médico-hospitalar, Pública, DIREITO DA SAÚDE, Liminar, Medida Cautelar, DIREITO PROCESSUAL CIVIL E DO TRABALHO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:8 .
+
+jdd:ars-115b0831-a71d-51c4-9372-6a1b94d0dc5b
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5015036-51.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:8 .
+
+jdd:admissibility-115b0831-a71d-51c4-9372-6a1b94d0dc5b
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-115b0831-a71d-51c4-9372-6a1b94d0dc5b .
+
+jdd:classification-7cd6d175-79cc-5347-8866-0f1223046c75
+    a prov:Activity ;
+    prov:used tres:5015036-51.2025.4.02.5101 ;
+    prov:used tema:8 ;
+    prov:generated jdd:ars-115b0831-a71d-51c4-9372-6a1b94d0dc5b ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5014186-94.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5014186-94.2025.4.02.5101" ;
+    ors:subject "Auxílio-alimentação, Sistema Remuneratório e Benefícios, Servidor Público Civil, DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:4 .
+
+jdd:ars-939b237a-3f3b-5ceb-af59-d1f5be9229bc
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5014186-94.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:4 .
+
+jdd:admissibility-939b237a-3f3b-5ceb-af59-d1f5be9229bc
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-939b237a-3f3b-5ceb-af59-d1f5be9229bc .
+
+jdd:classification-634710ab-a863-500c-94cf-a77b93105593
+    a prov:Activity ;
+    prov:used tres:5014186-94.2025.4.02.5101 ;
+    prov:used tema:4 ;
+    prov:generated jdd:ars-939b237a-3f3b-5ceb-af59-d1f5be9229bc ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .
+
+tres:5012949-25.2025.4.02.5101
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5012949-25.2025.4.02.5101" ;
+    ors:subject "Fornecimento de insumos, Pública, DIREITO DA SAÚDE"@pt-BR ;
+    prov:wasUsedBy jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c ;
+    ors:adoptsThesis tese:20 .
+
+jdd:ars-631de0d5-4cd2-51a7-b84f-bfb962a94017
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5012949-25.2025.4.02.5101"@pt-BR ;
+    ors:adoptsThesis tese:20 .
+
+jdd:admissibility-631de0d5-4cd2-51a7-b84f-bfb962a94017
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-631de0d5-4cd2-51a7-b84f-bfb962a94017 .
+
+jdd:classification-0bc26766-b4b0-512b-aed9-d0bc25de0ff9
+    a prov:Activity ;
+    prov:used tres:5012949-25.2025.4.02.5101 ;
+    prov:used tema:20 ;
+    prov:generated jdd:ars-631de0d5-4cd2-51a7-b84f-bfb962a94017 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

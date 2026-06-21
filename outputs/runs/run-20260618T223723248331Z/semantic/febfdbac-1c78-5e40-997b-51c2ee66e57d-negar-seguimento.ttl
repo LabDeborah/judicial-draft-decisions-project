@@ -1,0 +1,47 @@
+@prefix ors: <https://ontojur.com.br/ontors#> .
+@prefix tema: <https://ontojur.com.br/tnu/tema/> .
+@prefix tese: <https://ontojur.com.br/tnu/tese/> .
+@prefix tres: <https://ontojur.com.br/tres/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <https://ontojur.com.br/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline a prov:SoftwareAgent .
+
+gemini:3-1-flash-lite a prov:SoftwareAgent .
+
+jdd:pipeline-run-ad21b76b-7830-585a-8262-9db528bd4062 a prov:Activity .
+
+tema:27
+    a ors:Theme, prov:Entity ;
+    ors:themeNumber "27" ;
+    rdfs:label "Tema 27 - Julgado"@pt-BR .
+
+tese:27
+    a ors:Thesis, prov:Entity ;
+    rdfs:label "Theme 27 Thesis"@pt-BR ;
+    ors:description "Aplica-se a tabela progressiva prevista no art. 142 da Lei n. 8.213/91, no caso de aposentadoria por idade urbana, considerando-se como marco temporal para apuração da carência o ano em que o segurado completa a idade mínima, ainda que contadas contribuições posteriores ao ano do cumprimento do requisito etário. Vide Súmula 44 da TNU."@pt-BR ;
+    ors:hasTheme tema:27 .
+
+tres:5022737-72.2025.4.02.5001
+    a ors:AppellateDecisionOnSFCA, prov:Entity ;
+    ors:decisionNumber "5022737-72.2025.4.02.5001" ;
+    ors:subject "Aposentadoria por Idade - Urbana (art. 48/51), Aposentadoria por Idade (Art. 48/51), Benefícios em Espécie, DIREITO PREVIDENCIÁRIO"@pt-BR ;
+    ors:adoptsThesis tese:27 .
+
+jdd:ars-406cbd6d-334c-5fed-8b73-8f05a0631625
+    a ors:NotEntertainedRS, prov:Entity ;
+    rdfs:label "Negar Seguimento draft for process 5022737-72.2025.4.02.5001"@pt-BR ;
+    ors:adoptsThesis tese:27 .
+
+jdd:admissibility-406cbd6d-334c-5fed-8b73-8f05a0631625
+    a ors:AdmissibilityDecision, prov:Entity ;
+    ors:ruledIn jdd:ars-406cbd6d-334c-5fed-8b73-8f05a0631625 .
+
+jdd:classification-fba78895-982e-50a0-ba28-548876bf7cca
+    a prov:Activity ;
+    prov:used tres:5022737-72.2025.4.02.5001 ;
+    prov:used tema:27 ;
+    prov:generated jdd:ars-406cbd6d-334c-5fed-8b73-8f05a0631625 ;
+    prov:wasAssociatedWith gemini:3-1-flash-lite .

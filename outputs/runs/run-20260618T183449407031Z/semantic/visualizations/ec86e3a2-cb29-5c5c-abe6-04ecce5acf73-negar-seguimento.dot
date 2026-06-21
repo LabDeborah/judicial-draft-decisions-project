@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1813255899460198435 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n6215714429281956009 [label="jdd:classification-dd89e38c-2012-5d03-bdfb-a744e6f798c5", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-dd89e38c-2012-5d03-bdfb-a744e6f798c5"];
+    n3060526251864380153 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n3369513106044763655 [label="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-ea0ead4f-edf8-5799-b634-80cf2088da98"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n8819322793656195104 [label="tres:5017163-59.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5017163-59.2025.4.02.5101\n\nsubject: Fornecimento de medicamentos, Pública, DIREITO DA SAÚDE"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5100259574244023654 [label="Tema 20 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 20 - Julgado"];
+    n6742300288562167022 [label="Theme 20 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 20 Thesis\n\ndescription: O reconhecimento, pela Administração Pública, do direito ao adicional por tempo de serviço - MP 1.962-25/2000, demonstrou renúncia tácita da prescrição, que volta a fluir na integralidade dos cinco anos, cujo termo a ..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2246477132371620675 [label="jdd:admissibility-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-7010ea5b-a2ab-5c0a-a3b9-c3607dd0f2ae"];
+  }
+  n6215714429281956009 -> n5100259574244023654 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6215714429281956009 -> n8819322793656195104 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n6215714429281956009 -> n1813255899460198435 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n6742300288562167022 -> n5100259574244023654 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n8819322793656195104 -> n6742300288562167022 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

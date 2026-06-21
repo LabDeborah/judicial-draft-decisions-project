@@ -1,0 +1,45 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7984838782952955454 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n2321109837041616586 [label="jdd:classification-3268aa68-a122-5e84-9524-3372d2425e12", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-3268aa68-a122-5e84-9524-3372d2425e12"];
+    n7755607683842056768 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1251557413599969022 [label="Pipeline run run-20260617T211355252148Z", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Pipeline run run-20260617T211355252148Z"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7945929613671294138 [label="tres:5056703-85.2023.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5056703-85.2023.4.02.5101\n\nsubject: Art. 29, § 5º, da Lei 8.213/1991, RMI - Renda Mensal Inicial, RMI - Renda Mensal Inicial, Reajustes e Revisões Específicas, DIREITO PREVIDENCIÁRIO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6413295124229398828 [label="Tema 172 - Sobrestado - Tema 999/STJ (RE 1276977 e RE 1276976 admitidos, no STJ, como r...", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 172 - Sobrestado - Tema 999/STJ (RE 1276977 e RE 1276976 admitidos, no STJ, como r..."];
+    n5808029912306457589 [label="Theme 172 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 172 Thesis\n\ndescription: Tese firmada no Tema 999/STJ: Aplica-se a regra definitiva prevista no art. 29, I e II da Lei 8.213/1991, na apuração do salário de benefício, quando mais favorável do que a regra de transição contida no art. 3o. da L..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2365335904934629656 [label="jdd:admissibility-d5b56985-a3b2-5084-9171-1bb6b1eecdd4", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-d5b56985-a3b2-5084-9171-1bb6b1eecdd4"];
+  }
+  n2321109837041616586 -> n6413295124229398828 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2321109837041616586 -> n7945929613671294138 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2321109837041616586 -> n7984838782952955454 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n1251557413599969022 -> n7984838782952955454 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n1251557413599969022 -> n7755607683842056768 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n5808029912306457589 -> n6413295124229398828 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n7945929613671294138 -> n5808029912306457589 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

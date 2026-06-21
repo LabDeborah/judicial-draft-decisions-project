@@ -1,0 +1,43 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n5099611868209198514 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n7837513335350690167 [label="jdd:classification-4b6ebcce-d856-5f65-9bf1-08206e89cef8", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:classification-4b6ebcce-d856-5f65-9bf1-08206e89cef8"];
+    n4308472333406374237 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n1812625129787256500 [label="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline-run-691103ab-64fe-5cb1-8fe7-1f6f21ae865c"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n9053835775409840903 [label="tres:5017048-38.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5017048-38.2025.4.02.5101\n\nsubject: IRPF/Imposto de Renda de Pessoa Física, Impostos, DIREITO TRIBUTÁRIO"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2457242706397538300 [label="Tema 6 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 6 - Julgado"];
+    n6755672935238316134 [label="Theme 6 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 6 Thesis\n\ndescription: A contribuição ao FUSEX é tributo cujo lançamento se efetua de ofício, sujeita ao prazo prescricional quinquenal, descrito no art. 168, I, do CTN."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6367398731209680018 [label="jdd:admissibility-899e4117-4e5c-52fd-8c51-ab1e760d54d7", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-899e4117-4e5c-52fd-8c51-ab1e760d54d7"];
+  }
+  n7837513335350690167 -> n2457242706397538300 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n7837513335350690167 -> n9053835775409840903 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n7837513335350690167 -> n5099611868209198514 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n6755672935238316134 -> n2457242706397538300 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n9053835775409840903 -> n6755672935238316134 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

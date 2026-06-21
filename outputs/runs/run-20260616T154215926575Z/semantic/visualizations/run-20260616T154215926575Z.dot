@@ -1,0 +1,53 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n2886504344911377250 [label="Classification for process 5021277-41.2025.4.02.5101 and theme 1 (CONSONANCIA; VALIDA)", shape="component", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Classification for process 5021277-41.2025.4.02.5101 and theme 1 (CONSONANCIA; VALIDA)"];
+    n4059595064601618097 [label="jdd:local-text-similarity", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:local-text-similarity"];
+    n4486879986855088112 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n3064463860927129934 [label="Pipeline run run-20260616T154215926575Z", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Pipeline run run-20260616T154215926575Z"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4042327454320728100 [label="tres:5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5021277-41.2025.4.02.5101\n\nsubject: Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL"];
+  }
+  subgraph "cluster_petition" {
+    label="Petition";
+    color="#fca5a5";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4822602642155707010 [label="rs:5021277-41.2025.4.02.5101", shape="box", style="rounded,filled", fillcolor="#fee2e2", color="#b91c1c", fontsize="12", tooltip="rs:5021277-41.2025.4.02.5101"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6574927263860564005 [label="Tema 1 - Julgado", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 1 - Julgado"];
+    n4675731939290086699 [label="Theme 1 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 1 Thesis\n\ndescription: O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio..."];
+  }
+  subgraph "cluster_document" {
+    label="Document Outcome";
+    color="#f9a8d4";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n7466957526637253590 [label="jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132", shape="box", style="rounded,filled", fillcolor="#fce7f3", color="#be185d", fontsize="12", tooltip="jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132"];
+  }
+  n2886504344911377250 -> n6574927263860564005 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2886504344911377250 -> n4042327454320728100 [label="used", color="#334155", style="solid", penwidth="1.6"];
+  n2886504344911377250 -> n4059595064601618097 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n3064463860927129934 -> n4059595064601618097 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n3064463860927129934 -> n4486879986855088112 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n4822602642155707010 -> n4042327454320728100 [label="isFiledAgainst", color="#334155", style="solid", penwidth="1.6"];
+  n4675731939290086699 -> n6574927263860564005 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n4042327454320728100 -> n4675731939290086699 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

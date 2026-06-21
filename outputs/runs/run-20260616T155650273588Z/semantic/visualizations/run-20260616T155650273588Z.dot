@@ -1,0 +1,42 @@
+digraph rdf_graph {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.35", nodesep="0.75", ranksep="1.35", splines=ortho, overlap=false, concentrate=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#334155", fontname="Helvetica"];
+  edge [color="#475569", fontname="Helvetica", fontsize="10"];
+  subgraph "cluster_workflow" {
+    label="Workflow / Agents";
+    color="#93c5fd";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n1595818708399073554 [label="gemini:3-1-flash-lite", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="gemini:3-1-flash-lite"];
+    n6413547547848628198 [label="jdd:pipeline", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="jdd:pipeline"];
+    n8240943909089393696 [label="Pipeline run run-20260616T155650273588Z", shape="box", style="rounded,filled", fillcolor="#dbeafe", color="#1d4ed8", fontsize="12", tooltip="Pipeline run run-20260616T155650273588Z"];
+  }
+  subgraph "cluster_decision" {
+    label="Decision";
+    color="#a5b4fc";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n4430715378961269287 [label="tres:5000002-00.2025.4.02.5001", shape="box", style="rounded,filled", fillcolor="#e0e7ff", color="#4338ca", fontsize="12", tooltip="tres:5000002-00.2025.4.02.5001"];
+  }
+  subgraph "cluster_petition" {
+    label="Petition";
+    color="#fca5a5";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n6149152999716463668 [label="rs:5000002-00.2025.4.02.5001", shape="box", style="rounded,filled", fillcolor="#fee2e2", color="#b91c1c", fontsize="12", tooltip="rs:5000002-00.2025.4.02.5001"];
+  }
+  subgraph "cluster_theme" {
+    label="Theme / Thesis";
+    color="#86efac";
+    style="rounded,dashed";
+    penwidth=1.2;
+    n8075099499263761582 [label="Tema 309 - JULGADO", shape="box", style="rounded,filled", fillcolor="#dcfce7", color="#15803d", fontsize="12", tooltip="Tema 309 - JULGADO"];
+    n3076402715075887282 [label="Theme 309 Thesis", shape="box", style="rounded,filled", fillcolor="#ecfccb", color="#4d7c0f", fontsize="12", tooltip="Theme 309 Thesis\n\ndescription: O auxilio-alimentacao integra a base de calculo da licenca-premio nao usufruida."];
+  }
+  n8240943909089393696 -> n6413547547848628198 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n8240943909089393696 -> n1595818708399073554 [label="wasAssociatedWith", color="#334155", style="solid", penwidth="1.6"];
+  n6149152999716463668 -> n4430715378961269287 [label="isFiledAgainst", color="#334155", style="solid", penwidth="1.6"];
+  n3076402715075887282 -> n8075099499263761582 [label="hasTheme", color="#334155", style="solid", penwidth="1.6"];
+  n4430715378961269287 -> n3076402715075887282 [label="adoptsThesis", color="#334155", style="solid", penwidth="1.6"];
+}

@@ -32,7 +32,7 @@ def analyze_decisions(
     if options.analysis_mode == "local":
         return [analyze_decision_local(decision, themes) for decision in decisions]
     if not options.gemini_api_key:
-        raise RuntimeError("GEMINI_API_KEY nao configurada para --analysis-mode gemini.")
+        raise RuntimeError("GEMINI_API_KEY não configurada para --analysis-mode gemini.")
 
     cache = load_gemini_cache(options.gemini_cache_file)
     quota_state = load_quota_state(options.gemini_quota_state_file)
@@ -70,8 +70,8 @@ def analyze_decisions(
                     consonancia=local_fallback.consonancia,
                     validade="INVALIDA",
                     justificativa=(
-                        f"{local_fallback.justificativa} | Fallback local informativo: quota Gemini diaria "
-                        "esgotada ou indisponivel; classificacao marcada como INVALIDA para evitar decisao automatica."
+                        f"{local_fallback.justificativa} | Fallback local informativo: quota Gemini diária "
+                        "esgotada ou indisponível; classificação marcada como INVÁLIDA para evitar decisão automática."
                     ),
                 )
             )
@@ -125,7 +125,7 @@ def analyze_decisions(
                         validade="INVALIDA",
                         justificativa=(
                             f"{local_fallback.justificativa} | Fallback local informativo por erro Gemini ({reason}); "
-                            "classificacao marcada como INVALIDA para evitar decisao automatica."
+                            "classificação marcada como INVÁLIDA para evitar decisão automática."
                         ),
                     )
                 )
@@ -152,7 +152,7 @@ def analyze_decision_local(decision: Trf2Decision, themes: list[TnuTheme]) -> An
         temaTnu=theme.temaNumero,
         consonancia=consonancia,
         validade=validade,
-        justificativa=f"Tema {theme.temaNumero} selecionado por semelhanca de assunto.",
+        justificativa=f"Tema {theme.temaNumero} selecionado por semelhança de assunto.",
     )
 
 

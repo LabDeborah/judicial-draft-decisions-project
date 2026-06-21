@@ -16,6 +16,7 @@ from app.services.document_template import (
     template_docx_exists,
 )
 from app.utils.fs import ensure_dir, write_text
+from app.utils.identifiers import process_uuid
 
 REPRODUCIBLE_SOURCE_DATE_EPOCH = "1704067200"
 
@@ -23,6 +24,7 @@ REPRODUCIBLE_SOURCE_DATE_EPOCH = "1704067200"
 @dataclass(slots=True)
 class GeneratedDraft:
     decision_id: str
+    process_uuid: str
     action: str
     docx_path: str | None
     tex_path: str
@@ -49,6 +51,8 @@ def generate_decision_drafts(
         theme = next((item for item in themes if item.temaNumero == doc.temaTnu), None)
         if not analysis or not decision or not theme:
             continue
+        process_uuid_value = process_uuid(decision.numeroProcesso, doc.decisionId)
+        output_basename = f"{process_uuid_value}-{doc.action}"
         docx_path: str | None = None
         if template_docx_exists():
             scenario = pick_template_scenario(doc, theme)
@@ -56,12 +60,12 @@ def generate_decision_drafts(
             docx_path = render_template_docx(
                 scenario,
                 context,
-                output_path=str(Path(output_dir) / f"{doc.decisionId}-{doc.action}.docx"),
+                output_path=str(Path(output_dir) / f"{output_basename}.docx"),
             )
             tex = render_template_latex(scenario, context)
         else:
             tex = _create_legacy_latex_template(doc, decision, theme, analysis.justificativa)
-        output_file = Path(output_dir) / f"{doc.decisionId}-{doc.action}.tex"
+        output_file = Path(output_dir) / f"{output_basename}.tex"
         written_tex_path = write_text(str(output_file), tex)
         pdf_path: str | None = None
         if compile_pdf and _compile_tex_to_pdf(Path(written_tex_path), latex_engine):
@@ -69,6 +73,7 @@ def generate_decision_drafts(
         generated.append(
             GeneratedDraft(
                 decision_id=doc.decisionId,
+                process_uuid=process_uuid_value,
                 action=doc.action,
                 docx_path=docx_path,
                 tex_path=written_tex_path,

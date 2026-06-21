@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import re
+import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
@@ -44,14 +45,25 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
     ensure_dir(documents_dir)
     ensure_dir(semantic_dir)
     ensure_dir(data_csv_dir)
+    _log_progress(
+        "pipeline",
+        (
+            f"run={run_id} mode={config.mode} analysis={config.analysis_mode} "
+            f"limit={config.limit} analysis_limit={config.analysis_limit or 'auto'} "
+            f"compile_pdf={config.compile_pdf}"
+        ),
+    )
 
     theme_limit = _theme_collection_limit(config)
+    _log_progress("collect", f"collecting TNU themes target={theme_limit}")
     themes = collect_tnu_themes(
         config.mode,
         theme_limit,
         config.browser_automation,
         import_csv_file=config.import_tnu_csv_file,
     )
+    _log_progress("collect", f"TNU themes collected={len(themes)}")
+    _log_progress("collect", f"collecting TRF2 decisions target={config.limit}")
     decisions = collect_trf2_decisions(
         config.mode,
         config.limit,
@@ -59,14 +71,9 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
         import_csv_file=config.import_trf2_csv_file,
         themes=themes,
     )
-    materialize_source_artifacts(
-        data_dir=data_csv_dir,
-        themes=themes,
-        decisions=decisions,
-        latex_engine=config.latex_engine,
-        trf2_chrome_profile=config.trf2_chrome_profile,
-    )
+    _log_progress("collect", f"TRF2 decisions collected={len(decisions)}")
     decisions_for_analysis = _select_decisions_for_analysis(decisions, themes, config)
+    _log_progress("analysis", f"decisions selected for analysis={len(decisions_for_analysis)}")
     gemini_api_key = os.environ.get("GEMINI_API_KEY", "").strip() if config.analysis_mode == "gemini" else None
     analyses = analyze_decisions(
         decisions_for_analysis,
@@ -85,12 +92,29 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
             gemini_quota_state_file=config.gemini_quota_state_file,
         ),
     )
+    _log_progress("analysis", f"analyses produced={len(analyses)}")
 
     docs = [
         derive_document_action(analysis, next((t for t in themes if t.temaNumero == analysis.temaTnu), None))
         for analysis in analyses
     ]
+    actionable_docs = len([doc for doc in docs if doc.action != "SEM_ACAO"])
+    _log_progress("documents", f"document actions derived={actionable_docs}/{len(docs)} actionable")
+    artifact_themes = _themes_for_artifacts(themes, analyses)
+    _log_progress(
+        "artifacts",
+        f"materializing source PDFs decisions={len(decisions_for_analysis)} themes={len(artifact_themes)}",
+    )
+    materialize_source_artifacts(
+        data_dir=data_csv_dir,
+        themes=artifact_themes,
+        decisions=decisions_for_analysis,
+        latex_engine=config.latex_engine,
+        trf2_chrome_profile=config.trf2_chrome_profile,
+    )
+    _log_progress("artifacts", "source artifacts materialized")
 
+    _log_progress("reports", "writing CSV outputs")
     write_csv(f"{data_csv_dir}/tnu_temas.csv", [item.to_dict() for item in themes])
     write_csv(f"{data_csv_dir}/trf2_decisoes.csv", [item.to_dict() for item in decisions])
     write_csv(f"{reports_dir}/analises.csv", [item.to_dict() for item in analyses])
@@ -108,6 +132,7 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
             }
         )
     write_csv(f"{reports_dir}/comparados_compat.csv", comparados)
+    _log_progress("documents", "generating draft documents")
     generated_drafts = generate_decision_drafts(
         docs,
         analyses,
@@ -117,6 +142,12 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
         compile_pdf=config.compile_pdf,
         latex_engine=config.latex_engine,
     )
+    generated_pdfs = len([draft for draft in generated_drafts if draft.pdf_path])
+    _log_progress(
+        "documents",
+        f"drafts generated={len(generated_drafts)} compiled_pdfs={generated_pdfs}",
+    )
+    _log_progress("semantic", "generating RDF artifacts")
     semantic = generate_semantic_artifacts(
         run_id=run_id,
         output_dir=semantic_dir,
@@ -135,13 +166,17 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
         docs=docs,
         drafts=generated_drafts,
     )
+    _log_progress(
+        "semantic",
+        f"RDF generated document_graphs={len(semantic.document_graph_paths)} execution_graph=1",
+    )
     return PipelineSummary(
         run_dir=run_dir,
         themes=len(themes),
         decisions=len(decisions),
         analyses=len(analyses),
         generated_drafts=len(generated_drafts),
-        generated_pdfs=len([draft for draft in generated_drafts if draft.pdf_path]),
+        generated_pdfs=generated_pdfs,
         semantic_documents=len(semantic.document_graph_paths),
         semantic_execution_graph=semantic.execution_graph_path,
         data_csv_dir=data_csv_dir,
@@ -151,7 +186,18 @@ def run_pipeline(config: CliConfig) -> PipelineSummary:
 def _theme_collection_limit(config: CliConfig) -> int:
     if config.mode != "live":
         return config.limit
-    return max(config.limit, 100)
+    return max(config.limit, 40)
+
+
+def _themes_for_artifacts(themes: list[TnuTheme], analyses) -> list[TnuTheme]:
+    matched_numbers = {
+        analysis.temaTnu
+        for analysis in analyses
+        if analysis.temaTnu and analysis.temaTnu != "NENHUM_TEMA"
+    }
+    if not matched_numbers:
+        return []
+    return [theme for theme in themes if theme.temaNumero in matched_numbers]
 
 
 def _select_decisions_for_analysis(
@@ -225,3 +271,8 @@ def _decision_theme_overlap_score(decision: Trf2Decision, themes: list[TnuTheme]
 def _analysis_tokens(text: str) -> set[str]:
     normalized = normalize_for_matching(text)
     return {token for token in re.split(r"[^a-z0-9]+", normalized) if len(token) > 2}
+
+
+def _log_progress(stage: str, message: str) -> None:
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    print(f"[{timestamp}] [{stage}] {message}", file=sys.stderr)

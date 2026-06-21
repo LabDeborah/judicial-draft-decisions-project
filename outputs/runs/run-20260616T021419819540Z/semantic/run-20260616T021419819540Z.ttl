@@ -1,0 +1,101 @@
+@prefix ors: <http://purl.org/nemo/ontors#> .
+@prefix tnu: <http://purl.org/nemo/tnu/> .
+@prefix thesis: <http://purl.org/nemo/thesis/> .
+@prefix tres: <http://purl.org/nemo/tres/> .
+@prefix rs: <http://purl.org/nemo/rs/> .
+@prefix gemini: <https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/> .
+@prefix jdd: <http://purl.org/nemo/judicial-decision-draft/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+jdd:pipeline-run-f08d23d5-35fb-58c2-b846-a5a724e014bd a prov:Activity ;
+  dcterms:identifier "f08d23d5-35fb-58c2-b846-a5a724e014bd" ;
+  dcterms:created "2026-06-16T02:14:23.201628Z"^^xsd:dateTime ;
+  dcterms:type "pipeline-run" ;
+  rdfs:label "Pipeline run run-20260616T021419819540Z" ;
+  prov:value "mode=sample; analysis=local; browser_automation=true; compile_pdf=false" ;
+  prov:wasAssociatedWith jdd:pipeline, jdd:local-text-similarity .
+
+jdd:pipeline a prov:SoftwareAgent ;
+  dcterms:title "TCC Pipeline" .
+
+jdd:local-text-similarity a prov:SoftwareAgent ;
+  dcterms:title "local-text-similarity" ;
+  dcterms:type "local" ;
+  rdfs:label "Local analysis agent" .
+
+jdd:theme-catalog-8ee163d6-c714-520c-b848-11c1f5962caa a prov:Collection, prov:Entity ;
+  rdfs:label "Collected TNU themes" ;
+  prov:wasGeneratedBy jdd:pipeline-run-f08d23d5-35fb-58c2-b846-a5a724e014bd .
+
+tnu:1 a ors:Theme, prov:Entity ;
+  ors:themeNumber "1" ;
+  ors:themeThesis "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  dcterms:identifier "1" ;
+  dcterms:description "Saber qual a forma de cálculo da aposentadoria por invalidez, do auxílio-doença e pensões derivadas, em momento antecedente à edição da Lei n. 9.876/99." ;
+  dcterms:type "DIREITO PREVIDENCIÁRIO" ;
+  rdfs:label "Tema 1 - Julgado" ;
+  prov:wasDerivedFrom jdd:theme-catalog-8ee163d6-c714-520c-b848-11c1f5962caa .
+
+thesis:1 a ors:Thesis, prov:Entity ;
+  rdfs:label "Theme 1 Thesis" ;
+  ors:themeThesis "O valor da aposentadoria por invalidez e do auxílio-doença, bem como das pensões destes derivados ou calculadas com base no art. 75, da Lei n. 8.213/91, será obtido, na forma do art. 29, II, do mesmo diploma, por meio da média aritmética simples dos 80% maiores salários de contribuição, considerado todo o período contributivo, independentemente do momento de inscrição do segurado e do número de contribuições mensais do período contributivo." ;
+  ors:hasTheme tnu:1 .
+
+jdd:theme-catalog-8ee163d6-c714-520c-b848-11c1f5962caa prov:hadMember tnu:1 .
+
+tres:261f3545-cf32-508f-9fc6-043a3bc53ad5 a ors:AppellateDecisionOnSFCA, prov:Entity ;
+  ors:decisionNumber "261f3545-cf32-508f-9fc6-043a3bc53ad5" ;
+  ors:subject "Indenização por dano moral, Responsabilidade civil, DIREITO CIVIL" ;
+  dcterms:identifier "5021277-41.2025.4.02.5101" ;
+  dcterms:type "MANDADO DE SEGURANÇA TR CÍVEL" ;
+  dcterms:description "tipo_julgamento=Julgamento Principal; competencia=JEF Recurso Cível; relator=ALESSANDRA BELFORT BUENO" ;
+  prov:wasUsedBy jdd:pipeline-run-f08d23d5-35fb-58c2-b846-a5a724e014bd .
+
+rs:261f3545-cf32-508f-9fc6-043a3bc53ad5 a ors:Petition, prov:Entity ;
+  dcterms:identifier "5021277-41.2025.4.02.5101" ;
+  ors:isFiledAgainst tres:261f3545-cf32-508f-9fc6-043a3bc53ad5 .
+
+jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c a prov:Activity ;
+  dcterms:type "classification" ;
+  rdfs:label "Classification for process 5021277-41.2025.4.02.5101" ;
+  prov:used tres:261f3545-cf32-508f-9fc6-043a3bc53ad5, jdd:theme-catalog-8ee163d6-c714-520c-b848-11c1f5962caa, tnu:1, thesis:1 ;
+  prov:generated jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb ;
+  prov:wasAssociatedWith jdd:local-text-similarity .
+
+jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb a prov:Entity ;
+  dcterms:identifier "1" ;
+  dcterms:type "VALIDA" ;
+  dcterms:description "Tema 1 selecionado por semelhança de assunto." ;
+  prov:value "CONSONANCIA" ;
+  prov:wasDerivedFrom tres:261f3545-cf32-508f-9fc6-043a3bc53ad5, tnu:1 ;
+  prov:wasGeneratedBy jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c .
+
+jdd:draft-generation-ccdd1bbf-4fe7-521a-87b1-64e782a57132 a prov:Activity ;
+  dcterms:type "draft-generation" ;
+  rdfs:label "Draft generation for process 5021277-41.2025.4.02.5101" ;
+  prov:used jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb, tres:261f3545-cf32-508f-9fc6-043a3bc53ad5, tnu:1, thesis:1 ;
+  prov:generated jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132, jdd:generated-decision-ccdd1bbf-4fe7-521a-87b1-64e782a57132 ;
+  prov:wasAssociatedWith jdd:pipeline ;
+  prov:wasInformedBy jdd:classification-a199ba82-d6cd-5cfb-9de4-48fc54192b8c .
+
+jdd:admissibility-ccdd1bbf-4fe7-521a-87b1-64e782a57132 a ors:AdmissibilityDecision, prov:Entity ;
+  dcterms:identifier "ccdd1bbf-4fe7-521a-87b1-64e782a57132" ;
+  rdfs:label "Admissibility decision for process 5021277-41.2025.4.02.5101" ;
+  ors:ruledIn jdd:generated-decision-ccdd1bbf-4fe7-521a-87b1-64e782a57132 ;
+  prov:wasDerivedFrom rs:261f3545-cf32-508f-9fc6-043a3bc53ad5, jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb ;
+  prov:wasGeneratedBy jdd:draft-generation-ccdd1bbf-4fe7-521a-87b1-64e782a57132 .
+
+jdd:generated-decision-ccdd1bbf-4fe7-521a-87b1-64e782a57132 a prov:Entity ;
+  dcterms:identifier "ccdd1bbf-4fe7-521a-87b1-64e782a57132" ;
+  ors:decisionNumber "ccdd1bbf-4fe7-521a-87b1-64e782a57132" ;
+  dcterms:type "NEGAR_SEGUIMENTO" ;
+  rdfs:label "Generated decision NEGAR_SEGUIMENTO for process 5021277-41.2025.4.02.5101" ;
+  prov:atLocation "outputs/runs/run-20260616T021419819540Z/documents/261f3545-cf32-508f-9fc6-043a3bc53ad5-NEGAR_SEGUIMENTO.tex" ;
+  ors:adoptsThesis thesis:1 ;
+  prov:wasDerivedFrom tres:261f3545-cf32-508f-9fc6-043a3bc53ad5, jdd:analysis-35e89cc7-d761-5f72-81c0-7d5c3e75f0cb ;
+  prov:wasGeneratedBy jdd:draft-generation-ccdd1bbf-4fe7-521a-87b1-64e782a57132 .
+
+tres:261f3545-cf32-508f-9fc6-043a3bc53ad5 ors:adoptsThesis thesis:1 .
