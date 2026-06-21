@@ -1,7 +1,7 @@
 # Template documental
 
 Arquivos:
-- `decision_template_v2.docx`: template principal derivado do documento de referencia.
+- `decisions_template.docx`: The decision templates were provided by legal domain experts.
 
 Cenarios estruturais:
 - `adequacao_dissonancia`: paragrafos 1-13

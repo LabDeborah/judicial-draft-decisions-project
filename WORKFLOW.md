@@ -5,11 +5,11 @@
 This project runs an end-to-end legal-document pipeline that:
 
 1. collects TNU themes;
-2. collects TRF2 decisions;
+2. collects TRF2 decisions from 1ª TRES and 2ªTRES (both appelate panels in Espirito Santo-Brazil - Seção Judiciária do ES);
 3. compares decisions against themes;
 4. classifies the legal relationship between both texts;
 5. derives the procedural action to be taken;
-6. generates draft documents from the decision template;
+6. generates draft documents from the decision templates;
 7. emits a semantic RDF/Turtle layer with provenance.
 
 The result is not only a generated legal draft, but also a complete execution trail describing how that draft was produced.
@@ -186,9 +186,9 @@ Supporting modules:
 
 The main action outputs are:
 
-- `SOBRESTAR`
-- `NEGAR_SEGUIMENTO`
-- `DETERMINAR_ADEQUACAO`
+- `SOBRESTAR`(Suspended RS)
+- `NEGAR_SEGUIMENTO` (Not Entertained RS)
+- `DETERMINAR_ADEQUACAO` (RS Granted To Revoke Decision)
 - `SEM_ACAO`
 
 This is the bridge between text analysis and the actual document-generation workflow.

@@ -1,0 +1,131 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Turma Nacional de Uniformização - TNU</title>
+<link href="Files/Css/internet.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="Files/Css/internet_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script language="Javascript" src="funcao.js"></script>
+</head>
+		<body onload="document.frmPesquisa.pesq.focus();">
+		<noscript>Scripts do Sistema</noscript>
+			<div id="formulario">
+		<div id="topo_conteudo">
+			<div id="left"></div>
+			<div id="right"></div>
+		</div>
+        <form method="POST" action="pesqinteiroteor.php" name="frmPesquisa" onsubmit="return valida_campos()"><input type="hidden" name="PHPSESSID" value="c9bmrspjpd767jcji31meoa7a2" />
+            <div id="conteudo">
+              <h1></h1><br />
+                <table class="table_pesquisa" summary="" cellspacing="0" cellpadding="3">
+                    <tbody>
+                        <tr>
+                            <td class="label td_right largura_td">Pesquisa por: </td>
+                            <td>
+                                <select name="tipo" class="combo_md">
+                                    <option VALUE="num_pro" >Processo</option>
+                                    <option VALUE="nom_adv" >Nome do Advogado</option>
+                                    <option VALUE="nom_par" >Nome da Parte</option>
+                                </select>                            
+							</td>
+                        </tr>
+                        <tr>
+                            <td class="label td_right">Parâmetro de pesquisa: </td>
+                            <td><input type="Text" name="pesq" value="" class="txt_gd"></td>
+                        </tr>
+                    </tbody>
+                </table>
+			<div id="botoes" class="div_botoes">
+				<input type="submit" value="consultar" title="Consultar" alt="Consultar" />
+				<input type="button" value="Limpar" title="Limpar" alt="Limpar" onclick="limpa();"/>
+				<input type="hidden" value="" name="nm_arq" />
+			</div>
+            </div>
+        </form>
+	</div>
+</body>
+<script language="Javascript" src="funcao.js"></script>
+<script type="text/javascript">
+	function trim(nome){
+		tam = nome.length;
+		ini=0;
+		fim=0;
+		for (i=0 ; i<tam ; i++){
+			elem = nome.charAt(i);   
+			if (elem==" ") ini=ini+1;
+			else break;
+		}
+		for (i=1 ; i<tam ; i++){
+			elem = nome.charAt(tam-i);   
+			if (elem==" ") fim=fim+1;
+			else break;
+		}
+		if (fim!=0) 
+			return nome.slice(ini,-fim);  
+		else 
+			return nome.substr(ini)
+	}
+	
+	
+	function limpa(){
+		document.frmPesquisa.tipo.options[0].selected = true;
+		document.frmPesquisa.pesq.value=""; 
+		document.frmPesquisa.pesq.focus();
+	}
+	
+	//Funcao para validar os critérios de pesquisa
+	function valida_campos(){
+		tipo = document.frmPesquisa.tipo.value;
+		document.frmPesquisa.pesq.value = trim(document.frmPesquisa.pesq.value.toUpperCase());
+		valor = document.frmPesquisa.pesq.value;
+	
+	
+		if (tipo==""){
+			alert("Escolha um dos campos abaixo correspondente ao critério de pesquisa desejado.");
+			return false;			
+		}
+		//critica do número do processo
+	
+		if (trim(valor)==""){
+			alert("Digite o texto para pesquisa.");
+			document.frmPesquisa.pesq.focus();
+			return false;			
+		}
+	
+	
+		if (tipo == "num_pro"){
+			if (!validarDVNumProces(document.frmPesqdistribui.num_proces.value))
+		   {
+			 alert("Número de processo inválido!");
+			 document.frmPesqdistribui.num_proces.focus();
+			 return false;
+		   }
+			if (isnumeric(document.frmPesquisa.pesq) == 0){
+				alert("Somente número é válido!, Ex.: 200270000307060");
+				document.frmPesquisa.pesq.focus();
+				return false; 
+			}
+		}	
+		return true;
+	}
+	
+	//verifica se o campo é numerico
+	function isnumeric(field){
+		var valid = "0123456789"
+		var ok = "yes"; 
+		var temp;
+		for (var i=0; i<field.value.length; i++){
+			temp = "" + field.value.substring(i, i+1);
+			if (valid.indexOf(temp) == "-1")
+			ok = "no";
+		} 
+		if (ok == "no"){
+			return 0;
+		}else{
+			return 1;
+		}  
+	} 
+</script>
